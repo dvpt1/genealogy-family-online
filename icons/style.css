@@ -1,0 +1,60 @@
+.container {
+	width:830px;  
+	background: #FFFFFF;
+	margin: 0 auto; 
+	border: 8px RIDGE #000000;
+	text-align: left; 
+}
+.header {
+	background: #DDDDDD; 
+	padding: 0 10px 0 20px; 
+}
+.header h1 {
+	margin: 0; 
+	padding: 10px 0; 
+}
+.mainContent {
+	padding: 0 20px; 
+	background: #FFFFFF;
+}
+.footer {
+	padding: 0 10px; 
+	background:#DDDDDD;
+}
+.footer p {
+	margin: 0; 
+	padding: 10px 0; 
+}
+.box-main{
+	border: 3px solid #ae0;
+	border-radius: 10px;
+	padding: 10px; /* Поля вокруг текста */
+	background: rgb(231, 231, 231);
+}
+.box-title{
+	border: 3px solid #ae0;
+	border-radius: 10px;
+	padding: 10px; /* Поля вокруг текста */
+	text-align: center; /* Выравнивание */
+	background: rgb(221, 221, 221);
+}
+.box-logo{
+	border: 3px solid #ae0;
+	border-radius: 10px;
+	padding: 5px; /* Поля вокруг текста */
+	text-align: center; /* Выравнивание */
+	color: rgb(49, 151, 116);
+	background: rgb(221, 221, 221);
+}
+.box-bot{
+	border: 3px solid #ae0;
+	border-radius: 10px;
+	padding: 5px; /* Поля вокруг текста */
+	text-align: center; /* Выравнивание */
+	color: rgb(49, 151, 116);
+	background: rgb(221, 221, 221);
+}
+.letter {
+	color: red; /* Цвет символа */
+	font-size: 200%; /* Размер шрифта */
+} 
