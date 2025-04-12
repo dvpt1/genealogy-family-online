@@ -1,0 +1,80 @@
+BODY
+{
+	color: #000000;
+	background-color: #FFFFFF;
+}
+
+BODY, td, input, select, button
+{
+	font-family: verdana, helvetica, arial, sans-serif;
+	font-size: 12px;
+	line-height: 14px;
+}
+
+A
+{
+	padding: 2px;
+	text-decoration: none;
+}
+
+A:link
+{
+	color: #FF0000;
+	text-decoration: none;
+}
+
+A:visited
+{
+	color: #FF0000;
+	text-decoration: none;
+}
+
+A:hover
+{
+	font-style: italic;
+	border: 1px solid red;
+	text-decoration: underline;
+}
+
+A:active
+{
+	font: sans-serif;
+	font-size: 14px;
+	text-decoration: underline;
+}
+
+.ThinBorder
+{
+  border:1px solid #000000;
+  background: #CFD6D4;
+}	  
+
+.open {
+  border: 1px solid black;
+  border-right: 2px solid black;
+  border-left: 2px solid black;
+  border-top: none;
+  border-bottom: 2px solid black;
+  background: #CFD6D4;
+  text-align: center;
+  font-weight: bold
+}
+
+.close {
+  border-right: none;
+  border-left: 1px solid black;
+  border-top: 2px solid black;
+  border-bottom: 1px solid black;
+  text-align: center;
+}
+  
+/* tags */
+
+.tag_cloud { margin-top: 10px; }
+.tag_cloud, .tags_edit_form_cloud {
+  padding: 10px 19px;
+  -moz-border-radius: 10px; -webkit-border-radius: 10px;
+  text-align: center;
+  line-height: 120%;
+  background: #e8e8e8;
+}

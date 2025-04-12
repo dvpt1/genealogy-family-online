@@ -1,0 +1,17 @@
+div.tags { margin: 0.1em 0 1em;font-family:Tahoma, Helvetica, Arial;padding-bottom:10px }
+div.tags a { text-decoration:none;color:#333333 }
+div.tags a:hover { text-decoration: underline }
+div.tags .size-0 { font-size:9px }
+div.tags .size-1 { font-size:11px }
+div.tags .size-2 { font-size:13px }
+div.tags .size-3 { font-size:15px }
+div.tags .size-4 { font-size:15px;font-weight:bold }
+div.tags .size-5 { font-size:17px  }
+div.tags .size-6 { font-size:19px;font-weight:bold }
+div.tags .size-0 a { color:#bcbcbc }
+div.tags .size-1 a { color:#a2a2a2 }
+div.tags .size-2 a { color:#6f6f6f }
+div.tags .size-3 a { color:#333 }
+div.tags .size-4 a { color:#444 }
+div.tags .size-5 a { color: #222 }
+div.tags .size-6 a { color: #000 }

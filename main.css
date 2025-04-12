@@ -1,0 +1,141 @@
+<style type='text/css'>
+
+ .shadow {/* Задание стилей для слоя тени */
+ background:#bbb; /* Задание цвета тени */
+ border:1px solid #ddd; /* Задание стиля и цвета границ тени */
+ width:200px; /* Задание ширины всего блока */
+ }
+ .blockm {
+ background:#00ffff; /* Задание цвета фона для блока */
+ border:1px solid #6b6b6b;  /* Задание стиля и цвета границ блока */
+ position:relative;  /* Задание позиции блока текста относительно тени */
+ padding:5px;  /* Задание отступа */
+ top:-3px;  /* Отступ сверху (для тени) */
+ left:-3px; /* Отступ слева (для тени) */
+ }
+ .blockw {
+ background:#ffc0cb; /* Задание цвета фона для блока */
+ border:1px solid #6b6b6b;  /* Задание стиля и цвета границ блока */
+ position:relative;  /* Задание позиции блока текста относительно тени */
+ padding:5px;  /* Задание отступа */
+ top:-3px;  /* Отступ сверху (для тени) */
+ left:-3px; /* Отступ слева (для тени) */
+ }
+ .blockr {
+ background:#0fc; /* Задание цвета фона для блока */
+ border:1px solid #6b6b6b;  /* Задание стиля и цвета границ блока */
+ position:relative;  /* Задание позиции блока текста относительно тени */
+ padding:5px;  /* Задание отступа */
+ top:-3px;  /* Отступ сверху (для тени) */
+ left:-3px; /* Отступ слева (для тени) */
+ }
+ .blockn {
+ background:#8f8989; /* Задание цвета фона для блока */
+ border:1px solid #6b6b6b;  /* Задание стиля и цвета границ блока */
+ position:relative;  /* Задание позиции блока текста относительно тени */
+ padding:5px;  /* Задание отступа */
+ top:-3px;  /* Отступ сверху (для тени) */
+ left:-3px; /* Отступ слева (для тени) */
+ }
+ .blockb {
+ background:#ffffff; /* Задание цвета фона для блока */
+ border:1px solid #6b6b6b;  /* Задание стиля и цвета границ блока */
+ position:relative;  /* Задание позиции блока текста относительно тени */
+ padding:5px;  /* Задание отступа */
+ top:-3px;  /* Отступ сверху (для тени) */
+ left:-3px; /* Отступ слева (для тени) */
+ }
+
+/* tags */
+.tag_cloud { margin-top: 10px; }
+.tag_cloud, .tags_edit_form_cloud {
+  padding: 10px 19px;
+  -moz-border-radius: 10px; -webkit-border-radius: 10px;
+  text-align: center;
+  line-height: 120%;
+  background: #e8e8e8;
+}
+
+.tag_tags { margin-top: 10px; }
+.tag_tags, .tags_edit_form_cloud {
+  padding: 10px 19px;
+  -moz-border-radius: 10px; -webkit-border-radius: 10px;
+  text-align: center;
+  line-height: 120%;
+  background: rgb(255,253,212);
+}
+
+.tag_tagc { margin-top: 10px; }
+.tag_tagc, .tags_edit_form_cloud {
+  padding: 10px 19px;
+  -moz-border-radius: 10px; -webkit-border-radius: 10px;
+  text-align: center;
+  line-height: 120%;
+  background: #ffcc66;
+}
+
+.tag_tagsoft { margin-top: 10px; }
+.tag_tagsoft, .tags_edit_form_cloud {
+  padding: 10px 19px;
+  -moz-border-radius: 10px; -webkit-border-radius: 10px;
+  text-align: center;
+  line-height: 120%;
+  background: #ffcc99;
+}
+
+.tag_tagnsi { margin-top: 10px; }
+.tag_tagnsi, .tags_edit_form_cloud {
+  padding: 10px 19px;
+  -moz-border-radius: 10px; -webkit-border-radius: 10px;
+  text-align: center;
+  line-height: 120%;
+  background: #ffcc88;
+}
+
+.tag_cloud_category {
+	position: relative;
+	clear: right;
+	margin-top: 25px;
+}
+.tag_cloud_category div {
+	position: absolute; top: -20px; right: 0;
+	overflow: hidden;
+	padding: 0 5px 3px 0;
+	font-size: 70%;
+	font-style: italic;
+	color: #606060;
+}
+
+.tag_cloud_container {
+  margin: 10px 0 14px 0;
+}
+
+.tags_edit_form_cloud {
+  width: 95%;
+}
+
+.tags_edit_form_cloud #tags {
+  width: 100%;
+  margin-right: 28px;
+  font-size: 120%;
+  text-align: center;
+  background: #F5F5F5;
+  border: none;
+}
+
+.tags_edit_form_cloud .submit-button {
+  position: relative; z-index: 2;
+  float: right;
+  top: -21px; left: 28px;
+}
+
+.my {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+</style>

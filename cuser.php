@@ -1,0 +1,94 @@
+<?php
+
+include_once("csub.php");
+include_once("chtmls.php");
+
+$user = _check_auth($_COOKIE);
+
+$dir = TRUE;
+
+//_begin_html($user);
+if(isset($_POST['saveuser'])) {
+  _saveuser_database($user['name'],fm($_POST['fio']),fm($_POST['country']),fm($_POST['postcode']),fm($_POST['city']),fm($_POST['address']),fm($_POST['phone']),fm($_POST['http']),fm($_POST['notes']));
+  $msg = $user7;
+}
+//??md5
+$msg = "";
+if(isset($_POST['savepass'])) {
+ if ($_POST['pass'] == "") { $msg = $user1; }
+ else if ($_POST['pass'] != $user['pass']) { $msg = $user2; }
+ else if ($_POST['pass1'] == "") { $msg = $user3; }
+ else if ($_POST['pass2'] == "") { $msg = $user4; }
+ else if ($_POST['pass1'] != $_POST['pass2']) { $msg = $user5; }
+ if ($msg == "") { 
+  _savepass_database($user['name'],$_POST['pass1']);
+  $msg = $user6;
+  }
+ }
+$user = _check_datauser($user['name']);
+
+//_edit_user($user);
+ $msg = $GLOBALS["msg"];
+ global $edtt, $lgnmail, $pwdold, $pwdnew1, $pwdnew2, $pwdizm, $fio, $country, $post, $city, $adres, $phone, $www, $note, $registr, $save; 
+
+ if ($msg != "") echo "<br><font color='red'><b>$msg</b></font>";
+
+ ?>
+ <br><br><br><br>
+ <form name="adduser" action="cuser.php" method="post">
+ <table width="350" border="0" cellpadding="2">
+ <b><?php echo $edtt; ?></b>
+ <tr><td><?php echo $lgnmail; ?></td>
+  <td><b><?php echo $user['name']; ?></b></td>
+ </tr>
+ <tr><td><?php echo $pwdold; ?></td>
+  <td><input type="password" name="pass" size="20"></td>
+ </tr>
+ <tr><td><?php echo $pwdnew1; ?></td>
+  <td><input type="password" name="pass1" size="20"></td>
+ </tr>
+ <tr><td><?php echo $pwdnew2; ?></td>
+  <td><input type="password" name="pass2" size="20"></td>
+ </tr>
+ <tr><td colspan="2" align="left">
+  <input type="submit" name="savepass" value="<?php echo $pwdizm; ?>">
+  </td>
+ </tr>
+ <tr><td><?php echo $fio; ?></td>
+  <td><input type="text" name="fio" size="60" value="<?php echo $user['fio']; ?>"></td>
+ </tr>
+ <tr><td><?php echo $country; ?></td>
+  <td><input type="text" name="country" size="20" value="<?php echo $user['country']; ?>"></td>
+ </tr>
+ <tr><td><?php echo $post; ?></td>
+  <td><input type="text" name="postcode" size="10" value="<?php echo $user['postcode']; ?>"></td>
+ </tr>
+ <tr><td><?php echo $city; ?></td>
+  <td><input type="text" name="city" size="30" value="<?php echo $user['city']; ?>"></td>
+ </tr>
+ <tr><td><?php echo $adres; ?></td>
+  <td><input type="text" name="address" size="80" value="<?php echo $user['address']; ?>"></td>
+ </tr>
+ <tr><td><?php echo $phone; ?></td>
+  <td><input type="text" name="phone" size="20" value="<?php echo $user['phone']; ?>"></td>
+ </tr>
+ <tr><td><?php echo $www; ?></td>
+  <td><input type="text" name="http" size="40" value="<?php echo $user['http']; ?>"></td>
+ </tr>
+ <tr><td><?php echo $note; ?></td>
+  <td><textarea name="notes" rows="5" cols="80"><?php echo $user['notes']; ?></textarea></td>
+ </tr>
+ <tr><td colspan="2" align="center">
+  <input type="submit" name="saveuser" value="<?php echo $save; ?>">
+  </td>
+ </tr>
+ <tr><td><p><br><br><br></p></td></tr>
+ </table>
+ </form>
+ 
+ <p><br><br><br><br></p>
+ <?
+
+//_end_html();
+
+?>
