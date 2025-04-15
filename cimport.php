@@ -200,7 +200,7 @@ function Gedcom_Import()
     //print_r($father); echo "== father ==<br>";
     $ft = "";
     for ($i = 0; $i < count($father); $i++){
-      if($ft == "") {$ft = $father[$i]['id'];} else {$ft = ",".$father[$i]['id'];}
+      if($ft == "") {$ft = $father[$i]['id'];} else {$ft += ",".$father[$i]['id'];}
       $fathers[$ifat] = array($id, $father[$i]['id']);
       $ifat++;
     }
@@ -209,7 +209,7 @@ function Gedcom_Import()
     //print_r($mother); echo "== mother ==<br>";
     $mt = "";
     for ($i = 0; $i < count($mother); $i++){
-      if($mt == "") {$mt = $mother[$i]['id'];} else {$mt = ",".$mother[$i]['id'];}
+      if($mt == "") {$mt = $mother[$i]['id'];} else {$mt += ",".$mother[$i]['id'];}
       $mothers[$imot] = array($id, $mother[$i]['id']);
       $imot++;
     }
@@ -254,7 +254,7 @@ function Gedcom_Import()
 
             $spouses[] = array($id, $sps, $sWedding, $sPlacew, $sMapsw);
             $isps++;
-            if($st == "") {$st = $spouse[$i]['id'];} else {$st = ",".$spouse[$i]['id'];}
+            if($st == "") {$st = $spouse[$i]['id'];} else {$st += ",".$spouse[$i]['id'];}
         }
     }
 
