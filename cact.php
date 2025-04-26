@@ -1,8 +1,10 @@
 <?php
 
+
 //session_start();
 include_once("csub.php");
 include_once("chtmls.php");
+
 
 _already_logged($_COOKIE);
 
@@ -27,5 +29,8 @@ if(!empty($_GET['code']) && isset($_GET['code'])){
 
 }
 ?>
-//HTML часть
+
+ <br><br>
+ <h4><a href="index.php"><=</a></h4>
+
 <?php echo $msg; ?>

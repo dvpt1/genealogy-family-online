@@ -17,8 +17,12 @@ include_once("chtmls.php");
 global $lang;
 global $lgn1,$pwd3,$foglgn1,$registr,$fogpwd3,$enter1;
 
+$six_digit_random_number = random_int(100000, 999999);
+echo "six_digit_random_number = $six_digit_random_number<br>"; 
+
 $msg = $GLOBALS["msg"];
-if ($msg != "") echo "<br><font color='red'><b>$msg</b></font>";
+if ($msg != "") echo "<br><font color='red'><b>$msg</b></font><br>";
+echo time()."<br>";
 
 $prm1 = '';
 $prm2 = '';
@@ -37,6 +41,8 @@ if(isset($_POST['login'])) {
   } else {
     $msg = $user_data.":".$_POST['user'].":".$_POST['pass'];
     _set_cookie($user_data,fm($_POST['rem']),session_id(),fm($_POST['user']));
+
+    mail($_POST['user'], 'Activation TwoFactor', 'TwoFactor Number: '.random_int(100000, 999999));
   } 
 
  }
@@ -75,7 +81,7 @@ if(isset($_POST['login'])) {
   <p align="center"><a href=cforgot.php><?php echo $fogpwd3; ?></a></p>
   </td>
  </tr>
- <tr><td><p><br><br><br></p></td></tr>
+ <tr><td><p><br><?php echo $prm1;?><br><?php echo $prm2;?><br></p></td></tr>
  </table>
  </form>
  </center>

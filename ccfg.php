@@ -18,6 +18,7 @@ $cntp = 25;
 
 $admlogin = 'dvpt';
 $admpswrd = 'dImAs';
+$pepper='c1isvFdxMDdmjOlvxpecFw';
 
 $CONFIG                  = array();
 $CONFIG['HOST_NAME']     = 'localhost';

@@ -173,7 +173,7 @@ function _begin_html($user)
     window.location = window.location.href;
   }
 
-  setInterval('autoRefresh()', 10000);
+  setInterval('autoRefresh()', 15000);
 </script>
 
 

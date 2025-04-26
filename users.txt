@@ -1,0 +1,2 @@
+admin:$2y$10$avqVtJ9.094LjoqXdWYjiu2BhOufbukbKoRMd6RnIBIMTRZ2qLUeW
+user2:$2y$10$avqVtJ9.094LjoqXdWYjiu2BhOufbukbKoRMd6RnIBIMTRZ2qLUeW

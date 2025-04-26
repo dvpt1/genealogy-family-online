@@ -15,9 +15,25 @@ mysql_query('SET NAMES utf8');
 
 function _check_database($user, $pass)
 {
-  $Q = mysql_query(" SELECT id FROM users WHERE name = '$user' AND pass = '$pass' ");
+echo "check_database: ".$user.":".$pass."<br>"; 
+// register.php
+GLOBAL $pepper;// = getConfigVariable("pepper");
+echo "pepper: ".$pepper."<br>"; 
+$pwd_peppered = hash_hmac("sha256", $pass, $pepper);
+$pwd_hashed = password_hash($pwd_peppered, PASSWORD_DEFAULT); //$pwd_hashed = password_hash($pwd_peppered, PASSWORD_ARGON2ID);
+echo "pwd_peppered: ".$pwd_peppered." password_hash: ".$pwd_hashed."<br>"; 
+//add_user_to_database($username, $pwd_hashed);
+
+  $Q = mysql_query(" SELECT id FROM users WHERE name = '$user' AND pass = '$pwd_peppered' ");
   if(mysql_num_rows($Q) == 0) return 0;
   else return mysql_fetch_array($Q);
+}
+
+function _check_datausers()
+{
+  $query = "SELECT id,name,pass,fio,country,postcode,city,address,phone,http,notes FROM users";
+  $result = mysql_query($query);
+  return $result;
 }
 
 function _check_datauser($user)
@@ -46,7 +62,15 @@ function _check_datauser($user)
 
 function _adduser_database($user, $pass, $fio, $country, $postcode, $city, $address, $phone, $http, $notes, $activation)
 {
-  $Q = mysql_query("INSERT INTO users (name,pass,fio,country,postcode,city,address,phone,http,notes,activation) VALUES ('$user','$pass','$fio','$country','$postcode','$city','$address','$phone','$http','$notes','$activation')");
+// register.php
+GLOBAL $pepper;// = getConfigVariable("pepper");
+//echo "pepper: ".$pepper."<br>"; 
+$pwd_peppered = hash_hmac("sha256", $pass, $pepper);
+$pwd_hashed = password_hash($pwd_peppered, PASSWORD_DEFAULT); //$pwd_hashed = password_hash($pwd_peppered, PASSWORD_ARGON2ID);
+//echo "pwd_peppered: ".$pwd_peppered." password_hash: ".$pwd_hashed."<br>"; 
+//add_user_to_database($username, $pwd_hashed);
+
+  $Q = mysql_query("INSERT INTO users (name,pass,fio,country,postcode,city,address,phone,http,notes,activation) VALUES ('$user','$pwd_peppered','$fio','$country','$postcode','$city','$address','$phone','$http','$notes','$activation')");
 }
 
 function _saveuser_database($user, $fio, $country, $postcode, $city, $address, $phone, $http, $notes)
@@ -102,6 +126,7 @@ function _set_cookie($user_data, $rem, $session, $username)
     $Q = mysql_query(" INSERT INTO sessions (session, id, name) VALUES ('$session','$user_id','$username') ");
   else
     $Q = mysql_query(" UPDATE sessions SET session = '$session' WHERE id = '$user_id' AND name = '$username' ");
+
   header("location: index.php");
 }
 

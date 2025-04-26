@@ -3,7 +3,7 @@
 session_start();
 include_once("csub.php");
 include_once("chtmls.php");
-_already_logged($_COOKIE);
+//_already_logged($_COOKIE);
 
 $dir = TRUE;
 

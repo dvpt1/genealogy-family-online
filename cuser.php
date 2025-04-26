@@ -3,9 +3,15 @@
 include_once("csub.php");
 include_once("chtmls.php");
 
-$user = _check_auth($_COOKIE);
-
-$dir = TRUE;
+//$user = _check_auth($_COOKIE);
+if(isset($_GET[name])){
+  $user = _check_datauser($_GET[name]);
+//print_r( $user); echo "get<br>";
+}
+if(isset($_POST[name])){
+  $user = _check_datauser($_POST[name]);
+//print_r( $user); echo "post<br>";
+}
 
 //_begin_html($user);
 if(isset($_POST['saveuser'])) {
@@ -26,20 +32,23 @@ if(isset($_POST['savepass'])) {
   }
  }
 $user = _check_datauser($user['name']);
+//print_r( $user); echo "<br>";
 
 //_edit_user($user);
+
  $msg = $GLOBALS["msg"];
  global $edtt, $lgnmail, $pwdold, $pwdnew1, $pwdnew2, $pwdizm, $fio, $country, $post, $city, $adres, $phone, $www, $note, $registr, $save; 
 
  if ($msg != "") echo "<br><font color='red'><b>$msg</b></font>";
 
  ?>
- <br><br><br><br>
+ <h4><a href="cadm.php"><img src="icons/ic_menu_back.png"></a></h4>
+
  <form name="adduser" action="cuser.php" method="post">
  <table width="350" border="0" cellpadding="2">
  <b><?php echo $edtt; ?></b>
  <tr><td><?php echo $lgnmail; ?></td>
-  <td><b><?php echo $user['name']; ?></b></td>
+  <td><input type="text" name="name" size="60" value="<?php echo $user['name']; ?>"></b></td>
  </tr>
  <tr><td><?php echo $pwdold; ?></td>
   <td><input type="password" name="pass" size="20"></td>
