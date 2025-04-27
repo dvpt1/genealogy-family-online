@@ -8,8 +8,8 @@ include_once("csub.php");
 
 $user = _check_user($_COOKIE);
 //echo print_r($user); echo "<br>";
-echo $user['name']."<br>";
 if($user['id'] != 1) return;
+echo $user['name']."<br>";
 
 ?>
 <h4><a href="index.php"><img src="icons/ic_menu_home.png"></a></h4>
@@ -27,11 +27,14 @@ if($user['id'] != 1) return;
 $result = _check_datausers();
 
 while ($row=mysql_fetch_array($result)){
-echo ("<tr><td>$row[id]</td>");
+echo ("<tr>");
+echo ("<td>$row[id]</td>");
 echo ("<td>$row[name]</td>");
 echo ("<td>$row[pass]</td>");
 echo ("<td>$row[fio]</td>");
-echo ("<td><a href=\"cuser.php?name=$row[name]\">Edit</a></td></tr>");
+echo ("<td><a href=\"cuser.php?name=$row[name]\"><img src=\"icons/ic_menu_edit.png\" height=30 width=30></a></td>");
+echo ("<td><a href=\"cuser.php?name=$row[name]\"><img src=\"icons/ic_menu_delete.png\" height=30 width=30></a></td>");
+echo ("</tr>");
 }
 echo "</table>";
 

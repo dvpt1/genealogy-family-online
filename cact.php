@@ -5,10 +5,7 @@
 include_once("csub.php");
 include_once("chtmls.php");
 
-
-_already_logged($_COOKIE);
-
-$dir = TRUE;
+//??_already_logged($_COOKIE);
 
 $msg='';
 if(!empty($_GET['code']) && isset($_GET['code'])){
@@ -24,7 +21,7 @@ if(!empty($_GET['code']) && isset($_GET['code'])){
 			$msg ="Ваш аккаунт уже активирован, нет необходимости активировать его снова.";
 		}
 	}else{
-		$msg ="Неверный код активации.";
+		$msg ="Неверный код активации. $code";
 	}
 
 }

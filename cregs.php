@@ -18,35 +18,27 @@ if(isset($_POST['submit'])) {
  $user_data = _check_datauser(fm($_POST['user']));
  if($user_data == 0) {
 
-$password = md5($_POST['pass']); // encrypted password
-$activation = md5($email.time()); // encrypted email+timestamp
-$alink = "https://dnadata.online/cact.php?code=$activation";
+  $password = md5($_POST['pass']); // encrypted password
+  $activation = md5($email.time()); // encrypted email+timestamp
+  $alink = "https://dnadata.online/cact.php?code=$activation";
+ 
+  _adduser_database(fm($_POST['user']),fm($_POST['pass']),fm($_POST['fio']),fm($_POST['country']),fm($_POST['postcode']),fm($_POST['city']),fm($_POST['address']),fm($_POST['phone']),fm($_POST['http']),fm($_POST['notes']),$activation);
+  $msg = $regs1;
 
-   _adduser_database(fm($_POST['user']),fm($_POST['pass']),fm($_POST['fio']),fm($_POST['country']),fm($_POST['postcode']),fm($_POST['city']),fm($_POST['address']),fm($_POST['phone']),fm($_POST['http']),fm($_POST['notes']),$activation);
-   $msg = $regs1;
+  echo "<br><br><br><br>";
+  echo '<h4><a href="index.php"><img src="icons/ic_menu_home.png"></a></h4>';
+  echo $_POST['user']."Activation dnadata.online".$alink."<br>";
 
-echo "<br><br><br><br><br><br>";
-echo $_POST['user']."Activation dnadata.online".$alink."<br>";
+  mail($_POST['user'],"Activation - DNAdata.Online","$alink");
+  //sleep(10);
 
-    mail($_POST['user'],"Activation - DNAdata.Online","$alink");
-
-
-    $to      = 'dvpt@narod.ru';
-    $subject = 'the subject';    
-    $message = 'hello';    
-    $headers = 'From:'. "\r\n" ."Reply-To:"."\r\n" .'X-Mailer: PHP/'.phpversion();    
-    mail($to, $subject, $message, $headers);
-
-//sleep(10);
-
-   //_login_html();
-   ///header("Location: clogin.php");
-   return 0;
-  }
- else {  
-   $msg = $regs2;
-  }
+  //_login_html();
+  ///header("Location: clogin.php");
+  return 0;
+ } else {  
+  $msg = $regs2;
  }
+}
 
 //_regs_html();
  global $lang;

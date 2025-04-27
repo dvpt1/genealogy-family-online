@@ -15,13 +15,13 @@ mysql_query('SET NAMES utf8');
 
 function _check_database($user, $pass)
 {
-echo "check_database: ".$user.":".$pass."<br>"; 
+//echo "check_database: ".$user.":".$pass."<br>"; 
 // register.php
 GLOBAL $pepper;// = getConfigVariable("pepper");
-echo "pepper: ".$pepper."<br>"; 
+//echo "pepper: ".$pepper."<br>"; 
 $pwd_peppered = hash_hmac("sha256", $pass, $pepper);
 $pwd_hashed = password_hash($pwd_peppered, PASSWORD_DEFAULT); //$pwd_hashed = password_hash($pwd_peppered, PASSWORD_ARGON2ID);
-echo "pwd_peppered: ".$pwd_peppered." password_hash: ".$pwd_hashed."<br>"; 
+//echo "pwd_peppered: ".$pwd_peppered." password_hash: ".$pwd_hashed."<br>"; 
 //add_user_to_database($username, $pwd_hashed);
 
   $Q = mysql_query(" SELECT id FROM users WHERE name = '$user' AND pass = '$pwd_peppered' ");
@@ -60,6 +60,22 @@ function _check_datauser($user)
   }
 }
 
+function _check_useract($user)
+{
+  $Q = mysql_query(" SELECT id,activation,status,two_factor_code,two_factor_expires_at FROM users WHERE name = '$user' ");
+  if(mysql_num_rows($Q) == 0) return 0;
+  else {
+    $usr = array();
+    $r = mysql_fetch_array($Q);
+    $usr['id']   = $r['id'];
+    $usr['activation'] = $r['activation'];
+    $usr['status'] = $r['status'];
+    $usr['two_factor_code'] = $r['two_factor_code'];
+    $usr['two_factor_expires_at'] = $r['two_factor_expires_at'];
+    return $usr;
+  }
+}
+
 function _adduser_database($user, $pass, $fio, $country, $postcode, $city, $address, $phone, $http, $notes, $activation)
 {
 // register.php
@@ -70,7 +86,9 @@ $pwd_hashed = password_hash($pwd_peppered, PASSWORD_DEFAULT); //$pwd_hashed = pa
 //echo "pwd_peppered: ".$pwd_peppered." password_hash: ".$pwd_hashed."<br>"; 
 //add_user_to_database($username, $pwd_hashed);
 
+//echo $user.$pwd_peppered.$fio.$country.$postcode.$city.$address.$phone.$http.$notes.$activation."<br>"; 
   $Q = mysql_query("INSERT INTO users (name,pass,fio,country,postcode,city,address,phone,http,notes,activation) VALUES ('$user','$pwd_peppered','$fio','$country','$postcode','$city','$address','$phone','$http','$notes','$activation')");
+//echo "Q: ".$Q."<br>"; 
 }
 
 function _saveuser_database($user, $fio, $country, $postcode, $city, $address, $phone, $http, $notes)
@@ -81,6 +99,17 @@ function _saveuser_database($user, $fio, $country, $postcode, $city, $address, $
 function _savepass_database($user, $passnew)
 {
   $Q = mysql_query("UPDATE users SET pass='$passnew' WHERE name='$user'");
+}
+
+function _saveact_database($user, $code)
+{
+  $Q = mysql_query("UPDATE users SET activation='$code' WHERE name='$user'");
+}
+
+function _savetwo_database($user, $two_num, $two_time)
+{
+  $Q = mysql_query("UPDATE users SET two_factor_code='$two_num',two_factor_expires_at='$two_time' WHERE name='$user'");
+//echo "Q: ".$Q."<br>"; 
 }
 
 function _check_auth($cookie)
