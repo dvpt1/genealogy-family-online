@@ -6,23 +6,14 @@ include_once("chtmls.php");
 //_already_logged($_COOKIE);
 //$user = _check_user($_COOKIE);
 
-//echo "<br><br><br>clogin<br>";
-//echo print_r($user); echo "<br>";
-//echo "=id=".$user['id']."<br>";
-//echo "=name=".$user['name']."<br>";
-
 //Login();
 //function Login()
 //{
 global $lang;
-global $lgn1,$pwd3,$foglgn1,$registr,$fogpwd3,$enter1;
-
-//$six_digit_random_number = random_int(100000, 999999);
-//echo "six_digit_random_number = $six_digit_random_number<br>"; 
+global $lgn1,$pwd3,$cod3,$foglgn1,$registr,$fogpwd3,$enter1,$login6,$login7,$login8;
 
 $msg = $GLOBALS["msg"];
 if ($msg != "") echo "<br><font color='red'><b>$msg</b></font><br>";
-//echo time()."<br>";
 
 $prm1 = '';
 $prm2 = '';
@@ -41,25 +32,27 @@ if(isset($_POST['login'])) {
   if($user_data == 0) {
     $msg = $login5;
   } else {
-    $msg = $user_data.":".$_POST['user'].":".$_POST['pass'];
+    $msg = $login8.$_POST['user'];
 
 	$Q = mysql_query("SELECT id,status FROM users WHERE name='".$_POST['user']."'");
 	if($Q){
 		$vars = mysql_fetch_array($Q);
 		$status = $vars['status'];
 		if($status == 1){
-			//$msg="Ваш аккаунт активирован $status"; 
 			//$msg="Ваш аккаунт активирован $status".$_POST['user'].":".$user_data['two_factor_code']." ". $_POST['code']; 
-
 			$b = true;
 			$twotime = time();
 			$user_data = _check_useract(fm($_POST['user']));
 			if($user_data == 0) {
-				//$msg = $forgot3;
+				$msg = $login5;
 			} else {
 				if(trim($user_data['two_factor_code']) == trim($_POST['code'])){
-					$b = false;
-					_set_cookie($user_data,fm($_POST['rem']),session_id(),fm($_POST['user']));
+					if($user_data['two_factor_expires_at']+600 > $twotime){//10minut
+						$b = false;
+						_set_cookie($user_data,fm($_POST['rem']),session_id(),fm($_POST['user']));
+					}else{
+						$msg=$login7; 
+					}
 				}
 			}
 
@@ -69,7 +62,7 @@ if(isset($_POST['login'])) {
 				mail($_POST['user'], 'Activation TwoFactor', 'TwoFactor Number: '.$twonumber);
 			}
 		}else{
-			$msg="Ваш аккаунт не активирован $status"; 
+			$msg = $login6; 
 
 			$password = md5($_POST['pass']); // encrypted password
 			$activation = md5($email.time()); // encrypted email+timestamp
@@ -111,7 +104,7 @@ if(isset($_POST['login'])) {
  <tr><td><?php echo $pwd3; ?></td>
   <td><input type="password" name="pass" size="20" value="<?php echo $prm2; ?>"></td>
  </tr>
- <tr><td><?php echo $pwd3; ?></td>
+ <tr><td><?php echo $cod3; ?></td>
   <td><input type="text" name="code" size="10" value="<?php echo $prm3; ?>"></td>
  </tr>
  <tr><td colspan="2" align="center">

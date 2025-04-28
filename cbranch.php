@@ -130,10 +130,26 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
       $marrieds = array();
       for ($i = 0; $i < count($spouses); $i++) {
         if ($spouses[$i][$fldSPOUS1] == $person){
-           $marrieds[] = $spouses[$i][$fldSPOUS2];
+          $b = true;
+          for ($n = 0; $n < count($marrieds); $n++) {
+             if($marrieds[$n] == $spouses[$i][$fldSPOUS2]) {
+               $b = false;
+               break;
+             }
+          }
+
+          if($b) $marrieds[] = $spouses[$i][$fldSPOUS2];
         }else
         if ($spouses[$i][$fldSPOUS2] == $person) {
-           $marrieds[] = $spouses[$i][$fldSPOUS1];
+          $b = true;
+          for ($n = 0; $n < count($marrieds); $n++) {
+             if($marrieds[$n] == $spouses[$i][$fldSPOUS1]) {
+               $b = false;
+               break;
+             }
+          }
+
+          if($b) $marrieds[] = $spouses[$i][$fldSPOUS1];
         }
       }
 //$sNam = ""; for ($n = 0; $n < count($marrieds); $n++) $sNam .= $marrieds[$n].':';
@@ -161,14 +177,14 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
               $iX2 = $dX + 232;
               for ($j = 0; $j < count($femes); $j++)// мать
               {
-                  for ($n = 0; $n < count($marrieds); $n++)
+                  for ($n = count($marrieds); $n >= 0; $n--)
                   {
                       // есть ли такая жена в списке
                       if ($marrieds[$n] == $femes[$j])
                       {
 //echo "=1=".$level." ; ".$marrieds[$n].":".$femes[$j]."<br>";
                           unset($marrieds[$n]);// если есть, удаляю его из списка
-                          break;
+                          //break;
                       }
                   }
 
@@ -211,6 +227,7 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
           {
              if(strlen($marrieds[$n]) > 0){
               $dX = $dX + 242;
+//echo "=marrieds=".print_r($marrieds)."<br>";
               AddInfoBranch($marrieds[$n], -1, -1, 0, $dX - 10, $dY, $dX, $Y1);
               if ($maxX < $dX) $maxX = $dX;
               $iX2 = $dX + 218;
@@ -234,12 +251,26 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
       $marrieds = array();
       for ($i = 0; $i < count($spouses); $i++) {
         if ($spouses[$i][$fldSPOUS1] == $person){
-           $marrieds[] = $spouses[$i][$fldSPOUS2];
-//echo "=221=".$person." : ".$spouses[$i][$fldSPOUS2]."<br>";
+          $b = true;
+          for ($n = 0; $n < count($marrieds); $n++) {
+             if($marrieds[$n] == $spouses[$i][$fldSPOUS2]) {
+               $b = false;
+               break;
+             }
+          }
+
+          if($b) $marrieds[] = $spouses[$i][$fldSPOUS2];
         }else
         if ($spouses[$i][$fldSPOUS2] == $person) {
-           $marrieds[] = $spouses[$i][$fldSPOUS1];
-//echo "=222=".$person." : ".$spouses[$i][$fldSPOUS1]."<br>";
+          $b = true;
+          for ($n = 0; $n < count($marrieds); $n++) {
+             if($marrieds[$n] == $spouses[$i][$fldSPOUS1]) {
+               $b = false;
+               break;
+             }
+          }
+
+          if($b) $marrieds[] = $spouses[$i][$fldSPOUS1];
         }
       }
 
@@ -262,14 +293,14 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
               $iX2 = $dX + 232;
               for ($j = 0; $j < count($mans); $j++)// отец
               {
-                  for ($n = 0; $n < count($marrieds); $n++)
+                  for ($n = count($marrieds); $n >= 0; $n--)
                   {
                       // есть ли такой муж в списке
                       if ($marrieds[$n] == $mans[$j])
                       {
 //echo "=2=".$marrieds[$n].":".$mans[$j]."<br>";
                           unset($marrieds[$n]);// если есть, удаляю его из списка
-                          break;
+                          //break;
                       }
                   }
 

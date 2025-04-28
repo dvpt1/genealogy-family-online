@@ -1,6 +1,6 @@
 <?php
 
-//include_once("csub.php");
+include_once("csub.php");
 include_once("chtmls.php");
 //_already_logged($_COOKIE);
 
@@ -23,28 +23,11 @@ if(isset($_POST['forgot'])) {
  $prm1 = $_POST['user'];
  }
 
-$dir = TRUE;
-
 //_begin_html($user);
 //_forgot_html();
  $msg = $GLOBALS["msg"];
  $prm1 = $GLOBALS["prm1"];
  global $lgn1,$fog1;
-
- global $mn_menu_main;
- global $mn_menu_tree;
- global $mn_menu_branch;
- global $mn_menu_rings;
- global $mn_menu_generation;
- global $mn_menu_calendar;
- global $mn_menu_glob;
- global $mn_menu_donate;
- global $mn_menu_apps;
- global $mn_menu_contact;
- global $mn_menu_about; 
- global $ic_menu_file;
- global $ic_menu_load;
- global $ic_menu_delete;
 
  if ($msg != "") echo "<br><font color='red'><b>$msg</b></font>";
  ?>
