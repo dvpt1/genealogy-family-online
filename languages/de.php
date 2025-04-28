@@ -157,6 +157,7 @@ $note='Hinweis: ';
 //_login_html
 $lgn1='Anmelden: ';
 $pwd3='Passwort: ';
+$cod3='Code: ';
 $foglgn1='Anmeldung merken: ';
 $fogpwd3='Passwort erinnern';
 
@@ -188,6 +189,9 @@ $login2='Anmeldung fehlt!';
 $login3='Passwort fehlt!';
 $login4='E-Mail ist falsch oder nicht vorhanden!';
 $login5='Es gibt keinen Benutzer mit dieser E-Mail-Adresse und diesem Passwort in der Datenbank!';
+$login6='Ihr Konto ist nicht aktiviert. Ein Link zur erneuten Aktivierung wurde an Ihre E-Mail-Adresse gesendet.';
+$login7='Es sind mehr als 10 Minuten vergangen. Aktualisieren Sie den Code aus Ihrer E-Mail.';
+$login8='Geben Sie den an die E-Mail-Adresse gesendeten Code ein: ';
 
 // regs
 $regs1='Sie haben sich registriert. Du kannst rein kommen!';

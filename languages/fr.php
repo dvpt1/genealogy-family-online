@@ -157,6 +157,7 @@ $note='Remarque : ';
 //_connexion_html
 $lgn1='Connexion : ';
 $pwd3='Mot de passe : ';
+$cod3='Code : ';
 $foglgn1='Mémoriser la connexion : ';
 $fogpwd3='Rappeler le mot de passe';
 
@@ -188,6 +189,9 @@ $login2='Connexion manquante !';
 $login3='Mot de passe manquant !';
 $login4='L`e-mail est incorrect ou inexistant !';
 $login5='Il n`y a aucun utilisateur avec cet email et ce mot de passe dans la base de données !';
+$login6='Votre compte n`est pas activé. Un lien de réactivation a été envoyé à votre adresse e-mail.';
+$login7='Plus de 10 minutes se sont écoulées. Mettre à jour le code à partir du courrier.';
+$login8='Entrez le code envoyé à l`e-mail : ';
 
 // règlements
 $regs1='Vous êtes inscrit. Vous pouvez entrer!';

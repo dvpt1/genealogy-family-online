@@ -157,6 +157,7 @@ $nota='Nota: ';
 //_login_html
 $lgn1='Login: ';
 $pwd3='Senha: ';
+$cod3='Código: ';
 $foglgn1='Lembrar login: ';
 $fogpwd3='Lembrar senha';
 
@@ -176,10 +177,10 @@ $delete='Excluir';
 $forgot1='E-mail ausente!';
 $forgot2='E-mail incorreto ou inexistente!';
 $forgot3='Não há nenhum usuário com este E-Mail no banco de dados!';
-$esqueci4='Senha';
-$esqueci5='Olá!';
-$esqueci6='Login: ';
-$esqueci7='Tudo de bom';
+$forgot4='Senha';
+$forgot5='Olá!';
+$forgot6='Login: ';
+$forgot7='Tudo de bom';
 $forgot8='Senha enviada para ';
 
 //Conecte-se
@@ -188,6 +189,9 @@ $login2='Login faltando!';
 $login3='Senha faltando!';
 $login4='E-mail incorreto ou inexistente!';
 $login5='Não existe nenhum usuário com este email e senha no banco de dados!';
+$login6='A sua conta não está ativada. Foi enviado um link de reativação para o seu e-mail.';
+$login7='Decorreram mais de 10 minutos. Atualizar código do e-mail';
+$login8='Introduza o código enviado para o e-mail: ';
 
 //registros
 $regs1='Você se registrou. Você pode entrar!';

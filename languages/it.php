@@ -157,6 +157,7 @@ $nota='Nota:';
 //_login_html
 $lgn1='Accedi: ';
 $pwd3='Password:';
+$cod3='Codice: ';
 $foglgn1='Ricorda login: ';
 $fogpwd3='Ricorda password';
 
@@ -188,6 +189,9 @@ $login2='Login mancante!';
 $login3='Password mancante!';
 $login4='E-mail errata o inesistente!';
 $login5='Non c`è nessun utente con questa email e password nel database!';
+$login6='Il tuo account non è attivato. Un link di riattivazione è stato inviato alla tua email.';
+$login7='Sono trascorsi più di 10 minuti. Aggiorna il codice dalla posta';
+$login8='Inserisci il codice inviato all`email: ';
 
 // reg
 $regs1='Ti sei registrato. Puoi entrare!';

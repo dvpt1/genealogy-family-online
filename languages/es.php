@@ -157,6 +157,7 @@ $nota='Nota: ';
 //_login_html
 $lgn1='Iniciar sesión: ';
 $pwd3='Contraseña: ';
+$cod3='Código: ';
 $foglgn1='Recordar inicio de sesión: ';
 $fogpwd3='Recordar contraseña';
 
@@ -188,6 +189,9 @@ $login2='¡Falta el inicio de sesión!';
 $login3='¡Falta la contraseña!';
 $login4='¡El correo electrónico es incorrecto o no existe!';
 $login5='¡No hay ningún usuario con este correo electrónico y contraseña en la base de datos!';
+$login6='Su cuenta no está activada. Se ha enviado un enlace de reactivación a su correo electrónico.';
+$login7='Han pasado más de 10 minutos. Actualizar código desde el correo';
+$login8='Ingrese el código enviado al correo electrónico: ';
 
 //regs
 $regs1='Te has registrado. ¡Puedes pasar!';

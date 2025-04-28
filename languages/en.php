@@ -157,6 +157,7 @@ $note='Note: ';
 //_login_html
 $lgn1='Login: ';
 $pwd3='Password: ';
+$cod3='Code: ';
 $foglgn1='Remember login: ';
 $fogpwd3='Remind password';
 
@@ -188,6 +189,9 @@ $login2='Login missing!';
 $login3='Missing password!';
 $login4='E-mail is incorrect or non-existent!';
 $login5='There is no user with this email and password in the database!';
+$login6='Your account is not activated. A re-activation link has been sent to your email.';
+$login7='More than 10 minutes have passed. Update the code from your email';
+$login8='Enter the code sent to email: ';
 
 // regs
 $regs1='You have registered. You can come in!';
