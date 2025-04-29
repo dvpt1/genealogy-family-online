@@ -39,7 +39,6 @@ if(isset($_POST['login'])) {
 		$vars = mysql_fetch_array($Q);
 		$status = $vars['status'];
 		if($status == 1){
-			//$msg="Ваш аккаунт активирован $status".$_POST['user'].":".$user_data['two_factor_code']." ". $_POST['code']; 
 			$b = true;
 			$twotime = time();
 			$user_data = _check_useract(fm($_POST['user']));
@@ -49,6 +48,7 @@ if(isset($_POST['login'])) {
 				if(trim($user_data['two_factor_code']) == trim($_POST['code'])){
 					if($user_data['two_factor_expires_at']+600 > $twotime){//10minut
 						$b = false;
+			//$msg="Ваш аккаунт активирован $status".$_POST['user'].":".$_POST['pass'].":".$user_data['two_factor_code']." ". $_POST['code']; 
 						_set_cookie($user_data,fm($_POST['rem']),session_id(),fm($_POST['user']));
 					}else{
 						$msg=$login7; 

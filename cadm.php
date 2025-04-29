@@ -31,7 +31,6 @@ echo ("<tr>");
 echo ("<td>$row[id]</td>");
 echo ("<td>$row[name]</td>");
 echo ("<td>$row[pass]</td>");
-echo ("<td>$row[pwd]</td>");
 echo ("<td>$row[fio]</td>");
 echo ("<td><a href=\"cuser.php?name=$row[name]\"><img src=\"icons/ic_menu_edit.png\" height=30 width=30></a></td>");
 echo ("<td><a href=\"cuser.php?name=$row[name]\"><img src=\"icons/ic_menu_delete.png\" height=30 width=30></a></td>");
