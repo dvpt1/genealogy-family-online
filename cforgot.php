@@ -15,7 +15,7 @@ if(isset($_POST['forgot'])) {
     $msg = $forgot3;
   } else {
     $subject = $forgot4;
-    $letter = $forgot5."\n\n".$forgot6.$_POST['user']."\n".$forgot4.": ".$user_data['pass']."\n\n".$forgot7."\nhttps://dnadata.online\n";
+    $letter = $forgot5."\n\n".$forgot6.$_POST['user']."\n".$forgot4.": ".$user_data['pwd']."\n\n".$forgot7."\nhttps://dnadata.online\n";
     mail($_POST['user'],$subject,$letter);
     $msg = $forgot8.$_POST['user'];
   }

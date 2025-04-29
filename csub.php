@@ -87,7 +87,7 @@ $pwd_hashed = password_hash($pwd_peppered, PASSWORD_DEFAULT); //$pwd_hashed = pa
 //add_user_to_database($username, $pwd_hashed);
 
 //echo $user.$pwd_peppered.$fio.$country.$postcode.$city.$address.$phone.$http.$notes.$activation."<br>"; 
-  $Q = mysql_query("INSERT INTO users (name,pass,fio,country,postcode,city,address,phone,http,notes,activation) VALUES ('$user','$pwd_peppered','$fio','$country','$postcode','$city','$address','$phone','$http','$notes','$activation')");
+  $Q = mysql_query("INSERT INTO users (name,pass,pwd,fio,country,postcode,city,address,phone,http,notes,activation) VALUES ('$user','$pwd_peppered','$pass','$fio','$country','$postcode','$city','$address','$phone','$http','$notes','$activation')");
 //echo "Q: ".$Q."<br>"; 
 }
 
