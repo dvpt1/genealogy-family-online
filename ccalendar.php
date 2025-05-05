@@ -1,5 +1,7 @@
 <?php
 
+include_once("cdatabases.php");
+
 Calendar();
 
 //рисую все генеалогические ветви и фамилии
@@ -9,6 +11,8 @@ function Calendar()
   global $fldFAT;
   global $fldMOT;
   global $fldSEX;
+  global $fldBEG;
+  global $fldEND;
 
   global $persons;
   global $fathers;
@@ -70,23 +74,33 @@ function Calendar()
   echo '<br>';
   echo '<div class="tag_tags">';
   for ($i = ($year - 5); $i <= ($year + 5); $i++) {
-	echo "<a href=index.php?do=caln&year=$i&title=$title>$i</a>&nbsp;";
+	echo "<a href=index.php?do=ccaln&year=$i&title=$title>$i</a>&nbsp;";
   }
   echo '</div><div class="clear"></div>';
   echo '</td></tr></table>';
 
+/* * */
   // нарисовать таблицу
   if(isset($_GET['day'])){
+    $birthPersons = getBirthPersons2($month, $day);
+
     echo "<center>";
     echo "<p><font size=+4>$nameyear $year</font></p>";
     echo "<p><font size=+8>$namemonth $mon[$month]</font></p>";
     echo "<p><font size=+12>$nameday $day</font></p>";
 
-    LoadImenini1($month, $day);
+    //LoadImenini1($month, $day);
 
     echo "</center>";
+
+    for ($i = 0; $i < count($birthPersons); $i++) {
+      echo "<b><font color=red>".$birthPersons[$i][$fldBEG]."</font> - <i><font color=green>".$birthPersons[$i][$fldPER]."</font></i></b><br>";
+    }
+    echo '<p><br></p>';
+
   }else
   if(isset($_GET['month'])){
+    $birthPersons = getBirthPersons1($month);
 
     $row01 = 3;
     $col01 = 4;
@@ -94,7 +108,7 @@ function Calendar()
 	$n = $month;
 	if ($n != 0) {
 	    echo '<div class="tag_tagc">';
-	    echo '<a href="index.php?do=caln&year='.$year.'&month='.$n.'&title='.$title.'">'.$mon[$n].'</a>';
+	    echo '<a href="index.php?do=ccaln&year='.$year.'&month='.$n.'&title='.$title.'">'.$mon[$n].'</a>';
 	    echo '</div><div class="clear"></div>';
 	    // Определение дня недели первого числа месяца
 	    $daybeg = date('w',strtotime('01.'.$n.'.'.$year)) - 1;
@@ -125,7 +139,28 @@ function Calendar()
 	    for ($acol = 0; $acol < $bh; $acol++) {
 		$nn = $bh * $arow + $acol;//пересчитываю координаты ячейки в индекс списка
 		if (($daybeg <= $nn) AND ($nn < ($daybeg + $dayend))) {
-		    echo '<td width=14% height=50 align=center valign=center>';
+
+		    $dd = ($nn - $daybeg + 1);
+		    $bbb = false;
+		    for ($i = 0; $i < count($birthPersons); $i++) {
+		        $dateValue = strtotime($birthPersons[$i][$fldBEG]);                     
+		        //$yyy = date("Y", $dateValue); 
+		        $mmm = date("m", $dateValue); 
+		        $ddd = date("d", $dateValue); 
+		        
+		        if (intval($n) == intval($mmm) && intval($dd) == intval($ddd))
+		        {
+				$bbb = true;
+				break;
+		        }
+		    }
+		    if ($bbb)
+		    {
+		      echo '<td width=14% height=50 align=center valign=center bgcolor="red">';
+		    }else{
+		      echo '<td width=14% height=50 align=center valign=center>';
+		    }
+
 		    if (GetBirthDay($n, ($nn - $daybeg + 1))) {
 			echo '<div class="tag_tagb1">';
 		    } else if ((($d - 1) == ($nn - $daybeg)) AND ($m == $n) AND ($y == $year)) {//если текущий день,месяц,год
@@ -137,7 +172,9 @@ function Calendar()
 		    } else {
 			echo '<div class="tag_tagn1">';
 		    }
-		    echo '<a href="index.php?do=caln&year='.$year.'&month='.$n.'&day='.($nn - $daybeg + 1).'&title='.$title.'">'.($nn - $daybeg + 1).'</a>';
+
+		    echo '<a href="index.php?do=ccaln&year='.$year.'&month='.$n.'&day='.$dd.'&title='.$title.'">'.$dd.'</a>';
+
 		    echo '</font>';
 		    echo '</div>';
 		    echo '<div class="clear"></div>';
@@ -156,8 +193,16 @@ function Calendar()
 	}
     echo '</table>';
 
+    for ($i = 0; $i < count($birthPersons); $i++) {
+      echo "<b><font color=red>".$birthPersons[$i][$fldBEG]."</font> - <i><font color=green>".$birthPersons[$i][$fldPER]."</font></i></b><br>";
+    }
+    echo '<p><br></p>';
+    echo '<p><br></p>';
+
   }else
   if(isset($_GET['year']) || !isset($_GET['year'])){
+    $birthPersons = getBirthPersons();
+
     $row01 = 3;
     $col01 = 4;
     echo '<table border=0 width=100%>';
@@ -168,7 +213,7 @@ function Calendar()
 	$n = NumMonthHorz( 1, $yrow+1, $ycol+1);
 	if ($n != 0) {
 	    echo '<div class="tag_tagc">';
-	    echo '<a href="index.php?do=caln&year='.$year.'&month='.$n.'&title='.$title.'">'.$mon[$n].'</a>';
+	    echo '<a href="index.php?do=ccaln&year='.$year.'&month='.$n.'&title='.$title.'">'.$mon[$n].'</a>';
 	    echo '</div><div class="clear"></div>';
 	    // Определение дня недели первого числа месяца
 	    $daybeg = date('w',strtotime('01.'.$n.'.'.$year)) - 1;
@@ -199,7 +244,28 @@ function Calendar()
 	    for ($acol = 0; $acol < $bh; $acol++) {
 		$nn = $bh * $arow + $acol;//пересчитываю координаты ячейки в индекс списка
 		if (($daybeg <= $nn) AND ($nn < ($daybeg + $dayend))) {
-		    echo '<td width=14% height=50 align=center valign=center>';
+
+		    $dd = ($nn - $daybeg + 1);
+		    $bbb = false;
+		    for ($i = 0; $i < count($birthPersons); $i++) {
+		        $dateValue = strtotime($birthPersons[$i][$fldBEG]);                     
+		        //$yyy = date("Y", $dateValue); 
+		        $mmm = date("m", $dateValue); 
+		        $ddd = date("d", $dateValue); 
+		        
+		        if (intval($n) == intval($mmm) && intval($dd) == intval($ddd))
+		        {
+				$bbb = true;
+				break;
+		        }
+		    }
+		    if ($bbb)
+		    {
+		      echo '<td width=14% height=50 align=center valign=center bgcolor="red">';
+		    }else{
+		      echo '<td width=14% height=50 align=center valign=center>';
+		    }
+
 		    if (GetBirthDay($n, ($nn - $daybeg + 1))) {
 			echo '<div class="tag_tagb1">';
 		    } else if ((($d - 1) == ($nn - $daybeg)) AND ($m == $n) AND ($y == $year)) {//если текущий день,месяц,год
@@ -211,7 +277,9 @@ function Calendar()
 		    } else {
 			echo '<div class="tag_tagn1">';
 		    }
-		    echo '<a href="index.php?do=caln&year='.$year.'&month='.$n.'&day='.($nn - $daybeg + 1).'&title='.$title.'">'.($nn - $daybeg + 1).'</a>';
+
+		    echo '<a href="index.php?do=ccaln&year='.$year.'&month='.$n.'&day='.$dd.'&title='.$title.'">'.$dd.'</a>';
+
 		    echo '</font>';
 		    echo '</div>';
 		    echo '<div class="clear"></div>';
@@ -233,6 +301,12 @@ function Calendar()
 	echo '</tr>';
     }
     echo '</table>';
+
+    for ($i = 0; $i < count($birthPersons); $i++) {
+      echo "<b><font color=red>".$birthPersons[$i][$fldBEG]."</font> - <i><font color=green>".$birthPersons[$i][$fldPER]."</font></i></b><br>";
+    }
+    echo '<p><br></p>';
+
   }
 
 }
@@ -316,7 +390,7 @@ function GetHoliDay($nmon, $nday)
 
 function LoadImenini1($nmon, $nday)
 {
-  GLOBAL $imenini;
+/*  GLOBAL $imenini;
   $q = mysql_query('SELECT link FROM imenini WHERE month='.$nmon.' AND day='.$nday)
 	or die(mysql_error());
   if(mysql_num_rows($q) != 0) {
@@ -324,7 +398,7 @@ function LoadImenini1($nmon, $nday)
     while ($r = mysql_fetch_array($q)) {
 	echo '<b>'.$r['link'].'</b>';
     }
-  }
+  }*/
 }
 
 ?>

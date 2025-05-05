@@ -169,4 +169,97 @@ function getChildrensI($PersonId)
   return $childerns;
 }
 
+/* * */
+function getBirthPersons()
+{
+  global $persons;
+  global $fldBEG;
+  global $fldEND;
+  global $fldPER;
+
+  $personsb = array();
+  for ($i = 0; $i < count($persons); $i++) {
+      if (!empty($persons[$i][$fldBEG])) {
+//echo $persons[$i][$fldBEG].$persons[$i][$fldPER]."<br>";
+         $personsb[] = $persons[$i];
+      }
+  }
+  return $personsb;
+}
+/* * */
+function getDeathPersons()
+{
+  global $persons;
+  global $fldBEG;
+  global $fldEND;
+  global $fldPER;
+
+  $personsd = array();
+  for ($i = 0; $i < count($persons); $i++) {
+      if (!empty($persons[$i][$fldBEG])) {
+//echo $persons[$i][$fldBEG].$persons[$i][$fldPER]."<br>";
+         $personsd[] = $persons[$i];
+      }
+  }
+  return $personsd;
+}
+
+/* * */
+function getBirthPersons1($month)
+{
+//echo "$month $day<br>";
+  global $persons;
+  global $fldBEG;
+  global $fldEND;
+  global $fldPER;
+
+  $personsb = array();
+  for ($i = 0; $i < count($persons); $i++) {
+    if (!empty($persons[$i][$fldBEG])) {
+
+      $dateValue = strtotime($persons[$i][$fldBEG]);                     
+      $y = date("Y", $dateValue); 
+      $m = date("m", $dateValue); 
+      $d = date("d", $dateValue); 
+
+      if (intval($month) == intval($m))
+      {
+//echo ":".$month.":".$day.":".$m.":".$d.":".$persons[$i][$fldPER]."<br>";
+         $personsb[] = $persons[$i];
+      }
+    }
+  }
+
+  return $personsb;
+}
+
+/* * */
+function getBirthPersons2($month, $day)
+{
+//echo "$month $day<br>";
+  global $persons;
+  global $fldBEG;
+  global $fldEND;
+  global $fldPER;
+
+  $personsb = array();
+  for ($i = 0; $i < count($persons); $i++) {
+      if (!empty($persons[$i][$fldBEG])) {
+
+        $dateValue = strtotime($persons[$i][$fldBEG]);                     
+        $y = date("Y", $dateValue); 
+        $m = date("m", $dateValue); 
+        $d = date("d", $dateValue); 
+
+         if (intval($month) == intval($m) && intval($day) == intval($d))
+         {
+//echo ":".$month.":".$day.":".$m.":".$d.":".$persons[$i][$fldPER]."<br>";
+            $personsb[] = $persons[$i];
+         }
+      }
+  }
+
+  return $personsb;
+}
+
 ?>
