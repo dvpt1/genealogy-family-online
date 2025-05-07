@@ -1,5 +1,9 @@
 <?php
 
+  GLOBAL $persons;
+  GLOBAL $fldPER;
+  GLOBAL $fldMAPB;
+
   //  онстанты и типы дл€ постороени€ древа
   $Bougth = -1;//номер ветви
 
@@ -8,6 +12,7 @@
   // TMens = record
   $aX1 = array();;
   $aY1 = array();;
+  $aM1 = array();;
   //end;
   $middleX = 0;
   $middleY = 0;
@@ -26,6 +31,7 @@
   for ($i = 0; $i < count($persons); $i++)
   {
       $maps = $persons[$i][$fldMAPB];
+//echo $maps.'<br>';
 
       if (!empty($maps))
       {
@@ -34,11 +40,12 @@
         $p3 = strpos($maps, "]");
         if ($p1 < $p2 && $p2 < $p3)
         {
-//echo $maps.'"'.$p1.'"'.$p2.'"'.$p3.'<br>';
           $x = substr($maps, $p1 + 1, $p2 - $p1 - 1);
           $y = substr($maps, $p2 + 1, $p3 - $p2 - 1);
+//echo $maps.'='.$x.':'.$y.'<br>';
           $aX1[] = $x;
           $aY1[] = $y;
+          $aM1[] = $persons[$i][$fldPER];
           $cnt++;
           $middleX = $middleX + $x;
           $middleY = $middleY + $y;
@@ -47,6 +54,7 @@
         {
           $aX1[] = 0;
           $aY1[] = 0;
+          $aM1[] = '';
         }
       }
 
@@ -59,10 +67,6 @@
 
 
 ?>
-
-<html>
-  <head>
-    <title>Add Map</title>
 
     <style type="text/css">
       /* Set the size of the div element that contains the map */
@@ -90,13 +94,12 @@
         //  map: map,
         //});
 <?
-  global $aX1;
-  global $aY1;
   for ($i = 0; $i < count($aX1); $i++)
   {
         echo 'const uluru'.$i.' = { lat: '.$aX1[$i].', lng: '.$aY1[$i].' };';
         echo 'const marker'.$i.' = new google.maps.Marker({';
         echo 'position: uluru'.$i.',';
+        echo 'title: "'.$aM1[$i].'",';
         echo 'map: map,';
         echo '});';
   }
@@ -104,8 +107,6 @@
 
       }
     </script>
-  </head>
-  <body>
     <!--The div element for the map -->
     <div id="map"></div>
 
@@ -114,5 +115,3 @@
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDomBjNGPZdTG1JHMo-8rIjS49yBoRho0w&callback=initMap&libraries=&v=weekly"
       async
     ></script>
-  </body>
-</html>

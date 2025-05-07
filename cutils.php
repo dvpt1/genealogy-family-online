@@ -55,6 +55,35 @@ function strDelNotNumChr($s)
     return $retVal;
 }
 
+function strDelNotNumChrs($ss, $nn)
+{
+    $s = substr($ss, $nn-1);
+    $retVal = "";
+    for ($i = 0; $i < strlen($s); $i++)
+    {
+        $c = $s[$i];
+        if (
+            $c == '0' ||
+            $c == '1' ||
+            $c == '2' ||
+            $c == '3' ||
+            $c == '4' ||
+            $c == '5' ||
+            $c == '6' ||
+            $c == '7' ||
+            $c == '8' ||
+            $c == '9' ||
+            $c == ',' ||
+            $c == '.'
+            )
+        {
+            $retVal .= $c;
+        }
+    }
+    if (strlen($retVal) <= 0) $retVal = "0";
+    return $retVal;
+}
+
 function strBetween($s, $c)
 {
     $p1 = strpos($s, $c);

@@ -145,8 +145,8 @@ function Gedcom_Import()
   $ok;
   $cur = -1;
 
-echo "<br><br>=== GEDCOM User==".$userId."<br>";
-echo "=== GEDCOM File==".$getfile."<br>";
+//echo "<br><br>=== GEDCOM User==".$userId."<br>";
+//echo "=== GEDCOM File==".$getfile."<br>";
 
   if(!empty($gedcom)){
 //echo "<br><br><br>=== GEDCOM gedcom==".$gedcom."<br>";
@@ -303,7 +303,7 @@ echo "=== GEDCOM File==".$getfile."<br>";
                         }
         
                         $listPerson[$cur] = $person;
-echo "=== current person = $indi_inx[$cur] = $indi_id[$cur] = $listPerson[$cur] <br>";
+//echo "=== current person = $indi_inx[$cur] = $indi_id[$cur] = $listPerson[$cur] <br>";
                         // переменные в ноль
                         $chan = false;
                         $birt = false;
@@ -860,14 +860,16 @@ echo "=== current person = $indi_inx[$cur] = $indi_id[$cur] = $listPerson[$cur] 
                         if ($i)
                             if (strlen($line) > $i + 5)
                             {
-                                $sMapsb = "[".strDelNotNumChr($line, $i + 5)."";
+                                $sMapsb = "[".strDelNotNumChrs($line, $i + 5)."";
                                 $listMapsb[$cur] = $sMapsb;
                             }
                         $i = strpos($s,"LONG");
                         if ($i)
                             if (strlen($line) > $i + 5)
                             {
-                                $sMapsb .= "|".strDelNotNumChr($line, $i + 5)."]";
+                                $sMapsb .= "|".strDelNotNumChrs($line, $i + 5)."]";
+//echo $i." : ".$line."<br>";
+//echo $sMapsb."<br>";
                                 $listMapsb[$cur] = $sMapsb;
 
                                 $maps = false;
@@ -879,14 +881,14 @@ echo "=== current person = $indi_inx[$cur] = $indi_id[$cur] = $listPerson[$cur] 
                         if ($i)
                             if (strlen($line) > $i + 5)
                             {
-                                $sMapsd = "[".strDelNotNumChr($line, $i + 5)."";
+                                $sMapsd = "[".strDelNotNumChrs($line, $i + 5)."";
                                 $listMapsd[$cur] = $sMapsd;
                             }
                         $i = strpos($s,"LONG");
                         if ($i)
                             if (line.Length > $i + 5)
                             {
-                                $sMapsd .= "|".strDelNotNumChr($line, $i + 5)."]";
+                                $sMapsd .= "|".strDelNotNumChrs($line, $i + 5)."]";
                                 $listMapsd[$cur] = $sMapsd;
 
                                 $maps = false;
@@ -898,14 +900,14 @@ echo "=== current person = $indi_inx[$cur] = $indi_id[$cur] = $listPerson[$cur] 
                         if ($i)
                             if (strlen($line) > $i + 5)
                             {
-                                $sMapsl = "[".strDelNotNumChr($line, $i + 5)."";
+                                $sMapsl = "[".strDelNotNumChrs($line, $i + 5)."";
                                 $listMapsl[$cur] = $sMapsl;
                             }
                         $i = strpos($s,"LONG");
                         if ($i)
                             if (strlen($line) > $i + 5)
                             {
-                                $sMapsl .= "|".strDelNotNumChr($line, $i + 5)."]";
+                                $sMapsl .= "|".strDelNotNumChrs($line, $i + 5)."]";
                                 $listMapsb[$cur] = $sMapsl;
 
                                 $maps = false;
@@ -917,14 +919,14 @@ echo "=== current person = $indi_inx[$cur] = $indi_id[$cur] = $listPerson[$cur] 
                         if ($i)
                             if (strlen($line) > $i + 5)
                             {
-                                $sMapst = "[".strDelNotNumChr($line, $i + 5)."";
+                                $sMapst = "[".strDelNotNumChrs($line, $i + 5)."";
                                 $listMapst[$cur] = $sMapst;
                             }
                         $i = strpos($s,"LONG");
                         if ($i)
                             if (strlen($line) > $i + 5)
                             {
-                                $sMapst .= "|".strDelNotNumChr($line, $i + 5)."]";
+                                $sMapst .= "|".strDelNotNumChrs($line, $i + 5)."]";
                                 $listMapst[$cur] = $sMapst;
 
                                 $maps = false;
@@ -936,14 +938,14 @@ echo "=== current person = $indi_inx[$cur] = $indi_id[$cur] = $listPerson[$cur] 
                         if ($i)
                             if (strlen($line) > $i + 5)
                             {
-                                $sMapsw = "[".strDelNotNumChr($line, $i + 5)."";
+                                $sMapsw = "[".strDelNotNumChrs($line, $i + 5)."";
                                 $listMapsw[$cur] = $sMapsw;
                             }
                         $i = strpos($s,"LONG");
                         if ($i)
                             if (strlen($line) > $i + 5)
                             {
-                                $sMapsw .= "|".strDelNotNumChr($line, $i + 5)."]";
+                                $sMapsw .= "|".strDelNotNumChrs($line, $i + 5)."]";
                                 $listMapsw[$cur] = $sMapsw;
 
                                 $maps = false;
@@ -969,19 +971,19 @@ echo "=== current person = $indi_inx[$cur] = $indi_id[$cur] = $listPerson[$cur] 
     }
 
 ///////////////////////////////////////////////////////////////////////
-echo "    // Add fathers <br>";
+//echo "    // Add fathers <br>";
     for ($i = 0; $i < count($listFatherId); $i++)
     {
         $fathers[$i] = array($listFChildId[$i], $listFatherId[$i]);
     }
 
-echo "    // Add mothers <br>";
+//echo "    // Add mothers <br>";
     for ($i = 0; $i < count($listMotherId); $i++)
     {
         $mothers[$i] = array($listMChildId[$i], $listMotherId[$i]);
     }
 
-echo "    // Add spouses <br>";
+//echo "    // Add spouses <br>";
     for ($i = 0; $i < count($listSpouseId); $i++)
     {
         $b = true;
@@ -1020,7 +1022,7 @@ echo "    // Add spouses <br>";
 
      }
 
-echo "    // Add persons count = ".count($listPerson)."<br>";;
+//echo "    // Add persons count = ".count($listPerson)."<br>";;
     for ($i = 0; $i < count($listPerson); $i++)
     {
 	$id_person = $indi_inx[$i]+1;
@@ -1107,10 +1109,10 @@ echo "    // Add persons count = ".count($listPerson)."<br>";;
 		$sPlaced,
 		$sPlacel,
 		$sPlacet,
-		$sMapsb,
-		$sMapsd,
-		$sMapsl,
-		$sMapst,
+		$listMapsb[$i],
+		$listMapsd[$i],
+		$listMapsl[$i],
+		$listMapst[$i],
 		$listOccu[$i],
 		$listNati[$i],
 		$listEduc[$i],
@@ -1127,13 +1129,15 @@ echo "    // Add persons count = ".count($listPerson)."<br>";;
 	$jsonPerson->person = $listPerson[$i];
 	$jsonPerson->birthday->date = $listBirth[$i];
 	$jsonPerson->birthday->place = $sPlaceb;
+	$jsonPerson->birthday->maps = $listMapsb[$i];
 	$jsonPerson->deathday->date = $listDeath[$i];
 	$jsonPerson->deathday->place = $sPlaced;
+	$jsonPerson->deathday->maps = $listMapsd[$i];
 	$jsonPerson->placel = $sPlacel;
 	$jsonPerson->placet = $sPlacet;
 
 
-echo "=== $listFather[$i] : listfathers<br>";
+//echo "=== $listFather[$i] : listfathers<br>";
 if($listFather[$i] != ""){
     $idf = -1;
     $fats = array();
@@ -1146,7 +1150,7 @@ if($listFather[$i] != ""){
     $jsonPerson->fathers = $fats;
 }
 
-echo "=== $listMother[$i] : listmothers<br>";
+//echo "=== $listMother[$i] : listmothers<br>";
 if($listMother[$i] != ""){
     $idm = -1;
     $mots = array();
@@ -1159,7 +1163,7 @@ if($listMother[$i] != ""){
     $jsonPerson->mothers = $mots;
 }
 
-echo "=== $listSpouse[$i] : listspouses<br>";
+//echo "=== $listSpouse[$i] : listspouses<br>";
     $spss = array();
     for ($ii = 0; $ii < count($spouses); $ii++)
     {
@@ -1167,14 +1171,14 @@ echo "=== $listSpouse[$i] : listspouses<br>";
           $inx_per = 0 + intval($spouses[$ii][$fldSPOUS2]);
           $id_per = $indi_inx[$inx_per] + 1;//$persons[$inx_per][$fldID];
           $spss[] = array("id" => $id_per, "wedding" => $spouses[$ii][$fldWEDDIN], "place" => $spouses[$ii][$fldPLACEW], "maps" => $spouses[$ii][$fldMAPSW]);
-echo "idd1=$inx_per=$id_per=<br>";
+//echo "idd1=$inx_per=$id_per=<br>";
           break;//??
        }
        if($spouses[$ii][$fldSPOUS2] == $i){
           $inx_per = 0 + intval($spouses[$ii][$fldSPOUS1]);
           $id_per = $indi_inx[$inx_per] + 1;//$persons[$inx_per][$fldID];
           $spss[] = array("id" => $id_per, "wedding" => $spouses[$ii][$fldWEDDIN], "place" => $spouses[$ii][$fldPLACEW], "maps" => $spouses[$ii][$fldMAPSW]);
-echo "idd2=$inx_per=$id_per=<br>";
+//echo "idd2=$inx_per=$id_per=<br>";
           break;//??
        }
     }
@@ -1182,7 +1186,7 @@ echo "idd2=$inx_per=$id_per=<br>";
        $jsonPerson->spouses = $spss;
        print_r($spss); echo " == spss<br>";
     }
-echo "<hr>";
+//echo "<hr>";
 
 
 	$jsonPerson->occupation = $listOccu[$i];
@@ -1213,16 +1217,16 @@ echo "<hr>";
 ////////////////////////////////////////////////////////////
   }
 
-echo "<br><br><br><br>";
-//for ($i = 0; $i < count($listPerson); $i++) echo "PERSON: ".$listBirth[$i].";".$listDeath[$i].";".$listPerson[$i].";".$father.";".$mother.";".$gender.";".$sPlaceb.";".$sPlaced.";".$spouse."<br>";
+//echo "<br><br><br><br>";
+//for ($i = 0; $i < count($listPerson); $i++) echo "PERSON: ".$listBirth[$i].";".$listDeath[$i].";".$listPerson[$i].";".$father.";".$mother.";".$gender.";".$sPlaceb.";".$sPlaced.";".$listMapsb[$i].";".$$listMapsd[$i].";".$spouse."<br>";
 //for ($i = 0; $i < count($persons); $i++) echo "PERSON: ".$persons[$i][0]."|".$persons[$i][1]."|".$persons[$i][2]."|".$persons[$i][3]."|".$persons[$i][4]."|".$persons[$i][5]."|".$persons[$i][6]."|".$persons[$i][7]."|".$persons[$i][8]."|".$persons[$i][9]."<br>";
-for ($i = 0; $i < count($persons); $i++) echo "PERSONS: ".$persons[$i][$fldINX]."|".$persons[$i][$fldID]."|".$persons[$i][$fldSEX]."|".$persons[$i][$fldPER]."|".$persons[$i][$fldBEG]."|".$persons[$i][$fldEND]."|".$persons[$i][$fldFAT]."|".$persons[$i][$fldMOT]."|".$persons[$i][$fldSPS]."|"."<br>";
+//for ($i = 0; $i < count($persons); $i++) echo "PERSONS: ".$persons[$i][$fldINX]."|".$persons[$i][$fldID]."|".$persons[$i][$fldSEX]."|".$persons[$i][$fldPER]."|".$persons[$i][$fldBEG]."|".$persons[$i][$fldEND]."|".$persons[$i][$fldFAT]."|".$persons[$i][$fldMOT]."|".$persons[$i][$fldSPS]."|"."<br>";
 //for ($i = 0; $i < count($listFather); $i++) echo "FATHER: ".$listFather[$i]."<br>";
 //for ($i = 0; $i < count($listMother); $i++) echo "MOTHER: ".$listMother[$i]."<br>";
 //for ($i = 0; $i < count($listSpouse); $i++) echo "SPOUSE: ".$listSpouse[$i]."<br>";
 //for ($i = 0; $i < count($fathers); $i++) echo "FATHER: ".$fathers[$i][0]."|".$fathers[$i][1]."<br>";
 //for ($i = 0; $i < count($mothers); $i++) echo "MOTHER: ".$mothers[$i][0]."|".$mothers[$i][1]."<br>";
-for ($i = 0; $i < count($spouses); $i++) echo "SPOUSES: ".$spouses[$i][$fldSPOUS1]." | ".$spouses[$i][$fldSPOUS2]." | ".$spouses[$i][$fldWEDDIN]." | ".$spouses[$i][$fldPLACEW]." | ".$spouses[$i][$fldMAPSW]." |<br>";
+//for ($i = 0; $i < count($spouses); $i++) echo "SPOUSES: ".$spouses[$i][$fldSPOUS1]." | ".$spouses[$i][$fldSPOUS2]." | ".$spouses[$i][$fldWEDDIN]." | ".$spouses[$i][$fldPLACEW]." | ".$spouses[$i][$fldMAPSW]." |<br>";
 //for ($i = 0; $i < count($listFChildId); $i++) {echo "CHILDFATHER=".$listFChildId[$i].";".$listFatherId[$i]."<br>";}
 //for ($i = 0; $i < count($listMChildId); $i++) {echo "CHILDMOTHER=".$listMChildId[$i].";".$listMotherId[$i]."<br>";}
 //for ($i = 0; $i < count($listSpouseId); $i++) {echo "SPOUSEID=".$listSChildId[$i].";".$listSpouseId[$i]."<br>";}
@@ -1235,131 +1239,132 @@ for ($i = 0; $i < count($spouses); $i++) echo "SPOUSES: ".$spouses[$i][$fldSPOUS
 
 function InsertSpouse()
 {
-    global $listPerson;
-    global $listSpouse;
-    global $listWife;
-    global $cur;
-    global $marr;
-    global $sWeddin;
-    global $sPlacew;
-    global $sMapsw;
-    global $fatherId;
-    global $motherId;
-    global $indi_id;
-    global $indi_inx;
-    global $listSChildId;
-    global $listSpouseId;
-    global $listWedding;
-    global $listPlacew;
-    global $listMapsw;
+  global $persons;
+  global $fldPER;
 
-    if (!$marr) return;
+  global $listPerson;
+  global $listSpouse;
+  global $listWife;
+  global $cur;
+  global $marr;
+  global $sWeddin;
+  global $sPlacew;
+  global $sMapsw;
+  global $fatherId;
+  global $motherId;
+  global $indi_id;
+  global $indi_inx;
+  global $listSChildId;
+  global $listSpouseId;
+  global $listWedding;
+  global $listPlacew;
+  global $listMapsw;
 
-    $ifather = -1;
-    $imother = -1;
-    $i = array_search($fatherId, $indi_id);//индекс в gedcom
-    if ($i > -1)
-    {
-        $ifather = $indi_inx[$i];//реальный индекс
-    }
-    else
-    {
-        $ifather = -1;
-    }
-    $i = array_search($motherId, $indi_id);//индекс в gedcom
-    if ($i > -1)
-    {
-        $imother = $indi_inx[$i];//реальный индекс
-    }
-    else
-    {
-        $imother = -1;
-    }
+  if (!$marr) return;
 
-global $persons;
-global $fldPER;
-echo "=== ".$fatherId.":".$motherId."<br>";
-echo "=== ".$ifather.":".$imother."<br>";
-echo "=== ".$persons[$ifather][$fldPER].":".$persons[$imother][$fldPER]."<br>";
-echo "=== ".$sWeddin.":".$sPlacew.":".$sMapsw."<br>";
+  $ifather = -1;
+  $imother = -1;
+  $i = array_search($fatherId, $indi_id);//индекс в gedcom
+  if ($i > -1)
+  {
+      $ifather = $indi_inx[$i];//реальный индекс
+  }
+  else
+  {
+      $ifather = -1;
+  }
+  $i = array_search($motherId, $indi_id);//индекс в gedcom
+  if ($i > -1)
+  {
+      $imother = $indi_inx[$i];//реальный индекс
+  }
+  else
+  {
+      $imother = -1;
+  }
 
-    if (($ifather > -1) && ($imother > -1))
-    {
-        if (!empty($sWeddin) || !empty($sPlacew) || !empty($sMapsw))
-        {
-            $ss = "/".$sWeddin."/".$sPlacew."/".$sMaps;
-        }
-        else
-        {
-            $ss = "";
-        }
-        // вставляю жену мужчине
-        $wife = $listWife[$ifather];
-        if ($listPerson[$imother] != $listPerson[$ifather])
-        {
+//echo "=== ".$fatherId.":".$motherId."<br>";
+//echo "=== ".$ifather.":".$imother."<br>";
+//echo "=== ".$persons[$ifather][$fldPER].":".$persons[$imother][$fldPER]."<br>";
+//echo "=== ".$sWeddin.":".$sPlacew.":".$sMapsw."<br>";
+
+  if (($ifather > -1) && ($imother > -1))
+  {
+      if (!empty($sWeddin) || !empty($sPlacew) || !empty($sMapsw))
+      {
+          $ss = "/".$sWeddin."/".$sPlacew."/".$sMaps;
+      }
+      else
+      {
+          $ss = "";
+      }
+      // вставляю жену мужчине
+      $wife = $listWife[$ifather];
+      if ($listPerson[$imother] != $listPerson[$ifather])
+      {
 //echo "=== InsertSpouse wife ==($wife)<br>";
-            if (!empty($wife))
-            {
-                if (!strpos($wife, $listPerson[$imother]))
-                {
-                    $listWife[$ifather] = $wife.":".$listPerson[$imother].$ss;
+          if (!empty($wife))
+          {
+              if (!strpos($wife, $listPerson[$imother]))
+              {
+                  $listWife[$ifather] = $wife.":".$listPerson[$imother].$ss;
 
-                    $listSChildId[] = $ifather;
-                    $listSpouseId[] = $imother;
-                    $listWedding[] = $sWeddin;
-                    $listPlacew[] = $sPlacew;
-                    $listMapsw[] = $sMapsw;
-                }
-            }
-            else
-            {
-                $listWife[$ifather] = $listPerson[$imother].$ss;
+                  $listSChildId[] = $ifather;
+                  $listSpouseId[] = $imother;
+                  $listWedding[] = $sWeddin;
+                  $listPlacew[] = $sPlacew;
+                  $listMapsw[] = $sMapsw;
+              }
+          }
+          else
+          {
+              $listWife[$ifather] = $listPerson[$imother].$ss;
 
-                $listSChildId[] = $ifather;
-                $listSpouseId[] = $imother;
-                $listWedding[] = $sWeddin;
-                $listPlacew[] = $sPlacew;
-                $listMapsw[] = $sMapsw;
-            }
-        }
-        // вставляю мужа женщине
-        $husband = $listWife[$imother];
-        if ($listPerson[$ifather] != $listPerson[$imother])
-        {
+              $listSChildId[] = $ifather;
+              $listSpouseId[] = $imother;
+              $listWedding[] = $sWeddin;
+              $listPlacew[] = $sPlacew;
+              $listMapsw[] = $sMapsw;
+          }
+      }
+      // вставляю мужа женщине
+      $husband = $listWife[$imother];
+      if ($listPerson[$ifather] != $listPerson[$imother])
+      {
 //echo "=== InsertSpouse husband ==($husband)<br>";
-            if (!empty($husband))
-            {
-                if (!strpos($husband, $listPerson[$ifather]))
-                {
-                    $listWife[$imother] = $husband.":".$listPerson[$ifather].$ss;
+          if (!empty($husband))
+          {
+              if (!strpos($husband, $listPerson[$ifather]))
+              {
+                  $listWife[$imother] = $husband.":".$listPerson[$ifather].$ss;
 
-                    $listSChildId[] = $imother;
-                    $listSpouseId[] = $ifather;
-                    $listWedding[] = $sWeddin;
-                    $listPlacew[] = $sPlacew;
-                    $listMapsw[] = $sMapsw;
-                }
-            }
-            else
-            {
-                $listWife[$imother] = $listPerson[$ifather].$ss;
+                  $listSChildId[] = $imother;
+                  $listSpouseId[] = $ifather;
+                  $listWedding[] = $sWeddin;
+                  $listPlacew[] = $sPlacew;
+                  $listMapsw[] = $sMapsw;
+              }
+          }
+          else
+          {
+              $listWife[$imother] = $listPerson[$ifather].$ss;
 
-                $listSChildId[] = $imother;
-                $listSpouseId[] = $ifather;
-                $listWedding[] = $sWeddin;
-                $listPlacew[] = $sPlacew;
-                $listMapsw[] = $sMapsw;
-            }
-        }
+              $listSChildId[] = $imother;
+              $listSpouseId[] = $ifather;
+              $listWedding[] = $sWeddin;
+              $listPlacew[] = $sPlacew;
+              $listMapsw[] = $sMapsw;
+          }
+      }
 
-    }
+  }
 
-    $sWeddin = "";
-    $sPlacew = "";
-    $sMapsw = "";
-    $marr = false;
+  $sWeddin = "";
+  $sPlacew = "";
+  $sMapsw = "";
+  $marr = false;
 
-    return;
+  return;
 }
 
 ?>

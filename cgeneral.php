@@ -187,6 +187,11 @@ $tstamp = file_get_contents("timestamp");
   }
   echo "</table>\n"; // Закрываем таблицу
   //echo "<h4>".$getmemo."</h4>";
+
+//for ($i = 0; $i < count($persons); $i++) echo "PERSON: ".$persons[$i][0]."|".$persons[$i][1]."|".$persons[$i][2]."|".$persons[$i][3]."|".$persons[$i][4]."|".$persons[$i][5]."|".$persons[$i][6]."|".$persons[$i][7]."|".$persons[$i][8]."|".$persons[$i][9]."|".$persons[$i][12]."|".$persons[$i][13]."|".$persons[$i][14]."<br>";
+//for ($i = 0; $i < count($persons); $i++) echo "PERSON: ".$persons[$i][$fldBEG]."|".$persons[$i][$fldEND]."|".$persons[$i][$fldPER]."|".$persons[$i][$fldFAT]."|".$persons[$i][$fldMOT]."|".$persons[$i][$fldSEX]."|".$persons[$i][$fldICON]."|"."<br>";
+
+  echo "<p><br></p>";
 }
 
 
