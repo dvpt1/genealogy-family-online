@@ -94,6 +94,7 @@ if(isset($_POST['login'])) {
 //_login_html();
 //echo '<br><br>'.$lang.$lgn1.$pwd3.$foglgn1.$registr.$fogpwd3.$enter1;
  ?>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
  <br><br><br><br>
  <center>
  <form action="clogin.php" method="post">
