@@ -1,6 +1,6 @@
 <?php
 
-include_once("csub.php");
+//include_once("csub.php");
 include_once("chtmls.php");
 
 
