@@ -1,7 +1,9 @@
 <?php
 
+echo '<meta http-equiv="content-type" content="text/html; charset=UTF-8">';
 
 //session_start();
+include_once("ccfg.php");
 include_once("csub.php");
 include_once("chtmls.php");
 

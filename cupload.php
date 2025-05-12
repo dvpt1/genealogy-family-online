@@ -1,5 +1,6 @@
 <?php
 
+include_once("ccfg.php");
 include_once("cutils.php");
 include_once("cvars.php");
 
@@ -7,7 +8,7 @@ include_once("cvars.php");
 //global $userId;
 //$userId = $user['id'];
 
-//$user = "admin@dnadata.online";//_check_user($_COOKIE);
+//$user = "admin@dnadata";//_check_user($_COOKIE);
 $user = array();
 $user['id']   = 1;
 $userId = $user['id'];
@@ -75,7 +76,7 @@ global $error13;
 global $error14;
 
 echo '<br><br><br><br>=== Upload ==<br>';
-echo "<p><b><a href=https://dnadata.online/?lang=".$lang."> <<-- BACK <<-- </a>$userId==</b></p>";
+echo "<p><b><a href=".$https."/?lang=".$lang."> <<-- BACK <<-- </a>$userId==</b></p>";
 
 $getfile = '';
 if(isset($_COOKIE['myfamilytree_gedcom'])){

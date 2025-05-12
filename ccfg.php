@@ -16,9 +16,10 @@ global $cntp;
 
 $cntp = 25;
 
+$https = 'https://dnadata.online';
+$pepper = 'c1isvFdxMDdmjOlvxpecFw';
 $admlogin = 'dvpt';
 $admpswrd = 'dImAs';
-$pepper='c1isvFdxMDdmjOlvxpecFw';
 
 $CONFIG                  = array();
 $CONFIG['HOST_NAME']     = 'localhost';

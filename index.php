@@ -4,7 +4,7 @@
 include_once("chtmls.php");
 
 
-//$admin = "admin@dnadata.online";
+//$admin = "admin@dnadata";
 //echo "<br><br><br>index<br>";
 $user = _check_user($_COOKIE);
 //echo print_r($user); echo "<br>";

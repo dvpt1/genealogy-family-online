@@ -139,9 +139,9 @@ function Gedcom_Import()
 
   // import persons
 //echo "<br><br>IMPORT<br><br>";
-  $mainPath = __DIR__ ;//. '/cardfile/';
+  $mainPath = __DIR__ . '/cards/';
 //echo "<br><br>$mainPath<br><br>";
-  $files = glob($mainPath."/*.card");
+  $files = glob($mainPath."*.card");
   $ifat = 0;
   $imot = 0;
   $isps = 0;

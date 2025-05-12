@@ -1,5 +1,7 @@
 <?php
+echo '<meta http-equiv="content-type" content="text/html; charset=UTF-8">';
 
+include_once("ccfg.php");
 include_once("csub.php");
 include_once("chtmls.php");
 //_already_logged($_COOKIE);
@@ -15,7 +17,7 @@ if(isset($_POST['forgot'])) {
     $msg = $forgot3;
   } else {
     $subject = $forgot4;
-    $letter = $forgot5."\n\n".$forgot6.$_POST['user']."\n".$forgot4.": ".$user_data['pass']."\n\n".$forgot7."\nhttps://dnadata.online\n";
+    $letter = $forgot5."\n\n".$forgot6.$_POST['user']."\n".$forgot4.": ".$user_data['pass']."\n\n".$forgot7."\n$https\n";
     mail($_POST['user'],$subject,$letter);
     $msg = $forgot8.$_POST['user'];
   }

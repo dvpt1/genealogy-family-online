@@ -1,5 +1,6 @@
 <?php
 
+include_once("ccfg.php");
 include_once("cutils.php");
 include_once("cvars.php");
 
@@ -7,7 +8,7 @@ include_once("cvars.php");
 //global $userId;
 //$userId = $user['id'];
 
-//$user = "admin@dnadata.online";//_check_user($_COOKIE);
+//$user = "admin@dnadata";//_check_user($_COOKIE);
 $user = array();
 $user['id']   = 1;
 $userId = $user['id'];
@@ -1209,7 +1210,9 @@ if($listMother[$i] != ""){
 /*echo "number = ".$number." : ".$jsonPersonvar." : gender = ".$gender."<br>";*/
 
 	// Generate json file
-	file_put_contents("$number.card", $jsonPersonvar);
+        $file = __DIR__ .'cards/'."$number.card";
+	file_put_contents($file", $jsonPersonvar);
+echo "$number : $file <br>";
     }
 ////////////////////////////////////////////////////////////
     $timestamp = date('YmdHisu');

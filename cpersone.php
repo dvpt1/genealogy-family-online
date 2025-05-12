@@ -1,5 +1,6 @@
 <?php
 
+include_once("ccfg.php");
 include_once("chtmls.php");
 include_once("cvars.php");
 
@@ -13,8 +14,8 @@ Persone($user);
 //рисует иконку, рамку, имя и дату
 function Persone($user)
 {
+  global $https;
   global $timestamp;
-
   global $userId;
 
   $msg = $GLOBALS["msg"];
@@ -453,14 +454,16 @@ if(isset($_POST['saveperson'])) {
   $number = str_pad($id_person, 6, '0', STR_PAD_LEFT); // "000001"
 
   //echo $number.":".$jsonPersonvar;
-  file_put_contents("$number.card", $jsonPersonvar);
+  $file = __DIR__ .'cards/'."$number.card";
+  file_put_contents($file, $jsonPersonvar);
+//echo $number.":".$file;
 
 ////////////////////////////////////////////////////////////
   //$timestamp = date('YmdHisu');
   file_put_contents("timestamp", $timestamp);
 ////////////////////////////////////////////////////////////
 
-  echo '<script type="text/javascript">window.location = "https://dnadata.online/"</script>';
+  echo '<script type="text/javascript">window.location = "'.$https.'"</script>';
 
 }else
 if(isset($_POST['deleteperson'])) {
@@ -469,7 +472,7 @@ if(isset($_POST['deleteperson'])) {
   unset($persons[$inx_person]);
   ///////////////////////////////////////////////////// delete
   $number = str_pad($id_person, 6, '0', STR_PAD_LEFT); // "000001"
-  $file = __DIR__ ."/$number.card";
+  $file = __DIR__ .'cards/'."$number.card";
 //echo $number.":".$file;
   unlink($file);
 
@@ -478,7 +481,7 @@ if(isset($_POST['deleteperson'])) {
   file_put_contents("timestamp", $timestamp);
 ////////////////////////////////////////////////////////////
 
-  echo '<script type="text/javascript">window.location = "https://dnadata.online/"</script>';
+  echo '<script type="text/javascript">window.location = "'.$https.'"</script>';
 
 }
 

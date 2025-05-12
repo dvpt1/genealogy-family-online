@@ -1,5 +1,6 @@
 <?php
 
+include_once("ccfg.php");
 include_once("cutils.php");
 include_once("cvars.php");
 
@@ -7,7 +8,7 @@ include_once("cvars.php");
 //global $userId;
 //$userId = $user['id'];
 
-//$user = "admin@dnadata.online";//_check_user($_COOKIE);
+//$user = "admin@dnadata";//_check_user($_COOKIE);
 $user = array();
 $user['id']   = 1;
 
@@ -89,8 +90,8 @@ function Gedcom_Export()
 
   // заголовок
   $sss = "0 HEAD\n";
-  $sss .= "1 SOUR Genealogical tree\n";
-  $sss .= "2 VERS dnadata.online\n";
+  $sss .= "1 SOUR Genealogical Data Online\n";
+  $sss .= "2 VERS $https";
 //  $sss .= "2 NAME " + App.owner_name + "\n";
 //  $sss .= "2 ADDR " + App.owner_addr + "\n";
 //  $sss .= "2 PHON " + App.owner_phone + "\n";

@@ -1,11 +1,12 @@
 <?php
+echo '<meta http-equiv="content-type" content="text/html; charset=UTF-8">';
 
 session_start();
+
+include_once("ccfg.php");
 include_once("csub.php");
 include_once("chtmls.php");
 //_already_logged($_COOKIE);
-
-$dir = TRUE;
 
 //Regs();
 
@@ -20,16 +21,16 @@ if(isset($_POST['submit'])) {
 
   $password = md5($_POST['pass']); // encrypted password
   $activation = md5($email.time()); // encrypted email+timestamp
-  $alink = "https://dnadata.online/cact.php?code=$activation";
+  $alink = $https."/cact.php?code=$activation";
  
   _adduser_database(fm($_POST['user']),fm($_POST['pass']),fm($_POST['fio']),fm($_POST['country']),fm($_POST['postcode']),fm($_POST['city']),fm($_POST['address']),fm($_POST['phone']),fm($_POST['http']),fm($_POST['notes']),$activation);
   $msg = $regs1;
 
   echo "<br><br><br><br>";
   echo '<h4><a href="index.php"><img src="icons/ic_menu_home.png"></a></h4>';
-  echo $_POST['user']."Activation dnadata.online".$alink."<br>";
+  echo $_POST['user']." Activation ".$alink."<br>";
 
-  mail($_POST['user'],"Activation - DNAdata.Online","$alink");
+  mail($_POST['user'],"Activation from - $https","$alink");
   //sleep(10);
 
   //_login_html();

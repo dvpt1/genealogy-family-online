@@ -1,7 +1,11 @@
 <?php
 
+include_once("ccfg.php");
+include_once("csub.php");
 include_once("cutils.php");
 include_once("cvars.php");
+
+global $https;
 
 // получаем язык
 if (!empty($_GET['lang'])) {
@@ -262,7 +266,7 @@ checkCookie();
 
  echo '<div class="menuskived defaultskived">';
  echo '<table><tr><td aling=center valign=center>';
- echo '<a href="https://dnadata.online"><img src="icons/icon301.png" height=48 width=48></a>';
+ echo '<a href="'.$https.'"><img src="icons/icon301.png" height=48 width=48></a>';
  echo '</td><td>';
  echo '<table><tr><td>';
  echo '<ul>';
@@ -508,20 +512,23 @@ function _end_html($user)
  echo '</font></td><td>';
  echo '<table><tr><td>';
 
- echo '<form action="cupload.php?lang='.$lang.'&do=cupload" method="post" enctype="multipart/form-data">';
- if(!isset($_COOKIE['myfamilytree_gedcom']))
- {
-   echo '<input type="file" id="mygedcom" name="file">';
-   echo '<input type="submit" name="load" value="'.$ic_menu_load.'">';
- }else{
-   echo ' '.$getfile;
-   echo '<input type="submit" name="delete" value="'.$ic_menu_delete.'">';
+ if($user['id'] == 1) {
+   echo '<form action="cupload.php?lang='.$lang.'&do=cupload" method="post" enctype="multipart/form-data">';
+   if(!isset($_COOKIE['myfamilytree_gedcom']))
+   {
+     echo '<input type="file" id="mygedcom" name="file">';
+     echo '<input type="submit" name="load" value="'.$ic_menu_load.'">';
+   }else{
+     echo ' '.$getfile;
+     echo '<input type="submit" name="delete" value="'.$ic_menu_delete.'">';
+   }
+   echo '</form>';
+   
+   echo '</td></tr></table>';
+   echo '</td></tr></table>';
+   echo '</div>';
  }
- echo '</form>';
 
- echo '</td></tr></table>';
- echo '</td></tr></table>';
- echo '</div>';
  ?>
 
  </body>

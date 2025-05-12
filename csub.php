@@ -1,7 +1,7 @@
 <?php
 
 if (version_compare(PHP_VERSION, '7.0.0','>=')) include 'mysql.php';
-include_once("ccfg.php");
+//include_once("ccfg.php");
 include_once("cvars.php");
 include_once("cutils.php");
 

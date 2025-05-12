@@ -1,6 +1,9 @@
 <?php
+echo '<meta http-equiv="content-type" content="text/html; charset=UTF-8">';
 
 session_start();
+
+include_once("ccfg.php");
 include_once("csub.php");
 include_once("chtmls.php");
 //_already_logged($_COOKIE);
@@ -9,6 +12,7 @@ include_once("chtmls.php");
 //Login();
 //function Login()
 //{
+global $https;
 global $lang;
 global $lgn1,$pwd3,$cod3,$foglgn1,$registr,$fogpwd3,$enter1,$login6,$login7,$login8;
 
@@ -66,15 +70,15 @@ if(isset($_POST['login'])) {
 
 			$password = md5($_POST['pass']); // encrypted password
 			$activation = md5($email.time()); // encrypted email+timestamp
-			$alink = "https://dnadata.online/cact.php?code=$activation";
+			$alink = "$https/cact.php?code=$activation";
 
 			_saveact_database(fm($_POST['user']), $activation);
 			//$msg = $regs1;
 
 			echo "<br><br><br><br>";
 			echo '<h4><a href="index.php"><img src="icons/ic_menu_home.png"></a></h4>';
-			echo $_POST['user']."Activation dnadata.online".$alink."<br>";
-			mail($_POST['user'],"Activation - DNAdata.Online","$alink");
+			echo $_POST['user']."Activation $https".$alink."<br>";
+			mail($_POST['user'],"Activation - $https","$alink");
 		}
 	}
 
@@ -94,7 +98,6 @@ if(isset($_POST['login'])) {
 //_login_html();
 //echo '<br><br>'.$lang.$lgn1.$pwd3.$foglgn1.$registr.$fogpwd3.$enter1;
  ?>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
  <br><br><br><br>
  <center>
  <form action="clogin.php" method="post">
