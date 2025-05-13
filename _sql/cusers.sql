@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `users`
+-- Структура таблицы `cusers`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE `cusers` (
   `id` int NOT NULL,
   `name` varchar(100) NOT NULL DEFAULT '',
   `pass` varchar(128) NOT NULL DEFAULT '',
@@ -43,13 +43,13 @@ CREATE TABLE `users` (
   `two_factor_code` varchar(6) NOT NULL DEFAULT '',
   `two_factor_expires_at` varchar(11) NOT NULL DEFAULT '',
   `notes` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Дамп данных таблицы `users`
+-- Дамп данных таблицы `cusers`
 --
 
-INSERT INTO `users` (`id`, `name`, `pass`, `fio`, `country`, `postcode`, `city`, `address`, `phone`, `http`, `activation`, `status`, `two_factor_code`, `two_factor_expires_at`, `notes`) VALUES
+INSERT INTO `cusers` (`id`, `name`, `pass`, `fio`, `country`, `postcode`, `city`, `address`, `phone`, `http`, `activation`, `status`, `two_factor_code`, `two_factor_expires_at`, `notes`) VALUES
 (1, 'dvpt@narod.ru', 'diMas1','KDL', 'Россия', '620023', 'Ekaterinburg', 'Altaiskaj street 70-48, Ekaterinburg city, Russia', '89222058030', '', '0a1c4346f325cb6c79d3f5623ba7ed1c', '1', '', '', ''),
 (2, 'dvpt@yandex.ru', 'diMas1','', '', '', '', '', '', '', 'c925daf75b2394a8b76936f4961e13c5', '1', '', '', '');
 
@@ -58,18 +58,18 @@ INSERT INTO `users` (`id`, `name`, `pass`, `fio`, `country`, `postcode`, `city`,
 --
 
 --
--- Индексы таблицы `users`
+-- Индексы таблицы `cusers`
 --
-ALTER TABLE `users` ADD PRIMARY KEY (`id`);
+ALTER TABLE `cusers` ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
 --
 
 --
--- AUTO_INCREMENT для таблицы `users`
+-- AUTO_INCREMENT для таблицы `cusers`
 --
-ALTER TABLE `users`  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+ALTER TABLE `cusers`  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 COMMIT;
 
