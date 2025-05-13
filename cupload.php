@@ -17,6 +17,7 @@ Gedcom_Upload();
 
 function Gedcom_Upload()
 {
+  global $https;
   global $userId;
 
 echo '<meta http-equiv="content-type" content="text/html; charset=utf-8">';
@@ -75,8 +76,8 @@ global $error12;
 global $error13;
 global $error14;
 
-echo '<br><br><br><br>=== Upload ==<br>';
-echo "<p><b><a href=".$https."/?lang=".$lang."> <<-- BACK <<-- </a>$userId==</b></p>";
+echo "<br><br><br><br>=== Upload ===$https<br>";
+echo "<p><b><a href=".$https."> <<-- BACK <<-- </a>$userId==</b></p>";
 
 $getfile = '';
 if(isset($_COOKIE['myfamilytree_gedcom'])){
@@ -210,7 +211,7 @@ echo '===input_name='.$input_name.'<br>';
 		
 		// Выводим сообщение о результате загрузки.
 		if (!empty($success)) {
-echo "==== <b>$userId==$getfile</b> ===<br>";
+//echo "==== <b>$userId==$getfile</b> ===<br>";
 
 			$gedcom = '';
 			if($userId > 0){
@@ -229,7 +230,7 @@ echo "==== <b>$userId==$getfile</b> ===<br>";
 					_addgedcom_database($userId,$gedcom,$currentDateTime);
                                 }*/
 
-echo "==== <b>cgedcomimp.php</b> ===<br>";
+//echo "==== <b>cgedcomimp.php</b> ===<br>";
 				include_once("cgedcomimp.php");
 			   }
 			}
@@ -241,7 +242,7 @@ echo "==== <b>cgedcomimp.php</b> ===<br>";
 	}
 }
 
-echo "<p><b><a href=https://dnadata.online/?lang=".$lang."> <<-- BACK <<-- </a></b></p>";
+echo "<p><b><a href=".$https."> <<-- BACK <<-- </a></b></p>";
 
 }
 
