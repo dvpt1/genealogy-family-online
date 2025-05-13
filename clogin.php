@@ -38,7 +38,7 @@ if(isset($_POST['login'])) {
   } else {
     $msg = $login8.$_POST['user'];
 
-	$Q = mysql_query("SELECT id,status FROM users WHERE name='".$_POST['user']."'");
+	$Q = mysql_query("SELECT id,status FROM cusers WHERE name='".$_POST['user']."'");
 	if($Q){
 		$vars = mysql_fetch_array($Q);
 		$status = $vars['status'];

@@ -19,21 +19,21 @@ function _check_database($user, $pass)
   //$pwd_peppered = hash_hmac("sha256", $pass, $pepper);
   //$pwd_hashed = password_hash($pwd_peppered, PASSWORD_DEFAULT);
 
-  $Q = mysql_query(" SELECT id FROM users WHERE name = '$user' AND pass = '$pass' ");
+  $Q = mysql_query(" SELECT id FROM cusers WHERE name = '$user' AND pass = '$pass' ");
   if(mysql_num_rows($Q) == 0) return 0;
   else return mysql_fetch_array($Q);
 }
 
 function _check_datausers()
 {
-  $query = "SELECT id,name,pass,fio,country,postcode,city,address,phone,http,notes FROM users";
+  $query = "SELECT id,name,pass,fio,country,postcode,city,address,phone,http,notes FROM cusers";
   $result = mysql_query($query);
   return $result;
 }
 
 function _check_datauser($user)
 {
-  $Q = mysql_query(" SELECT id,name,pass,fio,country,postcode,city,address,phone,http,notes FROM users WHERE name = '$user' ");
+  $Q = mysql_query(" SELECT id,name,pass,fio,country,postcode,city,address,phone,http,notes FROM cusers WHERE name = '$user' ");
   if(mysql_num_rows($Q) == 0) return 0;
   else {
     $usr = array();
@@ -57,7 +57,7 @@ function _check_datauser($user)
 
 function _check_useract($user)
 {
-  $Q = mysql_query(" SELECT id,activation,status,two_factor_code,two_factor_expires_at FROM users WHERE name = '$user' ");
+  $Q = mysql_query(" SELECT id,activation,status,two_factor_code,two_factor_expires_at FROM cusers WHERE name = '$user' ");
   if(mysql_num_rows($Q) == 0) return 0;
   else {
     $usr = array();
@@ -78,28 +78,28 @@ function _adduser_database($user, $pass, $fio, $country, $postcode, $city, $addr
   //$pwd_hashed = password_hash($pwd_peppered, PASSWORD_DEFAULT); //$pwd_hashed = password_hash($pwd_peppered, PASSWORD_ARGON2ID);
 
 //echo $user.$pwd_peppered.$fio.$country.$postcode.$city.$address.$phone.$http.$notes.$activation."<br>"; 
-  $Q = mysql_query("INSERT INTO users (name,pass,fio,country,postcode,city,address,phone,http,notes,activation) VALUES ('$user','$pass','$fio','$country','$postcode','$city','$address','$phone','$http','$notes','$activation')");
+  $Q = mysql_query("INSERT INTO cusers (name,pass,fio,country,postcode,city,address,phone,http,notes,activation) VALUES ('$user','$pass','$fio','$country','$postcode','$city','$address','$phone','$http','$notes','$activation')");
 //echo "Q: ".$Q."<br>"; 
 }
 
 function _saveuser_database($user, $fio, $country, $postcode, $city, $address, $phone, $http, $notes)
 {
-  $Q = mysql_query("UPDATE users SET fio='$fio',country='$country',postcode='$postcode',city='$city',address='$address',phone='$phone',http='$http',notes='$notes' WHERE name='$user'");
+  $Q = mysql_query("UPDATE cusers SET fio='$fio',country='$country',postcode='$postcode',city='$city',address='$address',phone='$phone',http='$http',notes='$notes' WHERE name='$user'");
 }
 
 function _savepass_database($user, $passnew)
 {
-  $Q = mysql_query("UPDATE users SET pass='$passnew' WHERE name='$user'");
+  $Q = mysql_query("UPDATE cusers SET pass='$passnew' WHERE name='$user'");
 }
 
 function _saveact_database($user, $code)
 {
-  $Q = mysql_query("UPDATE users SET activation='$code' WHERE name='$user'");
+  $Q = mysql_query("UPDATE cusers SET activation='$code' WHERE name='$user'");
 }
 
 function _savetwo_database($user, $two_num, $two_time)
 {
-  $Q = mysql_query("UPDATE users SET two_factor_code='$two_num',two_factor_expires_at='$two_time' WHERE name='$user'");
+  $Q = mysql_query("UPDATE cusers SET two_factor_code='$two_num',two_factor_expires_at='$two_time' WHERE name='$user'");
 //echo "Q: ".$Q."<br>"; 
 }
 
@@ -108,7 +108,7 @@ function _check_auth($cookie)
   session_start();
   $user = array();
   $session = $cookie['SESSION'];
-  $q = mysql_query(" SELECT id,name FROM sessions WHERE session = '".$session."' ") or die(mysql_error());
+  $q = mysql_query(" SELECT id,name FROM csessions WHERE session = '".$session."' ") or die(mysql_error());
   if(mysql_num_rows($q) == 0)
     header("Location: index.php");
   else {
@@ -125,7 +125,7 @@ function _check_user($cookie)
   session_start();
   $user = array();
   $session = $cookie['SESSION'];
-  $q = mysql_query(" SELECT id,name FROM sessions WHERE session = '".$session."' ") or die(mysql_error());
+  $q = mysql_query(" SELECT id,name FROM csessions WHERE session = '".$session."' ") or die(mysql_error());
   if(mysql_num_rows($q) != 0) {
     $r = mysql_fetch_array($q);
     $user['id']   = $r['id'];
@@ -141,11 +141,11 @@ function _set_cookie($user_data, $rem, $session, $username)
   else setcookie('SESSION', $session);
 
   $user_id = $user_data['id'];
-  $C = mysql_query(" SELECT * FROM sessions WHERE id = '$user_id' AND name = '$username' ");
+  $C = mysql_query(" SELECT * FROM csessions WHERE id = '$user_id' AND name = '$username' ");
   if(mysql_num_rows($C) == 0)
-    $Q = mysql_query(" INSERT INTO sessions (session, id, name) VALUES ('$session','$user_id','$username') ");
+    $Q = mysql_query(" INSERT INTO csessions (session, id, name) VALUES ('$session','$user_id','$username') ");
   else
-    $Q = mysql_query(" UPDATE sessions SET session = '$session' WHERE id = '$user_id' AND name = '$username' ");
+    $Q = mysql_query(" UPDATE csessions SET session = '$session' WHERE id = '$user_id' AND name = '$username' ");
 
   header("location: index.php");
 }
@@ -153,7 +153,7 @@ function _set_cookie($user_data, $rem, $session, $username)
 function _logout_user($cookie)
 {
   $session = $cookie['SESSION'];
-  $q = mysql_query(" DELETE FROM sessions WHERE session = '$session' ") or die(mysql_error());
+  $q = mysql_query(" DELETE FROM csessions WHERE session = '$session' ") or die(mysql_error());
   setcookie('SESSION', '', 0);
 
   header("location: index.php");
