@@ -26,14 +26,15 @@ function _check_database($user, $pass)
 
 function _check_datausers()
 {
-  $query = "SELECT id,name,pass,fio,country,postcode,city,address,phone,http,notes FROM cusers";
+//id,name,pass,fio,country,postcode,city,address,phone,http,activation,status,acces,two_factor_code,two_factor_expires_at,notes
+  $query = "SELECT `id`,`name`,`pass`,`fio`,`country`,`postcode`,`city`,`address`,`phone`,`http`,`activation`,`status`,`acces`,`two_factor_code`,`two_factor_expires_at`,`notes` FROM `cusers`";
   $result = mysql_query($query);
   return $result;
 }
 
 function _check_datauser($user)
 {
-  $Q = mysql_query(" SELECT id,name,pass,fio,country,postcode,city,address,phone,http,notes FROM cusers WHERE name = '$user' ");
+  $Q = mysql_query(" SELECT `id`,`name`,`pass`,`fio`,`country`,`postcode`,`city`,`address`,`phone`,`http`,`activation`,`status`,`acces`,`two_factor_code`,`two_factor_expires_at`,`notes` FROM cusers WHERE `name` = '$user' ");
   if(mysql_num_rows($Q) == 0) return 0;
   else {
     $usr = array();
@@ -51,13 +52,14 @@ function _check_datauser($user)
     $usr['notes'] = $r['notes'];
     $usr['activation'] = $r['activation'];
     $usr['status'] = $r['status'];
+    $usr['acces'] = $r['acces'];
     return $usr;
   }
 }
 
 function _check_useract($user)
 {
-  $Q = mysql_query(" SELECT id,activation,status,two_factor_code,two_factor_expires_at FROM cusers WHERE name = '$user' ");
+  $Q = mysql_query(" SELECT id,activation,status,acces,two_factor_code,two_factor_expires_at FROM cusers WHERE name = '$user' ");
   if(mysql_num_rows($Q) == 0) return 0;
   else {
     $usr = array();
@@ -65,6 +67,7 @@ function _check_useract($user)
     $usr['id']   = $r['id'];
     $usr['activation'] = $r['activation'];
     $usr['status'] = $r['status'];
+    $usr['acces'] = $r['acces'];
     $usr['two_factor_code'] = $r['two_factor_code'];
     $usr['two_factor_expires_at'] = $r['two_factor_expires_at'];
     return $usr;
@@ -82,9 +85,9 @@ function _adduser_database($user, $pass, $fio, $country, $postcode, $city, $addr
 //echo "Q: ".$Q."<br>"; 
 }
 
-function _saveuser_database($user, $fio, $country, $postcode, $city, $address, $phone, $http, $notes)
+function _saveuser_database($user, $fio, $country, $postcode, $city, $address, $phone, $http, $status, $access, $notes)
 {
-  $Q = mysql_query("UPDATE cusers SET fio='$fio',country='$country',postcode='$postcode',city='$city',address='$address',phone='$phone',http='$http',notes='$notes' WHERE name='$user'");
+  $Q = mysql_query("UPDATE cusers SET fio='$fio',country='$country',postcode='$postcode',city='$city',address='$address',phone='$phone',http='$http',status='$status',acces='$access',notes='$notes' WHERE name='$user'");
 }
 
 function _savepass_database($user, $passnew)

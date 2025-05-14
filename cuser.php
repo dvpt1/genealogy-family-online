@@ -17,7 +17,7 @@ if(isset($_POST[name])){
 
 //_begin_html($user);
 if(isset($_POST['saveuser'])) {
-  _saveuser_database($user['name'],fm($_POST['fio']),fm($_POST['country']),fm($_POST['postcode']),fm($_POST['city']),fm($_POST['address']),fm($_POST['phone']),fm($_POST['http']),fm($_POST['notes']));
+  _saveuser_database($user['name'],fm($_POST['fio']),fm($_POST['country']),fm($_POST['postcode']),fm($_POST['city']),fm($_POST['address']),fm($_POST['phone']),fm($_POST['http']),fm($_POST['status']),fm($_POST['access']),fm($_POST['notes']));
   $msg = $user7;
 }
 //??md5
@@ -85,6 +85,12 @@ $user = _check_datauser($user['name']);
  </tr>
  <tr><td><?php echo $www; ?></td>
   <td><input type="text" name="http" size="40" value="<?php echo $user['http']; ?>"></td>
+ </tr>
+ <tr><td><?php echo $status; ?></td>
+  <td><input type="text" name="status" size="40" value="<?php echo $user['status']; ?>"></td>
+ </tr>
+ <tr><td><?php echo $access; ?></td>
+  <td><input type="text" name="access" size="40" value="<?php echo $user['acces']; ?>"></td>
  </tr>
  <tr><td><?php echo $note; ?></td>
   <td><textarea name="notes" rows="5" cols="80"><?php echo $user['notes']; ?></textarea></td>
