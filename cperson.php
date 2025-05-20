@@ -1,10 +1,14 @@
 <?php
 
+
 Person();
 
 //рисует иконку, рамку, имя и дату
 function Person()
 {
+  global $reload;
+  $reload = false;
+
   global $lang;
 
   global $fldINX;

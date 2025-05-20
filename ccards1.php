@@ -1,7 +1,7 @@
 <?php
 
 $mainPath = __DIR__ ;//. '/cardfile/';
-$files = glob($mainPath."/*.card");
+$files = glob($mainPath."/cards/*.card");
 
 $persons = [];
 $response = array();

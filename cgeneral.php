@@ -4,6 +4,9 @@ General();
 
 function General()
 {
+  global $reload;
+  $reload = true;
+
   global $lang;
 
   global $peoples;
@@ -57,6 +60,8 @@ $tstamp = file_get_contents("timestamp");
   $total = ceil($count/$page);// считаем страницы
 
   print "<br><br>";
+//$file = __DIR__ ."/cards/$number.card";
+//echo "file=$file <br>";
 //echo "p=$p <br>";
 //echo "count=$count <br>";
 //echo "total=$total <br>";

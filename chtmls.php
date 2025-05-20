@@ -289,6 +289,7 @@ function _index_html($user)
 {
  global $getfile;
  global $timestamp;
+ global $reload;
 
  GLOBAL $persons;
  GLOBAL $gedcoms;
@@ -337,8 +338,8 @@ if (!empty($_GET['page'])){
    if ($user['id'] < 1) $getfile = 'gedcom/kings.ged';
  }
 
-
 // test refresh
+if($reload){
  $tmstmp = file_get_contents("timestamp");
 //echo "===TmStmp==".$tmstmp."<br>";
 
@@ -366,7 +367,8 @@ if (!empty($_GET['page'])){
 <?
 
   }
-   include_once("cimport.php");
+
+  include_once("cimport.php");
 
  } else {
 
@@ -391,7 +393,7 @@ if (!empty($_GET['page'])){
     include_once("cimport.php");
    }
  }
-
+}
 
 /*=========================================*/
 //echo "===File==".$getfile."<br>";

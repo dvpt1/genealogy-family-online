@@ -14,6 +14,9 @@ Persone($user);
 //рисует иконку, рамку, имя и дату
 function Persone($user)
 {
+  global $reload;
+  $reload = false;
+
   global $https;
   global $timestamp;
   global $userId;
@@ -305,6 +308,7 @@ if(isset($_POST['saveperson'])) {
   }
 
   // spouse
+//echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><hr>spouse";
   if(!empty($_POST["spouse"])){
     $inxs = $_POST["spouse"];
     $sps = explode(":", $inxs);
@@ -314,6 +318,7 @@ if(isset($_POST['saveperson'])) {
     $spouse_ind = -1;
     $spouse_inx = -1;
   }
+  $sps0 = array();
   $sps1 = array();
   if(isset($_SESSION["spousea"])) $spouse_key = $_SESSION["spousea"];
   if(strlen("$spouse_key") == 0) $spouse_key = $_POST['spousea'];
@@ -349,12 +354,15 @@ if(isset($_POST['saveperson'])) {
      }
      if(!$b){ // add
 //echo '<b>spouseAdd='.$inx_person.';'.$sps1[$i].'</b><br>';
-       $spouses[] = array(count($spouses), $inx_person, $sps1[$i],$_POST['wedding'],$_POST['placew']);
+       $spouses[] = array(count($spouses), $inx_person, $sps1[$i],$_POST['wedding'],$_POST['placew']);//,$_POST['mapsw']);
+       $sps0[] = count($spouses);
      } else { // edit
        if($spouse_ind == $sps1[$i]){
 //echo '<b>spouseEdit='.$inx_person.';'.$sps1[$i].'</b><br>';
          $spouses[$sps1[$i]][$fldWEDDIN] = $_POST['wedding'];
          $spouses[$sps1[$i]][$fldPLACEW] = $_POST['placew'];
+         //$spouses[$sps1[$i]][$fldMAPSW] = "";//$_POST['mapsw'];
+         $sps0[] = $sps1[$i];
        }
      }
   }
@@ -368,7 +376,7 @@ if(isset($_POST['saveperson'])) {
      }
      if($b){
 //echo '<b>spouseDel0='.$inx_person.';'.$sps2[$i].'</b><br>';
-       for ($j = 0; $j < count($spouses); $j++) {
+       for ($j = 0; $j < count($spouses); $j++) {//сделать обратный отсчет
          if($spouses[$j][$fldSPOUS1] == $id_person && $spouses[$j][$fldSPOUS2] == $sps2[$i]) {
 //echo '<b>spouseDel1='.$spouses[$j][$fldSPOUS1].';'.$inx_person.';;'.$spouses[$j][$fldSPOUS2].';'.$sps2[$i].'</b><br>';
            unset($spouses[$j]);
@@ -396,6 +404,7 @@ if(isset($_POST['saveperson'])) {
   $jsonPerson->deathday->place = $_POST['placed'];
   $jsonPerson->placel = $_POST['placel'];
   $jsonPerson->placet = $_POST['placet'];
+// echo "<br><br><br><br>POST['birth'] =".$_POST['birth']." : POST['placeb'] = ".$_POST['placeb']."<br>";
   
 // echo "<hr>father =$fat1=";
   if(!empty($fat1)) {
@@ -421,19 +430,22 @@ if(isset($_POST['saveperson'])) {
 //print_r($fat1); echo count($idf).":".empty($fat1)."<br>";
   }
 
-//  echo "<hr>spouse =$sps1=";print_r($sps1);
+//echo "<br><hr>spouse =$sps1=";print_r($sps0);print_r($sps1);echo "<br><hr>";
   if(!empty($sps1)) {
     $ids = -1;
     $spss = array();
     for ($i = 0; $i < count($sps1); $i++) {
       $ids = intval($persons[$sps1[$i]][$fldID]);
-      $spss[$i] = array("id" => $ids);//add wedding palase map
+      $weddinga = $spouses[$sps1[$i]][$fldWEDDIN];
+      $placewa = $spouses[$sps1[$i]][$fldPLACEW];
+      //$mapswa = $spouses[$sps1[$i]][$fldMAPSW];
+      //$spss[$i] = array("id" => $ids);//add wedding palase map
+      $spss[$i] = array("id" => $ids, "wedding" => "$weddinga", "place" => "$placewa", "maps" => "mapsw");//add wedding palase map
     }
     if(count($ids) > -1) $jsonPerson->spouses = $spss;
-//print_r($spss); echo count($ids)."<br>";
   }
 //echo "<hr>";
-
+//sleep(10);
 
   $jsonPerson->occupation = $_POST['occu'];
   $jsonPerson->national = $_POST['nati'];
@@ -454,7 +466,7 @@ if(isset($_POST['saveperson'])) {
   $number = str_pad($id_person, 6, '0', STR_PAD_LEFT); // "000001"
 
   //echo $number.":".$jsonPersonvar;
-  $file = __DIR__ .'cards/'."$number.card";
+  $file = __DIR__ ."/cards/$number.card";
   file_put_contents($file, $jsonPersonvar);
 //echo $number.":".$file;
 
@@ -472,7 +484,7 @@ if(isset($_POST['deleteperson'])) {
   unset($persons[$inx_person]);
   ///////////////////////////////////////////////////// delete
   $number = str_pad($id_person, 6, '0', STR_PAD_LEFT); // "000001"
-  $file = __DIR__ .'cards/'."$number.card";
+  $file = __DIR__ ."/cards/$number.card";
 //echo $number.":".$file;
   unlink($file);
 
@@ -919,7 +931,7 @@ if(isset($_POST['deleteperson'])) {
       if($i == $spouse_ind){
         $weddinga = $spouses[$aspouse[$i]][$fldWEDDIN];
         $placewa = $spouses[$aspouse[$i]][$fldPLACEW];
-        $mapswa = $spouses[$i][$flMAPSW];
+        $mapswa = $spouses[$aspouse[$i]][$flMAPSW];
       }
 
       if($n == 0) $spouse_key = "".$aspouse[$i].':'.$apersone[$i]; else $spouse_key .= ",".$aspouse[$i].':'.$apersone[$i];

@@ -4,6 +4,7 @@
   $CntCol = 24; // количество колонок
 
   $timestamp = "";//date('YmdHisu');
+  $reload = true;
 
 //surname	фамилия
 //primaryname	фамилия
