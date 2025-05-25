@@ -4,9 +4,6 @@ General();
 
 function General()
 {
-  global $reload;
-  $reload = true;
-
   global $lang;
 
   global $peoples;

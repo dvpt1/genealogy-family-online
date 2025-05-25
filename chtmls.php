@@ -172,17 +172,7 @@ function _begin_html($user)
   }
 </style>
 
-<script>
-  function autoRefresh() {
-    window.location = window.location.href;
-  }
-
-  setInterval('autoRefresh()', 15000);
-</script>
-
-
 <body style="background-color:#f0ead6;">
-
 
 <div id="cookiePopup">
   <h4>Cookie Consent</h4>
@@ -289,7 +279,6 @@ function _index_html($user)
 {
  global $getfile;
  global $timestamp;
- global $reload;
 
  GLOBAL $persons;
  GLOBAL $gedcoms;
@@ -321,35 +310,32 @@ function _index_html($user)
 echo "<br><br><br>";
 
 if (!empty($_GET['page'])){
- $page = $lang."/".$_GET['page'].".html";
- echo "<br><br>";
- include_once($page);
+	$page = $lang."/".$_GET['page'].".html";
+	echo "<br><br>";
+	include_once($page);
 }else if (!empty($_GET['appstores'])){
- $page = $lang."/appstores/".$_GET['appstores'].".html";
- echo "<br><br>";
- include_once($page);
+	$page = $lang."/appstores/".$_GET['appstores'].".html";
+	echo "<br><br>";
+	include_once($page);
 }else{
+	$getfile ='';
+	if(isset($_COOKIE['myfamilytree_gedcom'])){   //echo 'Куки успешно установлены!<br>';
+		$getfile = 'gedcom/'.$_COOKIE['myfamilytree_gedcom'];
+	}else{   //echo 'Куки НЕ установлены!<br>';
+		if ($user['id'] < 1) $getfile = 'gedcom/kings.ged';
+	}
 
-//echo "<br><br><br>";
- $getfile ='';
- if(isset($_COOKIE['myfamilytree_gedcom'])){   //echo 'Куки успешно установлены!<br>';
-   $getfile = 'gedcom/'.$_COOKIE['myfamilytree_gedcom'];
- }else{   //echo 'Куки НЕ установлены!<br>';
-   if ($user['id'] < 1) $getfile = 'gedcom/kings.ged';
- }
+	$do = 'cmain';
+	if (!empty($_GET['do'])) $do = $_GET['do'];
+	if (!empty($_POST['do'])) $do = $_POST['do'];
 
-// test refresh
-if($reload){
- $tmstmp = file_get_contents("timestamp");
-//echo "===TmStmp==".$tmstmp."<br>";
-
- if(isset($_COOKIE["timestamp"])) {
-
-  $timestamp = $_COOKIE['timestamp'];
+// test reload
+	$tmstmp = file_get_contents("timestamp");
+	if(isset($_COOKIE["timestamp"])) {
+		$timestamp = $_COOKIE['timestamp'];
 //echo "===TimeStamp=1=".$timestamp."<br>";
-
-  if($timestamp != $tmstmp){
-    $timestamp = $tmstmp;
+		if($timestamp != $tmstmp){
+			$timestamp = $tmstmp;
 //echo "===TimeStamp==".$timestamp."<br>";
 
 //   setcookie('timestamp', $timestamp);
@@ -365,13 +351,9 @@ if($reload){
    //alert(document.cookie);
 </script>
 <?
-
-  }
-
-  include_once("cimport.php");
-
- } else {
-
+		}
+		include_once("cimport.php");
+	} else {
 //   setcookie('timestamp', $tmstmp);
 ?>
 <script language="javascript">
@@ -385,85 +367,91 @@ if($reload){
    //alert(document.cookie);
 </script>
 <?
-
-   $timestamp = $_COOKIE['timestamp'];
+		$timestamp = $_COOKIE['timestamp'];
 //echo "===TimeStamp=2=".$timestamp."<br>";
+		if(count((array)$persons) == 0){
+			include_once("cimport.php");
+		}
+	}
 
-   if(count((array)$persons) == 0){
-    include_once("cimport.php");
-   }
- }
-}
+	if ($do == 'cmain') {
+		include_once("cgeneral.php");
+	} else if ($do == 'cpersone') {
+		include_once("cpersone.php");
+	} else if ($do == 'cperson') {
+		include_once("cperson.php");
+	} else if ($do == 'cforest') {
+		include_once("cforest.php");
+	} else if ($do == 'ctree') {
+		include_once("ctree.php");
+	} else if ($do == 'cbranch') {
+		include_once("cbranch.php");
+	} else if ($do == 'crings') {
+		include_once("crings.php");
+	} else if ($do == 'cgenr') {
+		include_once("cgenr.php");
+	} else if ($do == 'ccaln') {
+		include_once("ccalendar.php");
+	} else if ($do == 'cglob') {
+		include_once("cglob.php");
+	} else if ($do == 'cgedcomv') {
+		include_once("cgedcomv.php");
+	} else if ($do == 'csearch') {
+		include_once("csearch.php");
+	} else if ($do == 'cdonate') {
+		include_once("cdonate.php");
+	} else if ($do == 'ccontact') {
+		include_once("ccontact.php");
+	} else if ($do == 'cprivacy') {
+		include_once($lang."/cprivacy.php");
+	} else if ($do == 'cmission') {
+		include_once($lang."/cmission.php");
+	} else if ($do == 'chelp') {
+		include_once("chelp.php");
+	} else if ($do == 'cappstores') {
+		echo '<br><br>';
+		include_once($lang."/appstores/appstores.html");
+	} else if ($do == 'cuseful') {
+		echo '<br><br>';
+		include_once($lang."/index.html");
+	} else if ($do == 'user') {
+		include_once("cuser.php");
+	} else if ($do == 'logout') {
+		if($user['id'] > 0){
+			include_once("clogout.php");
+		}else{
+			include_once("index.php");
+		}
+	} else if ($do == 'login') {
+		include_once("clogin.php");
+	} else if ($do == 'regs') {
+		include_once("cregs.php");
+	} else if ($do == 'forgot') {
+		include_once("cforgot.php");
+	} else if ($do == 'cupload') {//   include_once("upload.php");
+	}
 
 /*=========================================*/
+//echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
 //echo "===File==".$getfile."<br>";
 //echo "===Persons==".Count($persons)."<br>";
 //echo "===User==".$user['id']."<br>";
+//echo "===do=".$do."<br>";
+//echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
 /*=========================================*/
 
+	if ($do != 'cpersone') {
+?>
+<script>
+  function autoRefresh() {
+    window.location = window.location.href;
+  }
 
- $do = 'cmain';
- if (!empty($_GET['do'])) $do = $_GET['do'];
- if (!empty($_POST['do'])) $do = $_POST['do'];
-//echo "<br><br><br>do=".$do."<br>";
- if ($do == 'cmain') {
-   include_once("cgeneral.php");
- } else if ($do == 'cpersone') {
-   include_once("cpersone.php");
- } else if ($do == 'cperson') {
-   include_once("cperson.php");
- } else if ($do == 'cforest') {
-   include_once("cforest.php");
- } else if ($do == 'ctree') {
-   include_once("ctree.php");
- } else if ($do == 'cbranch') {
-   include_once("cbranch.php");
- } else if ($do == 'crings') {
-   include_once("crings.php");
- } else if ($do == 'cgenr') {
-   include_once("cgenr.php");
- } else if ($do == 'ccaln') {
-   include_once("ccalendar.php");
- } else if ($do == 'cglob') {
-   include_once("cglob.php");
- } else if ($do == 'cgedcomv') {
-   include_once("cgedcomv.php");
- } else if ($do == 'csearch') {
-   include_once("csearch.php");
- } else if ($do == 'cdonate') {
-   include_once("cdonate.php");
- } else if ($do == 'ccontact') {
-   include_once("ccontact.php");
- } else if ($do == 'cprivacy') {
-   include_once($lang."/cprivacy.php");
- } else if ($do == 'cmission') {
-   include_once($lang."/cmission.php");
- } else if ($do == 'chelp') {
-   include_once("chelp.php");
- } else if ($do == 'cappstores') {
-   echo '<br><br>';
-   include_once($lang."/appstores/appstores.html");
- } else if ($do == 'cuseful') {
-   echo '<br><br>';
-   include_once($lang."/index.html");
- } else if ($do == 'user') {
-   include_once("cuser.php");
- } else if ($do == 'logout') {
-   if($user['id'] > 0){
-     include_once("clogout.php");
-   }else{
-     include_once("index.php");
-   }
- } else if ($do == 'login') {
-   include_once("clogin.php");
- } else if ($do == 'regs') {
-   include_once("cregs.php");
- } else if ($do == 'forgot') {
-   include_once("cforgot.php");
- } else if ($do == 'cupload') {
-//   include_once("upload.php");
- }
- $do = '';
+  setInterval('autoRefresh()', 15000);
+</script>
+<?
+	}
+	$do = '';
 }
 
 }

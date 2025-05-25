@@ -14,9 +14,6 @@ Persone($user);
 //рисует иконку, рамку, имя и дату
 function Persone($user)
 {
-  global $reload;
-  $reload = false;
-
   global $https;
   global $timestamp;
   global $userId;
@@ -730,6 +727,7 @@ if(isset($_POST['deleteperson'])) {
       unset($_SESSION['icona']);
       $src_image = $src_icon; 
   }
+
 ?>
 
  <form name="editperson" action="index.php?do=cpersone&inx=<?php echo $inx_person; ?>&edit=1" method="post">
@@ -1052,11 +1050,11 @@ if(isset($_POST['deleteperson'])) {
 //if($_POST['spouse_key']) echo 'spouse_key='.$_POST['spouse_key'].'<br>';
 
   echo "</div></div>";
-  echo "<p><br></p>";
+  echo "$reload<p><br></p>";
 }
 
 function resize_image($file, $w, $h, $crop=FALSE) {
-echo $file;
+//echo $file;
     list($width, $height) = getimagesize($file);
     $r = $width / $height;
     if ($crop) {
@@ -1079,7 +1077,7 @@ echo $file;
     $src = imagecreatefromjpeg($file);
     $dst = imagecreatetruecolor($newwidth, $newheight);
     imagecopyresampled($dst, $src, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-echo $dst;
+//echo $dst;
     return $dst;
 }
 
