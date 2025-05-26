@@ -221,7 +221,7 @@ function Gedcom_Import()
     {
         $b = true;
         $sps = $spouse[$i]['id'];
-        /*for ($n = 0; $n < count($spouses); $n++)
+        for ($n = 0; $n < count($spouses); $n++)
         {
             if ($spouses[$n][$fldSPOUS1] == $sps && $spouses[$n][$fldSPOUS2] == $id)
             {
@@ -233,7 +233,7 @@ function Gedcom_Import()
                 $b = false;
                 break;
             }
-        }*/
+        }
 
         if ($b)// если такой пары нет, добавляем
         {

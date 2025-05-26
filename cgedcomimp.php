@@ -989,7 +989,7 @@ echo "=== GEDCOM File==".$getfile."<br>";
     for ($i = 0; $i < count($listSpouseId); $i++)
     {
         $b = true;
-        /*for ($n = 0; $n < count($spouses); $n++)
+        for ($n = 0; $n < count($spouses); $n++)
         {
             if ($spouses[$n][$fldSPOUS1] == $listSChildId[$i] && $spouses[$n][$fldSPOUS2] == $listSpouseId[$i])
             {
@@ -1001,7 +1001,7 @@ echo "=== GEDCOM File==".$getfile."<br>";
                 $b = false;
                 break;
             }
-        }*/
+        }
 
         if ($b)// если такой пары нет, добавляем
         {
@@ -1140,32 +1140,32 @@ echo "=== GEDCOM File==".$getfile."<br>";
 
 
 //echo "=== $listFather[$i] : listfathers<br>";
-if($listFather[$i] != ""){
-    $idf = -1;
-    $fats = array();
-    $fthrs = explode(",", $listFather[$i]);
-    for ($ii = 0; $ii < count($fthrs); $ii++)
-    {
-      $idf = intval($fthrs[$ii]);
-      $fats[$ii] = array("id" => $idf);
-    }
-    $jsonPerson->fathers = $fats;
-}
+	if($listFather[$i] != ""){
+	    $idf = -1;
+	    $fats = array();
+	    $fthrs = explode(",", $listFather[$i]);
+	    for ($ii = 0; $ii < count($fthrs); $ii++)
+	    {
+	      $idf = intval($fthrs[$ii]);
+	      $fats[$ii] = array("id" => $idf);
+	    }
+	    $jsonPerson->fathers = $fats;
+	}
 
 //echo "=== $listMother[$i] : listmothers<br>";
-if($listMother[$i] != ""){
-    $idm = -1;
-    $mots = array();
-    $mthrs = explode(",", $listMother[$i]);
-    for ($ii = 0; $ii < count($mthrs); $ii++)
-    {
-      $idm = intval($mthrs[$ii]);
-      $mots[$ii] = array("id" => $idm);
-    }
-    $jsonPerson->mothers = $mots;
-}
+	if($listMother[$i] != ""){
+	    $idm = -1;
+	    $mots = array();
+	    $mthrs = explode(",", $listMother[$i]);
+	    for ($ii = 0; $ii < count($mthrs); $ii++)
+	    {
+	      $idm = intval($mthrs[$ii]);
+	      $mots[$ii] = array("id" => $idm);
+	    }
+	    $jsonPerson->mothers = $mots;
+	}
 
-//echo "=== $listSpouse[$i] : listspouses<br>";
+echo "=== $listSpouse[$i] : listspouses<br>";
     $spss = array();
     for ($ii = 0; $ii < count($spouses); $ii++)
     {
@@ -1173,36 +1173,39 @@ if($listMother[$i] != ""){
           $inx_per = 0 + intval($spouses[$ii][$fldSPOUS2]);
           $id_per = $indi_inx[$inx_per] + 1;//$persons[$inx_per][$fldID];
           $spss[] = array("id" => $id_per, "wedding" => $spouses[$ii][$fldWEDDIN], "place" => $spouses[$ii][$fldPLACEW], "maps" => $spouses[$ii][$fldMAPSW]);
-//echo "idd1=$inx_per=$id_per=<br>";
-          break;//??
+echo "idd1=$inx_per=$id_per=<br>";
+          break;
        }
+    }
+    for ($ii = 0; $ii < count($spouses); $ii++)
+    {
        if($spouses[$ii][$fldSPOUS2] == $i){
           $inx_per = 0 + intval($spouses[$ii][$fldSPOUS1]);
           $id_per = $indi_inx[$inx_per] + 1;//$persons[$inx_per][$fldID];
           $spss[] = array("id" => $id_per, "wedding" => $spouses[$ii][$fldWEDDIN], "place" => $spouses[$ii][$fldPLACEW], "maps" => $spouses[$ii][$fldMAPSW]);
-//echo "idd2=$inx_per=$id_per=<br>";
-          break;//??
+echo "idd2=$inx_per=$id_per=<br>";
+          break;
        }
     }
     if(count($spss) > 0){
        $jsonPerson->spouses = $spss;
        print_r($spss); echo " == spss<br>";
     }
-//echo "<hr>";
-
+echo "<hr>";
 
 	$jsonPerson->occupation = $listOccu[$i];
 	$jsonPerson->national = $listNati[$i];
 	$jsonPerson->education = $listEduc[$i];
-	$jsonPerson->relogion = $listReli[$i];
+	$jsonPerson->religion = $listReli[$i];
 	$jsonPerson->notes = $listNote[$i];
 	$jsonPerson->icon = $listIcon[$i];
 
 	$timestamp = date('YmdHisu');
 	$jsonPerson->stamp->timestamp = $timestamp;
+	$jsonPerson->stamp->avtor = $userId;
 	$jsonPerson->stamp->datetime = date('Y-m-d H:i:s.u');
 	$jsonPerson->stamp->user = $userId;
-	$jsonPerson->stamp->avtor = $userId;
+	$jsonPerson->stamp->datetimeup = date('Y-m-d H:i:s.u');
 
 	$jsonPersonvar = json_encode($jsonPerson);
  

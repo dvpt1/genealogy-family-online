@@ -427,35 +427,40 @@ if(isset($_POST['saveperson'])) {
 //print_r($fat1); echo count($idf).":".empty($fat1)."<br>";
   }
 
+//echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
 //echo "<br><hr>spouse =$sps1=";print_r($sps0);print_r($sps1);echo "<br><hr>";
   if(!empty($sps1)) {
     $ids = -1;
     $spss = array();
     for ($i = 0; $i < count($sps1); $i++) {
       $ids = intval($persons[$sps1[$i]][$fldID]);
+//echo "$ids<br>";
       $weddinga = $spouses[$sps1[$i]][$fldWEDDIN];
+//echo "$weddinga<br>";
       $placewa = $spouses[$sps1[$i]][$fldPLACEW];
+//echo "$placewa<br>";
       //$mapswa = $spouses[$sps1[$i]][$fldMAPSW];
       //$spss[$i] = array("id" => $ids);//add wedding palase map
       $spss[$i] = array("id" => $ids, "wedding" => "$weddinga", "place" => "$placewa", "maps" => "mapsw");//add wedding palase map
     }
     if(count($ids) > -1) $jsonPerson->spouses = $spss;
+//echo "<br><hr>spouse =$spss=";print_r($spss);echo "<br><hr>";
   }
-//echo "<hr>";
-//sleep(10);
+//echo "<hr><br><br><br><br><br><br>";
 
   $jsonPerson->occupation = $_POST['occu'];
   $jsonPerson->national = $_POST['nati'];
   $jsonPerson->education = $_POST['educ'];
-  $jsonPerson->relogion = $_POST['reli'];
+  $jsonPerson->religion = $_POST['reli'];
   $jsonPerson->notes = $_POST['notes'];
   $jsonPerson->icon = $_POST['icon'];
   
   $timestamp = date('YmdHisu');
   $jsonPerson->stamp->timestamp = $timestamp;
+  $jsonPerson->stamp->avtor = $userId;
   $jsonPerson->stamp->datetime = date('Y-m-d H:i:s.u');
   $jsonPerson->stamp->user = $userId;
-  $jsonPerson->stamp->avtor = $userId;
+  $jsonPerson->stamp->datetimeup = date('Y-m-d H:i:s.u');
 
   $jsonPersonvar = json_encode($jsonPerson);
  
@@ -588,11 +593,11 @@ if(isset($_POST['deleteperson'])) {
    $n = 0;
    for ($i = 0; $i < count($spouses); $i++) {
      if ($spouses[$i][$fldSPOUS1] == $inx_person) {
-       if($n == 0) $spouse_key = "".$spouses[$i][$fldINX].':'.$spouses[$i][$fldSPOUS2]; else $spouse_key .= ",".$spouses[$i][$fldINX].':'.$spouses[$i][$fldSPOUS2];
+       if($n == 0) $spouse_key = "".$i.':'.$spouses[$i][$fldSPOUS2]; else $spouse_key .= ",".$i.':'.$spouses[$i][$fldSPOUS2];
        $n++;
      }else
      if ($spouses[$i][$fldSPOUS2] == $inx_person) {
-       if($n == 0) $spouse_key = "".$spouses[$i][$fldINX].':'.$spouses[$i][$fldSPOUS1]; else $spouse_key .= ",".$spouses[$i][$fldINX].':'.$spouses[$i][$fldSPOUS1];
+       if($n == 0) $spouse_key = "".$i.':'.$spouses[$i][$fldSPOUS1]; else $spouse_key .= ",".$i.':'.$spouses[$i][$fldSPOUS1];
        $n++;
      }
    }
@@ -633,21 +638,27 @@ if(isset($_POST['deleteperson'])) {
   $aplasew = array();
   $amapsw = array();
 
+//echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
   if(strlen("$spouse_key") > 0){
+//echo "$spouse_key<br>";
     $spths = explode(",", $spouse_key);
     for ($i = 0; $i < count($spths); $i++) {
       $spts = explode(":", $spths[$i]);
       $i0 = $spts[0];
       $i1 = $spts[1];
-      if($i0 == $inx_person){
-        $aspouse[] = $i0;
-        $apersone[] = $i1;
-        $aweeding[] = $spouses[$i1][$fldWEDDIN];
-        $aplacew[] = $spouses[$i1][$fldPLACEW];
-        $amapsw[] = spouses[$i1][$fldMAPSW];
-      }
+      $aspouse[] = $i0;
+      $apersone[] = $i1;
+      $aweeding[] = $spouses[$i0][$fldWEDDIN];
+      $aplacew[] = $spouses[$i0][$fldPLACEW];
+      $amapsw[] = spouses[$i0][$fldMAPSW];
+
+//echo ":".$i0.":".$i1.":".$spouses[$i0][$fldWEDDIN].":".$spouses[$i0][$fldPLACEW].":".spouses[$i0][$fldMAPSW].":<br>";
+
     }
   }
+
+//echo "<br><br><br><br><br>";
+
   if($inxspouse > -1){
      $aspouse[] = -1;
      $apersone[] = $inxspouse;
@@ -919,7 +930,8 @@ if(isset($_POST['deleteperson'])) {
   echo '<tr bgcolor="#ebdac7"><td>'.$field_spouse.'</td>';
   echo '<td>';
 //echo "=".count($aspouse)."==".count($spths)."=[".$spouse_key."]=$delspouse=$apersone[0]=";
-  echo '<select id="spouse" class="spouse" name="spouse" onchange="OnSelectionChange (this)">';
+//echo "==spouse_ind=[".$spouse_ind."]===";
+  echo '<select id="spouse" class="spouse" name="spouse" onchange="OnSelectionChange(this)">';
   $n = 0;
   $spouse_key = "";
   for ($i = 0; $i < count($aspouse); $i++) {
@@ -962,36 +974,24 @@ if(isset($_POST['deleteperson'])) {
 
  <!--<p id="p">selectedIndex: 0</p>-->
  <script>
-     function OnSelectionChange (select) {
-         const index = select.selectedIndex;
-         var selectedOption = select.options[index];
-         var options = selectedOption.value;
-         var option = options.split(":");
-         document.cookie = "inxspouse="+option[0]+"; path=/";
-         //alert ("The selected option is " + option[0]);
-         //const pElem = document.getElementById("p");
-         //pElem.textContent = `selectedIndex: ${index}`;
-     }
+   function OnSelectionChange (select) {
+     const index = select.selectedIndex;
+     var selectedOption = select.options[index];
+     var options = selectedOption.value;
+     var option = options.split(":");
+     document.cookie = "inxspouse="+option[0]+"; path=/";
+     alert ("The selected option is " + option[0] +";" + <?php echo $_COOKIE['inxspouse']; ?>);
+     //const pElem = document.getElementById("p");
+     //pElem.textContent = `selectedIndex: ${index}`;
+
+     const wedding = document.getElementById("wedding");
+     wedding.value = "<?php echo $spouses[(int)$_COOKIE['inxspouse']][$fldWEDDIN]; ?>";
+     const placew  = document.getElementById("placew");
+     placew.value  = "<?php echo $spouses[(int)$_COOKIE['inxspouse']][$fldPLACEW]; ?>";
+     //const mapsw  = document.getElementById("placew");
+     //mapsw.value  = "<?php echo $spouses[(int)$_COOKIE['inxspouse']][$fldPLACEW]; ?>";
+   }
  </script>
-
- <script>
-  const selectElem = document.getElementById("spouse");
-  selectElem.addEventListener("change", () => {
-    //const index = selectElem.selectedIndex;
-    //document.cookie = "inxspouse="+index+"; path=/";
-
-    //const pElem = document.getElementById("p");
-    //pElem.textContent = `selectedIndex: ${index}`;
-
-    const wedding = document.getElementById("wedding");
-    wedding.value = "<?php echo $spouses[(int)$_COOKIE['inxspouse']][$fldWEDDIN]; ?>";
-    const placew  = document.getElementById("placew");
-    placew.value  = "<?php echo $spouses[(int)$_COOKIE['inxspouse']][$fldPLACEW]; ?>";
-    //const mapsw  = document.getElementById("placew");
-    //mapsw.value  = "<?php echo $spouses[(int)$_COOKIE['inxspouse']][$fldPLACEW]; ?>";
-  });
- </script>
-
 
  <tr bgcolor="#ebdac7"><td><?php echo $field_wedding; ?></td>
   <td><input type="text" name="wedding" id="wedding" size="25" value="<?php echo $weddinga; ?>"></td>
@@ -1124,4 +1124,3 @@ function Redirect($url, $permanent = false)
 }
 
 ?>
-
