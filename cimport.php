@@ -341,7 +341,7 @@ function Gedcom_Import()
     }
   }
 
-echo "<br><br><br><br>";
+//echo "<br><br><br><br>";
 //for ($i = 0; $i < count($listPerson); $i++) echo "PERSON: ".$listBirth[$i].";".$listDeath[$i].";".$listPerson[$i].";".$father.";".$mother.";".$gender.";".$sPlaceb.";".$sPlaced.";".$spouse."<br>";
 //for ($i = 0; $i < count($persons); $i++) echo "PERSON: ".$persons[$i][0]."|".$persons[$i][1]."|".$persons[$i][2]."|".$persons[$i][3]."|".$persons[$i][4]."|".$persons[$i][5]."|".$persons[$i][6]."|".$persons[$i][7]."|".$persons[$i][8]."|".$persons[$i][9]."<br>";
 //for ($i = 0; $i < count($persons); $i++) echo "PERSON: ".$persons[$i][$fldINX]."|".$persons[$i][$fldID]."|".$persons[$i][$fldPERL]."|".$persons[$i][$fldPERF]."|".$persons[$i][$fldPERS]."|".$persons[$i][$fldFAT]."|".$persons[$i][$fldMOT]."|".$persons[$i][$fldSEX]."|".$persons[$i][$fldICON]."|"."<br>";
@@ -349,7 +349,7 @@ echo "<br><br><br><br>";
 //for ($i = 0; $i < count($listMother); $i++) echo "MOTHER: ".$listMother[$i]."<br>";
 //for ($i = 0; $i < count($fathers); $i++) echo "FATHER: ".$fathers[$i][0]."|".$fathers[$i][1]."<br>";
 //for ($i = 0; $i < count($mothers); $i++) echo "MOTHER: ".$mothers[$i][0]."|".$mothers[$i][1]."<br>";
-for ($i = 0; $i < count($spouses); $i++) echo "SPOUSE $i: ".$spouses[$i][$fldSPOUS1]." | ".$spouses[$i][$fldSPOUS2]." | ".$spouses[$i][$fldWEDDIN]." | ".$spouses[$i][$fldPLACEW]." | ".$spouses[$i][$fldMAPSW]." |<br>";
+//for ($i = 0; $i < count($spouses); $i++) echo "SPOUSE $i: ".$spouses[$i][$fldSPOUS1]." | ".$spouses[$i][$fldSPOUS2]." | ".$spouses[$i][$fldWEDDIN]." | ".$spouses[$i][$fldPLACEW]." | ".$spouses[$i][$fldMAPSW]." |<br>";
 //for ($i = 0; $i < count($listFChildId); $i++) {echo "CHILDFATHER=".$listFChildId[$i].";".$listFatherId[$i]."<br>";}
 //for ($i = 0; $i < count($listMChildId); $i++) {echo "CHILDMOTHER=".$listMChildId[$i].";".$listMotherId[$i]."<br>";}
 //for ($i = 0; $i < count($listSpouseId); $i++) {echo "SPOUSEID=".$listSChildId[$i].";".$listSpouseId[$i]."<br>";}
