@@ -311,8 +311,8 @@ if(isset($_POST['saveperson'])) {
   }
 
   // spouse
-echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
-echo "<br>aspouse =".count($aspouse)."=";print_r($persone);echo "<hr>";
+//echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
+//echo "<br>aspouse =".count($aspouse)."=";print_r($persone);echo "<hr>";
 //echo "<br>apersone =".count($apersone)."=";print_r($apersone);echo "<hr>";
 //echo "_POST[spouse]=".$_POST["spouse"]."<br>";
 //for ($i = 0; $i < count($spouses); $i++) echo "SPOUSE $i: ".$spouses[$i][$fldSPOUS1]." | ".$spouses[$i][$fldSPOUS2]." | ".$spouses[$i][$fldWEDDIN]." | ".$spouses[$i][$fldPLACEW]." | ".$spouses[$i][$fldMAPSW]." |<br>";
@@ -331,14 +331,14 @@ echo "<br>aspouse =".count($aspouse)."=";print_r($persone);echo "<hr>";
   $sps1 = array();
   if(isset($_SESSION["spousea"])) $spouse_key = $_SESSION["spousea"];
   if(strlen("$spouse_key") == 0) $spouse_key = $_POST['spousea'];
-echo 'spouse_key='.$spouse_key.'<br>';
+//echo 'spouse_key='.$spouse_key.'<br>';
   if($spouse_key != ""){
     $spths = explode(",", $spouse_key);
     for ($i = 0; $i < count($spths); $i++) {
       $spts = explode(":", $spths[$i]);
       $sps0[] = $spts[0];
       $sps1[] = $spts[1];
-echo 'spouse_key1='.$spts[1].'<br>';
+//echo 'spouse_key1='.$spts[1].'<br>';
     }
   }
   $sps2 = array();//все супруги в списке $spouses
@@ -346,12 +346,12 @@ echo 'spouse_key1='.$spts[1].'<br>';
     if ($spouses[$i][$fldSPOUS1] == $inx_person) {
        $ii = $spouses[$i][$fldSPOUS2];
        $sps2[] = $ii;
-echo 'spouse_key21='.$ii.'<br>';
+//echo 'spouse_key21='.$ii.'<br>';
     }else
     if ($spouses[$i][$fldSPOUS2] == $inx_person) {
        $ii = $spouses[$i][$fldSPOUS1];
        $sps2[] = $ii;
-echo 'spouse_key22='.$ii.'<br>';
+//echo 'spouse_key22='.$ii.'<br>';
     }
   }
   for ($i = 0; $i < count($sps1); $i++) { // spouse add or update
@@ -363,12 +363,12 @@ echo 'spouse_key22='.$ii.'<br>';
        }
      }
      if(!$b){ // add
-echo '<b>spouseAdd='.$inx_person.';'.$sps1[$i].'</b><br>';
+//echo '<b>spouseAdd='.$inx_person.';'.$sps1[$i].'</b><br>';
        $spouses[] = array(count($spouses), $inx_person, $sps1[$i],$_POST['wedding'],$_POST['placew'],"");
        $sps0[] = count($spouses);
      } else { // edit
        if($spouse_ind == $sps1[$i]){
-echo '<b>spouseEdit='.$inx_person.';'.$sps1[$i].'</b><br>';
+//echo '<b>spouseEdit='.$inx_person.';'.$sps1[$i].'</b><br>';
          $spouses[$sps0[$i]][$fldWEDDIN] = $_POST['wedding'];
          $spouses[$sps0[$i]][$fldPLACEW] = $_POST['placew'];
          $spouses[$sps0[$i]][$fldMAPSW] = "";//$_POST['mapsw'];
@@ -385,15 +385,15 @@ echo '<b>spouseEdit='.$inx_person.';'.$sps1[$i].'</b><br>';
        }
      }
      if($b){
-echo '<b>spouseDel0='.$inx_person.';'.$sps2[$i].'</b><br>';
+//echo '<b>spouseDel0='.$inx_person.';'.$sps2[$i].'</b><br>';
        for ($j = 0; $j < count($spouses); $j++) {//сделать обратный отсчет
          if($spouses[$j][$fldSPOUS1] == $id_person && $spouses[$j][$fldSPOUS2] == $sps2[$i]) {
-echo '<b>spouseDel1='.$spouses[$j][$fldSPOUS1].';'.$inx_person.';;'.$spouses[$j][$fldSPOUS2].';'.$sps2[$i].'</b><br>';
+//echo '<b>spouseDel1='.$spouses[$j][$fldSPOUS1].';'.$inx_person.';;'.$spouses[$j][$fldSPOUS2].';'.$sps2[$i].'</b><br>';
            unset($spouses[$j]);
            break;
          }else
          if($spouses[$j][$fldSPOUS2] == $id_person && $spouses[$j][$fldSPOUS1] == $sps2[$i]) {
-echo '<b>spouseDel2='.$spouses[$j][$fldSPOUS1].';'.$inx_person.';;'.$spouses[$j][$fldSPOUS2].';'.$sps2[$i].'</b><br>';
+//echo '<b>spouseDel2='.$spouses[$j][$fldSPOUS1].';'.$inx_person.';;'.$spouses[$j][$fldSPOUS2].';'.$sps2[$i].'</b><br>';
            unset($spouses[$j]);
            break;
          }
@@ -473,7 +473,7 @@ echo '<b>spouseDel2='.$spouses[$j][$fldSPOUS1].';'.$inx_person.';;'.$spouses[$j]
 
   }
 
-echo "<hr><br><br><br><br><br><br>";
+//echo "<hr><br><br><br><br><br><br>";
 
 
   $jsonPerson->occupation = $_POST['occu'];
@@ -660,8 +660,8 @@ if(isset($_POST['deleteperson'])) {
     $spouse_inx = 0;
   }
 
-echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
-echo "=== spouse_key = $spouse_key =<br>";
+//echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
+//echo "=== spouse_key = $spouse_key =<br>";
 
   if(strlen("$spouse_key") > 0){
     $spths = explode(",", $spouse_key);
@@ -672,14 +672,14 @@ echo "=== spouse_key = $spouse_key =<br>";
       $aspouse[] = $i0;
       $apersone[] = $i1;
 
-echo ":".$i0.":".$i1.":".$spouses[$i0][$fldWEDDIN].":".$spouses[$i0][$fldPLACEW].":".spouses[$i0][$fldMAPSW].":<br>";
+//echo ":".$i0.":".$i1.":".$spouses[$i0][$fldWEDDIN].":".$spouses[$i0][$fldPLACEW].":".spouses[$i0][$fldMAPSW].":<br>";
 
     }
   }
 
-echo "<br>aspouse =".count($aspouse)."=";print_r($aspouse);echo "<hr>";
-echo "<br>apersone =".count($apersone)."=";print_r($apersone);echo "<hr>";
-echo "<br><br><br><br><br>";
+//echo "<br>aspouse =".count($aspouse)."=";print_r($aspouse);echo "<hr>";
+//echo "<br>apersone =".count($apersone)."=";print_r($apersone);echo "<hr>";
+//echo "<br><br><br><br><br>";
 
   if($inxspouse > -1){
      $aspouse[] = -1;
@@ -989,13 +989,13 @@ echo "<br><br><br><br><br>";
   }
   echo '</td></tr>';
 
-print_r($aspouse);echo "<br>";
-print_r($apersone);echo "<br>";
+//print_r($aspouse);echo "<br>";
+//print_r($apersone);echo "<br>";
   $awedding = array();
   for($i = 0; $i < count($aspouse); $i++) {
      $awedding[] = $spouses[$aspouse[$i]][$fldWEDDIN];
   }
-print_r($awedding);echo "<br>";
+//print_r($awedding);echo "<br>";
   $aplacew = array();
   for($i = 0; $i < count($aspouse); $i++) {
      $aplacew[] = $spouses[$aspouse[$i]][$fldPLACEW];
@@ -1005,17 +1005,12 @@ print_r($awedding);echo "<br>";
 
 ?>
 
- <p id="p">selectedIndex: 0</p>
  <script>
      function OnSelectionChange (select) {
          const index = select.selectedIndex;
          var selectedOption = select.options[index];
          var options = selectedOption.value;
          var option = options.split(":");
-
-         //<?php session_start(); ?>
-         //document.cookie = "inxspouse="+option[0]+"; path=/";
-         createCookie("inxspouse",option[0]);
 
          const pwedding = document.getElementById("wedding");
          var weddingArray =  <?php echo json_encode($awedding); ?>;
@@ -1024,63 +1019,8 @@ print_r($awedding);echo "<br>";
          const pplacew = document.getElementById("placew");
          var placewArray =  <?php echo json_encode($aplacew); ?>;
          pplacew.value = placewArray[index];
-
-         //const wedding = document.getElementById("wedding");
-         //wedding.value = "<?php echo $spouses[(int)$_COOKIE['inxspouse']][$fldWEDDIN]; ?>";
-         //const placew  = document.getElementById("placew");
-         //placew.value  = "<?php echo $spouses[(int)$_COOKIE['inxspouse']][$fldPLACEW]; ?>";
-         //const mapsw  = document.getElementById("mapsw");
-         //mapsw.value  = "<?php echo $spouses[(int)$_COOKIE['inxspouse']][$fldMAPSW]; ?>";
      }
-     // Функция для создания cookie  
-     function createCookie(name, value, days) {  
-        let expires;  
-        if (days) {  
-            let date = new Date();  
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));  
-            expires = "; expires=" + date.toGMTString();  
-        } else {  
-            expires = "";  
-        }  
-        document.cookie = escape(name) + "=" + escape(value) + expires + "; path=/";  
-     }  
  </script>
-
- <script>
-  const selectElem = document.getElementById("spouse");
-  selectElem.addEventListener("change", () => {
-     //const index = selectElem.selectedIndex;
-     //document.cookie = "inxspouse="+index+"; path=/";
-
-    //Assign php generated json to JavaScript variable
-    var tempArray = <?php global $aspouse; echo json_encode($aspouse); ?>;
-   //You will be able to access the properties as 
-    //alert(tempArray[0]);
-
-     //const pElem = document.getElementById("p");
-     //pElem.textContent = `selectedIndex: ${index}`;
-  });
- </script>
-
-<?php
-   
-// Create an array
-$sampleArray = array(
-    0 => "Geeks", 
-    1 => "for", 
-    2 => "Geeks", 
-)
-?>
- 
-<script>
-// Access the array elements
-var passedArray = 
-    <?php echo json_encode($awedding); ?>;
-// Display the array elements
-for(var i = 0; i < passedArray.length; i++){
-    document.write(passedArray[i]);
-}
-</script>
 
  <tr bgcolor="#ebdac7"><td><?php echo $field_wedding; ?></td>
   <td><input type="text" name="wedding" id="wedding" size="25" value="<?php echo $weddinga; ?>"></td>

@@ -40,6 +40,7 @@ CREATE TABLE `cusers` (
   `http` varchar(160) NOT NULL DEFAULT '',
   `activation` varchar(255) NOT NULL,
   `status` enum('0','1') NOT NULL DEFAULT '0',
+  `acces` enum('0','1','2') NOT NULL DEFAULT '0',
   `two_factor_code` varchar(6) NOT NULL DEFAULT '',
   `two_factor_expires_at` varchar(11) NOT NULL DEFAULT '',
   `notes` text NOT NULL

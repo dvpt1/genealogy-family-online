@@ -10,10 +10,12 @@ _already_logged($_COOKIE);
 _logout_user($_COOKIE);
 $user = _check_user($_COOKIE);
 
-echo "<br><br><br>clogout1<br>";
+echo "<br><br><br><br>";
+echo "<h4><a href=\"index.php\"><img src=\"icons/ic_menu_back.png\"></a></h4>";
+
 //echo print_r($user); echo "<br>";
-echo "=id=".$user['id']."<br>";
-echo "=name=".$user['name']."<br>";
+//echo "=id=".$user['id']."<br>";
+//echo "=name=".$user['name']."<br>";
 
 //_begin_html($user);
 //_logout_html();
@@ -32,7 +34,6 @@ if (isset($_SERVER['HTTP_COOKIE'])) {
     foreach($cookies as $cookie) {
         $parts = explode('=', $cookie);
         $name = trim($parts[0]);
-echo "=names=".$name."<br>";
         setcookie($name, '', time()-1000);
         setcookie($name, '', time()-1000, '/');
     }
@@ -40,10 +41,10 @@ echo "=names=".$name."<br>";
 
 $user = _check_user($_COOKIE);
 
-echo "<br><br><br>clogout2<br>";
+//echo "<br><br><br>clogout2<br>";
 //echo print_r($user); echo "<br>";
-echo "=id=".$user['id']."<br>";
-echo "=name=".$user['name']."<br>";
+//echo "=id=".$user['id']."<br>";
+//echo "=name=".$user['name']."<br>";
 
 //_end_html();
 

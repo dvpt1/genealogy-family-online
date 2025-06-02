@@ -74,6 +74,31 @@ function _check_useract($user)
   }
 }
 
+function _check_datauserid($id)
+{
+  $Q = mysql_query(" SELECT `id`,`name`,`pass`,`fio`,`country`,`postcode`,`city`,`address`,`phone`,`http`,`activation`,`status`,`acces`,`two_factor_code`,`two_factor_expires_at`,`notes` FROM cusers WHERE `id` = '$id' ");
+  if(mysql_num_rows($Q) == 0) return 0;
+  else {
+    $usr = array();
+    $r = mysql_fetch_array($Q);
+    $usr['id']   = $r['id'];
+    $usr['name'] = $r['name'];
+    $usr['pass'] = $r['pass'];
+    $usr['fio'] = $r['fio'];
+    $usr['country'] = $r['country'];
+    $usr['postcode'] = $r['postcode'];
+    $usr['city'] = $r['city'];
+    $usr['address'] = $r['address'];
+    $usr['phone'] = $r['phone'];
+    $usr['http'] = $r['http'];
+    $usr['notes'] = $r['notes'];
+    $usr['activation'] = $r['activation'];
+    $usr['status'] = $r['status'];
+    $usr['acces'] = $r['acces'];
+    return $usr;
+  }
+}
+
 function _adduser_database($user, $pass, $fio, $country, $postcode, $city, $address, $phone, $http, $notes, $activation)
 {
   //GLOBAL $pepper;// = getConfigVariable("pepper");

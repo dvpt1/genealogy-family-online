@@ -56,12 +56,20 @@ $tstamp = file_get_contents("timestamp");
   $count = count($persons);// считаем файлы
   $total = ceil($count/$page);// считаем страницы
 
-  print "<br><br>";
+  echo "<br><br>";
+
+GLOBAL $user;
+$users = _check_datauserid($user['id']);
+
+//print_r($user);echo "<br>";
+//print_r($users)."<br>";
+//echo $users['id'].":".$users['name'].":".$users['status'].":".$users['acces']."<br>";
 //$file = __DIR__ ."/cards/$number.card";
 //echo "file=$file <br>";
 //echo "p=$p <br>";
 //echo "count=$count <br>";
 //echo "total=$total <br>";
+
   if($total>1):
 	#две назад
 	print "<font size=+2>";
@@ -158,8 +166,7 @@ $tstamp = file_get_contents("timestamp");
       $name = $persons[$i][$fldPER];
       echo "<a href=?do=cperson&inx=".$i.">";
       echo "<b>".$name."</b></a>&nbsp;&nbsp;";
-      GLOBAL $user;
-      if($user['id'] > 0){
+      if($users['id'] > 0 && $users['acces'] < 2){
         echo "<a href=?do=cpersone&inx=".$i."><img src='icons/ic_menu_edit.png' witdh=24 height=24></a>";
       }
       echo "<a href=?do=cperson&inx=".$i.">";

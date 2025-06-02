@@ -254,6 +254,8 @@ checkCookie();
    $getfile = 'gedcom/kings.ged';
  }
 
+//echo "<br><br><br><br>";print_r($user);echo $user['id'].":".$user['name'].":".$user['status'].":".$user['acces']."<br>";
+
  echo '<div class="menuskived defaultskived">';
  echo '<table><tr><td aling=center valign=center>';
  echo '<a href="'.$https.'"><img src="icons/icon301.png" height=48 width=48></a>';

@@ -28,7 +28,7 @@ if(isset($_POST['submit'])) {
 
   echo "<br><br><br><br>";
   echo '<h4><a href="index.php"><img src="icons/ic_menu_home.png"></a></h4>';
-  echo $_POST['user']." Activation ".$alink."<br>";
+  echo $_POST['user']."send Activation link.<br>";
 
   mail($_POST['user'],"Activation from - $https","$alink");
   //sleep(10);
