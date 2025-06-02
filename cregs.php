@@ -21,14 +21,15 @@ if(isset($_POST['submit'])) {
 
   $password = md5($_POST['pass']); // encrypted password
   $activation = md5($email.time()); // encrypted email+timestamp
+  $acces = 2;
   $alink = $https."/cact.php?code=$activation";
  
-  _adduser_database(fm($_POST['user']),fm($_POST['pass']),fm($_POST['fio']),fm($_POST['country']),fm($_POST['postcode']),fm($_POST['city']),fm($_POST['address']),fm($_POST['phone']),fm($_POST['http']),fm($_POST['notes']),$activation);
+  _adduser_database(fm($_POST['user']),fm($_POST['pass']),fm($_POST['fio']),fm($_POST['country']),fm($_POST['postcode']),fm($_POST['city']),fm($_POST['address']),fm($_POST['phone']),fm($_POST['http']),fm($_POST['notes']),$activation,$acces);
   $msg = $regs1;
 
   echo "<br><br><br><br>";
   echo '<h4><a href="index.php"><img src="icons/ic_menu_home.png"></a></h4>';
-  echo $_POST['user']."send Activation link.<br>";
+  echo "Send ACTIVATION link to - ".$_POST['user']."<br>";
 
   mail($_POST['user'],"Activation from - $https","$alink");
   //sleep(10);
