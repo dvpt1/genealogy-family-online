@@ -10,15 +10,16 @@ include_once("cvars.php");
 
 //$user = "admin@dnadata";//_check_user($_COOKIE);
 $user = array();
-$user['id']   = 1;
-$userId = $user['id'];
+$user['id'] = $_COOKIE['myfamilytree_userid'];
+$user['name'] = $_COOKIE['myfamilytree_username'];
 
-Gedcom_Upload();
+Gedcom_Upload($user);
 
-function Gedcom_Upload()
+function Gedcom_Upload($user)
 {
   global $https;
-  global $userId;
+  $userId = $user['id'];
+  $userName = $user['name'];
 
 echo '<meta http-equiv="content-type" content="text/html; charset=utf-8">';
 
@@ -57,7 +58,6 @@ default:
 //const
 global $gedcoms;
 global $gedcom;
-global $userId;
 
 global $succes01;
 
@@ -77,7 +77,8 @@ global $error13;
 global $error14;
 
 echo "<br><br><br><br>=== Upload ===$https<br>";
-echo "<p><b><a href=".$https."> <<-- BACK <<-- </a>$userId==</b></p>";
+
+echo "<p><b><a href=".$https."> <<-- BACK <<-- </a>".$user['name']."==</b></p>";
 
 $getfile = '';
 if(isset($_COOKIE['myfamilytree_gedcom'])){
@@ -242,7 +243,7 @@ echo '===input_name='.$input_name.'<br>';
 	}
 }
 
-echo "<p><b><a href=".$https."> <<-- BACK <<-- </a></b></p>";
+echo "<p><b><a href=".$https."> <<-- BACK <<-- </a>".$user['name']."==</b></p>";
 
 }
 

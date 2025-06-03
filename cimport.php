@@ -1,18 +1,12 @@
 <?php
 
-include_once("cvars.php");
-include_once("cutils.php");
-
-//$user = _check_auth($_COOKIE);
-global $userId;
-$userId = $user['id'];
+//include_once("cvars.php");
+//include_once("cutils.php");
 
 Gedcom_Import();
 
 function Gedcom_Import()
 {
-  global $userId;
-
   GLOBAL $fldINX;
   GLOBAL $fldID;
 
@@ -47,6 +41,12 @@ function Gedcom_Import()
   global $fldWEDDIN;
   global $fldPLACEW;
   global $fldMAPSW;
+
+  global $fldTIMESTAMP;
+  global $fldAVTOR;
+  global $fldDATETIME;
+  global $fldAVTORUP;
+  global $fldDATETIMEUP;
 
   global $peoples;
   global $persons;
@@ -186,6 +186,12 @@ function Gedcom_Import()
     $notes = $dataPerson['notes'];
     $icon = $dataPerson['icon'];
 
+    $ftimestamp = $dataPerson['stamp']['timestamp'];
+    $favtor     = $dataPerson['stamp']['avtor'];
+    $fdatetime  = $dataPerson['stamp']['datetime'];
+    $favtorup   = $dataPerson['stamp']['avtorup'];
+    $fdatetimeup = $dataPerson['stamp']['datetimeup'];
+
     //echo "<hr width=50%>";
     //echo "id = ".$id."<br>";
     //echo "inx = ".$inx."<br>";
@@ -286,6 +292,16 @@ function Gedcom_Import()
 	    "",//$listChange[$i]         
     	);
 
+    $peoples[$inx] = array
+    	(                       
+            $ftimestamp,
+            $favtor,
+            $fdatetime,
+            $favtorup,
+            $fdatetimeup,
+	    "",//$listChange[$i]         
+    	);
+
     $inx++;
   }
 
@@ -356,7 +372,7 @@ function Gedcom_Import()
 //echo "persons=".count($persons)."<br>";
 //echo "fathers=".count($fathers)."<br>";
 //echo "mothers=".count($mothers)."<br>";
-
+//for ($i = 0; $i < count($peoples); $i++) echo "PEOPLES: ".$peoples[$i][0]." | ".$peoples[$i][1]." | ".$peoples[$i][2]." | ".peoples[$i][3]." | ".peoples[4]." | "."<br>";
 
 }
   

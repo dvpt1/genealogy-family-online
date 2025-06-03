@@ -46,6 +46,11 @@
   $fldPLACEW = 3; // номер колонки place wedding
   $fldMAPSW  = 4; // номер колонки maps wedding
 
+  $fldTIMESTAMP  = 0;
+  $fldAVTOR      = 1;
+  $fldDATETIME   = 2;
+  $fldAVTORUP    = 3;
+  $fldDATETIMEUP = 4;
 
   $gender_neutral = "neutral";
   $gender_male = "Male";
@@ -62,6 +67,10 @@
   $inx_person = 0;
   $cnt_persons = 0;
 
+  $user = array();
+  $users = array();
+
+  $peoples = array();
   $gedcoms = array();
   $persons = array();
   $fathers = array();

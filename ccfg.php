@@ -20,6 +20,8 @@ $https = 'https://dnadata.online';
 $pepper = 'c1isvFdxMDdmjOlvxpecFw';
 $admlogin = 'dvpt';
 $admpswrd = 'dImAs';
+//$userId = 0;
+//$userName = "";
 
 $CONFIG                  = array();
 $CONFIG['HOST_NAME']     = 'localhost';

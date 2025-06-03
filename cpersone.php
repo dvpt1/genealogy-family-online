@@ -4,25 +4,28 @@ include_once("ccfg.php");
 include_once("chtmls.php");
 include_once("cvars.php");
 
-session_start();
-//$user = _check_auth($_COOKIE);
-$user = array();
-$user['id'] = 1;
-$userId = $user['id'];
+$user = _check_auth($_COOKIE);
 
 Persone($user);
 
 //рисует иконку, рамку, имя и дату
 function Persone($user)
 {
+  $users = _check_datauserid($user['id']);
+
   global $https;
   global $timestamp;
+
   global $userId;
+  global $userName;
+  $userId = $user['id'];
+  $userName = $user['name'];
 
   $msg = $GLOBALS["msg"];
   if ($msg != "") echo "<br><font color='red'><b>$msg</b></font>";
 
   global $edtt, $lgnmail, $pwdold, $pwdnew1, $pwdnew2, $pwdizm, $fio, $country, $post, $city, $adres, $phone, $www, $note, $registr, $save, $delete, $questdel; 
+
   global $mn_menu_main;
   global $mn_menu_tree;
   global $mn_menu_branch;
@@ -74,6 +77,12 @@ function Persone($user)
   global $fldPLACEW;
   global $fldMAPSW;
 
+  global $fldTIMESTAMP;
+  global $fldAVTOR;
+  global $fldDATETIME;
+  global $fldAVTORUP;
+  global $fldDATETIMEUP;
+
   global $field_name;
   global $field_gender;
   global $field_father;
@@ -107,6 +116,7 @@ function Persone($user)
   global $gender_male;
   global $gender_female;
 
+  global $peoples;
   global $persons;
   global $fathers;
   global $mothers;
@@ -128,8 +138,26 @@ function Persone($user)
   $person = $persons[$inx_person];
   $id_person = intval($person[$fldID]);
 
-global $aspouse;
-global $apersone;
+  $avtora = "";
+  $datetimea = "";
+  $avtorupa = "";
+  $datetimeupa = "";
+  if($inx_person > -1){
+    $people = $peoples[$inx_person];
+
+    $avtora = $people[$fldAVTOR];
+    $datetimea = $people[$fldDATETIME];
+    $avtorupa = $userName;
+    $datetimeupa = date('Y-m-d H:i:s.u');
+  }else{
+    $avtora = $userName;
+    $datetimea = date('Y-m-d H:i:s.u');
+    $avtorupa = "";
+    $datetimeupa = "";
+  }
+
+  global $aspouse;
+  global $apersone;
   $aspouse = array();
   $apersone = array();
 
@@ -475,7 +503,6 @@ if(isset($_POST['saveperson'])) {
 
 //echo "<hr><br><br><br><br><br><br>";
 
-
   $jsonPerson->occupation = $_POST['occu'];
   $jsonPerson->national = $_POST['nati'];
   $jsonPerson->education = $_POST['educ'];
@@ -485,10 +512,10 @@ if(isset($_POST['saveperson'])) {
   
   $timestamp = date('YmdHisu');
   $jsonPerson->stamp->timestamp = $timestamp;
-  $jsonPerson->stamp->avtor = $userId;
-  $jsonPerson->stamp->datetime = date('Y-m-d H:i:s.u');
-  $jsonPerson->stamp->user = $userId;
-  $jsonPerson->stamp->datetimeup = date('Y-m-d H:i:s.u');
+  $jsonPerson->stamp->avtor = $avtora;
+  $jsonPerson->stamp->datetime = $datetimea;
+  $jsonPerson->stamp->avtorup = $avtorupa;
+  $jsonPerson->stamp->datetimeup = $datetimeupa;
 
   $jsonPersonvar = json_encode($jsonPerson);
  
@@ -710,8 +737,11 @@ if(isset($_POST['deleteperson'])) {
 //echo 'SESSION='. $persona .'='. $gendera."<br>";
 //echo "inx_person=".$inx_person." = ".$person_inx."<br>";
 //echo "keys= ".$father_key." = ".$mother_key."<br>";
+//for ($i = 0; $i < count($peoples); $i++) echo "PEOPLES: ".$peoples[$i][0]." | ".$peoples[$i][1]." | ".$peoples[$i][2]." | ".peoples[$i][3]." | ".peoples[4]." | "."<br>";
+//echo "inx_person=".$inx_person." = ".$userName."<br>";
 
 
+ echo "<center><b><i>$avtora</i></b></center>";
  ?>
 
  <form name="form1" action="" enctype="multipart/form-data" method="post">
@@ -1052,9 +1082,11 @@ if(isset($_POST['deleteperson'])) {
  </tr>
 
  <tr><td colspan="2" align="center">
-  <input type="submit" name="saveperson" value="<?php echo $save; ?>">
 <?php
-  if($inx_person != -1) echo '<input type="submit" name="deleteperson" onclick="return confirm_delete()" value="'.$delete.'">'
+  if($userName == $avtora || $users['acces'] == 0){
+    echo "<input type=\"submit\" name=\"saveperson\" value=\"$save\">";
+    if($inx_person != -1) echo '<input type="submit" name="deleteperson" onclick="return confirm_delete()" value="'.$delete.'">';
+  }
 ?>
 
 <script type="text/javascript">

@@ -1,21 +1,15 @@
 <?php
 
+include_once("ccfg.php");
 //include_once("csub.php");
 include_once("chtmls.php");
 
-
-//$admin = "admin@dnadata";
-//echo "<br><br><br>index<br>";
 $user = _check_user($_COOKIE);
-//echo print_r($user); echo "<br>";
-//echo $user['id']."<br>";
-//echo $user['name']."<br>";
 
 if(!isset($user['id']) || $user['id'] < 1 || empty($user['name'])){
 	header("location:clogin.php");
 	exit;
 }
-
 
 if (isset($_GET['load']) && isset($_GET['code'])) {
   $name = $_GET['load'];
@@ -44,6 +38,12 @@ if (isset($_GET['save']) && isset($_GET['code']) && isset($_GET['gedcom'])) {
 
   return 0;
 }
+
+//GLOBAL $userId, $userName;
+//$userId = $user['id'];
+//$userName = $user['name'];
+setcookie('myfamilytree_userid', $user['id']);
+setcookie('myfamilytree_username', $user['name']);
 
 _begin_html($user);
 _index_html($user);

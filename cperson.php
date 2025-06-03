@@ -42,6 +42,12 @@ function Person()
   global $fldPLACEW;
   global $fldMAPSW;
 
+  global $fldTIMESTAMP;
+  global $fldAVTOR;
+  global $fldDATETIME;
+  global $fldAVTORUP;
+  global $fldDATETIMEUP;
+
   global $field_name;
   global $field_gender;
   global $field_father;
@@ -71,6 +77,7 @@ function Person()
   global $field_call;
   global $field_email;
 
+  global $peoples;
   global $persons;
   global $fathers;
   global $mothers;
@@ -101,6 +108,13 @@ function Person()
       $htm .= "<div class='blockn' style='POSITION: absolute; LEFT: 0px; TOP: 0px; WIDTH: 660px; HEIGHT: 650px'>";
   }
 
+  $avtora = "";
+  if($inx_person > -1){
+    $people = $peoples[$inx_person];
+
+    $avtora = $people[$fldAVTOR];
+  }
+  $htm .= "<center><b><i>$avtora</i></b></center>";
 
   //$path = $getdir.$person[$fldPER].".jpg"; // Получаем путь к картинке
   //$htm .= "<p><img src='$path' alt='$person[$fldPER]' title='$person[$fldPER]' width='64' heigth='64' align=left></p>"; // Вывод превью картинки

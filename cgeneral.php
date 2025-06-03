@@ -69,6 +69,8 @@ $users = _check_datauserid($user['id']);
 //echo "p=$p <br>";
 //echo "count=$count <br>";
 //echo "total=$total <br>";
+//echo "userId=".$_COOKIE['myfamilytree_userid']."userName=".$_COOKIE['myfamilytree_username']."<br>";
+//echo "userId=".$user['id']."userName=".$user['name']."<br>";
 
   if($total>1):
 	#две назад

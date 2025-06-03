@@ -10,17 +10,18 @@ include_once("cvars.php");
 
 //$user = "admin@dnadata";//_check_user($_COOKIE);
 $user = array();
-$user['id']   = 1;
-$userId = $user['id'];
+$user['id'] = $_COOKIE['myfamilytree_userid'];
+$user['name'] = $_COOKIE['myfamilytree_username'];
 
-Gedcom_Import();
+Gedcom_Import($user);
 
-function Gedcom_Import()
+function Gedcom_Import($user)
 {
   global $timestamp;
 
   global $https;
-  global $userId;
+  $userId = $user['id'];
+  $userName = $user['name'];
 
   GLOBAL $fldINX;
   GLOBAL $fldID;
@@ -55,6 +56,12 @@ function Gedcom_Import()
   global $fldWEDDIN;
   global $fldPLACEW;
   global $fldMAPSW;
+
+  global $fldTIMESTAMP;
+  global $fldAVTOR;
+  global $fldDATETIME;
+  global $fldAVTORUP;
+  global $fldDATETIMEUP;
 
   global $peoples;
   global $persons;
@@ -1202,10 +1209,10 @@ echo "<hr>";
 
 	$timestamp = date('YmdHisu');
 	$jsonPerson->stamp->timestamp = $timestamp;
-	$jsonPerson->stamp->avtor = $userId;
+	$jsonPerson->stamp->avtor = $userName;
 	$jsonPerson->stamp->datetime = date('Y-m-d H:i:s.u');
-	$jsonPerson->stamp->user = $userId;
-	$jsonPerson->stamp->datetimeup = date('Y-m-d H:i:s.u');
+	$jsonPerson->stamp->avtorup = "";
+	$jsonPerson->stamp->datetimeup = "";
 
 	$jsonPersonvar = json_encode($jsonPerson);
  

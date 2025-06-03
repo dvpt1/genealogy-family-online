@@ -5,6 +5,7 @@ include_once("csub.php");
 include_once("cutils.php");
 include_once("cvars.php");
 
+global $user;
 global $https;
 
 // получаем язык
