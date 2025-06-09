@@ -741,8 +741,14 @@ if(isset($_POST['deleteperson'])) {
 //echo "inx_person=".$inx_person." = ".$userName."<br>";
 
 
- echo "<center><b><i>$avtora</i></b></center>";
  ?>
+ <table width="100%">
+ <tr><td align=center>
+ <b><i><?php echo $avtora; ?></i></b>
+ </td><td align=right>
+ <a href="fotos/fotos.php?inx=<?php echo $inx_person; ?>&id=<?php echo $id_person; ?>&name=<?php echo $persona; ?>"><img src="icons/mn_menu_foto.png" width=48 height=48 align=right></a>
+ <td><tr>
+ </table>
 
  <form name="form1" action="" enctype="multipart/form-data" method="post">
  <input type="file" name="path" title="Фотография" />
