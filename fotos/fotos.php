@@ -49,15 +49,15 @@
   echo "<table width=100%><tr>";
   for ($i = 0; $i < count($files); $i++) { 
     echo "<td>";
+    $path = $id_person;
+    if(!empty($id_person)) $path .= "/";
+    echo "<a href='".$path.$files[$i]."'><img src='".$path.$files[$i]."' width=256 height=256 alt=".$files[$i]." /></a>";
 ?>
     <form name="form2" action="" enctype="multipart/form-data" method="post">
     <input type="submit" name="delimage" title="Удалить" value="<?php echo $files[$i]; ?>" />
     Удалить<br>
     </form>
 <?php
-    $path = $id_person;
-    if(!empty($id_person)) $path .= "/";
-    echo "<a href='".$path.$files[$i]."'><img src='".$path.$files[$i]."' width=256 height=256 alt=".$files[$i]." /></a>";
     echo "</td>";
     if (($i + 1) % 4 == 0) echo "</tr><tr>";
   } 
