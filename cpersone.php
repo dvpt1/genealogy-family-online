@@ -746,7 +746,7 @@ if(isset($_POST['deleteperson'])) {
  <tr><td align=center>
  <b><i><?php echo $avtora; ?></i></b>
  </td><td align=right>
- <a href="fotos/fotos.php?inx=<?php echo $inx_person; ?>&id=<?php echo $id_person; ?>&name=<?php echo $persona; ?>"><img src="icons/mn_menu_foto.png" width=48 height=48 align=right></a>
+ <a href="cfotos.php?inx=<?php echo $inx_person; ?>&id=<?php echo $id_person; ?>&name=<?php echo $persona; ?>"><img src="icons/mn_menu_foto.png" width=48 height=48 align=right></a>
  <td><tr>
  </table>
 
