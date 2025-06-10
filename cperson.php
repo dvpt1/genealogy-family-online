@@ -117,7 +117,7 @@ function Person()
     $avtora = $people[$fldAVTOR];
   }
   $htm .= "<center><b><i>$avtora</i></b></center>";
-  //??$htm .= "<a href=\"cfotos.php?inx=$inx_person&id=$id_person&name=$persona\"><img src=\"icons/mn_menu_foto.png\" width=48 height=48 align=right></a>";
+  //??$htm .= "<a href=\"cfotos.php?id=$id_person&name=$persona\"><img src=\"icons/mn_menu_foto.png\" width=48 height=48 align=right></a>";
 
   //$path = $getdir.$person[$fldPER].".jpg"; // Получаем путь к картинке
   //$htm .= "<p><img src='$path' alt='$person[$fldPER]' title='$person[$fldPER]' width='64' heigth='64' align=left></p>"; // Вывод превью картинки

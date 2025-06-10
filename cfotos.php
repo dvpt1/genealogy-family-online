@@ -11,7 +11,6 @@ $users = _check_datauserid($user['id']);
   $id_person = 0;
   $nm_person = "";
   if (isset($_GET['id'])){
-    $inx_person = $_GET['inx'];
     $id_person = $_GET['id'];
     $nm_person = $_GET['name'];
 
