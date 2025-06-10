@@ -7,6 +7,7 @@ include_once("cvars.php");
 
 global $user;
 global $https;
+global $filter;
 
 // получаем язык
 if (!empty($_GET['lang'])) {
@@ -25,9 +26,17 @@ if (!empty($_GET['lang'])) {
  }
 }
 //echo "<br><br><br><br>LANG=".$lang."<br>";
-
 //$url = $_SERVER['REQUEST_URI'];
-//echo "<br><br><br><br><br>".$url."<br>";
+//echo "<br>".$url."<br>";
+
+$filter = "";
+if(isset($_GET['filter'])){
+  $filter = $_GET['filter'];
+}
+if(isset($_POST['filter'])){
+  $filter = $_POST['filter'];
+}
+//echo "<br>".$filter."<br>";
 
 switch ($lang) {
 case 'en': include_once("languages/en.php"); break;
@@ -116,7 +125,7 @@ function _begin_html($user)
     display: block;
     color: #f2f2f2;
     text-align: center;
-    padding: 14px 16px;
+    padding: 16px 18px;
     text-decoration: none;
     font-size: 20px;
 }
@@ -308,6 +317,7 @@ function _index_html($user)
  global $ic_menu_file;
  global $ic_menu_load;
  global $ic_menu_delete;
+ global $filter;
 
 //=== FILES =================================== //
 echo "<br><br><br>";
@@ -486,25 +496,29 @@ function _end_html($user)
  global $ic_menu_file;
  global $ic_menu_load;
  global $ic_menu_delete;
+ global $ic_menu_filter;
+ global $filter;
 
  echo '<div class="navbar" id="myNavbar">';
- echo '<table><tr><td><font size=12 "style: color: maroon;">';
-
+ echo '<table><tr><td align=center valign=center>';
  echo '<a href="?do=cpersone&inx=-1&title='.$ic_menu_add.'"><img src="icons/ic_menu_add.png" width=24 height=24>'.$ic_menu_add.'</a>';
- echo '<a href="?lang='.$lang.'&do=chelp&title='.$mn_menu_help.'"><img src="icons/ic_menu_help.png" width=24 height=24>'.$mn_menu_help.'</a>';
-
+// echo '<a href="?lang='.$lang.'&do=chelp&title='.$mn_menu_help.'"><img src="icons/ic_menu_help.png" width=24 height=24>'.$mn_menu_help.'</a>';
+ echo '</td><td align=center valign=center>';
+?>
+<form method="POST" action="index.php?filter=<?php echo $filter; ?>">
+    <input type="text" name="filter" value="<?php echo $filter; ?>">
+    <input type="submit" value="&#128269;">
+</form>
+<?php
+ echo '</td><td align=center valign=center>';
  if (!empty($user)) {
-   echo "&nbsp;".$user['name']."&nbsp;"; 
+   echo "&nbsp;<a href=mailto:".$user['name'].">".$user['name']."</a>&nbsp;"; 
    echo "&nbsp;<a href=?do=user>Кабинет</a>&nbsp;";
    echo "&nbsp;<a href=?do=logout>Выйти</a>&nbsp;";
  } else {
    echo "&nbsp;<a href=?do=login>Войти</a>&nbsp;";
  }
-
- echo '<a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>';
- echo '</font></td><td>';
- echo '<table><tr><td>';
-
+ echo '</td><td align=center valign=center>';
  if($user['id'] == 1) {
    echo '<form action="cupload.php?lang='.$lang.'&do=cupload" method="post" enctype="multipart/form-data">';
    if(!isset($_COOKIE['myfamilytree_gedcom']))
@@ -516,12 +530,9 @@ function _end_html($user)
      echo '<input type="submit" name="delete" value="'.$ic_menu_delete.'">';
    }
    echo '</form>';
-   
-   echo '</td></tr></table>';
-   echo '</td></tr></table>';
-   echo '</div>';
  }
-
+ echo '</td></tr></table>';
+ echo '</div>';
  ?>
 
  </body>

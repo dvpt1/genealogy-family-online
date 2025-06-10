@@ -69,6 +69,7 @@ $ic_menu_add='Create';
 $ic_menu_file='File';
 $ic_menu_load='Upload';
 $ic_menu_delete='Delete';
+$ic_menu_filter='Filter';
 
 $msg01='You can help the development of the project by transferring any amount to your wallets:';
 

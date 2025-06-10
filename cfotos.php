@@ -10,7 +10,7 @@ $users = _check_datauserid($user['id']);
   $inx_person = -1;
   $id_person = 0;
   $nm_person = "";
-  if (isset($_GET['inx'])){
+  if (isset($_GET['id'])){
     $inx_person = $_GET['inx'];
     $id_person = $_GET['id'];
     $nm_person = $_GET['name'];
@@ -47,7 +47,7 @@ $users = _check_datauserid($user['id']);
   $files = scandir($dir); // Получаем список файлов из этой директории
   $files = excess($files); // Удаляем лишние файлы
 
-  echo "<a href=\"../index.php?do=cpersone&inx=$inx_person\"><img src=\"/icons/ic_menu_home.png\" align=left></a>";
+  echo "<a href=\"../index.php?do=cpersone&id=$id_person\"><img src=\"/icons/ic_menu_home.png\" align=left></a>";
 
   if($users['id'] > 0 && $users['acces'] < 2){
 ?>

@@ -164,15 +164,17 @@ $users = _check_datauserid($user['id']);
       else if($gender=='2') {echo "<td bgcolor='#ffc0cb' width='$cellw' heigth='$cellh'>";}
       else {echo "<td width='$cellw' heigth='$cellh'>";}
 
+      $inx = $persons[$i][$fldINX];
       $id = $persons[$i][$fldID];
       $name = $persons[$i][$fldPER];
-      echo "<a href=?do=cperson&inx=".$i.">";
+      echo "<a href=?do=cperson&id=".$id.">";
       echo "<b>".$name."</b></a>&nbsp;&nbsp;";
-      if($users['id'] > 0 && $users['acces'] < 2){
-        echo "<a href=?do=cpersone&inx=".$i."><img src='icons/ic_menu_edit.png' witdh=24 height=24></a>";
-      }
-      echo "<a href=?do=cperson&inx=".$i.">";
 
+      if($users['id'] > 0 && $users['acces'] < 2){
+        echo "<a href=?do=cpersone&id=".$id."><img src='icons/ic_menu_edit.png' witdh=24 height=24></a>";
+      }
+
+      echo "<a href=?do=cperson&id=".$id.">";
       if(!empty($persons[$i][$fldICON])){
 	$src = "<img src='data:image/jpeg;base64,".$persons[$i][$fldICON]."' width='$cellw' heith='$cellh'>";
 	echo $src;

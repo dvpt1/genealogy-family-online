@@ -3,6 +3,7 @@
 include_once("ccfg.php");
 include_once("chtmls.php");
 include_once("cvars.php");
+include_once("cdatabases.php");
 
 $user = _check_auth($_COOKIE);
 
@@ -134,9 +135,10 @@ function Persone($user)
 
   $src_icon = "";
   $src_image = "";
-  $inx_person = $_GET['inx'];
+  $id_person = $_GET['id'];
+  $inx_person = IdToInx($id_person);
   $person = $persons[$inx_person];
-  $id_person = intval($person[$fldID]);
+  //$id_person = intval($person[$fldID]);
 
   $avtora = "";
   $datetimea = "";

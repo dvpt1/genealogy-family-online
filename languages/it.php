@@ -69,6 +69,7 @@ $ic_menu_add='Create';
 $ic_menu_file='File';
 $ic_menu_load='Carica';
 $ic_menu_delete='Elimina';
+$ic_menu_filter='Filtro';
 
 $msg01='Puoi aiutare lo sviluppo del progetto trasferendo qualsiasi importo sui tuoi portafogli:';
 

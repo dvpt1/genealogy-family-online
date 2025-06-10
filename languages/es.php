@@ -69,6 +69,7 @@ $ic_menu_add='Create';
 $ic_menu_file='Archivo';
 $ic_menu_load='Subir';
 $ic_menu_delete='Eliminar';
+$ic_menu_filter='Filtro';
 
 $msg01='Puede ayudar al desarrollo del proyecto transfiriendo cualquier cantidad a sus billeteras:';
 

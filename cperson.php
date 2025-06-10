@@ -1,5 +1,6 @@
 <?php
 
+include_once("cdatabases.php");
 
 Person();
 
@@ -87,25 +88,26 @@ function Person()
 
   global $getdir;
 
-  $inx_person = $_GET['inx'];
+  $id_person = $_GET['id'];
+  $inx_person = IdToInx($id_person);
 
   $person = $persons[$inx_person];
   $gender = $person[$fldSEX];
 
   $htm = "";
 
-  $htm .= "<div class='shadow' style='POSITION: absolute; LEFT: 10px; TOP: 60px; WIDTH: 675px; HEIGHT: 665px'>";
-  if ($person[$fldSEX] == "1")
+  $htm .= "<div class='shadow' style='POSITION: absolute; LEFT: 10px; TOP: 60px; WIDTH: 975px; HEIGHT: 965px'>";
+  if ($gender == "1")
   {
-      $htm .= "<div class='blockm' style='POSITION: absolute; LEFT: 0px; TOP: 0px; WIDTH: 660px; HEIGHT: 650px'>";
+      $htm .= "<div class='blockm' style='POSITION: absolute; LEFT: 0px; TOP: 0px; WIDTH: 960px; HEIGHT: 950px'>";
   }
-  else if ($person[$fldSEX] == "2")
+  else if ($gender == "2")
   {
-      $htm .= "<div class='blockw' style='POSITION: absolute; LEFT: 0px; TOP: 0px; WIDTH: 660px; HEIGHT: 650px'>";
+      $htm .= "<div class='blockw' style='POSITION: absolute; LEFT: 0px; TOP: 0px; WIDTH: 960px; HEIGHT: 950px'>";
   }
   else
   {
-      $htm .= "<div class='blockn' style='POSITION: absolute; LEFT: 0px; TOP: 0px; WIDTH: 660px; HEIGHT: 650px'>";
+      $htm .= "<div class='blockn' style='POSITION: absolute; LEFT: 0px; TOP: 0px; WIDTH: 960px; HEIGHT: 950px'>";
   }
 
   $avtora = "";
@@ -115,6 +117,7 @@ function Person()
     $avtora = $people[$fldAVTOR];
   }
   $htm .= "<center><b><i>$avtora</i></b></center>";
+  //??$htm .= "<a href=\"cfotos.php?inx=$inx_person&id=$id_person&name=$persona\"><img src=\"icons/mn_menu_foto.png\" width=48 height=48 align=right></a>";
 
   //$path = $getdir.$person[$fldPER].".jpg"; // Получаем путь к картинке
   //$htm .= "<p><img src='$path' alt='$person[$fldPER]' title='$person[$fldPER]' width='64' heigth='64' align=left></p>"; // Вывод превью картинки

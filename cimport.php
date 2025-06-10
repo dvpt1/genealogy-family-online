@@ -1,7 +1,9 @@
 <?php
 
-//include_once("cvars.php");
+include_once("cvars.php");
 //include_once("cutils.php");
+//$filter = "";
+//if(isset($_GET['filter']) $filter = $_GET['filter'];
 
 Gedcom_Import();
 
@@ -55,6 +57,7 @@ function Gedcom_Import()
   global $spouses;
   global $getdir;
   global $page;
+  global $filter;
 
   GLOBAL $gedcoms;
   GLOBAL $gedcom;
@@ -140,7 +143,11 @@ function Gedcom_Import()
   // import persons
 //echo "<br><br>IMPORT<br><br>";
   $mainPath = __DIR__ . '/cards/';
-//echo "<br><br>$mainPath<br><br>";
+//echo "<br><br>$mainPath<br> $filter<br>";
+
+  $fil = false;
+  if(empty($filter)) $fil = true;
+
   $files = glob($mainPath."*.card");
   $ifat = 0;
   $imot = 0;
@@ -263,7 +270,8 @@ function Gedcom_Import()
             if($st == "") {$st = $spouse[$i]['id'];} else {$st += ",".$spouse[$i]['id'];}
         }
     }
-
+   if(strpos($person, $filter) !== false || $fil)
+   {
     $persons[$inx] = array
     	(                       
 	    $inx,          
@@ -303,6 +311,7 @@ function Gedcom_Import()
     	);
 
     $inx++;
+   }
   }
 
   // здесь надо перевести $fathers['id'] в индекс

@@ -69,6 +69,7 @@ $ic_menu_add='Create';
 $ic_menu_file='Arquivo';
 $ic_menu_load='Upload';
 $ic_menu_delete='Excluir';
+$ic_menu_filter='Filtro';
 
 $msg01='Você pode ajudar no desenvolvimento do projeto transferindo qualquer quantia para sua carteira:';
 

@@ -69,6 +69,7 @@ $ic_menu_add='Create';
 $ic_menu_file='Datei';
 $ic_menu_load='Hochladen';
 $ic_menu_delete='Löschen';
+$ic_menu_filter='Filter';
 
 $msg01='Sie können die Entwicklung des Projekts unterstützen, indem Sie einen beliebigen Betrag auf Ihre Brieftaschen überweisen:';
 
