@@ -1142,9 +1142,13 @@ echo "=== GEDCOM File==".$getfile."<br>";
 	$jsonPerson->deathday->date = $listDeath[$i];
 	$jsonPerson->deathday->place = $sPlaced;
 	$jsonPerson->deathday->maps = $listMapsd[$i];
-	$jsonPerson->placel = $sPlacel;
-	$jsonPerson->placet = $sPlacet;
 
+	$jsonPerson->lifeday->date = "";
+	$jsonPerson->lifeday->place = $sPlacel;
+	$jsonPerson->lifeday->maps = "";
+	$jsonPerson->burialday->date = "";
+	$jsonPerson->burialday->place = $sPlacet;
+	$jsonPerson->burialday->maps = "";
 
 //echo "=== $listFather[$i] : listfathers<br>";
 	if($listFather[$i] != ""){

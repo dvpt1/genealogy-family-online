@@ -501,7 +501,7 @@ function _end_html($user)
 
  echo '<div class="navbar" id="myNavbar">';
  echo '<table><tr><td align=center valign=center>';
- echo '<a href="?do=cpersone&inx=-1&title='.$ic_menu_add.'"><img src="icons/ic_menu_add.png" width=24 height=24>'.$ic_menu_add.'</a>';
+ echo '<a href="?do=cpersone&id=0&title='.$ic_menu_add.'"><img src="icons/ic_menu_add.png" width=24 height=24>'.$ic_menu_add.'</a>';
 // echo '<a href="?lang='.$lang.'&do=chelp&title='.$mn_menu_help.'"><img src="icons/ic_menu_help.png" width=24 height=24>'.$mn_menu_help.'</a>';
  echo '</td><td align=center valign=center>';
 ?>

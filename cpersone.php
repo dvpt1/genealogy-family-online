@@ -189,7 +189,7 @@ function Persone($user)
 
 if(isset($_POST['saveperson'])) {
 
-  if($_GET['inx'] == -1){
+  if($_GET['id'] == 0){
     $personnew = $persons[count($persons) - 1];
     $new_inx = $personnew[$fldINX] + 1;
     $new_id = $personnew[$fldID] + 1;
@@ -207,7 +207,7 @@ if(isset($_POST['saveperson'])) {
 //echo "==spouse_key=[".$_POST["spousea"]."]===<br>";
 //echo "==father_key=[".$_POST["fathera"]."]===<br>";
 //echo "==mother_key=[".$_POST["mothera"]."]===<br>";
-//echo "<br><br><br><br>".$inx_person.":".$user['name'].";inx=".$persons[$inx_person][$fldINX].":".$_POST['persona'].":".$_POST['genders'].":".$_POST['fathera'].":".$_POST['mothera']."<br>";
+//echo "<br><br><br><br>".$inx_person.":".$id_person.":".$user['name'].";inx=".$persons[$inx_person][$fldINX].":".$_POST['persona'].":".$_POST['genders'].":".$_POST['fathera'].":".$_POST['mothera']."<br>";
 
   $persons[$inx_person][$fldBEG ] = $_POST['birth'];
   $persons[$inx_person][$fldEND ] = $_POST['death'];
@@ -445,8 +445,13 @@ if(isset($_POST['saveperson'])) {
   $jsonPerson->birthday->place = $_POST['placeb'];
   $jsonPerson->deathday->date = $_POST['death'];
   $jsonPerson->deathday->place = $_POST['placed'];
-  $jsonPerson->placel = $_POST['placel'];
-  $jsonPerson->placet = $_POST['placet'];
+
+  $jsonPerson->lifeday->date = "";
+  $jsonPerson->lifeday->place = $_POST['placel'];
+  $jsonPerson->lifeday->maps = "";
+  $jsonPerson->burialday->date = "";
+  $jsonPerson->burialday->place = $_POST['placet'];
+  $jsonPerson->burialday->maps = "";
 // echo "<br><br><br><br>POST['birth'] =".$_POST['birth']." : POST['placeb'] = ".$_POST['placeb']."<br>";
   
 // echo "<hr>father =$fat1=";
@@ -798,7 +803,7 @@ if(isset($_POST['deleteperson'])) {
 
 ?>
 
- <form name="editperson" action="index.php?do=cpersone&inx=<?php echo $inx_person; ?>&edit=1" method="post">
+ <form name="editperson" action="index.php?do=cpersone&id=<?php echo $id_person; ?>&edit=1" method="post">
 
  <table width="100%" align="left" border="0" cellpadding="2">
  <tr><td width=25%>

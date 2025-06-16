@@ -46,7 +46,7 @@ $users = _check_datauserid($user['id']);
   $files = scandir($dir); // Получаем список файлов из этой директории
   $files = excess($files); // Удаляем лишние файлы
 
-  echo "<a href=\"../index.php?do=cpersone&id=$id_person\"><img src=\"/icons/ic_menu_home.png\" align=left></a>";
+  echo "<a href=\"index.php?do=cpersone&id=$id_person\"><img src=\"/icons/ic_menu_home.png\" align=left></a>";
 
   if($users['id'] > 0 && $users['acces'] < 2){
 ?>
