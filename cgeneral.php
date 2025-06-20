@@ -5,6 +5,7 @@ General();
 function General()
 {
   global $lang;
+  global $filter;
 
   global $peoples;
   global $persons;
@@ -71,19 +72,23 @@ $users = _check_datauserid($user['id']);
 //echo "total=$total <br>";
 //echo "userId=".$_COOKIE['myfamilytree_userid']."userName=".$_COOKIE['myfamilytree_username']."<br>";
 //echo "userId=".$user['id']."userName=".$user['name']."<br>";
+//echo "filter=$filter <br>";
+
+  $flt = "";
+  if(!empty($filter)) $flt = "&filter=$filter";
 
   if($total>1):
 	#две назад
 	print "<font size=+2>";
 	if(($p-2)>0):
-	  $ptwoleft="<a class='first_page_link' href='?lang=".$lang."&do=cmain&p=".($p-2)."&n=$getname&m=$getmemo&l=$getlink'>".($p-2)."</a>  ";
+	  $ptwoleft="<a class='first_page_link' href='?lang=".$lang."&do=cmain".$flt."&p=".($p-2)."&n=$getname&m=$getmemo&l=$getlink'>".($p-2)."</a>  ";
 	else:
 	  $ptwoleft=null;
 	endif;
 			
 	#одна назад
 	if(($p-1)>0):
-	  $poneleft="<a class='first_page_link' href='?lang=".$lang."&do=cmain&p=".($p-1)."&n=$getname&m=$getmemo&l=$getlink'>".($p-1)."</a>  ";
+	  $poneleft="<a class='first_page_link' href='?lang=".$lang."&do=cmain".$flt."&p=".($p-1)."&n=$getname&m=$getmemo&l=$getlink'>".($p-1)."</a>  ";
 	  $ptemp=($p-1);
 	else:
 	  $poneleft=null;
@@ -92,14 +97,14 @@ $users = _check_datauserid($user['id']);
 			
 	#две вперед
 	if(($p+2)<=$total):
-	  $ptworight="  <a class='first_page_link' href='?lang=".$lang."&do=cmain&p=".($p+2)."&n=$getname&m=$getmemo&l=$getlink'>".($p+2)."</a>";
+	  $ptworight="  <a class='first_page_link' href='?lang=".$lang."&do=cmain".$flt."&p=".($p+2)."&n=$getname&m=$getmemo&l=$getlink'>".($p+2)."</a>";
 	else:
 	  $ptworight=null;
 	endif;
 			
 	#одна вперед
 	if(($p+1)<=$total):
-	  $poneright="  <a class='first_page_link' href='?lang=".$lang."&do=cmain&p=".($p+1)."&n=$getname&m=$getmemo&l=$getlink'>".($p+1)."</a>";
+	  $poneright="  <a class='first_page_link' href='?lang=".$lang."&do=cmain".$flt."&p=".($p+1)."&n=$getname&m=$getmemo&l=$getlink'>".($p+1)."</a>";
 	  $ptemp2=($p+1);
 	else:
 	  $poneright=null;
@@ -108,14 +113,14 @@ $users = _check_datauserid($user['id']);
 			
 	# в начало
 	if($p!=1 && $ptemp!=1 && $ptemp!=2):
-	  $prevp="<a href='?lang=".$lang."&do=cmain&n=$getname&m=$getmemo&l=$getlink' class='first_page_link' title='Begin'><<</a> ";
+	  $prevp="<a href='?lang=".$lang."&do=cmain".$flt."&n=$getname&m=$getmemo&l=$getlink' class='first_page_link' title='Begin'><<</a> ";
 	else:
 	  $prevp=null;
 	endif;   
 			
 	#в конец (последняя)
 	if($p!=$total && $ptemp2!=($total-1) && $ptemp2!=$total):
-	  $nextp=" ...  <a href='?lang=".$lang."&do=cmain&p=".$total."'".$total."' class='first_page_link'>$total</a>";
+	  $nextp=" ...  <a href='?lang=".$lang."&do=cmain".$flt."&p=".$total."'".$total."' class='first_page_link'>$total</a>";
 	else:
 	  $nextp=null;
 	endif;
