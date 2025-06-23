@@ -69,27 +69,19 @@ echo "<br><br><br><br><br><br>";
   // ищу детей
   $level = 0;
   $progenitors = getProgenitors();
-  $view_gender = 0;
   for ($i = 0; $i < count($progenitors); $i++)
   {
-
-//echo "===progenitors===".$progenitors[$i][$fldPER]."<br>";
-
-      $b = false;
-      if ($view_gender == 0)
+      $sex = (int)$progenitors[$i][$fldSEX];
+      if ($sex == 1)
       {
-          $b = true;
+          $ibegin = count($aPerson);
+          ParentsChilds($progenitors[$i][$fldINX], $progenitors[$i][$fldID], $maxX + 250, 10);
       }
-      else if ($view_gender == 1 && progenitors[$i][$fldSEX] == 1)
-      {
-          $b = true;
-      }
-      else if ($view_gender == 2 && progenitors[$i][$fldSEX] == 2)
-      {
-          $b = true;
-      }
-
-      if ($b)
+  }
+  for ($i = 0; $i < count($progenitors); $i++)
+  {
+      $sex = (int)$progenitors[$i][$fldSEX];
+      if ($sex == 2)
       {
           $ibegin = count($aPerson);
           ParentsChilds($progenitors[$i][$fldINX], $progenitors[$i][$fldID], $maxX + 250, 10);
@@ -130,6 +122,7 @@ echo "<br><br><br><br><br><br>";
 //echo "=== boxperson ===".$i.">=".$aX1[$i].":".$aY1[$i]."=".$persons[$i][$fldPER]."<br>";
       echo DrawPerson($i, $aX1[$i], $aY1[$i]);
   }
+//  echo "<table><tr><td>&nbsp;</td></tr></table>";
 
   // Рисую ветки
   for ($i = 0; $i < count($persons); $i++)

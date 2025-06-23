@@ -453,7 +453,16 @@ if (!empty($_GET['page'])){
 //echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
 /*=========================================*/
 
-	if ($do != 'cpersone') {
+	if (
+	$do != 'cpersone' && 
+	$do != 'cforest' &&
+	$do != 'ctree' &&
+	$do != 'cbranch' &&
+	$do != 'crings' &&
+	$do != 'cgenr' &&
+	$do != 'ccaln' &&
+	$do != 'cglob')
+	{
 ?>
 <script>
   function autoRefresh() {
