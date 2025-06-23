@@ -163,7 +163,7 @@ echo "<br><br><br><br><br><br>";
 function ParentsChilds($PersonInx, $PersonId, $X, $Y)
 {
 
-//echo "=== ParentsChilds ===".$PersonInx.":".$PersonId."=".$X.":".$Y."=<br>";
+echo "=== ParentsChilds ===".$PersonInx.":".$PersonId."=".$X.":".$Y."=<br>";
 
   global $cnt_persons;
 
