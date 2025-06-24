@@ -28,7 +28,7 @@ if(!empty($_GET['code']) && isset($_GET['code'])){
 }
 ?>
 
- <br><br>
+<br><br>
 <h4><a href="index.php"><img src="icons/ic_menu_home.png"></a></h4>
 
 <?php echo $msg; ?>
