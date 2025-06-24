@@ -367,18 +367,18 @@ function DrawPerson($I, $X, $Y)
 
   $htm = "";
 
-  $htm .= "<div class='shadow' style='POSITION: absolute; LEFT: ".$X."px; TOP: ".$Y."px; WIDTH: 225px; HEIGHT: 80px'>";
+  $htm .= "<div class='shadow' style='POSITION: absolute; LEFT: ".$X."px; TOP: ".$Y."px; WIDTH: 225px; HEIGHT: 75px'>";
   if ($person[$fldSEX] == "1")
   {
-      $htm .= "<div class='blockm' style='POSITION: absolute; LEFT: 0px; TOP: 0px; WIDTH: 220px; HEIGHT: 75px'>";
+      $htm .= "<div class='blockm' style='POSITION: absolute; LEFT: 0px; TOP: 0px; WIDTH: 220px; HEIGHT: 73px'>";
   }
   else if ($person[$fldSEX] == "2")
   {
-      $htm .= "<div class='blockw' style='POSITION: absolute; LEFT: 0px; TOP: 0px; WIDTH: 220px; HEIGHT: 75px'>";
+      $htm .= "<div class='blockw' style='POSITION: absolute; LEFT: 0px; TOP: 0px; WIDTH: 220px; HEIGHT: 73px'>";
   }
   else
   {
-      $htm .= "<div class='blockn' style='POSITION: absolute; LEFT: 0px; TOP: 0px; WIDTH: 220px; HEIGHT: 75px'>";
+      $htm .= "<div class='blockn' style='POSITION: absolute; LEFT: 0px; TOP: 0px; WIDTH: 220px; HEIGHT: 73px'>";
   }
 
   if(!empty($person[$fldICON])){
@@ -530,7 +530,7 @@ function Linkas($iParent, $iChild, $fm)
           $htm .= ($aY1p - $aY1c + $aB1c * 3)."px'><tr><td></td></tr></table>";
           //горизонтально
           $htm .= "<table bordercolor=#00FF00 style='POSITION: absolute; LEFT: ";
-          $htm .= ($aX1p + 100)."px; TOP: ".($aY1p + 90 + $aB1c * 3)."px; BORDER-TOP:1pt solid; BORDER-BOTTOM: 0pt solid; BORDER-RIGHT: 0pt solid; BORDER-LEFT: 0pt solid; WIDTH: ";
+          $htm .= ($aX1p + 100)."px; TOP: ".($aY1p + 90 + $aB1c * 3 + 3)."px; BORDER-TOP:1pt solid; BORDER-BOTTOM: 0pt solid; BORDER-RIGHT: 0pt solid; BORDER-LEFT: 0pt solid; WIDTH: ";
           $htm .= ($aX1c - $aX1p)."px; HEIGHT: 0px'><tr><td></td></tr></table>";
           //вертикально
           $htm .= "<table bordercolor=#00FF00 style='POSITION: absolute; LEFT: ";
