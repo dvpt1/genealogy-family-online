@@ -433,7 +433,7 @@ function DrawTree()
   $htm = "";
   $htm .= "<table style='POSITION: absolute; LEFT: ";//вертикально
   $htm .= ($maxX + 200)."px; TOP: 0px; BORDER-TOP: 0pt solid; BORDER-BOTTOM: 0pt solid; BORDER-RIGHT: 0pt solid; BORDER-LEFT: 2pt solid; WIDTH: 0px; HEIGHT: ";
-  $htm .= ($maxY + 70)."px; border-color: Brown;'><tr><td></td></tr></table>";
+  $htm .= ($maxY + 150)."px; border-color: Brown;'><tr><td></td></tr></table>";
   return $htm;
 }
 
