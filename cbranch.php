@@ -122,9 +122,14 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
       $childrens = array();
       for ($i = 0; $i < count($fathers); $i++) {
         if (strcmp($fathers[$i][1], $person) == 0) {
-           $childrens[] = $fathers[$i][0];
+           $childrens[$i][$fldCHILD] = $fathers[$i][0];
+           $childrens[$i][$fldMOTHE] = $persons[$fathers[$i][0]][$fldMOT];//ok." ; ".$persons[$persons[$fathers[$i][0]][$fldMOT]][$fldPER];
         }
       }
+      array_sort_by_column($childrens, 1);
+//      for ($i = 0; $i < count($childrens); $i++) {
+//echo "=childrens=".$i." ; ".$childrens[$i][$fldMOTHE]."<br>";
+//      }
 
       //список супругов
       $marrieds = array();
@@ -162,7 +167,7 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
           $femess = array();
           $nf = 0;
           for ($ii = 0; $ii < count($mothers); $ii++) {
-              if (strcmp($mothers[$ii][0], $childrens[$i]) == 0) {
+              if (strcmp($mothers[$ii][0], $childrens[$i][$fldCHILD]) == 0) {
                  $femes[$nf] = $mothers[$ii][1];
                  $nf++;
               }
@@ -210,7 +215,7 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
 
           $one = true;
           $iY2 = $iY2 + 95;
-          ParentsChilds($childrens[$i], $dX + 15, $iY2, $dX + 25, $dY);
+          ParentsChilds($childrens[$i][$fldCHILD], $dX + 15, $iY2, $dX + 25, $dY);
 
           if ($Col < $iY2) $Col = $iY2;
       }
@@ -243,9 +248,12 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
       $childrens = array();
       for ($i = 0; $i < count($mothers); $i++) {
         if (strcmp($mothers[$i][1], $person) == 0) {
-           $childrens[] = $mothers[$i][0];
+           //$childrens[] = $mothers[$i][0];
+           $childrens[$i][$fldCHILD] = $mothers[$i][0];
+           $childrens[$i][$fldFATHE] = $persons[$mothers[$i][0]][$fldFAT];//ok." ; ".$persons[$persons[$fathers[$i][0]][$fldMOT]][$fldPER];
         }
       }
+      array_sort_by_column($childrens, 1);
 
       //список супругов
       $marrieds = array();
@@ -279,7 +287,7 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
       {
           $mans = array();
           for ($ii = 0; $ii < count($fathers); $ii++) {
-              if (strcmp($fathers[$ii][0], $childrens[$i]) == 0) {
+              if (strcmp($fathers[$ii][0], $childrens[$i][$fldCHILD]) == 0) {
                  $mans[] = $fathers[$ii][1];
               }
           }
@@ -326,7 +334,7 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
 
           $one = true;
           $iY2 = $iY2 + 95;
-          ParentsChilds($childrens[$i], $dX + 15, $iY2, $dX + 25, $dY);
+          ParentsChilds($childrens[$i][$fldCHILD], $dX + 15, $iY2, $dX + 25, $dY);
           if ($Col < $iY2) $Col = $iY2;
       }
 

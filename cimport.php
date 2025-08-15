@@ -217,6 +217,7 @@ function Gedcom_Import()
       $fathers[$ifat] = array($id, $father[$i]['id']);
       $ifat++;
     }
+    //echo "ft = ".$ft."<br>";
 
     // Add mothers
     //print_r($mother); echo "== mother ==<br>";
@@ -226,6 +227,7 @@ function Gedcom_Import()
       $mothers[$imot] = array($id, $mother[$i]['id']);
       $imot++;
     }
+    //echo "mt = ".$mt."<br>";
 
     // Add spouses
     //print_r($spouse); echo "== spouse ==<br>";
