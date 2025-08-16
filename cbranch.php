@@ -474,7 +474,7 @@ function DrawMenHTML($Index)
 
   $htm .= "<font size=-1>".$person[$fldPER];
   $htm .= "<br><i>".$dates."</i></font>";
-//  $htm .= "<br>==$X1=$Y1==$X2=$Y2==";
+//  $htm .= "<br>==$I==$F==$M==$S==$X1=$Y1==$X2=$Y2==";
   $htm .= "</div></div>";
 
   return $htm;
