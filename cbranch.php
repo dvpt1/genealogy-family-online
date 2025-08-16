@@ -127,9 +127,6 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
         }
       }
       array_sort_by_column($childrens, 1);
-//      for ($i = 0; $i < count($childrens); $i++) {
-//echo "=childrens=".$i." ; ".$childrens[$i][$fldMOTHE]."<br>";
-//      }
 
       //список супругов
       $marrieds = array();
@@ -157,8 +154,6 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
           if($b) $marrieds[] = $spouses[$i][$fldSPOUS1];
         }
       }
-//$sNam = ""; for ($n = 0; $n < count($marrieds); $n++) $sNam .= $marrieds[$n].':';
-//echo "=marrieds=".$level." ; ".$sNam."<br>";
 
       // ищу всех детей мужской линии
       $iCol = $iY2 + 85;
@@ -178,7 +173,6 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
 
           if (strcmp($sNam, $sPar) <> 0)
           {
-//echo "=sNam1=".$level." ; ".$sNam." = ".$sPar."<br>";
               $iX2 = $dX + 232;
               for ($j = 0; $j < count($femes); $j++)// мать
               {
@@ -187,7 +181,6 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
                       // есть ли такая жена в списке
                       if ($marrieds[$n] == $femes[$j])
                       {
-//echo "=1=".$level." ; ".$marrieds[$n].":".$femes[$j]."<br>";
                           unset($marrieds[$n]);// если есть, удаляю его из списка
                           //break;
                       }
@@ -211,14 +204,14 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
 
               $sPar = $sNam;
           }
-          if ($maxX < $dX) $maxX = $dX;
 
           $one = true;
           $iY2 = $iY2 + 95;
+          if ($Col > $iY2) $iY2 = $Col;
           ParentsChilds($childrens[$i][$fldCHILD], $dX + 15, $iY2, $dX + 25, $dY);
-
           if ($Col < $iY2) $Col = $iY2;
       }
+      if ($maxX < $dX) $maxX = $dX;
 
       // рисую жен и мужей без детей
       if (count($marrieds) > 0)
@@ -232,7 +225,6 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
           {
              if(strlen($marrieds[$n]) > 0){
               $dX = $dX + 242;
-//echo "=marrieds=".print_r($marrieds)."<br>";
               AddInfoBranch($marrieds[$n], -1, -1, 0, $dX - 10, $dY, $dX, $Y1);
               if ($maxX < $dX) $maxX = $dX;
               $iX2 = $dX + 218;
@@ -297,7 +289,6 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
 
           if (strcmp($sNam, $sPar) <> 0)
           {
-//echo "=sNam2=".$sNam." = ".$sPar."<br>";
               $iX2 = $dX + 232;
               for ($j = 0; $j < count($mans); $j++)// отец
               {
@@ -306,7 +297,6 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
                       // есть ли такой муж в списке
                       if ($marrieds[$n] == $mans[$j])
                       {
-//echo "=2=".$marrieds[$n].":".$mans[$j]."<br>";
                           unset($marrieds[$n]);// если есть, удаляю его из списка
                           //break;
                       }
@@ -330,13 +320,14 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
 
               $sPar = $sNam;
           }
-          if ($maxX < $dX) $maxX = $dX;
 
           $one = true;
           $iY2 = $iY2 + 95;
+          if ($Col > $iY2) $iY2 = $Col;
           ParentsChilds($childrens[$i][$fldCHILD], $dX + 15, $iY2, $dX + 25, $dY);
           if ($Col < $iY2) $Col = $iY2;
       }
+      if ($maxX < $dX) $maxX = $dX;
 
       // рисую жен и мужей без детей
       if (count($marrieds) > 0)
@@ -366,7 +357,6 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
 
 function AddInfoBranch($PersonId, $FatherId, $MotherId, $SpouseId, $X1, $Y1, $X2, $Y2)
 {
-//echo "=== AddInfoBranch = $PersonId, $FatherId, $MotherId, $SpouseId, $X1, $Y1, $X2, $Y2 <br>";
   global $aPerson;
   global $aFather;
   global $aMother;
@@ -375,6 +365,11 @@ function AddInfoBranch($PersonId, $FatherId, $MotherId, $SpouseId, $X1, $Y1, $X2
   global $aY1;
   global $aX2;
   global $aY2;
+
+//global $persons;
+//global $fldPER;
+//$person = $persons[$PersonId];
+//echo "=== AddInfoBranch = $PersonId, $FatherId, $MotherId, $SpouseId, $X1, $Y1, $X2, $Y2 $person[$fldPER]<br>";
 
   $aPerson[] = $PersonId;
   $aFather[] = $FatherId;
@@ -479,6 +474,7 @@ function DrawMenHTML($Index)
 
   $htm .= "<font size=-1>".$person[$fldPER];
   $htm .= "<br><i>".$dates."</i></font>";
+//  $htm .= "<br>==$X1=$Y1==$X2=$Y2==";
   $htm .= "</div></div>";
 
   return $htm;
