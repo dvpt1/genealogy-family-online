@@ -200,6 +200,7 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
                   $dX = $dX + 242;
                   AddInfoBranch($femes[$j], -1, 0, -1, $iX2, $iY2, $dX, $iY2);
                   $iX2 = $dX + 242;
+                  $iY2 = $Y1;
               }
 
               $sPar = $sNam;
@@ -207,7 +208,7 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
 
           $one = true;
           $iY2 = $iY2 + 95;
-          if ($Col > $iY2) $iY2 = $Col;
+          if($j == 0) if ($Col > $iY2) $iY2 = $Col;
           ParentsChilds($childrens[$i][$fldCHILD], $dX + 15, $iY2, $dX + 25, $dY);
           if ($Col < $iY2) $Col = $iY2;
       }
@@ -316,6 +317,7 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
                   $dX = $dX + 242;
                   AddInfoBranch($mans[$j], -1, 0, -1, $iX2, $iY2, $dX, $Y1);
                   $iX2 = $dX + 242;
+                  $iY2 = $Y1;
               }
 
               $sPar = $sNam;
@@ -323,7 +325,7 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
 
           $one = true;
           $iY2 = $iY2 + 95;
-          if ($Col > $iY2) $iY2 = $Col;
+          if($j == 0) if ($Col > $iY2) $iY2 = $Col;
           ParentsChilds($childrens[$i][$fldCHILD], $dX + 15, $iY2, $dX + 25, $dY);
           if ($Col < $iY2) $Col = $iY2;
       }
