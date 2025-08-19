@@ -171,7 +171,6 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
 
           $sNam = "";
           for ($n = 0; $n < count($femes); $n++) $sNam .= $femes[$n];
-
           if (strcmp($sNam, $sPar) <> 0)
           {
               $iX2 = $dX + 232;
@@ -217,10 +216,7 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
       // рисую жен и мужей без детей
       if (count($marrieds) > 0)
       {
-          if (!$one)
-          {
-             $X1 = $X1 + 242;
-          }
+          if (!$one) $X1 = $X1 + 242;
 
           for ($n = 0; $n < count($marrieds); $n++)
           {
@@ -287,7 +283,6 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
 
           $sNam = "";
           for ($n = 0; $n < count($mans); $n++) $sNam .= $mans[$n];
-
           if (strcmp($sNam, $sPar) <> 0)
           {
               $iX2 = $dX + 232;
@@ -333,10 +328,7 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
       // рисую жен и мужей без детей
       if (count($marrieds) > 0)
       {
-          if (!$one)
-          {
-             $X1 = $X1 + 242;
-          }
+          if (!$one) $X1 = $X1 + 242;
 
           for ($n = 0; $n < count($marrieds); $n++)
           {
@@ -476,7 +468,8 @@ function DrawMenHTML($Index)
   $htm .= "<font size=-1>".$person[$fldPER];
   $htm .= "<br><i>".$dates."</i></font>";
   //$htm .= "<br>=$X1=$Y1==$X2=$Y2=";
-  $htm .= "</div></div>";
+  $htm .= "</div>";
+  $htm .= "</div>";
 
   return $htm;
 }
