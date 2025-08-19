@@ -38,6 +38,9 @@ function Branch()
 echo "<br><br><br><br><br><br>";
 
   $maxX = -240;
+  $maxY = 0;
+  $iX2 = 0;
+  $iY2 = 0;
 
   $progenitors = array();
   for ($i = 0; $i < count($persons); $i++) {
@@ -108,8 +111,7 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
   $sPar = "";// контрольная сумма
   $one = false;
 
-  $iCol = 0;
-  $Col = iY2;
+  $Col = $iY2;
 
   if ($maxX < $X1) $maxX = $X1;
   if ($maxY < $Y1) $maxY = $Y1;
@@ -156,7 +158,6 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
       }
 
       // ищу всех детей мужской линии
-      $iCol = $iY2 + 85;
       for ($i = 0; $i < count($childrens); $i++)
       {
           $femess = array();
@@ -189,7 +190,6 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
                   if ($one)
                   {
                       $iY2 = $dY;
-                      $iCol = $iY2 + 85;
                       $dX = $maxX;
                   }
                   else
@@ -208,9 +208,9 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
 
           $one = true;
           $iY2 = $iY2 + 95;
-          if($j == 0) if ($Col > $iY2) $iY2 = $Col;
-          ParentsChilds($childrens[$i][$fldCHILD], $dX + 15, $iY2, $dX + 25, $dY);
-          if ($Col < $iY2) $Col = $iY2;
+          $Y = ParentsChilds($childrens[$i][$fldCHILD], $dX + 15, $iY2, $dX + 25, $dY);
+          if ($Col < $Y) $Col = $Y;
+          if ($iY2 < $Y) $iY2 = $Y;
       }
       if ($maxX < $dX) $maxX = $dX;
 
@@ -306,7 +306,6 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
                   if ($one)
                   {
                       $iY2 = $dY;
-                      $iCol = $iY2 + 85;
                       $dX = $maxX;
                   }
                   else
@@ -325,9 +324,9 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
 
           $one = true;
           $iY2 = $iY2 + 95;
-          if($j == 0) if ($Col > $iY2) $iY2 = $Col;
-          ParentsChilds($childrens[$i][$fldCHILD], $dX + 15, $iY2, $dX + 25, $dY);
-          if ($Col < $iY2) $Col = $iY2;
+          $Y = ParentsChilds($childrens[$i][$fldCHILD], $dX + 15, $iY2, $dX + 25, $dY);
+          if ($Col < $Y) $Col = $Y;
+          if ($iY2 < $Y) $iY2 = $Y;
       }
       if ($maxX < $dX) $maxX = $dX;
 
@@ -354,7 +353,7 @@ function ParentsChilds($person, $X1, $Y1, $X2, $Y2)
 
   $level--;
 
-  return "";
+  return $Col;
 }
 
 function AddInfoBranch($PersonId, $FatherId, $MotherId, $SpouseId, $X1, $Y1, $X2, $Y2)
@@ -476,7 +475,7 @@ function DrawMenHTML($Index)
 
   $htm .= "<font size=-1>".$person[$fldPER];
   $htm .= "<br><i>".$dates."</i></font>";
-//  $htm .= "<br>==$I==$F==$M==$S==$X1=$Y1==$X2=$Y2==";
+  //$htm .= "<br>=$X1=$Y1==$X2=$Y2=";
   $htm .= "</div></div>";
 
   return $htm;
