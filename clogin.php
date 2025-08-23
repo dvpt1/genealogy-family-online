@@ -62,8 +62,11 @@ if(isset($_POST['login'])) {
 			}
 
 			if($b){
-				$twonumber = secure_rand(100000, 999999);
-//echo "=== clogin.php ==$twonumber=<br>";
+				if(phpversion() >= 7.0){
+					$twonumber = random_int(100000, 999999);
+				}else{
+					$twonumber = secure_rand(100000, 999999);
+				}
 				_savetwo_database($_POST['user'], $twonumber, $twotime);
 				mail($_POST['user'], 'Activation TwoFactor', 'TwoFactor Number: '.$twonumber);
 			}
