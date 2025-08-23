@@ -1,6 +1,6 @@
 <?php
 echo '<meta http-equiv="content-type" content="text/html; charset=UTF-8">';
-//echo '=== clogin.php ===<br>';
+//echo "=== clogin.php ===<br>".phpversion();
 
 session_start();
 
