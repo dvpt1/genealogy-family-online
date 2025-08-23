@@ -7,8 +7,7 @@ include_once("chtmls.php");
 $user = _check_user($_COOKIE);
 
 if(!isset($user['id']) || $user['id'] < 1 || empty($user['name'])){
-	header("location:clogin.php");
-	exit;
+  redirect("clogin.php");
 }
 
 if (isset($_GET['load']) && isset($_GET['code'])) {

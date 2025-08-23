@@ -175,7 +175,7 @@ function _set_cookie($user_data, $rem, $session, $username)
   else
     $Q = mysql_query(" UPDATE csessions SET session = '$session' WHERE id = '$user_id' AND name = '$username' ");
 
-  header("location: index.php");
+  redirect("index.php");
 }
 
 function _logout_user($cookie)
@@ -196,6 +196,17 @@ function _already_logged($cookie)
 function fm($String)
 {
   return addslashes(strip_tags($String));
+}
+
+function redirect($url)
+{
+  echo "<script type='text/javascript'>window.location.href = '".$url."';</script>";
+  ob_start();
+  header("location:$url");
+  ob_end_flush();
+
+  die('Header did not work!');
+  exit;
 }
 
 ?>
