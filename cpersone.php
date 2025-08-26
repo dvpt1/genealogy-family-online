@@ -1175,7 +1175,7 @@ function resizeBase64Image($base64_image, $new_width, $new_height) {
 //resizeBase64Image($base64_image, $new_width, $new_height);
 
 //  echo deleteGET("http://mysite.ru/?view=category&amp;page=5&amp;id=5", "page");
-function deleteGET($url, $name, $amp = true) {
+/*function deleteGET($url, $name, $amp = true) {
   $url = str_replace("&amp;", "&", $url); // Заменяем сущности на амперсанд, если требуется
   list($url_part, $qs_part) = array_pad(explode("?", $url), 2, ""); // Разбиваем URL на 2 части: до знака ? и после
   parse_str($qs_part, $qs_vars); // Разбиваем строку с запросом на массив с параметрами и их значениями
@@ -1196,6 +1196,6 @@ function Redirect($url, $permanent = false)
     }
 
     exit();
-}
+}*/
 
 ?>
