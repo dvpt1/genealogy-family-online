@@ -1,6 +1,5 @@
 <?php
 echo '<meta http-equiv="content-type" content="text/html; charset=UTF-8">';
-//echo "=== clogin.php ===<br>".phpversion();
 
 session_start();
 
@@ -62,11 +61,7 @@ if(isset($_POST['login'])) {
 			}
 
 			if($b){
-				if(phpversion() >= 7.0){
-					$twonumber = random_int(100000, 999999);
-				}else{
-					$twonumber = secure_rand(100000, 999999);
-				}
+				$twonumber = random_int(100000, 999999);
 				_savetwo_database($_POST['user'], $twonumber, $twotime);
 				mail($_POST['user'], 'Activation TwoFactor', 'TwoFactor Number: '.$twonumber);
 			}
@@ -82,7 +77,7 @@ if(isset($_POST['login'])) {
 
 			echo "<br><br><br><br>";
 			echo '<h4><a href="index.php"><img src="icons/ic_menu_home.png"></a></h4>';
-			echo $_POST['user']."Activation $https".$alink."<br>";
+			echo $_POST['user']."Activation $https";//.$alink."<br>";
 			mail($_POST['user'],"Activation - $https","$alink");
 		}
 	}
@@ -139,34 +134,6 @@ if(isset($_POST['login'])) {
 
 function function_alert($msg) {
     echo "<script type='text/javascript'>alert('$msg');</script>";
-}
-
-//function secure_rand($min, $max)
-//{
-//    return (unpack("N", openssl_random_pseudo_bytes(4)) % ($max - $min)) + $min;
-//}
-function secure_rand( $min, $max ) {
-    $diff = $max - $min;
-    if ($diff < 0 || $diff > 0x7FFFFFFF) {
-        throw new RuntimeException("Bad range");
-    }
-    $bytes = mcrypt_create_iv( 4, MCRYPT_DEV_URANDOM );
-
-    // if mcrypt is not enabled on your server, you can use this
-    //$bytes = openssl_random_pseudo_bytes( 4 );
-
-    // if mbstring is not enabled, you can also use iconv_strlen
-    if ($bytes === false || mb_strlen($bytes, '8bit') != 4) {
-        throw new RuntimeException("Unable to get 4 bytes");
-    }
-
-    $ary = unpack("Nint", $bytes);
-    $val = $ary['int'] & 0x7FFFFFFF;   // 32-bit safe
-    $fp = $val / 2147483647.0; // convert to [0,1]
-    // if you really need a type of int take this
-    // return (int) round($fp * $diff) + $min;
-    // otherwise it will return a float without decimal numbers
-    return round($fp * $diff) + $min;
 }
 
 ?>
