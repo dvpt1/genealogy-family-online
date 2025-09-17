@@ -1,5 +1,8 @@
 <?php
 
+include_once("cvars.php");
+include_once("cdatabases.php");
+
 Branch();
 
 //рисую все генеалогические ветви и фамилии
@@ -42,19 +45,30 @@ echo "<br><br><br><br><br><br>";
   $iX2 = 0;
   $iY2 = 0;
 
-  $progenitors = array();
-  for ($i = 0; $i < count($persons); $i++) {
+  $id_person = -1;
+  if (!empty($_GET['id'])) $id_person = $_GET['id'];
+  if($id_person == -1)
+  {
+    $progenitors = array();
+    for ($i = 0; $i < count($persons); $i++) {
       if (empty($persons[$i][$fldFAT]) && empty($persons[$i][$fldMOT])) {
          $progenitors[] = $i;
       }
-  }
+    }
 
-  for ($i = 0; $i < count($progenitors); $i++)
-  {
+    for ($i = 0; $i < count($progenitors); $i++)
+    {
       $iX2 = $maxX + 242;
       $iY2 = 50;
 
       ParentsChilds($progenitors[$i], $maxX + 251, $iY2, $maxX + 261, -45);
+    }
+  }else{
+      $iX2 = $maxX + 242;
+      $iY2 = 50;
+
+      $inx_person = IdToInx($id_person);
+      ParentsChilds($inx_person, $maxX + 251, $iY2, $maxX + 261, -45);
   }
 
   // выращивание

@@ -266,20 +266,27 @@ checkCookie();
 
 //echo "<br><br><br><br>";print_r($user);echo $user['id'].":".$user['name'].":".$user['status'].":".$user['acces']."<br>";
 
+ $id_person = '';
+ $do = 'cmain';
+ if (!empty($_GET['do'])) $do = $_GET['do'];
+ if (!empty($_POST['do'])) $do = $_POST['do'];
+ if ($do == 'cpersone') {
+   $id_person = '&id='.$_GET['id'];
+ }
  echo '<div class="menuskived defaultskived">';
  echo '<table><tr><td aling=center valign=center>';
  echo '<a href="'.$https.'"><img src="icons/icon301.png" height=48 width=48></a>';
  echo '</td><td>';
  echo '<table><tr><td>';
  echo '<ul>';
- echo '<li><a href=?do=cmain&title='.$mn_menu_main.'><img src="icons/mn_menu_book.png" height=36 width=36>'.$mn_menu_main.'</a></li>';
- echo '<li><a href=?do=cforest&title='.$mn_menu_forest.'><img src="icons/mn_menu_forests.png" height=36 width=36>'.$mn_menu_forest.'</a></li>';
- echo '<li><a href=?do=ctree&title='.$mn_menu_tree.'><img src="icons/mn_menu_tree.png" height=36 width=36>'.$mn_menu_tree.'</a></li>';
- echo '<li><a href=?do=cbranch&title='.$mn_menu_branch.'><img src="icons/mn_menu_branch.png" height=36 width=36>'.$mn_menu_branch.'</a></li>';
- echo '<li><a href=?do=crings&title='.$mn_menu_rings.'><img src="icons/mn_menu_ring.png" height=36 width=36>'.$mn_menu_rings.'</a></li>';
- echo '<li><a href=?do=cgenr&title='.$mn_menu_generation.'><img src="icons/mn_menu_genr.png" height=36 width=36>'.$mn_menu_generation.'</a></li>';
- echo '<li><a href=?do=ccaln&title='.$mn_menu_calendar.'><img src="icons/mn_menu_calendar.png" height=36 width=36>'.$mn_menu_calendar.'</a></li>';
- echo '<li><a href=?do=cglob&title='.$mn_menu_glob.'><img src="icons/mn_menu_glob.png" height=36 width=36>'.$mn_menu_glob.'</a></li>';
+ echo '<li><a href=?do=cmain'.$id_person.'&title='.$mn_menu_main.'><img src="icons/mn_menu_book.png" height=36 width=36>'.$mn_menu_main.'</a></li>';
+ echo '<li><a href=?do=cforest'.$id_person.'&title='.$mn_menu_forest.'><img src="icons/mn_menu_forests.png" height=36 width=36>'.$mn_menu_forest.'</a></li>';
+ echo '<li><a href=?do=ctree'.$id_person.'&title='.$mn_menu_tree.'><img src="icons/mn_menu_tree.png" height=36 width=36>'.$mn_menu_tree.'</a></li>';
+ echo '<li><a href=?do=cbranch'.$id_person.'&title='.$mn_menu_branch.'><img src="icons/mn_menu_branch.png" height=36 width=36>'.$mn_menu_branch.'</a></li>';
+ echo '<li><a href=?do=crings'.$id_person.'&title='.$mn_menu_rings.'><img src="icons/mn_menu_ring.png" height=36 width=36>'.$mn_menu_rings.'</a></li>';
+ echo '<li><a href=?do=cgenr'.$id_person.'&title='.$mn_menu_generation.'><img src="icons/mn_menu_genr.png" height=36 width=36>'.$mn_menu_generation.'</a></li>';
+ echo '<li><a href=?do=ccaln'.$id_person.'&title='.$mn_menu_calendar.'><img src="icons/mn_menu_calendar.png" height=36 width=36>'.$mn_menu_calendar.'</a></li>';
+ echo '<li><a href=?do=cglob'.$id_person.'&title='.$mn_menu_glob.'><img src="icons/mn_menu_glob.png" height=36 width=36>'.$mn_menu_glob.'</a></li>';
  echo '</ul>';
  echo '</td></tr></table>';
  echo '</td></tr></table>';

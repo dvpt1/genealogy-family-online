@@ -1,5 +1,8 @@
 <?php
 
+include_once("cvars.php");
+include_once("cdatabases.php");
+
 Tree();
 
 //рисую генеалогическое древо
@@ -59,13 +62,19 @@ function Tree()
 
   //progenitors
   $progenitors = array();
-  for ($i = 0; $i < count($persons); $i++) {
-  //echo "progenitor=".$persons[$i][$fldPER].":".$persons[$i][$fldFAT].":".$persons[$i][$fldMOT]."<br>";
+  $id_person = -1;
+  if (!empty($_GET['id'])) $id_person = $_GET['id'];
+  if($id_person == -1)
+  {
+    for ($i = 0; $i < count($persons); $i++) {
       if (empty($persons[$i][$fldFAT]) && empty($persons[$i][$fldMOT])) {
          $progenitors[] = $i;
       }
+    }
+  }else{
+      $inx_person = IdToInx($id_person);
+      $progenitors[] = $inx_person;
   }
-  //echo "progenitors=".count($progenitors)."<br>";
 
   $Bougth = 0;
   $LeftRight = true;//начинаю с правой ветви

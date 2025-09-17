@@ -1,5 +1,6 @@
 <?php
 
+include_once("cvars.php");
 include_once("cdatabases.php");
 
 Forest();
@@ -57,7 +58,6 @@ echo "<br><br><br><br><br><br>";
   
   //заполняю элементы списка
   $cnt_persons = count($persons);
-//echo count($persons)."<br>";
   for ($i = 0; $i < count($persons); $i++)
   {
       $aBougth[] = 0;
@@ -66,9 +66,19 @@ echo "<br><br><br><br><br><br>";
   }
 
   // расчеты
+  $progenitors = array();
+  $id_person = -1;
+  if (!empty($_GET['id'])) $id_person = $_GET['id'];
+  if($id_person == -1)
+  {
+      $progenitors = getProgenitors();
+  }else{
+      $inx_person = IdToInx($id_person);
+      $progenitors[] = $persons[$inx_person];
+  }
+
   // ищу детей
   $level = 0;
-  $progenitors = getProgenitors();
   for ($i = 0; $i < count($progenitors); $i++)
   {
       $sex = (int)$progenitors[$i][$fldSEX];

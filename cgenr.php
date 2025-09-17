@@ -1,5 +1,8 @@
 <?php
 
+include_once("cvars.php");
+include_once("cdatabases.php");
+
 // Константы и типы для постороения древа
 $level = -1;
 $summary = "";
@@ -42,10 +45,18 @@ function Genr()
 
   //progenitors
   $progenitors = array();
-  for ($i = 0; $i < count($persons); $i++) {
-    if (empty($persons[$i][$fldFAT]) && empty($persons[$i][$fldMOT])) {
-       $progenitors[] = $i;
+  $id_person = -1;
+  if (!empty($_GET['id'])) $id_person = $_GET['id'];
+  if($id_person == -1)
+  {
+    for ($i = 0; $i < count($persons); $i++) {
+      if (empty($persons[$i][$fldFAT]) && empty($persons[$i][$fldMOT])) {
+        $progenitors[] = $i;
+      }
     }
+  }else{
+      $inx_person = IdToInx($id_person);
+      $progenitors[] = $inx_person;
   }
 
   $family = 0;
@@ -63,7 +74,7 @@ function Genr()
 
     $html = "";
     $html .= "<p>&nbsp;</p>";
-    $html .= "<H2>".$persons[0][$fldPER]."</H2>";
+    $html .= "<H2>".$persons[$progenitors[0]][$fldPER]."</H2>";
     $html .= "<p>&nbsp;</p>";
     $html .= "<table width='100%' border=2>";
     $html .= "<tr><td align='center' valign='top' width='10%'>NN</td>";
