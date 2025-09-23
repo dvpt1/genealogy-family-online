@@ -1,32 +1,17 @@
 <?php
 
-global $nazv;
-global $base;
-global $bntx;
-global $script;
-global $edit;
-global $poss;
-global $abcd;
-
 global $msg;
-global $fname;
-global $favto;
-global $fyear;
-global $cntp;
 
+$https = 'https://site.online';
+$pepper = '';
+$admlogin = '';
+$admpswrd = '';
 $cntp = 25;
-
-$https = 'https://dnadata.online';
-$pepper = 'c1isvFdxMDdmjOlvxpecFw';
-$admlogin = 'dvpt';
-$admpswrd = 'dImAs';
-//$userId = 0;
-//$userName = "";
 
 $CONFIG                  = array();
 $CONFIG['HOST_NAME']     = 'localhost';
-$CONFIG['DATABASE_NAME'] = 'user8865_1';
-$CONFIG['DB_USERNAME']   = 'user8865_1';
-$CONFIG['DB_PASSWORD']   = 'ce9bd89d';
+$CONFIG['DATABASE_NAME'] = '';
+$CONFIG['DB_USERNAME']   = '';
+$CONFIG['DB_PASSWORD']   = '';
 
 ?>

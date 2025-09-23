@@ -478,33 +478,33 @@ if(isset($_POST['saveperson'])) {
 //print_r($fat1); echo count($idf).":".empty($fat1)."<br>";
   }
 
-//echo "<br><br><br><br><hr>";
-//for ($i = 0; $i < count($spouses); $i++) echo "SPOUSE $i: ".$spouses[$i][$fldSPOUS1]." | ".$spouses[$i][$fldSPOUS2]." | ".$spouses[$i][$fldWEDDIN]." | ".$spouses[$i][$fldPLACEW]." | ".$spouses[$i][$fldMAPSW]." |<br>";
-//echo "=3=<hr>";
-//echo "spouse_key = $spouse_key<br>";
-//echo "<br>=== sps0 =".count($sps0)."=";print_r($sps0);echo "<hr>";
-//echo "<br>=== sps1 =".count($sps1)."=";print_r($sps1);echo "<hr>";
+echo "<br><br><br><br><hr>";
+for ($i = 0; $i < count($spouses); $i++) echo "SPOUSE $i: ".$spouses[$i][$fldSPOUS1]." | ".$spouses[$i][$fldSPOUS2]." | ".$spouses[$i][$fldWEDDIN]." | ".$spouses[$i][$fldPLACEW]." | ".$spouses[$i][$fldMAPSW]." |<br>";
+echo "=3=<hr>";
+echo "spouse_key = $spouse_key<br>";
+echo "<br>=== sps0 =".count($sps0)."=";print_r($sps0);echo "<hr>";
+echo "<br>=== sps1 =".count($sps1)."=";print_r($sps1);echo "<hr>";
 
-  if(!empty($sps1)) {
-    $ids = -1;
-    $spss = array();
-    for ($i = 0; $i < count($sps0); $i++) {
+if(!empty($sps1)) {
+  $ids = -1;
+  $spss = array();
+  for ($i = 0; $i < count($sps0); $i++) {
 
-//echo "sps0[$i] = : $sps0[$i] : sps1[$i] = : $sps1[$i] :<br>";
+echo "sps0[$i] = : $sps0[$i] : sps1[$i] = : $sps1[$i] :<br>";
 
-      $ids = intval($persons[$sps1[$i]][$fldID]);
+    $ids = intval($persons[$sps1[$i]][$fldID]);
 
-      $weddinga = $spouses[$sps0[$i]][$fldWEDDIN];
-      $placewa = $spouses[$sps0[$i]][$fldPLACEW];
-      $mapswa = $spouses[$sps0[$i]][$fldMAPSW];
+    $weddinga = $spouses[$sps0[$i]][$fldWEDDIN];
+    $placewa = $spouses[$sps0[$i]][$fldPLACEW];
+    $mapswa = $spouses[$sps0[$i]][$fldMAPSW];
 
-//echo "spssi = : $i : $ids : $weddinga : $placewa : $mapswa :<br>";
+echo "spssi = : $i : $ids : $weddinga : $placewa : $mapswa :<br>";
 
-      $spss[$i] = array("id" => $ids, "wedding" => "$weddinga", "place" => "$placewa", "maps" => "$mapswa");//add wedding palase map
-    }
-    if(count($ids) > -1) $jsonPerson->spouses = $spss;
+    $spss[$i] = array("id" => $ids, "wedding" => "$weddinga", "place" => "$placewa", "maps" => "$mapswa");//add wedding palase map
+  }
+  if(count($ids) > -1) $jsonPerson->spouses = $spss;
 
-//echo "<hr>spss = ".count($spss)." = ";print_r($spss);echo "<br><hr>";
+echo "<hr>spss = ".count($spss)." = ";print_r($spss);echo "<br><hr>";
 
   }
 
@@ -695,7 +695,10 @@ if(isset($_POST['deleteperson'])) {
   }
 
 //echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
+//echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
 //echo "=== spouse_key = $spouse_key =<br>";
+//echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
+//echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
 
   if(strlen("$spouse_key") > 0){
     $spths = explode(",", $spouse_key);

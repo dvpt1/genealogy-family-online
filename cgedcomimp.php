@@ -155,7 +155,7 @@ function Gedcom_Import($user)
   $cur = -1;
 
 echo "<br><br>=== GEDCOM User==".$userId."<br>";
-echo "=== GEDCOM File==".$getfile."<br>";
+//echo "=== GEDCOM File==".$getfile."<br>";
 
   if(!empty($gedcom)){
 //echo "<br><br><br>=== GEDCOM gedcom==".$gedcom."<br>";
@@ -1032,10 +1032,12 @@ echo "=== GEDCOM File==".$getfile."<br>";
      }
 
 //echo "    // Add persons count = ".count($listPerson)."<br>";;
+//for ($i = 0; $i < count($spouses); $i++) echo "SPOUSE $i: ".$spouses[$i][$fldSPOUS1]." | ".$spouses[$i][$fldSPOUS2]." | ".$spouses[$i][$fldWEDDIN]." | ".$spouses[$i][$fldPLACEW]." | ".$spouses[$i][$fldMAPSW]." |<br>";
+
     for ($i = 0; $i < count($listPerson); $i++)
     {
 	$id_person = $indi_inx[$i]+1;
-//echo "person = $indi_inx[$i] = $id_person = $listPerson[$i] <br>";
+echo "person = $indi_inx[$i] = $id_person = $listPerson[$i] <br>";
 
         $sPlaceb = $listPlaceb[$i];
         $p1 = strpos($sPlaceb, "[");
@@ -1176,33 +1178,32 @@ echo "=== GEDCOM File==".$getfile."<br>";
 	    $jsonPerson->mothers = $mots;
 	}
 
-echo "=== $listSpouse[$i] : listspouses<br>";
-    $spss = array();
-    for ($ii = 0; $ii < count($spouses); $ii++)
-    {
-       if($spouses[$ii][$fldSPOUS1] == $i){
-          $inx_per = 0 + intval($spouses[$ii][$fldSPOUS2]);
-          $id_per = $indi_inx[$inx_per] + 1;//$persons[$inx_per][$fldID];
-          $spss[] = array("id" => $id_per, "wedding" => $spouses[$ii][$fldWEDDIN], "place" => $spouses[$ii][$fldPLACEW], "maps" => $spouses[$ii][$fldMAPSW]);
-echo "idd1=$inx_per=$id_per=<br>";
-          break;
-       }
-    }
-    for ($ii = 0; $ii < count($spouses); $ii++)
-    {
-       if($spouses[$ii][$fldSPOUS2] == $i){
-          $inx_per = 0 + intval($spouses[$ii][$fldSPOUS1]);
-          $id_per = $indi_inx[$inx_per] + 1;//$persons[$inx_per][$fldID];
-          $spss[] = array("id" => $id_per, "wedding" => $spouses[$ii][$fldWEDDIN], "place" => $spouses[$ii][$fldPLACEW], "maps" => $spouses[$ii][$fldMAPSW]);
-echo "idd2=$inx_per=$id_per=<br>";
-          break;
-       }
-    }
-    if(count($spss) > 0){
-       $jsonPerson->spouses = $spss;
-       print_r($spss); echo " == spss<br>";
-    }
-echo "<hr>";
+//echo "=== $listSpouse[$i] : listspouses<br>";
+        $spss = array();
+        for ($ii = 0; $ii < count($spouses); $ii++)
+        {
+           if($spouses[$ii][$fldSPOUS1] == $i){
+              $inx_per = 0 + intval($spouses[$ii][$fldSPOUS2]);
+              $id_per = $indi_inx[$inx_per] + 1;//$persons[$inx_per][$fldID];
+              $spss[] = array("id" => $id_per, "wedding" => $spouses[$ii][$fldWEDDIN], "place" => $spouses[$ii][$fldPLACEW], "maps" => $spouses[$ii][$fldMAPSW]);
+//echo "=== spss1 = $i = $inx_per == spss<br>";
+              //break;
+           }
+        }
+        for ($ii = 0; $ii < count($spouses); $ii++)
+        {
+           if($spouses[$ii][$fldSPOUS2] == $i){
+              $inx_per = 0 + intval($spouses[$ii][$fldSPOUS1]);
+              $id_per = $indi_inx[$inx_per] + 1;//$persons[$inx_per][$fldID];
+              $spss[] = array("id" => $id_per, "wedding" => $spouses[$ii][$fldWEDDIN], "place" => $spouses[$ii][$fldPLACEW], "maps" => $spouses[$ii][$fldMAPSW]);
+//echo "=== spss2 = $i = $inx_per == spss<br>";
+              //break;
+           }
+        }
+        if(count($spss) > 0){
+           $jsonPerson->spouses = $spss;
+//print_r($spss); echo " == spss<br>";
+        }
 
 	$jsonPerson->occupation = $listOccu[$i];
 	$jsonPerson->national = $listNati[$i];
@@ -1233,7 +1234,7 @@ echo "<hr>";
 ////////////////////////////////////////////////////////////
   }
 
-echo "<br><br><br><br>";
+//echo "<br><br><br><br>";
 //for ($i = 0; $i < count($listPerson); $i++) echo "PERSON: ".$listBirth[$i].";".$listDeath[$i].";".$listPerson[$i].";".$father.";".$mother.";".$gender.";".$sPlaceb.";".$sPlaced.";".$spouse."<br>";
 //for ($i = 0; $i < count($persons); $i++) echo "PERSON: ".$persons[$i][0]."|".$persons[$i][1]."|".$persons[$i][2]."|".$persons[$i][3]."|".$persons[$i][4]."|".$persons[$i][5]."|".$persons[$i][6]."|".$persons[$i][7]."|".$persons[$i][8]."|".$persons[$i][9]."<br>";
 //for ($i = 0; $i < count($persons); $i++) echo "PERSONS: ".$persons[$i][$fldINX]."|".$persons[$i][$fldID]."|".$persons[$i][$fldSEX]."|".$persons[$i][$fldPER]."|".$persons[$i][$fldBEG]."|".$persons[$i][$fldEND]."|".$persons[$i][$fldFAT]."|".$persons[$i][$fldMOT]."|".$persons[$i][$fldSPS]."|"."<br>";
@@ -1296,12 +1297,12 @@ function InsertSpouse()
         $imother = -1;
     }
 
-global $persons;
-global $fldPER;
-echo "=== ".$fatherId.":".$motherId."<br>";
-echo "=== ".$ifather.":".$imother."<br>";
-echo "=== ".$persons[$ifather][$fldPER].":".$persons[$imother][$fldPER]."<br>";
-echo "=== ".$sWeddin.":".$sPlacew.":".$sMapsw."<br>";
+//global $persons;
+//global $fldPER;
+//echo "=== ".$fatherId.":".$motherId."<br>";
+//echo "=== ".$ifather.":".$imother."<br>";
+//echo "=== ".$persons[$ifather][$fldPER].":".$persons[$imother][$fldPER]."<br>";
+//echo "=== ".$sWeddin.":".$sPlacew.":".$sMapsw."<br>";
 
     if (($ifather > -1) && ($imother > -1))
     {
