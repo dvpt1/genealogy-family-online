@@ -15,6 +15,10 @@ mysql_query('SET NAMES utf8');
 
 function _check_database($user, $pass)
 {
+  //GLOBAL $pepper;// = getConfigVariable("pepper");
+  //$pwd_peppered = hash_hmac("sha256", $pass, $pepper);
+  //$pwd_hashed = password_hash($pwd_peppered, PASSWORD_DEFAULT);
+
   $Q = mysql_query(" SELECT id FROM cusers WHERE name = '$user' AND pass = '$pass' ");
   if(mysql_num_rows($Q) == 0) return 0;
   else return mysql_fetch_array($Q);
@@ -97,6 +101,11 @@ function _check_datauserid($id)
 
 function _adduser_database($user, $pass, $fio, $country, $postcode, $city, $address, $phone, $http, $notes, $activation, $acces)
 {
+  //GLOBAL $pepper;// = getConfigVariable("pepper");
+  //$pwd_peppered = hash_hmac("sha256", $pass, $pepper);
+  //$pwd_hashed = password_hash($pwd_peppered, PASSWORD_DEFAULT); //$pwd_hashed = password_hash($pwd_peppered, PASSWORD_ARGON2ID);
+
+//echo $user.$pwd_peppered.$fio.$country.$postcode.$city.$address.$phone.$http.$notes.$activation."<br>"; 
   $Q = mysql_query("INSERT INTO cusers (name,pass,fio,country,postcode,city,address,phone,http,notes,activation,acces) VALUES ('$user','$pass','$fio','$country','$postcode','$city','$address','$phone','$http','$notes','$activation','$acces')");
 //echo "Q: ".$Q."<br>"; 
 }
