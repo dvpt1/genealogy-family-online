@@ -462,7 +462,7 @@ if(isset($_POST['saveperson'])) {
       $idf = intval($persons[$fat1[$i]][$fldID]);
       $fats[$i] = array("id" => $idf);
     }
-    if(count($fat1) > 0) $jsonPerson->fathers = $fats;
+    if(count($fats) > 0) $jsonPerson->fathers = $fats;
 //print_r($fat1); echo count($idf).":".empty($fat1)."<br>";
   }
 
@@ -474,7 +474,7 @@ if(isset($_POST['saveperson'])) {
       $idm = intval($persons[$mot1[$i]][$fldID]);
       $mots[$i] = array("id" => $idm);
     }
-    if(count($idm) > -1) $jsonPerson->mothers = $mots;
+    if(count($mots) > 0) $jsonPerson->mothers = $mots;
 //print_r($fat1); echo count($idf).":".empty($fat1)."<br>";
   }
 

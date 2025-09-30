@@ -13,11 +13,20 @@ if($user_data == 0) {
   exit;
 }
 
-//echo $_POST['username']."<br>";
-//echo $_POST['password']."<br>";
-echo $_POST['persona']."<br>";
-//echo $_POST['birth']."<br>";
-//echo $_POST['death']."<br>";
+  global $fldINX;
+  global $fldID;
+
+  global $fldBEG;
+  global $fldEND;
+  global $fldPER;
+  global $fldFAT;
+  global $fldMOT;
+  global $fldSEX;
+
+  global $persons;
+  global $fathers;
+  global $mothers;
+  global $spouses;
 
   if($_POST['id'] == 0){
     $personnew = $persons[count($persons) - 1];
@@ -34,8 +43,8 @@ echo $_POST['persona']."<br>";
 /* create json */
   $jsonPerson = new stdClass(); 
   $jsonPerson->id = intval($id_person);
-  $jsonPerson->gender = $_POST['genders'];
   $jsonPerson->person = $_POST['persona'];
+  $jsonPerson->gender = $_POST['genders'];
   $jsonPerson->birthday->date = $_POST['birth'];
   $jsonPerson->birthday->place = $_POST['placeb'];
   $jsonPerson->birthday->maps = $_POST['mapsb'];
@@ -49,6 +58,29 @@ echo $_POST['persona']."<br>";
   $jsonPerson->burialday->place = $_POST['placet'];
   $jsonPerson->burialday->maps = $_POST['mapst'];
 /***/
+
+//echo "<hr>father ==".$_POST['fathers'];
+  if(!empty($_POST['fathers'])) {
+    $fts = explode(",", $_POST['fathers']);
+    $fats = array();
+    for ($i = 0; $i < count($fts); $i++) {
+      $fats[$i] = array("id" => $fts[$i]);
+    }
+//print_r($fats);
+    if(count($fats) > 0) $jsonPerson->fathers = $fats;
+  }
+
+//echo "<hr>mother ==".$_POST['mothers'];
+  if(!empty($_POST['mothers'])) {
+    $mts = explode(",", $_POST['mothers']);
+    $mots = array();
+    for ($i = 0; $i < count($mts); $i++) {
+      $mots[$i] = array("id" => $mts[$i]);
+    }
+//print_r($mots);
+    if(count($mots) > 0) $jsonPerson->mothers = $mots;
+  }
+
   
 /***/
   $jsonPerson->occupation = $_POST['occu'];
@@ -77,5 +109,7 @@ echo $_POST['persona']."<br>";
   //$timestamp = date('YmdHisu');
   file_put_contents("timestamp", $timestamp);
 ////////////////////////////////////////////////////////////
+
+echo $_POST['persona']."<br>";
 
 ?>
