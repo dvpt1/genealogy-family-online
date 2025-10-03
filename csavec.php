@@ -43,7 +43,15 @@ if($user_data == 0) {
 /* create json */
   $jsonPerson = new stdClass(); 
   $jsonPerson->id = intval($id_person);
-  $jsonPerson->person = $_POST['persona'];
+
+echo "PERSONA1=".$_POST['persona']."=NAMEUTF";
+$utf8String = utf8_encode($_POST['persona']);
+echo "PERSONA2=".$utf8String."=NAMEUTF";
+$utf8String = mb_convert_encoding($_POST['persona'], "UTF-8");
+echo "PERSONA3=".$utf8String."=NAMEUTF";
+
+  $jsonPerson->person = $utf8String;//$_POST['persona'];
+
   $jsonPerson->gender = $_POST['genders'];
   $jsonPerson->birthday->date = $_POST['birth'];
   $jsonPerson->birthday->place = $_POST['placeb'];
@@ -110,6 +118,6 @@ if($user_data == 0) {
   file_put_contents("timestamp", $timestamp);
 ////////////////////////////////////////////////////////////
 
-echo $_POST['persona']."<br>";
+echo "PERSONA=".$_POST['persona']."=NAME";
 
 ?>
