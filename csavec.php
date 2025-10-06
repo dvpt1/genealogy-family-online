@@ -43,13 +43,6 @@ if($user_data == 0) {
 /* create json */
   $jsonPerson = new stdClass(); 
   $jsonPerson->id = intval($id_person);
-
-//echo "PERSONA1=".$_POST['persona']."=NAMEUTF";
-//$utf8String = utf8_encode($_POST['persona']);
-//echo "PERSONA2=".$utf8String."=NAMEUTF";
-//$utf8String = mb_convert_encoding($_POST['persona'], "UTF-8");
-//echo "PERSONA3=".$utf8String."=NAMEUTF";
-
   $jsonPerson->person = $_POST['persona'];
   $jsonPerson->gender = $_POST['genders'];
   $jsonPerson->birthday->date = $_POST['birth'];
@@ -83,31 +76,15 @@ if($user_data == 0) {
   }
   if(!empty($_POST['spouses'])) {
     $sps = explode(",", $_POST['spouses']);
+    $spsw = explode(",", $_POST['wedding']);
+    $spsp = explode(",", $_POST['placew']);
+    $spsm = explode(",", $_POST['mapsw']);
     $spss = array();
     for ($i = 0; $i < count($sps); $i++) {
-      $spss[$i] = array("id" => $sps[$i]);
+      $spss[$i] = array("id" => $sps[$i], "wedding" => $spsw[$i], "place" => $spsp[$i], "maps" => $spsm[$i]);//add wedding palase map
     }
     if(count($spss) > 0) $jsonPerson->spouses = $spss;
   }
-
-/*
-  if(!empty($sps1)) {
-    $ids = -1;
-    $spss = array();
-    for ($i = 0; $i < count($sps0); $i++) {
-//echo "sps0[$i] = : $sps0[$i] : sps1[$i] = : $sps1[$i] :<br>";
-      $ids = intval($persons[$sps1[$i]][$fldID]);
-      $weddinga = $spouses[$sps0[$i]][$fldWEDDIN];
-      $placewa = $spouses[$sps0[$i]][$fldPLACEW];
-      $mapswa = $spouses[$sps0[$i]][$fldMAPSW];
-//echo "spssi = : $i : $ids : $weddinga : $placewa : $mapswa :<br>";
-      $spss[$i] = array("id" => $ids, "wedding" => "$weddinga", "place" => "$placewa", "maps" => "$mapswa");//add wedding palase map
-    }
-    if(count($ids) > -1) $jsonPerson->spouses = $spss;
-//echo "<hr>spss = ".count($spss)." = ";print_r($spss);echo "<br><hr>";
-  }
-*/
- 
 /***/
   $jsonPerson->occupation = $_POST['occu'];
   $jsonPerson->national = $_POST['nati'];
@@ -137,6 +114,6 @@ if($user_data == 0) {
   file_put_contents("timestamp", $timestamp);
 ////////////////////////////////////////////////////////////
 
-echo "PERSONA=".$_POST['persona']."=NAME";
+echo "PERSONA=".$_POST['persona']." SPOUSES: ".$_POST['spouses'];
 
 ?>
