@@ -701,10 +701,10 @@ if($log) exit;
     $spouse_inx = 0;
   }
 
-echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
-for ($i = 0; $i < count($spouses); $i++) echo "SPOUSE $i: ".$spouses[$i][$fldSPOUS1]." | ".$spouses[$i][$fldSPOUS2]." | ".$spouses[$i][$fldWEDDIN]." | ".$spouses[$i][$fldPLACEW]." | ".$spouses[$i][$fldMAPSW]." |<br>";
-echo "=== spouse_key = $spouse_key =<br>";
-echo "<hr><br><br>";
+//echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
+//for ($i = 0; $i < count($spouses); $i++) echo "SPOUSE $i: ".$spouses[$i][$fldSPOUS1]." | ".$spouses[$i][$fldSPOUS2]." | ".$spouses[$i][$fldWEDDIN]." | ".$spouses[$i][$fldPLACEW]." | ".$spouses[$i][$fldMAPSW]." |<br>";
+//echo "=== spouse_key = $spouse_key =<br>";
+//echo "<hr><br><br>";
 
   if(strlen("$spouse_key") > 0){
     $spths = explode(",", $spouse_key);
@@ -714,15 +714,12 @@ echo "<hr><br><br>";
       $i1 = $spts[1];
       $aspouse[] = $i0;
       $apersone[] = $i1;
-
-echo ":".$i0.":".$i1.":".$spouses[$i0][$fldWEDDIN].":".$spouses[$i0][$fldPLACEW].":".spouses[$i0][$fldMAPSW].":<br>";
-
     }
   }
 
-echo "<br>aspouse =".count($aspouse)."=";print_r($aspouse);echo "<br>";
-echo "<br>apersone =".count($apersone)."=";print_r($apersone);echo "<br>";
-echo "<br><br><br><br><br>";
+//echo "<br>aspouse =".count($aspouse)."=";print_r($aspouse);echo "<br>";
+//echo "<br>apersone =".count($apersone)."=";print_r($apersone);echo "<br>";
+//echo "<br><br><br><br><br>";
 
   if($inxspouse > -1){
      $aspouse[] = -1;
