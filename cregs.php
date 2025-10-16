@@ -17,6 +17,12 @@ include_once("chtmls.php");
 $msg = "";
 if(isset($_POST['submit'])) {
  $user_data = _check_datauser(fm($_POST['user']));
+
+ $pos = strpos($user_data, '@');
+ if($pos == false) return -1;
+ $pos = strpos($user_data, '.');
+ if($pos == false) return -1;
+
  if($user_data == 0) {
 
   $password = md5($_POST['pass']); // encrypted password
