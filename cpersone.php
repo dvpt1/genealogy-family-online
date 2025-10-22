@@ -107,6 +107,9 @@ function Persone($user)
   global $field_wedding;
   global $field_placew;
   global $field_placel;
+  global $field_datel;
+  global $field_resib;
+  global $field_resie;
   global $field_occu;
   global $field_nati;
   global $field_educ;
@@ -857,9 +860,19 @@ if($log) exit;
   <td><input type="text" name="placeb" size="60" value="<?php echo $placeba; ?>"></td>
  </tr>
 
- <tr><td><?php echo $field_placel; ?></td>
+ <tr bgcolor="#ffff00"><td><?php echo $field_placel; ?></td>
   <td><input type="text" name="placel" size="60" value="<?php echo $placela; ?>"></td>
  </tr>
+
+ <tr bgcolor="#ffff00"><td><?php echo $field_datel; ?></td><td>
+ <table><tr bgcolor="#ffff00"><td align="center">
+  <?php echo $field_resib; ?>
+  <input type="text" name="resib" size="30" value="<?php echo $resiba; ?>">
+ </td><td align="center">
+  <?php echo $field_resie; ?>
+  <input type="text" name="resie" size="30" value="<?php echo $resiea; ?>">
+ </td></tr></table>
+ </td></tr>
 
  <tr><td><?php echo $field_death; ?></td>
   <td><input type="text" name="death" size="25" value="<?php echo $deatha; ?>"></td>
@@ -1131,6 +1144,16 @@ if($log) exit;
 //if($_POST['mother_key']) echo 'mother_key='.$_POST['mother_key'].'<br>';
 //if($_POST['spouse_key']) echo 'spouse_key='.$_POST['spouse_key'].'<br>';
 //print_r($_COOKIE);echo "<br>";
+
+  echo "<br><br><br><br><br>";
+  echo "<br><br><br><br><br>";
+  echo "<br><br><br><br><br>";
+  echo "<br><br><br><br><br>";
+  echo "<br><br><br><br><br>";
+  echo "<br><br><br><br><br>";
+  echo "<br><br><br><br><br>";
+  echo "<br><br><br><br><br>";
+  echo "<br><br><br><br><br>";
 
   echo "</div></div>";
   echo "$reload<p><br></p>";
