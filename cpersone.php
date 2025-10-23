@@ -459,9 +459,16 @@ if(isset($_POST['saveperson'])) {
   $jsonPerson->deathday->date = $_POST['death'];
   $jsonPerson->deathday->place = $_POST['placed'];
 
-  $jsonPerson->lifeday->date = "";
-  $jsonPerson->lifeday->place = $_POST['placel'];
-  $jsonPerson->lifeday->maps = "";
+  //$jsonPerson->lifeday->date = "";
+  //$jsonPerson->lifeday->place = $_POST['placel'];
+  //$jsonPerson->lifeday->maps = "";
+//  if(!empty($_POST['placel'])) {
+    $place = $_POST['placel'];
+    $resi = array();
+    $resi[] = array("datebeg" => "",  "dateend" => "", "place" => "$place", "maps" => "");//add residence
+    $jsonPerson->lifeday = $resi;
+//  }
+
   $jsonPerson->burialday->date = "";
   $jsonPerson->burialday->place = $_POST['placet'];
   $jsonPerson->burialday->maps = "";
