@@ -126,6 +126,7 @@ function Persone($user)
   global $fathers;
   global $mothers;
   global $spouses;
+  global $residences;
 
   global $cnt_persons;
   global $inx_person;
@@ -170,6 +171,14 @@ function Persone($user)
   $weddinga = "";
   $placewa = "";
   $mapswa = "";
+
+  global $aresiden;
+  $aresiden = array();
+
+  $resibeg = "";
+  $resiend = "";
+  $placela = "";
+  $mapsla = "";
 
   session_start();
 
@@ -580,14 +589,21 @@ if(isset($_POST['deleteperson'])) {
 ////////////////////////////////////////////////////////////////////////////
 if($log) exit;
 ////////////////////////////////////////////////////////////////////////////
+
+//echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
+//echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
+//echo "<b>===editperson-begin===</b><br>";
+
   $inx_add = 0;
   if(isset($_POST['addFather'])) $inx_add = 1;
   if(isset($_POST['addMother'])) $inx_add = 2;
   if(isset($_POST['addSpouse'])) $inx_add = 3;
+  if(isset($_POST['addReside'])) $inx_add = 4;
   $inx_del = 0;
   if(isset($_POST['delFather'])) $inx_del = 1;
   if(isset($_POST['delMother'])) $inx_del = 2;
   if(isset($_POST['delSpouse'])) $inx_del = 3;
+  if(isset($_POST['delReside'])) $inx_del = 4;
 
   $_SESSION["birtha"]  = $_POST["birth"];
   $_SESSION["deatha"]  = $_POST["death"];
@@ -627,6 +643,13 @@ if($log) exit;
   if(@$_POST['selSpouse']) { // Если нажата кнопка
       $inxspouse = $_POST['spouse_sel'];
       $addspouse = $persons[$inxspouse][$fldPER];
+  }
+
+  $addreside = "";
+  $inxreside = -1;
+  if(@$_POST['selReside']) { // Если нажата кнопка
+      $inxreside = $_POST['reside_sel'];
+      $addreside = $persons[$inxreside][$fldPER];
   }
 
   $delfather = -1;
@@ -683,13 +706,27 @@ if($log) exit;
    }
   }
 
+  $reside_key = "";
+  if(strlen($_SESSION["residea"]) > 0) $reside_key = $_POST["residea"]; else $reside_key = $_SESSION["residea"];
+  if(strlen("$reside_key") > 0){
+   $n = 0;
+   for ($i = 0; $i < count($resides); $i++) {
+     if ($residenses[$i][0] == $inx_person) {
+       $ii = $residense[$i][0];
+
+       if($n == 0) $reside_key = "".$ii; else $reside_key .= ",".$ii;
+       $n++;
+     }
+   }
+  }
+
   if(empty($_SESSION["birtha"])) $birtha = $person[$fldBEG]; else $birtha = $_SESSION["birtha"];
   if(empty($_SESSION["deatha"])) $deatha = $person[$fldEND]; else $deatha = $_SESSION["deatha"];
   if(empty($_SESSION["persona"])) $persona = $person[$fldPER]; else $persona = $_SESSION["persona"];
   if(empty($_SESSION["gendera"])) $gendera = $person[$fldSEX]; else $gendera = $_SESSION["gendera"];
   if(empty($_SESSION["placeba"])) $placeba = $person[$fldPLB]; else $placeba = $_SESSION["placeba"];
   if(empty($_SESSION["placeda"])) $placeda = $person[$fldPLD]; else $placeda = $_SESSION["placeda"];
-  if(empty($_SESSION["placela"])) $placela = $person[$fldPLL]; else $placela = $_SESSION["placela"];
+  //if(empty($_SESSION["placela"])) $placela = $person[$fldPLL]; else $placela = $_SESSION["placela"];
   if(empty($_SESSION["placeta"])) $placeta = $person[$fldPLT]; else $placeta = $_SESSION["placeta"];
   if(empty($_SESSION["occua"])) $occua = $person[$fldOCCU]; else $occua = $_SESSION["occua"];
   if(empty($_SESSION["natia"])) $natia = $person[$fldNATI]; else $natia = $_SESSION["natia"];
@@ -738,6 +775,16 @@ if($log) exit;
      if($n == 0) $spouse_key = '-1:'.$inxspouse; else $spouse_key .= '-1:'.$inxspouse;
   }
   //??$_SESSION["spousea"] = $spouse_key;
+
+  for ($i = 0; $i < count($residences); $i++){
+    if($residences[$i][0] == $inx_person){
+      $aresiden[] = $residences[$i];
+    }
+  }
+
+//for ($i = 0; $i < count($aresiden); $i++) echo "RESIDENCE: ".$aresiden[$i][0]." | ".$aresiden[$i][1]." | ".$aresiden[$i][2]." | ".$aresiden[$i][3]." | ".$aresiden[$i][4]." | "."<br>";
+//echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
+
 
   $htm = "<div class='shadow' style='POSITION: absolute; LEFT: 10px; TOP: 60px; WIDTH: 1075px; HEIGHT: 765px'>";
   if ($gendera == "1")
@@ -867,19 +914,88 @@ if($log) exit;
   <td><input type="text" name="placeb" size="60" value="<?php echo $placeba; ?>"></td>
  </tr>
 
- <tr bgcolor="#ffff00"><td><?php echo $field_placel; ?></td>
-  <td><input type="text" name="placel" size="60" value="<?php echo $placela; ?>"></td>
- </tr>
+
+<?
+  // residens
+  echo '<tr bgcolor="#ffff00"><td>'.$field_placel.'</td>';
+  echo '<td>';
+
+  echo '<select id="residen" class="residen" name="residen" onchange="OnSelectionChangr(this)">';
+  $n = 0;
+  $residen_key = "";
+  for ($i = 0; $i < count($aresiden); $i++) {
+      echo '<option value="'.$aresiden[$i][0].'">'.$aresiden[$i][3].'</option>';
+
+      if($i == $residen_ind){
+        $resibeg = $aresiden[$i][1];
+        $resiend = $aresiden[$i][2];
+        $mapsla = $aresiden[$i][4];
+      }
+
+      if($n == 0) $residen_key = "".$aresiden[$i][0]; else $residen_key .= ",".$aresiden[$i][0];
+      $n++;
+  }
+  echo '</select>';
+
+  $_SESSION["residena"] = $residen_key;
+  echo '<input type="hidden" id="residen_key" name="residena" value="'.$residen_key.'">';
+  echo "<input type=submit src='icons/ic_menu_add.png' witdh=24 height=24 name='addResiden' value='+'>";
+  echo "<input type=submit src='icons/ic_menu_delete.png' witdh=24 height=24 name='delResiden' value='-'>";
+
+  if ($inx_add == 3){
+     echo "<select name='residen_sel' size='1'>";
+     $select="";
+     for($i = 0; $i < count($persons); $i++) {
+        $per = $persons[$i];
+        $select .= "<option value='$per[$fldINX]'>".$per[$fldPER]."</option>";
+     }
+     echo $select."<input type=submit name='selResiden' value='+'>";
+     echo "</select>";
+
+     echo "<input type=submit name='' value='<'>";
+  }
+  echo '</td></tr>';
+
+  $aresibeg = array();
+  for($i = 0; $i < count($aresiden); $i++) {
+     $aresibeg[] = $$aresiden[$i][1];
+  }
+  $aresiend = array();
+  for($i = 0; $i < count($aresiden); $i++) {
+     $aresiend[] = $$aresiden[$i][2];
+  }
+
+?>
+
+ <script>
+     function OnSelectionChangr (select) {
+         const index = select.selectedIndex;
+         var selectedOption = select.options[index];
+         var options = selectedOption.value;
+         var option = options.split(":");
+
+         const presibeg = document.getElementById("resibeg");
+         var resibegArray =  <?php echo json_encode($aresibeg); ?>;
+         presibeg.value = resibegArray[index];
+
+         const presiend = document.getElementById("resiend");
+         var resiendArray =  <?php echo json_encode($aresiend); ?>;
+         presiend.value = resiendArray[index];
+     }
+ </script>
 
  <tr bgcolor="#ffff00"><td><?php echo $field_datel; ?></td><td>
  <table><tr bgcolor="#ffff00"><td align="center">
   <?php echo $field_resib; ?>
-  <input type="text" name="resib" size="30" value="<?php echo $resiba; ?>">
+  <input type="text" name="resibeg" size="30" value="<?php echo $resibeg; ?>">
  </td><td align="center">
   <?php echo $field_resie; ?>
-  <input type="text" name="resie" size="30" value="<?php echo $resiea; ?>">
+  <input type="text" name="resiend" size="30" value="<?php echo $resiend; ?>">
  </td></tr></table>
  </td></tr>
+
+
+
 
  <tr><td><?php echo $field_death; ?></td>
   <td><input type="text" name="death" size="25" value="<?php echo $deatha; ?>"></td>

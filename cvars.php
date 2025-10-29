@@ -10,17 +10,17 @@
 //firstname	имя
 //middlename	отчество
 
-  $fldINX  = 0; // номер колонки "INX"
-  $fldID   = 1; // номер колонки "ID"
-  $fldPER  = 2; // номер колонки "ФИО"
-  $fldSEX  = 3; // номер колонки "Пол"
-  $fldBEG  = 4; // номер колонки "ПРИШЕЛ"
-  $fldEND  = 5; // номер колонки "УШЕЛ"
-  $fldFAT  = 6; // номер колонки "Отец"
-  $fldMOT  = 7; // номер колонки "Мать"
-  $fldSPS  = 8; // номер колонки "Муж/жена"
-  $fldPLB  = 9; // номер колонки "Место рождения"
-  $fldPLD  = 10; // номер колонки "Место смерти"
+  $fldINX  =  0; // INX
+  $fldID   =  1; // ID
+  $fldPER  =  2; // ФИО
+  $fldSEX  =  3; // Пол
+  $fldBEG  =  4; // ПРИШЕЛ
+  $fldEND  =  5; // УШЕЛ
+  $fldFAT  =  6; // Отец
+  $fldMOT  =  7; // Мать
+  $fldSPS  =  8; // Муж/жена
+  $fldPLB  =  9; // Место рождения
+  $fldPLD  = 10; // Место смерти
   $fldPLL  = 11; // Место жизни
   $fldPLT  = 12; // Место захоронения
   $fldMAPB = 13;
@@ -77,6 +77,7 @@
   $fathers = array();
   $mothers = array();
   $spouses = array();
+  $residences = array();
 
   //$lang = '';
   //$page = '';

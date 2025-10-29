@@ -57,9 +57,6 @@ if($user_data == 0) {
   $jsonPerson->deathday->date = $_POST['death'];
   $jsonPerson->deathday->place = $_POST['placed'];
   $jsonPerson->deathday->maps = $_POST['mapsd'];
-  $jsonPerson->lifeday->date = $_POST['live'];
-  $jsonPerson->lifeday->place = $_POST['placel'];
-  $jsonPerson->lifeday->maps = $_POST['mapsl'];
   $jsonPerson->burialday->date = $_POST['burial'];
   $jsonPerson->burialday->place = $_POST['placet'];
   $jsonPerson->burialday->maps = $_POST['mapst'];
@@ -90,6 +87,17 @@ if($user_data == 0) {
       $spss[$i] = array("id" => $sps[$i], "wedding" => $spsw[$i], "place" => $spsp[$i], "maps" => $spsm[$i]);//add wedding palase map
     }
     if(count($spss) > 0) $jsonPerson->spouses = $spss;
+  }
+  if(!empty($_POST['placel'])) {
+    $rpsb = explode(",", $_POST['resibeg']);
+    $rpse = explode(",", $_POST['resiend']);
+    $rpsp = explode(",", $_POST['placel']);
+    $rpsm = explode(",", $_POST['mapsl']);
+    $rpss = array();
+    for ($i = 0; $i < count($rpsb); $i++) {
+      $rpss[$i] = array("resibeg" => $rpsb[$i], "resiend" => $rpse[$i], "place" => $rpsp[$i], "maps" => $rpsm[$i]);//add date palase map
+    }
+    if(count($rpss) > 0) $jsonPerson->residences = $rpss;
   }
 /***/
   $jsonPerson->occupation = $_POST['occu'];

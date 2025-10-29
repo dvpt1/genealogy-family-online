@@ -1138,16 +1138,24 @@ echo "person = $indi_inx[$i] = $id_person = $listPerson[$i] <br>";
 	$jsonPerson->id = $id_person;
 	$jsonPerson->gender = $gender;
 	$jsonPerson->person = $listPerson[$i];
+
 	$jsonPerson->birthday->date = $listBirth[$i];
 	$jsonPerson->birthday->place = $sPlaceb;
 	$jsonPerson->birthday->maps = $listMapsb[$i];
+
 	$jsonPerson->deathday->date = $listDeath[$i];
 	$jsonPerson->deathday->place = $sPlaced;
 	$jsonPerson->deathday->maps = $listMapsd[$i];
 
-	$jsonPerson->lifeday->date = "";
-	$jsonPerson->lifeday->place = $sPlacel;
-	$jsonPerson->lifeday->maps = "";
+	//$jsonPerson->residay->date = "";
+	//$jsonPerson->residay->place = $sPlacel;
+	//$jsonPerson->residay->maps = "";
+        $rpss = array();
+        if(!empty($sPlacel)){
+           $rpss[] = array("resibeg" => @"", "resiend" => @"", "place" => $sPlacel, "maps" => @"");
+           $jsonPerson->residay = $rpss;
+        }
+
 	$jsonPerson->burialday->date = "";
 	$jsonPerson->burialday->place = $sPlacet;
 	$jsonPerson->burialday->maps = "";
