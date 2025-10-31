@@ -126,6 +126,6 @@ if($user_data == 0) {
   file_put_contents("timestamp", $timestamp);
 ////////////////////////////////////////////////////////////
 
-echo " PERSONA=".$_POST['persona'];
+echo " PERSONA=".$_POST['persona'].$_POST['fathers'].$_POST['mothers'].$_POST['spouses'];
 
 ?>
