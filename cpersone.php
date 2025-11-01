@@ -197,9 +197,13 @@ if(isset($_POST['saveperson'])) {
 
 echo "<br><br><br><br>";
 echo "<b>===saveperson-begin===</b><br>";
-$aresiden = $_SESSION['array'];
-print_r($array);echo "<br>";
-for ($i = 0; $i < count($aresiden); $i++) echo "RESIDENCE: ".$aresiden[$i][0]." | ".$aresiden[$i][1]." | ".$aresiden[$i][2]." | ".$aresiden[$i][3]." | ".$aresiden[$i][4]." | "."<br>";
+
+  session_start();
+  $aresiden = $_SESSION['aresiden'];
+echo "<pre>";
+print_r($aresiden); echo "<br>";
+echo "</pre>";
+
 
   if($_GET['id'] == 0){
     $personnew = $persons[count($persons) - 1];
@@ -212,7 +216,6 @@ for ($i = 0; $i < count($aresiden); $i++) echo "RESIDENCE: ".$aresiden[$i][0]." 
     $persons[$inx_person][$fldID] = $new_id;
   }
 
-
   $persons[$inx_person][$fldBEG ] = $_POST['birth'];
   $persons[$inx_person][$fldEND ] = $_POST['death'];
   $persons[$inx_person][$fldPER ] = $_POST['persona'];
@@ -220,7 +223,6 @@ for ($i = 0; $i < count($aresiden); $i++) echo "RESIDENCE: ".$aresiden[$i][0]." 
   $persons[$inx_person][$fldMOT ] = $_POST['mother'];
   $persons[$inx_person][$fldSEX ] = $_POST['genders'];
   $persons[$inx_person][$fldPLB ] = $_POST['placeb'];
-//  $persons[$inx_person][$fldPLL ] = $_POST['placel'];
   $persons[$inx_person][$fldPLD ] = $_POST['placed'];
   $persons[$inx_person][$fldPLT ] = $_POST['placet'];
 //  $persons[$inx_person][$fldMAPB] = $_POST['mapsb'];
@@ -233,15 +235,6 @@ for ($i = 0; $i < count($aresiden); $i++) echo "RESIDENCE: ".$aresiden[$i][0]." 
   $persons[$inx_person][$fldRELI] = $_POST['reli'];
   $persons[$inx_person][$fldNOTE] = $_POST['notes'];
   $persons[$inx_person][$fldICON] = $_POST['icon'];
-
-//echo "src_image1<br>";
-/*  if(isset($_SESSION["icona"])){
-    if(empty($_SESSION["icona"])) $src_icon = $person[$fldICON]; else $src_icon = $_SESSION["icona"];
-    $persons[$inx_person][$fldICON] = $src_icon;
-  }else{
-    $persons[$inx_person][$fldICON] = "";
-    $_SESSION["icona"] = "";
-  }*/
 
   // fathers
   $fat1 = array(); // fathers from form
@@ -446,13 +439,19 @@ for ($i = 0; $i < count($aresiden); $i++) echo "RESIDENCE: ".$aresiden[$i][0]." 
   $jsonPerson->deathday->place = $_POST['placed'];
 
 /**/
-//echo "<br><br><br><br><br><br><br>$aresiden = ".count($aresiden);
+//echo "<br><br><br><br><br><br><br>$aresiden = ".count($aresiden)."<br>";
 //for ($i = 0; $i < count($aresiden); $i++) echo "RESIDENCE: ".$aresiden[$i][0]." | ".$aresiden[$i][1]." | ".$aresiden[$i][2]." | ".$aresiden[$i][3]." | ".$aresiden[$i][4]." | "."<br>";
+
+  session_start();
+  $aresiden = $_SESSION['aresiden'];
+  for ($i = 0; $i < count($aresiden); $i++) {
+echo "= id ".$aresiden[$i][0]."= resibeg ".$aresiden[$i][1]." resiend ".$aresiden[$i][2]." place ".$aresiden[$i][3]." maps ".$aresiden[$i][4]."<br>";//add residence
+  }
 
   if(count($aresiden) > 0) {
     $resi = array();
     for ($i = 0; $i < count($aresiden); $i++){
-      $resi[] = array("resibeg" => $aresiden[$i][1],  "resiend" => $aresiden[$i][2], "place" => $aresiden[$i][3], "maps" => $aresiden[$i][4]);//add residence
+      $resi[] = array("resibeg" => $aresiden[$i][1], "resiend" => $aresiden[$i][2], "place" => $aresiden[$i][3], "maps" => $aresiden[$i][4]);//add residence
     }
     $jsonPerson->residences = $resi;
   }
@@ -533,8 +532,8 @@ for ($i = 0; $i < count($aresiden); $i++) echo "RESIDENCE: ".$aresiden[$i][0]." 
 ////////////////////////////////////////////////////////////
 
 //sleep(10);
-//$log= true;
-  echo '<script type="text/javascript">window.location = "'.$https.'"</script>';
+$log= true;
+//  echo '<script type="text/javascript">window.location = "'.$https.'"</script>';
 
 //echo "<b>===saveperson-end===</b><br>";
 
@@ -571,11 +570,6 @@ if($log) exit;
   if(isset($_POST['addMother'])) $inx_add = 2;
   if(isset($_POST['addSpouse'])) $inx_add = 3;
   if(isset($_POST['addReside'])) $inx_add = 4;
-  $inx_del = 0;
-  if(isset($_POST['delFather'])) $inx_del = 1;
-  if(isset($_POST['delMother'])) $inx_del = 2;
-  if(isset($_POST['delSpouse'])) $inx_del = 3;
-  if(isset($_POST['delReside'])) $inx_del = 4;
 
   $_SESSION["birtha"]  = $_POST["birth"];
   $_SESSION["deatha"]  = $_POST["death"];
@@ -583,7 +577,6 @@ if($log) exit;
   $_SESSION["gendera"] = $_POST["genders"];
   $_SESSION["placeb"] = $_POST["placeb"];
   $_SESSION["placed"] = $_POST["placed"];
-  $_SESSION["placel"] = $_POST["placel"];
   $_SESSION["placet"] = $_POST["placet"];
   $_SESSION["occua"] = $_POST["occu"];
   $_SESSION["natia"] = $_POST["nati"];
@@ -627,11 +620,16 @@ if($log) exit;
   $delfather = -1;
   $delmother = -1;
   $delspouse = -1;
+  $delreside = -1;
   if(isset($_POST['delFather'])) if(isset($_POST['father'])) $delfather = $_POST['father'];
   if(isset($_POST['delMother'])) if(isset($_POST['mother'])) $delmother = $_POST['mother'];
   if(isset($_POST['delSpouse'])) if(isset($_POST['spouse'])){
      $delsp = explode(":", $_POST['spouse']);
      $delspouse = $delsp[1];
+  }
+  if(isset($_POST['delReside'])) if(isset($_POST['reside'])){
+     $delre = $_POST['spouse'];
+     $delreside = $delre;
   }
 
   $father_key = "";
@@ -698,7 +696,6 @@ if($log) exit;
   if(empty($_SESSION["gendera"])) $gendera = $person[$fldSEX]; else $gendera = $_SESSION["gendera"];
   if(empty($_SESSION["placeba"])) $placeba = $person[$fldPLB]; else $placeba = $_SESSION["placeba"];
   if(empty($_SESSION["placeda"])) $placeda = $person[$fldPLD]; else $placeda = $_SESSION["placeda"];
-  //if(empty($_SESSION["placela"])) $placela = $person[$fldPLL]; else $placela = $_SESSION["placela"];
   if(empty($_SESSION["placeta"])) $placeta = $person[$fldPLT]; else $placeta = $_SESSION["placeta"];
   if(empty($_SESSION["occua"])) $occua = $person[$fldOCCU]; else $occua = $_SESSION["occua"];
   if(empty($_SESSION["natia"])) $natia = $person[$fldNATI]; else $natia = $_SESSION["natia"];
@@ -720,11 +717,6 @@ if($log) exit;
     $spouse_inx = 0;
   }
 
-//echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
-//for ($i = 0; $i < count($spouses); $i++) echo "SPOUSE $i: ".$spouses[$i][$fldSPOUS1]." | ".$spouses[$i][$fldSPOUS2]." | ".$spouses[$i][$fldWEDDIN]." | ".$spouses[$i][$fldPLACEW]." | ".$spouses[$i][$fldMAPSW]." |<br>";
-//echo "=== spouse_key = $spouse_key =<br>";
-//echo "<hr><br><br>";
-
   if(strlen("$spouse_key") > 0){
     $spths = explode(",", $spouse_key);
     for ($i = 0; $i < count($spths); $i++) {
@@ -736,10 +728,6 @@ if($log) exit;
     }
   }
 
-//echo "<br>aspouse =".count($aspouse)."=";print_r($aspouse);echo "<br>";
-//echo "<br>apersone =".count($apersone)."=";print_r($apersone);echo "<br>";
-//echo "<br><br><br><br><br>";
-
   if($inxspouse > -1){
      $aspouse[] = -1;
      $apersone[] = $inxspouse;
@@ -748,10 +736,17 @@ if($log) exit;
   }
   //??$_SESSION["spousea"] = $spouse_key;
 
-  for ($i = 0; $i < count($residences); $i++){
+  session_start();
+  $aresiden = $_SESSION['aresiden'];
+  for ($i = 0; $i < count($aresiden); $i++) {
+echo "= id ".$aresiden[$i][0]."= resibeg ".$aresiden[$i][1]." resiend ".$aresiden[$i][2]." place ".$aresiden[$i][3]." maps ".$aresiden[$i][4]."<br>";//add residence
+  }
+  if(count($aresiden) == 0){
+   for ($i = 0; $i < count($residences); $i++){
     if($residences[$i][0] == $inx_person){
       $aresiden[] = $residences[$i];
     }
+   }
   }
   //??$_SESSION["residea"] = $reside_key;
 
@@ -873,6 +868,7 @@ if($log) exit;
   echo '<td>';
 
   if ($inx_add == 4){
+     $inx_add = 0;
 
     //prompt function
     function prompt($prompt_msg){
@@ -881,21 +877,21 @@ if($log) exit;
         return($answer);
     }
     //program
-    $prompt_msg = "Please type your name.";
+    $prompt_msg = "Please type your place:";
     $placel = prompt($prompt_msg);
 
     $acnt = count($aresiden);
-    $aresiden[$acnt][0] = 10;
-    $aresiden[$acnt][3] = $placel;
-echo $placel."<br>";
+    $resis = array($inx_person, "", "", $placel, "");
+    $aresiden[$acnt] = $resis;
+
+echo $placel;
   }
 
-  $_SESSION['array'] = $aresiden;
   echo '<select id="residen" class="residen" name="residen" onchange="OnSelectionChangeR (this)">';
   $n = 0;
   $residen_key = "";
   for ($i = 0; $i < count($aresiden); $i++) {
-      echo '<option value="'.$aresiden[$i][0].'">'.$aresiden[$i][3].'</option>';
+      echo '<option>'.$aresiden[$i][3].'</option>';
 
       if($i == $residen_ind){
         $resibeg = $aresiden[$i][1];
@@ -908,11 +904,23 @@ echo $placel."<br>";
   }
   echo '</select>';
 
+//  for ($i = 0; $i < count($aresiden); $i++) {
+//echo "= id ".$aresiden[$i][0]."= resibeg ".$aresiden[$i][1]." resiend ".$aresiden[$i][2]." place ".$aresiden[$i][3]." maps ".$aresiden[$i][4]."<br>";//add residence
+//  }
 
-  $_SESSION["residena"] = $residen_key;
-  echo '<input type="hidden" id="residen_key" name="residena" value="'.$residen_key.'">';
-  echo "<input type=submit src='icons/ic_menu_add.png' witdh=24 height=24 onclick=\"onClick(this)\" value='+'>";
-  //echo "<input type=submit src='icons/ic_menu_add.png' witdh=24 height=24 name='addReside' value='+'>";
+  session_start();
+  //unset($_SESSION['aresiden']);
+  //session_register('aresiden');
+  $_SESSION['aresiden'] = $aresiden;
+
+  $aresiden = $_SESSION['aresiden'];
+  for ($i = 0; $i < count($aresiden); $i++) {
+echo "= id ".$aresiden[$i][0]."= resibeg ".$aresiden[$i][1]." resiend ".$aresiden[$i][2]." place ".$aresiden[$i][3]." maps ".$aresiden[$i][4]."<br>";//add residence
+  }
+
+
+  //echo "<input type=submit src='icons/ic_menu_add.png' witdh=24 height=24 onclick=\"onClick(this)\" value='+'>";
+  echo "<input type=submit src='icons/ic_menu_add.png' witdh=24 height=24 name='addReside' value='+'>";
   echo "<input type=submit src='icons/ic_menu_delete.png' witdh=24 height=24 name='delReside' value='-'>";
   echo '</td></tr>';
 
@@ -1044,6 +1052,7 @@ echo $placel."<br>";
   echo "<input type=submit src='icons/ic_menu_delete.png' witdh=24 height=24 name='delFather' value='-'>";
 
   if ($inx_add == 1){
+     $inx_add = 0;
      echo "<select name='father_sel' size='1'>";
      $select="";
      for($i = 0; $i < count($persons); $i++) {
@@ -1104,6 +1113,7 @@ echo $placel."<br>";
   echo "<input type=submit src='icons/ic_menu_delete.png' witdh=24 height=24 name='delMother' value='-'>";
 
   if ($inx_add == 2){
+     $inx_add = 0;
      echo "<select name='mother_sel' size='1'>";
      $select="";
      for($i = 0; $i < count($persons); $i++) {
@@ -1147,6 +1157,7 @@ echo $placel."<br>";
   echo "<input type=submit src='icons/ic_menu_delete.png' witdh=24 height=24 name='delSpouse' value='-'>";
 
   if ($inx_add == 3){
+     $inx_add = 0;
      echo "<select name='spouse_sel' size='1'>";
      $select="";
      for($i = 0; $i < count($persons); $i++) {
@@ -1403,5 +1414,14 @@ function Redirect($url, $permanent = false)
 //echo "=== sps0 =".count($sps0)."=";print_r($sps0);echo "<br>";
 //echo "=== sps1 =".count($sps1)."=";print_r($sps1);echo "<br>";
 //echo "=== sps2 =".count($sps2)."=";print_r($sps2);echo "<br>";
+
+//echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
+//for ($i = 0; $i < count($spouses); $i++) echo "SPOUSE $i: ".$spouses[$i][$fldSPOUS1]." | ".$spouses[$i][$fldSPOUS2]." | ".$spouses[$i][$fldWEDDIN]." | ".$spouses[$i][$fldPLACEW]." | ".$spouses[$i][$fldMAPSW]." |<br>";
+//echo "=== spouse_key = $spouse_key =<br>";
+//echo "<hr><br><br>";
+
+//echo "<br>aspouse =".count($aspouse)."=";print_r($aspouse);echo "<br>";
+//echo "<br>apersone =".count($apersone)."=";print_r($apersone);echo "<br>";
+//echo "<br><br><br><br><br>";
 
 ?>
