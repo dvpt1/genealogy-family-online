@@ -174,6 +174,22 @@ function Persone($user)
 
   global $aresiden;
   $aresiden = array();
+  if(isset($_GET['go'])){
+    unset($_SESSION["aresiden"]);
+
+    if(count($aresiden) == 0){
+      for ($i = 0; $i < count($residences); $i++){
+        if($residences[$i][0] == $inx_person){
+          $aresiden[] = $residences[$i];
+        }
+      }
+      $_SESSION['aresiden'] = $aresiden;
+    }
+  }else{
+    $aresiden = $_SESSION['aresiden'];
+  }
+//echo "<pre>";print_r($residences); echo "<br>";echo "</pre>";
+echo "<pre>";print_r($aresiden); echo "<br>";echo "</pre>";
 
   $resibeg = "";
   $resiend = "";
@@ -193,17 +209,11 @@ function Persone($user)
   }
   $_SESSION["personinx"] = $inx_person;
 
+
 if(isset($_POST['saveperson'])) {
 
 echo "<br><br><br><br>";
 echo "<b>===saveperson-begin===</b><br>";
-
-  session_start();
-  $aresiden = $_SESSION['aresiden'];
-echo "<pre>";
-print_r($aresiden); echo "<br>";
-echo "</pre>";
-
 
   if($_GET['id'] == 0){
     $personnew = $persons[count($persons) - 1];
@@ -439,21 +449,15 @@ echo "</pre>";
   $jsonPerson->deathday->place = $_POST['placed'];
 
 /**/
-//echo "<br><br><br><br><br><br><br>$aresiden = ".count($aresiden)."<br>";
-//for ($i = 0; $i < count($aresiden); $i++) echo "RESIDENCE: ".$aresiden[$i][0]." | ".$aresiden[$i][1]." | ".$aresiden[$i][2]." | ".$aresiden[$i][3]." | ".$aresiden[$i][4]." | "."<br>";
-
-  session_start();
-  $aresiden = $_SESSION['aresiden'];
-  for ($i = 0; $i < count($aresiden); $i++) {
-echo "= id ".$aresiden[$i][0]."= resibeg ".$aresiden[$i][1]." resiend ".$aresiden[$i][2]." place ".$aresiden[$i][3]." maps ".$aresiden[$i][4]."<br>";//add residence
-  }
-
   if(count($aresiden) > 0) {
-    $resi = array();
+echo "Save: <br>"; print_r($aresiden); echo "<br>";
+
+    $resis = array();
     for ($i = 0; $i < count($aresiden); $i++){
-      $resi[] = array("resibeg" => $aresiden[$i][1], "resiend" => $aresiden[$i][2], "place" => $aresiden[$i][3], "maps" => $aresiden[$i][4]);//add residence
+      $resis[] = array("resibeg" => $aresiden[$i][1], "resiend" => $aresiden[$i][2], "place" => $aresiden[$i][3], "maps" => $aresiden[$i][4]);//add residence
     }
-    $jsonPerson->residences = $resi;
+echo "Resis: <br>"; print_r($resis); echo "<br>";
+    $jsonPerson->residences = $resis;
   }
 /**/
 
@@ -736,21 +740,6 @@ if($log) exit;
   }
   //??$_SESSION["spousea"] = $spouse_key;
 
-  session_start();
-  $aresiden = $_SESSION['aresiden'];
-  for ($i = 0; $i < count($aresiden); $i++) {
-echo "= id ".$aresiden[$i][0]."= resibeg ".$aresiden[$i][1]." resiend ".$aresiden[$i][2]." place ".$aresiden[$i][3]." maps ".$aresiden[$i][4]."<br>";//add residence
-  }
-  if(count($aresiden) == 0){
-   for ($i = 0; $i < count($residences); $i++){
-    if($residences[$i][0] == $inx_person){
-      $aresiden[] = $residences[$i];
-    }
-   }
-  }
-  //??$_SESSION["residea"] = $reside_key;
-
-
   $htm = "<div class='shadow' style='POSITION: absolute; LEFT: 10px; TOP: 60px; WIDTH: 1075px; HEIGHT: 765px'>";
   if ($gendera == "1")
   {
@@ -870,28 +859,73 @@ echo "= id ".$aresiden[$i][0]."= resibeg ".$aresiden[$i][1]." resiend ".$areside
   if ($inx_add == 4){
      $inx_add = 0;
 
+    function prompt($prompt_msg1, $prompt_msg2, $prompt_msg3){
+      echo("<script language=\"javascript\">");
+      echo("var message = location.search;");
+      echo("if(message == '') ");
+      echo("{   message = prompt('Введите код товара, который хотите удалить из списка');");
+      echo("    window.location.href = 'persone.php?message='+message;");
+      echo("}");
+      echo("</script>");
+    }
+
+    $prompt_msg1 = "Please input place:";
+    $prompt_msg2 = "Please input date begin:";
+    $prompt_msg3 = "Please input dat end:";
+    $answer = prompt($prompt_msg1,$prompt_msg2,$prompt_msg3);
+print $_GET[message];
+
+
+/*
     //prompt function
-    function prompt($prompt_msg){
-        echo("<script type='text/javascript'> var answer = prompt('".$prompt_msg."'); </script>");
-        $answer = "<script type='text/javascript'> document.write(answer); </script>";
-        return($answer);
+    function prompt($prompt_msg1, $prompt_msg2, $prompt_msg3){
+      //echo("<script>");
+      //echo("<script> var answer = prompt('".$prompt_msg."'); </script>");
+      echo("<script>var placell = prompt('".$prompt_msg1."');</script>");
+      echo("<script>var datebeg = prompt('".$prompt_msg2."');</script>");
+      echo("<script>var dateend = prompt('".$prompt_msg3."');</script>");
+      //echo("<script type='text/javascript'> alert(answer); </script>");
+      //echo("<script type='text/javascript'> cname = 'msg'; document.cookie = cname + '=' + answer + ';'; </script>");
+      $placell = "<script>document.write(placell);</script>";
+      $datebeg = "<script>document.write(datebeg);</script>";
+      $dateend = "<script>document.write(dateend);</script>";
+      //echo("</script>");
+      $_SESSION['placell'] = $placell;
+      $_SESSION['datebeg'] = $datebeg;
+      $_SESSION['dateend'] = $dateend;
+      return($placell);
     }
     //program
-    $prompt_msg = "Please type your place:";
-    $placel = prompt($prompt_msg);
+    $prompt_msg1 = "Please input place:";
+    $prompt_msg2 = "Please input date begin:";
+    $prompt_msg3 = "Please input dat end:";
+    $answer = prompt($prompt_msg1,$prompt_msg2,$prompt_msg3);
+    $placell = $_SESSION['placell'];
+    $datebeg = $_SESSION['datebeg'];
+    $dateend = $_SESSION['dateend'];
+
+echo "Placel = $placell; Datebeg = $datebeg; Dateend = $datebeg; <br>";
+    $arr = array($placell, $datebeg, $datebeg);
+print_r($arr);
 
     $acnt = count($aresiden);
-    $resis = array($inx_person, "", "", $placel, "");
+    //$resis = array("$inx_person", "$datebeg", "$dateend", "$placell", "");//add residence
+    $resis = array($inx_person, $arr[0], $arr[1], $arr[2], "");//add residence
     $aresiden[$acnt] = $resis;
 
-echo $placel;
+//print_r($aresiden);
+
+    $_SESSION['aresiden'] = $aresiden;
+
+*/
   }
 
+//print_r($aresiden);
   echo '<select id="residen" class="residen" name="residen" onchange="OnSelectionChangeR (this)">';
   $n = 0;
   $residen_key = "";
   for ($i = 0; $i < count($aresiden); $i++) {
-      echo '<option>'.$aresiden[$i][3].'</option>';
+      echo '<option>'.$aresiden[$i][0].$aresiden[$i][1].$aresiden[$i][2].$aresiden[$i][3].'</option>';
 
       if($i == $residen_ind){
         $resibeg = $aresiden[$i][1];
@@ -904,20 +938,8 @@ echo $placel;
   }
   echo '</select>';
 
-//  for ($i = 0; $i < count($aresiden); $i++) {
-//echo "= id ".$aresiden[$i][0]."= resibeg ".$aresiden[$i][1]." resiend ".$aresiden[$i][2]." place ".$aresiden[$i][3]." maps ".$aresiden[$i][4]."<br>";//add residence
-//  }
-
-  session_start();
-  //unset($_SESSION['aresiden']);
-  //session_register('aresiden');
-  $_SESSION['aresiden'] = $aresiden;
-
-  $aresiden = $_SESSION['aresiden'];
-  for ($i = 0; $i < count($aresiden); $i++) {
-echo "= id ".$aresiden[$i][0]."= resibeg ".$aresiden[$i][1]." resiend ".$aresiden[$i][2]." place ".$aresiden[$i][3]." maps ".$aresiden[$i][4]."<br>";//add residence
-  }
-
+//print_r($aresiden); echo "<br>";
+for ($i = 0; $i < count($aresiden); $i++) echo "= id ".$aresiden[$i][0]."= resibeg ".$aresiden[$i][1]." resiend ".$aresiden[$i][2]." place ".$aresiden[$i][3]." maps ".$aresiden[$i][4]."<br>";//add residence
 
   //echo "<input type=submit src='icons/ic_menu_add.png' witdh=24 height=24 onclick=\"onClick(this)\" value='+'>";
   echo "<input type=submit src='icons/ic_menu_add.png' witdh=24 height=24 name='addReside' value='+'>";

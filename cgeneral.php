@@ -176,10 +176,10 @@ $users = _check_datauserid($user['id']);
       echo "<b>".$name."</b></a>&nbsp;&nbsp;";
 
       if($users['id'] > 0 && $users['acces'] < 2){
-        echo "<a href=?do=cpersone&id=".$id."><img src='icons/ic_menu_edit.png' witdh=24 height=24></a>";
+        echo "<a href=?do=cpersone&id=".$id."&go=1><img src='icons/ic_menu_edit.png' witdh=24 height=24></a>";
       }
 
-      echo "<a href=?do=cperson&id=".$id.">";
+      echo "<a href=?do=cperson&id=".$id."&go=1>";
       if(!empty($persons[$i][$fldICON])){
 	$src = "<img src='data:image/jpeg;base64,".$persons[$i][$fldICON]."' width='$cellw' heith='$cellh'>";
 	echo $src;
