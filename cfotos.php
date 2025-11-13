@@ -61,7 +61,7 @@ $users = _check_datauserid($user['id']);
   echo "<table width=100%><tr>";
   for ($i = 0; $i < count($files); $i++) { 
     echo "<td>";
-    if(!empty($id_person)) $path .= "/";
+    if(!empty($id_person)) if(substr($path, -1) != '/') $path .= "/";
     echo "<a href='".$path.$files[$i]."'><img src='".$path.$files[$i]."' width=256 height=256 alt=".$files[$i]." /></a>";
     if($users['id'] > 0 && $users['acces'] < 2){
 ?>

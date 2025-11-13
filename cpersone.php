@@ -212,8 +212,8 @@ echo "<pre>";print_r($aresiden); echo "<br>";echo "</pre>";
 
 if(isset($_POST['saveperson'])) {
 
-echo "<br><br><br><br>";
-echo "<b>===saveperson-begin===</b><br>";
+//echo "<br><br><br><br>";
+//echo "<b>===saveperson-begin===</b><br>";
 
   if($_GET['id'] == 0){
     $personnew = $persons[count($persons) - 1];
@@ -450,13 +450,18 @@ echo "<b>===saveperson-begin===</b><br>";
 
 /**/
   if(count($aresiden) > 0) {
-echo "Save: <br>"; print_r($aresiden); echo "<br>";
+//echo "Save: <br>"; print_r($aresiden); echo "<br>";
+    $inxreside = $_POST['reside_sel'];
+
+    $aresiden[$inxreside][1] = $_POST['resibeg'];
+    $aresiden[$inxreside][2] = $_POST['resiend'];
+    //$aresiden[$inxreside][4] = "";//$_POST['mapsw'];
 
     $resis = array();
     for ($i = 0; $i < count($aresiden); $i++){
       $resis[] = array("resibeg" => $aresiden[$i][1], "resiend" => $aresiden[$i][2], "place" => $aresiden[$i][3], "maps" => $aresiden[$i][4]);//add residence
     }
-echo "Resis: <br>"; print_r($resis); echo "<br>";
+//echo "Resis: $inxreside<br>"; print_r($resis); echo "<br>";
     $jsonPerson->residences = $resis;
   }
 /**/
@@ -536,8 +541,8 @@ echo "Resis: <br>"; print_r($resis); echo "<br>";
 ////////////////////////////////////////////////////////////
 
 //sleep(10);
-$log= true;
-//  echo '<script type="text/javascript">window.location = "'.$https.'"</script>';
+//$log= true;
+  echo '<script type="text/javascript">window.location = "'.$https.'"</script>';
 
 //echo "<b>===saveperson-end===</b><br>";
 
@@ -631,9 +636,12 @@ if($log) exit;
      $delsp = explode(":", $_POST['spouse']);
      $delspouse = $delsp[1];
   }
-  if(isset($_POST['delReside'])) if(isset($_POST['reside'])){
-     $delre = $_POST['spouse'];
-     $delreside = $delre;
+  if(isset($_POST['delReside'])){
+    if(count($aresiden) > 0){
+      $inxreside = $_POST['reside_sel'];
+      unset($aresiden[$inxreside]);
+      $_SESSION['aresiden'] = $aresiden;
+    }
   }
 
   $father_key = "";
@@ -856,76 +864,25 @@ if($log) exit;
   echo '<tr bgcolor="#ffff00"><td>'.$field_placel.'</td>';
   echo '<td>';
 
-  if ($inx_add == 4){
+  //if ($inx_add == 4){
      $inx_add = 0;
+     if(isset($_GET['placel'])){
+        $placel = $_GET['placel'];
 
-    function prompt($prompt_msg1, $prompt_msg2, $prompt_msg3){
-      echo("<script language=\"javascript\">");
-      echo("var message = location.search;");
-      echo("if(message == '') ");
-      echo("{   message = prompt('Введите код товара, который хотите удалить из списка');");
-      echo("    window.location.href = 'persone.php?message='+message;");
-      echo("}");
-      echo("</script>");
-    }
-
-    $prompt_msg1 = "Please input place:";
-    $prompt_msg2 = "Please input date begin:";
-    $prompt_msg3 = "Please input dat end:";
-    $answer = prompt($prompt_msg1,$prompt_msg2,$prompt_msg3);
-print $_GET[message];
-
-
-/*
-    //prompt function
-    function prompt($prompt_msg1, $prompt_msg2, $prompt_msg3){
-      //echo("<script>");
-      //echo("<script> var answer = prompt('".$prompt_msg."'); </script>");
-      echo("<script>var placell = prompt('".$prompt_msg1."');</script>");
-      echo("<script>var datebeg = prompt('".$prompt_msg2."');</script>");
-      echo("<script>var dateend = prompt('".$prompt_msg3."');</script>");
-      //echo("<script type='text/javascript'> alert(answer); </script>");
-      //echo("<script type='text/javascript'> cname = 'msg'; document.cookie = cname + '=' + answer + ';'; </script>");
-      $placell = "<script>document.write(placell);</script>";
-      $datebeg = "<script>document.write(datebeg);</script>";
-      $dateend = "<script>document.write(dateend);</script>";
-      //echo("</script>");
-      $_SESSION['placell'] = $placell;
-      $_SESSION['datebeg'] = $datebeg;
-      $_SESSION['dateend'] = $dateend;
-      return($placell);
-    }
-    //program
-    $prompt_msg1 = "Please input place:";
-    $prompt_msg2 = "Please input date begin:";
-    $prompt_msg3 = "Please input dat end:";
-    $answer = prompt($prompt_msg1,$prompt_msg2,$prompt_msg3);
-    $placell = $_SESSION['placell'];
-    $datebeg = $_SESSION['datebeg'];
-    $dateend = $_SESSION['dateend'];
-
-echo "Placel = $placell; Datebeg = $datebeg; Dateend = $datebeg; <br>";
-    $arr = array($placell, $datebeg, $datebeg);
-print_r($arr);
-
-    $acnt = count($aresiden);
-    //$resis = array("$inx_person", "$datebeg", "$dateend", "$placell", "");//add residence
-    $resis = array($inx_person, $arr[0], $arr[1], $arr[2], "");//add residence
-    $aresiden[$acnt] = $resis;
+        $acnt = count($aresiden);
+        $resis = array("$inx_person", "", "", "$placel", "");//add residence
+        $aresiden[$acnt] = $resis;
+        $_SESSION['aresiden'] = $aresiden;
+//print_r($aresiden);
+     }
+  //}
 
 //print_r($aresiden);
-
-    $_SESSION['aresiden'] = $aresiden;
-
-*/
-  }
-
-//print_r($aresiden);
-  echo '<select id="residen" class="residen" name="residen" onchange="OnSelectionChangeR (this)">';
+  echo '<select id="reside_sel" class="residen" name="reside_sel" size="1" onchange="OnSelectionChangeR (this)">';
   $n = 0;
   $residen_key = "";
   for ($i = 0; $i < count($aresiden); $i++) {
-      echo '<option>'.$aresiden[$i][0].$aresiden[$i][1].$aresiden[$i][2].$aresiden[$i][3].'</option>';
+      echo '<option value="'.$i.'">'.$aresiden[$i][3].'</option>';
 
       if($i == $residen_ind){
         $resibeg = $aresiden[$i][1];
@@ -939,10 +896,10 @@ print_r($arr);
   echo '</select>';
 
 //print_r($aresiden); echo "<br>";
-for ($i = 0; $i < count($aresiden); $i++) echo "= id ".$aresiden[$i][0]."= resibeg ".$aresiden[$i][1]." resiend ".$aresiden[$i][2]." place ".$aresiden[$i][3]." maps ".$aresiden[$i][4]."<br>";//add residence
+//for ($i = 0; $i < count($aresiden); $i++) echo "= id ".$aresiden[$i][0]."= resibeg ".$aresiden[$i][1]." resiend ".$aresiden[$i][2]." place ".$aresiden[$i][3]." maps ".$aresiden[$i][4]."<br>";//add residence
+//echo "Place:".$_GET[placel]."<br>";
 
-  //echo "<input type=submit src='icons/ic_menu_add.png' witdh=24 height=24 onclick=\"onClick(this)\" value='+'>";
-  echo "<input type=submit src='icons/ic_menu_add.png' witdh=24 height=24 name='addReside' value='+'>";
+  echo "<input type=submit src='icons/ic_menu_add.png' witdh=24 height=24 onclick=\"onClickPlaceL(this)\" value='+'>";
   echo "<input type=submit src='icons/ic_menu_delete.png' witdh=24 height=24 name='delReside' value='-'>";
   echo '</td></tr>';
 
@@ -971,38 +928,27 @@ for ($i = 0; $i < count($aresiden); $i++) echo "= id ".$aresiden[$i][0]."= resib
          const presiend = document.getElementById("resiend");
          var resiendArray =  <?php echo json_encode($aresiend); ?>;
          presiend.value = resiendArray[index];
-//alert("Hello world! " + presibeg.value);
      }
  </script>
 
  <script>
-     function onClick (select) {
-//alert("Hello world! ");
-		const userInput = prompt("Please enter your name:","GeeksForGeeks User");
-		const passInput = prompt("Please enter your pass:","User pass");
+	function onClickPlaceL (select) {
+		var placel = prompt("Please enter place:","Place");
 
 		// Handling user input
-		if (userInput !== null) {
-			alert("Name, " + userInput + "!" + "Pass, " + userInput + "!");
+		if (placel !== null) {
+			try {
+				window.location.href = "index.php?do=cpersone&id=<?php echo $id_person; ?>&edit=1&placel=" + placel;
+			} catch (e) {
+				//alert('Перенаправление не было осуществлено, но мы не унываем' + e);
+			}
+			alert("PLace, " + placel);
+			//alert("You canceled the input.");
 		} else {
-			alert("You canceled the input.");
+			//alert("You canceled the input.");
 		}
-     }
+	}
  </script>
-
-<?/*
-    //prompt function
-    function prompt($prompt_msg){
-        echo("<script type='text/javascript'> var answer = prompt('".$prompt_msg."'); </script>");
-        $answer = "<script type='text/javascript'> document.write(answer); </script>";
-        return($answer);
-    }
-    //program
-    $prompt_msg = "Please type your name.";
-    $name = prompt($prompt_msg);
-    $output_msg = "Hello there ".$name."!";
-    echo($output_msg);
-*/?>
 
  <tr bgcolor="#ffff00"><td><?php echo $field_datel; ?></td><td>
  <table><tr bgcolor="#ffff00"><td align="center">
@@ -1206,7 +1152,6 @@ for ($i = 0; $i < count($aresiden); $i++) echo "= id ".$aresiden[$i][0]."= resib
   }
 //  $amapsw = array();
 
-
 ?>
 
  <script>
@@ -1223,7 +1168,6 @@ for ($i = 0; $i < count($aresiden); $i++) echo "= id ".$aresiden[$i][0]."= resib
          const pplacew = document.getElementById("placew");
          var placewArray =  <?php echo json_encode($aplacew); ?>;
          pplacew.value = placewArray[index];
-//alert("Hello world! " + pwedding.value + pplacew.value);
      }
  </script>
 
