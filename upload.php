@@ -10,10 +10,20 @@ fwrite($fp,print_r($_FILES,true));//display the FILES
 fclose($fp);
 
 
-$id = basename($_FILES['id']['name']);
-echo "access=".$_POST['username'].":".$_POST['password'].":".$id."\n";
+$id = $_POST['id'];
+$id = str_replace(array("\r", "\n"), '', $id);
 
-$uploaddir = 'foto/';
+$username = $_POST['username'];
+$username = preg_replace("/\r|\n/", '', $username);
+
+$password = $_POST['password'];
+$password = preg_replace("/\r|\n/", '', $password);
+
+
+echo "access=".$username.":".$password.":".$id."\n";
+
+$uploaddir = "fotos/$id/";
+echo "uploaddir = $uploaddir\n";
 $file = basename($_FILES['userfile']['name']);
 $uploadfile = $uploaddir.$file;
 

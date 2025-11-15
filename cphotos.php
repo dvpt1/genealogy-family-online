@@ -1,15 +1,15 @@
 <?php
 
-//echo "access=".$_POST['username'].":".$_POST['password']."\n";
+//echo "access=".$_POST['username'].$_POST['password'].$_POST['id']."\n";
 //if(empty($_POST['username']) || empty($_POST['password'])) exit;
 
 include_once("ccfg.php");
 include_once("csub.php");
 
-$user_data = _check_database($_POST['username'], $_POST['password']);
+//$user_data = _check_database($_POST['username'], $_POST['password']);
 //if($user_data == 0) exit;
 
-  $id_person = $user_data['id'];
+  $id_person = $_POST['id'];
 //echo "id_person=$id_person<br>\n";
 
   $dir = __DIR__."/fotos/$id_person/"; // Путь к директории, в которой лежат изображения
