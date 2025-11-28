@@ -32,23 +32,25 @@ function General()
   global $field_birth;
   global $field_death;
 
+  global $timestamp;
 
 //$filename = __DIR__ . '/file.txt';
 $tstamp = file_get_contents("timestamp");
+//echo "<br><br> timestamp = $timestamp == tstamp = $tstamp<br>";
 ?>
 
 <script type="text/javascript">
-  //if(<?php $tstamp ?> != <?php $timestamp ?>){
+  if(<?php $tstamp ?> != <?php $timestamp ?>){
     setTimeout(function(){
 //      window.location.href = window.location.href;
     },10000)
-  //}
+  }
 </script>
 
 <?php
- if($tstamp != $timestamp){
-   $timestamp = $tstamp;
- }
+  if($tstamp != $timestamp){
+    $timestamp = $tstamp;
+  }
 
   // разбивка на страницы
   if(empty($_GET["p"])){$_GET["p"]="1";}// страницы
@@ -57,7 +59,7 @@ $tstamp = file_get_contents("timestamp");
   $count = count($persons);// считаем файлы
   $total = ceil($count/$page);// считаем страницы
 
-  echo "<br><br>";
+  echo "<br>";
 
 GLOBAL $user;
 $users = _check_datauserid($user['id']);

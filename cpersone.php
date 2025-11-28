@@ -189,7 +189,7 @@ function Persone($user)
     $aresiden = $_SESSION['aresiden'];
   }
 //echo "<pre>";print_r($residences); echo "<br>";echo "</pre>";
-echo "<pre>";print_r($aresiden); echo "<br>";echo "</pre>";
+//echo "<pre>";print_r($aresiden); echo "<br>";echo "</pre>";
 
   $resibeg = "";
   $resiend = "";

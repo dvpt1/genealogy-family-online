@@ -35,6 +35,7 @@ if(isset($_GET['filter'])){
 }
 if(isset($_POST['filter'])){
   $filter = $_POST['filter'];
+  header("Refresh: 0.5; index.php?filter=$filter");
 }
 //echo "<br>".$filter."<br>";
 
