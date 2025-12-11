@@ -278,11 +278,10 @@ function Gedcom_Import()
     //print_r($residence); echo "== residence ==<br>";
     for ($i = 0; $i < count($residence); $i++)
     {
-        $sResiBeg = $residence[$i]['resibeg'];;
-        $sResiEnd = $residence[$i]['resiend'];;
+        $sDatel = $residence[$i]['date'];;
         $sPlacel = $residence[$i]['place'];;
         $sMapsl = $residence[$i]['maps'];;
-        $residences[] = array($id, $sResiBeg, $sResiEnd, $sPlacel, $sMapsl);
+        $residences[] = array($id, $sDatel, $sPlacel, $sMapsl);
     }
 
     if(strpos($person, $filter) !== false || $fil)
@@ -405,7 +404,7 @@ function Gedcom_Import()
 //for ($i = 0; $i < count($peoples); $i++) echo "PEOPLES: ".$peoples[$i][0]." | ".$peoples[$i][1]." | ".$peoples[$i][2]." | ".peoples[$i][3]." | ".peoples[4]." | "."<br>";
 //for ($i = 0; $i < count($residences); $i++){
 // if($residences[$i][0] == 0){
-//  echo "RESIDENCE: ".$residences[$i][0]." | ".$residences[$i][1]." | ".$residences[$i][2]." | ".$residences[$i][3]." | ".$residences[$i][4]." | "."<br>";
+//  echo "RESIDENCE: ".$residences[$i][0]." | ".$residences[$i][1]." | ".$residences[$i][2]." | ".$residences[$i][3]." | "."<br>";
 // }
 //}
 //echo "persons=".count($persons)."<br>";

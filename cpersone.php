@@ -108,8 +108,6 @@ function Persone($user)
   global $field_placew;
   global $field_placel;
   global $field_datel;
-  global $field_resib;
-  global $field_resie;
   global $field_occu;
   global $field_nati;
   global $field_educ;
@@ -191,8 +189,7 @@ function Persone($user)
 //echo "<pre>";print_r($residences); echo "<br>";echo "</pre>";
 //echo "<pre>";print_r($aresiden); echo "<br>";echo "</pre>";
 
-  $resibeg = "";
-  $resiend = "";
+  $datela = "";
   $placela = "";
   $mapsla = "";
 
@@ -453,13 +450,12 @@ if(isset($_POST['saveperson'])) {
 //echo "Save: <br>"; print_r($aresiden); echo "<br>";
     $inxreside = $_POST['reside_sel'];
 
-    $aresiden[$inxreside][1] = $_POST['resibeg'];
-    $aresiden[$inxreside][2] = $_POST['resiend'];
-    //$aresiden[$inxreside][4] = "";//$_POST['mapsw'];
+    $aresiden[$inxreside][1] = $_POST['datel'];
+    //$aresiden[$inxreside][3] = "";//$_POST['mapsw'];
 
     $resis = array();
     for ($i = 0; $i < count($aresiden); $i++){
-      $resis[] = array("resibeg" => $aresiden[$i][1], "resiend" => $aresiden[$i][2], "place" => $aresiden[$i][3], "maps" => $aresiden[$i][4]);//add residence
+      $resis[] = array("date" => $aresiden[$i][1], "place" => $aresiden[$i][2], "maps" => $aresiden[$i][3]);//add residence
     }
 //echo "Resis: $inxreside<br>"; print_r($resis); echo "<br>";
     $jsonPerson->residences = $resis;
@@ -870,7 +866,7 @@ if($log) exit;
         $placel = $_GET['placel'];
 
         $acnt = count($aresiden);
-        $resis = array("$inx_person", "", "", "$placel", "");//add residence
+        $resis = array("$inx_person", "", "$placel", "");//add residence
         $aresiden[$acnt] = $resis;
         $_SESSION['aresiden'] = $aresiden;
 //print_r($aresiden);
@@ -882,12 +878,11 @@ if($log) exit;
   $n = 0;
   $residen_key = "";
   for ($i = 0; $i < count($aresiden); $i++) {
-      echo '<option value="'.$i.'">'.$aresiden[$i][3].'</option>';
+      echo '<option value="'.$i.'">'.$aresiden[$i][2].'</option>';
 
       if($i == $residen_ind){
-        $resibeg = $aresiden[$i][1];
-        $resiend = $aresiden[$i][2];
-        $mapsla = $aresiden[$i][4];
+        $datela = $aresiden[$i][1];
+        $mapsla = $aresiden[$i][3];
       }
 
       if($n == 0) $residen_key = "".$aresiden[$i][0]; else $residen_key .= ",".$aresiden[$i][0];
@@ -896,20 +891,15 @@ if($log) exit;
   echo '</select>';
 
 //print_r($aresiden); echo "<br>";
-//for ($i = 0; $i < count($aresiden); $i++) echo "= id ".$aresiden[$i][0]."= resibeg ".$aresiden[$i][1]." resiend ".$aresiden[$i][2]." place ".$aresiden[$i][3]." maps ".$aresiden[$i][4]."<br>";//add residence
 //echo "Place:".$_GET[placel]."<br>";
 
   echo "<input type=submit src='icons/ic_menu_add.png' witdh=24 height=24 onclick=\"onClickPlaceL(this)\" value='+'>";
   echo "<input type=submit src='icons/ic_menu_delete.png' witdh=24 height=24 name='delReside' value='-'>";
   echo '</td></tr>';
 
-  $aresibeg = array();
+  $adatel = array();
   for($i = 0; $i < count($aresiden); $i++) {
-     $aresibeg[$i] = $aresiden[$i][1];
-  }
-  $aresiend = array();
-  for($i = 0; $i < count($aresiden); $i++) {
-     $aresiend[$i] = $aresiden[$i][2];
+     $adatel[$i] = $aresiden[$i][1];
   }
 
 ?>
@@ -921,13 +911,9 @@ if($log) exit;
          var options = selectedOption.value;
          var option = options.split(":");
 
-         const presibeg = document.getElementById("resibeg");
-         var resibegArray =  <?php echo json_encode($aresibeg); ?>;
-         presibeg.value = resibegArray[index];
-
-         const presiend = document.getElementById("resiend");
-         var resiendArray =  <?php echo json_encode($aresiend); ?>;
-         presiend.value = resiendArray[index];
+         const pdatel = document.getElementById("datel");
+         var datelArray =  <?php echo json_encode($adatel); ?>;
+         pdatel.value = datelArray[index];
      }
  </script>
 
@@ -951,13 +937,7 @@ if($log) exit;
  </script>
 
  <tr bgcolor="#ffff00"><td><?php echo $field_datel; ?></td><td>
- <table><tr bgcolor="#ffff00"><td align="center">
-  <?php echo $field_resib; ?>
-  <input type="text" name="resibeg" id="resibeg" size="30" value="<?php echo $resibeg; ?>">
- </td><td align="center">
-  <?php echo $field_resie; ?>
-  <input type="text" name="resiend" id="resiend" size="30" value="<?php echo $resiend; ?>">
- </td></tr></table>
+  <input type="text" name="datel" id="datel" size="30" value="<?php echo $datela; ?>">
  </td></tr>
 
  <tr><td><?php echo $field_death; ?></td>

@@ -89,13 +89,12 @@ if($user_data == 0) {
     if(count($spss) > 0) $jsonPerson->spouses = $spss;
   }
   if(!empty($_POST['placel'])) {
-    $rpsb = explode(",", $_POST['resibeg']);
-    $rpse = explode(",", $_POST['resiend']);
+    $rpsb = explode(",", $_POST['datel']);
     $rpsp = explode(",", $_POST['placel']);
     $rpsm = explode(",", $_POST['mapsl']);
     $rpss = array();
     for ($i = 0; $i < count($rpsb); $i++) {
-      $rpss[$i] = array("resibeg" => $rpsb[$i], "resiend" => $rpse[$i], "place" => $rpsp[$i], "maps" => $rpsm[$i]);//add date palase map
+      $rpss[$i] = array("date" => $rpsb[$i], "place" => $rpsp[$i], "maps" => $rpsm[$i]);//add date palase map
     }
     if(count($rpss) > 0) $jsonPerson->residences = $rpss;
   }
