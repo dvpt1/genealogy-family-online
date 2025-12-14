@@ -86,12 +86,10 @@ function Gedcom_Import($user)
   global $listSpouse;
   global $listPlaceb;
   global $listPlaced;
-  global $listPlacel;
   global $listPlacet;
   global $listMapsb;
   global $listMapsd;
   global $listMapsl;
-  global $listMapst;
   global $listWife;
   global $listOccu;
   global $listNati;
@@ -125,6 +123,11 @@ function Gedcom_Import($user)
   global $listPlacew;
   global $listMapsw;
   //
+  global $listLiveId;
+  global $listDatel;
+  global $listPlacel;
+  global $listMapsl;
+  //
   global $go_indi;
   global $cur;
   global $fn;
@@ -153,7 +156,8 @@ function Gedcom_Import($user)
   $id;
   $ok;
   $cur = -1;
-
+  $liveId = 0;
+  $liveIs = true;
 echo "<br><br>=== GEDCOM User==".$userId."<br>";
 //echo "=== GEDCOM File==".$getfile."<br>";
 
@@ -216,11 +220,11 @@ echo "<br><br>=== GEDCOM User==".$userId."<br>";
                     $listSpouse[] = "";
                     $listPlaceb[] = "";
                     $listPlaced[] = "";
-                    $listPlacel[] = "";
+                    //$listPlacel[] = "";
                     $listPlacet[] = "";
                     $listMapsb[] = "";
                     $listMapsd[] = "";
-                    $listMapsl[] = "";
+                    //$listMapsl[] = "";
                     $listMapst[] = "";
                     $listWife[] = "";
                     $listOccu[] = "";
@@ -238,6 +242,7 @@ echo "<br><br>=== GEDCOM User==".$userId."<br>";
                     $resi = false;
                     $obje = false;
 
+                    $liveIs = true;
                 }
         
                 $fam = strpos($s, "FAM");
@@ -713,12 +718,39 @@ echo "<br><br>=== GEDCOM User==".$userId."<br>";
                     }
                     else if ($resi)
                     {
+                        if (strpos($s,"DATE"))
+                        {
+echo "==$liveId DATE = $s <br>";
+                            $i = strpos($s,"DATE");
+                            $ss = substr($s, $i + 4);
+                            if (!empty($ss))
+                            {
+                                $ss = str_replace("EST", "", $ss);//удаляю EST
+                                $ss = str_replace("CIR", "", $ss);//удаляю CIR
+                                $ss = str_replace("ABT", "", $ss);//удаляю ABT
+
+                                //if($liveIs){
+                                  $liveId++;
+                                  $liveIs = false;
+                                //}
+
+                                $listLiveId[$liveId] = $cur;
+                                $listDatel[$liveId] = $ss;
+                            }
+                        }else
                         if (strpos($s,"PLAC"))
                         {
+echo "==$liveId PLAC = $s <br>";
                             $i = strpos($s,"PLAC");
                             if (strlen($line) > $i + 5)
                             {
-                                $listPlacel[$cur] = substr($line, $i + 5);
+                                //if($liveIs){
+                                  $liveId++;
+                                  $liveIs = false;
+                                //}
+
+                                $listLiveId[$liveId] = $cur;
+                                $listPlacel[$liveId] = substr($line, $i + 5);
                             }
                             //??resi = false;
                         }
@@ -909,15 +941,29 @@ echo "<br><br>=== GEDCOM User==".$userId."<br>";
                         if ($i)
                             if (strlen($line) > $i + 5)
                             {
+                                if($liveIs){
+                                  $liveId++;
+                                  $liveIs = false;
+                                }
+
                                 $sMapsl = "[".strDelNotNumChrs($line, $i + 5)."";
-                                $listMapsl[$cur] = $sMapsl;
+
+                                $listLiveId[$liveId] = $cur;
+                                $listMapsl[$liveId] = $sMapsl;
                             }
                         $i = strpos($s,"LONG");
                         if ($i)
                             if (strlen($line) > $i + 5)
                             {
+                                if($liveIs){
+                                  $liveId++;
+                                  $liveIs = false;
+                                }
+
                                 $sMapsl .= "|".strDelNotNumChrs($line, $i + 5)."]";
-                                $listMapsb[$cur] = $sMapsl;
+
+                                $listLiveId[$liveId] = $cur;
+                                $listMapsl[$liveId] = $sMapsl;
 
                                 $maps = false;
                             }
@@ -1033,6 +1079,9 @@ echo "<br><br>=== GEDCOM User==".$userId."<br>";
 
 //echo "    // Add persons count = ".count($listPerson)."<br>";;
 //for ($i = 0; $i < count($spouses); $i++) echo "SPOUSE $i: ".$spouses[$i][$fldSPOUS1]." | ".$spouses[$i][$fldSPOUS2]." | ".$spouses[$i][$fldWEDDIN]." | ".$spouses[$i][$fldPLACEW]." | ".$spouses[$i][$fldMAPSW]." |<br>";
+echo "=== listLiveId =="; print_r($listLiveId); echo "<br>";
+echo "=== listDatel =="; print_r($listDatel); echo "<br>";
+echo "=== listPlacel =="; print_r($listPlacel); echo "<br>";
 
     for ($i = 0; $i < count($listPerson); $i++)
     {
@@ -1051,20 +1100,6 @@ echo "person = $indi_inx[$i] = $id_person = $listPerson[$i] <br>";
         else
         {
             $sMapsb = $listMapsb[$i];
-        }
-
-        $sPlacel = $listPlacel[$i];
-        $p1 = strpos($sPlacel, "[");
-        $p2 = strpos($sPlacel, "|");
-        $p3 = strpos($sPlacel, "]");
-        if ($p1 && $p2 && $p3 && $p1 < $p2 && $p2 < $p3)
-        {
-            $sMapsl = substr($sPlacel, $p1, $p3 - $p1 + 1);
-            $sPlacel = substr($sPlacel, 0, $p1 - 1);
-        }
-        else
-        {
-            $sMapsl = $listMapsl[$i];
         }
 
         $sPlaced = $listPlaced[$i];
@@ -1118,7 +1153,6 @@ echo "person = $indi_inx[$i] = $id_person = $listPerson[$i] <br>";
 		$listSpouse[$i],
 		$sPlaceb,
 		$sPlaced,
-		$sPlacel,
 		$sPlacet,
 		$listMapsb[$i],
 		$listMapsd[$i],
@@ -1147,14 +1181,14 @@ echo "person = $indi_inx[$i] = $id_person = $listPerson[$i] <br>";
 	$jsonPerson->deathday->place = $sPlaced;
 	$jsonPerson->deathday->maps = $listMapsd[$i];
 
-	//$jsonPerson->residay->date = "";
-	//$jsonPerson->residay->place = $sPlacel;
-	//$jsonPerson->residay->maps = "";
         $rpss = array();
-        if(!empty($sPlacel)){
-           $rpss[] = array("resibeg" => @"", "resiend" => @"", "place" => $sPlacel, "maps" => @"");
+	for ($ii = 0; $ii < count($listLiveId); $ii++)
+	{
+	  if($i == $listLiveId[$ii]){
+           $rpss[] = array("date" => @"", "place" => $listPlacel[$ii], "maps" => @"");
            $jsonPerson->residay = $rpss;
-        }
+	  }
+	}
 
 	$jsonPerson->burialday->date = "";
 	$jsonPerson->burialday->place = $sPlacet;
@@ -1184,6 +1218,7 @@ echo "person = $indi_inx[$i] = $id_person = $listPerson[$i] <br>";
 	      $mots[$ii] = array("id" => $idm);
 	    }
 	    $jsonPerson->mothers = $mots;
+
 	}
 
 //echo "=== $listSpouse[$i] : listspouses<br>";

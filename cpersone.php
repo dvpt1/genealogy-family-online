@@ -458,7 +458,7 @@ if(isset($_POST['saveperson'])) {
       $resis[] = array("date" => $aresiden[$i][1], "place" => $aresiden[$i][2], "maps" => $aresiden[$i][3]);//add residence
     }
 //echo "Resis: $inxreside<br>"; print_r($resis); echo "<br>";
-    $jsonPerson->residences = $resis;
+    $jsonPerson->residay = $resis;
   }
 /**/
 

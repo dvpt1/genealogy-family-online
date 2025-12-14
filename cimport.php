@@ -187,7 +187,7 @@ function Gedcom_Import()
     $father = $dataPerson['fathers'];
     $mother = $dataPerson['mothers'];
     $spouse = $dataPerson['spouses'];
-    $residence = $dataPerson['residences'];
+    $residence = $dataPerson['residay'];
     $occupation = $dataPerson['occupation'];
     $national = $dataPerson['national'];
     $education = $dataPerson['education'];
@@ -209,6 +209,7 @@ function Gedcom_Import()
     //echo "father = ".print_r($father)."=<br>";
     //echo "mother = ".print_r($mother)."=<br>";
     //echo "spouse = ".print_r($spouse)."=<br>";
+    //echo "residence = ".print_r($residence)."=<br>";
     //echo "<hr width=75%>";
 
     // Add fathers
@@ -275,7 +276,7 @@ function Gedcom_Import()
         }
     }
     // Add residence
-    //print_r($residence); echo "== residence ==<br>";
+    //print_r($residence); echo "== residences ==<br>";
     for ($i = 0; $i < count($residence); $i++)
     {
         $sDatel = $residence[$i]['date'];;
@@ -299,11 +300,11 @@ function Gedcom_Import()
 	    $st,
 	    $birthplace, 
 	    $deathplace, 
-	    $resiplace,
+	    //$resiplace,
 	    $burialplace,
 	    $birthmaps,
 	    $deathmaps,
-	    $resimaps,
+	    //$resimaps,
 	    $burialmaps,
 	    $occupation,
 	    $national,
@@ -403,9 +404,9 @@ function Gedcom_Import()
 //for ($i = 0; $i < count($listSpouseId); $i++) {echo "SPOUSEID=".$listSChildId[$i].";".$listSpouseId[$i]."<br>";}
 //for ($i = 0; $i < count($peoples); $i++) echo "PEOPLES: ".$peoples[$i][0]." | ".$peoples[$i][1]." | ".$peoples[$i][2]." | ".peoples[$i][3]." | ".peoples[4]." | "."<br>";
 //for ($i = 0; $i < count($residences); $i++){
-// if($residences[$i][0] == 0){
-//  echo "RESIDENCE: ".$residences[$i][0]." | ".$residences[$i][1]." | ".$residences[$i][2]." | ".$residences[$i][3]." | "."<br>";
-// }
+ //if($residences[$i][0] == 0){
+//  echo "RESIDENCE: ".$residences[$i][0]." | ".$residences[$i][1]." | ".$residences[$i][2]." | "."<br>";
+ //}
 //}
 //echo "persons=".count($persons)."<br>";
 //echo "fathers=".count($fathers)."<br>";

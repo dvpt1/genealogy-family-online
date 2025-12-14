@@ -21,19 +21,19 @@
   $fldSPS  =  8; // Муж/жена
   $fldPLB  =  9; // Место рождения
   $fldPLD  = 10; // Место смерти
-  $fldPLL  = 11; // Место жизни
-  $fldPLT  = 12; // Место захоронения
-  $fldMAPB = 13;
-  $fldMAPD = 14;
-  $fldMAPL = 15;
-  $fldMAPT = 16;
-  $fldOCCU = 17;// род занятий
-  $fldNATI = 18;// религия
-  $fldEDUC = 19;// образование
-  $fldRELI = 20;// религия
-  $fldNOTE = 21;
-  $fldICON = 22;
-  $fldCHAN = 23;
+  //$fldPLL  = 11; // Место жизни
+  $fldPLT  = 11; // Место захоронения
+  $fldMAPB = 12;
+  $fldMAPD = 13;
+  //$fldMAPL = 14;
+  $fldMAPT = 14;
+  $fldOCCU = 15;// род занятий
+  $fldNATI = 16;// религия
+  $fldEDUC = 17;// образование
+  $fldRELI = 18;// религия
+  $fldNOTE = 19;
+  $fldICON = 20;
+  $fldCHAN = 21;
 
   $fldNULL   = 0; // номер колонки "0"
   $fldCHILD  = 0; // номер колонки "Ребенок"
@@ -101,11 +101,9 @@
   $listSpouse = array();
   $listPlaceb = array();
   $listPlaced = array();
-  $listPlacel = array();
   $listPlacet = array();
   $listMapsb = array();
   $listMapsd = array();
-  $listMapsl = array();
   $listMapst = array();
   $listWife = array();
   $listOccu = array();
@@ -144,6 +142,11 @@
   $listWedding = array();
   $listPlacew = array();
   $listMapsw = array();
+  //
+  $listLiveId = array();
+  $listDatel = array();
+  $listPlacel = array();
+  $listMapsl = array();
   //
   $go_indi = false;
   $cur = -1;
