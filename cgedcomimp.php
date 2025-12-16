@@ -799,7 +799,6 @@ echo "=== current person = $indi_inx[$cur] = $indi_id[$cur] = $listPerson[$cur] 
                                 {
                                     $sDatel = $ss;
                                 }
-echo "=== sDatel = $sDatel<br>";
 			    }
                         }else
                         if (strpos($s,"PLAC"))
@@ -1118,9 +1117,9 @@ echo "=== sDatel = $sDatel<br>";
 
 //echo "    // Add persons count = ".count($listPerson)."<br>";;
 //for ($i = 0; $i < count($spouses); $i++) echo "SPOUSE $i: ".$spouses[$i][$fldSPOUS1]." | ".$spouses[$i][$fldSPOUS2]." | ".$spouses[$i][$fldWEDDIN]." | ".$spouses[$i][$fldPLACEW]." | ".$spouses[$i][$fldMAPSW]." |<br>";
-echo "=== listLiveId =="; print_r($listLiveId); echo "<br>";
-echo "=== listDatel =="; print_r($listDatel); echo "<br>";
-echo "=== listPlacel =="; print_r($listPlacel); echo "<br>";
+//echo "=== listLiveId =="; print_r($listLiveId); echo "<br>";
+//echo "=== listDatel =="; print_r($listDatel); echo "<br>";
+//echo "=== listPlacel =="; print_r($listPlacel); echo "<br>";
 
     for ($i = 0; $i < count($listPerson); $i++)
     {
