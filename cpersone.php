@@ -765,7 +765,7 @@ if($log) exit;
  <tr><td align=center>
  <b><i><?php echo $avtora; ?></i></b>
  </td><td align=right>
- <a href="cfotos.php?id=<?php echo $id_person; ?>&name=<?php echo $persona; ?>"><img src="icons/mn_menu_foto.png" width=48 height=48 align=right></a>
+ <a href="cfotos.php?id=<?php echo $id_person; ?>&name=<?php echo $persona; ?>"><img src="icons/ic_menu_gallery.png" width=48 height=48 align=right></a>
  <td><tr>
  </table>
 
@@ -854,91 +854,6 @@ if($log) exit;
  <tr><td><?php echo $field_placeb; ?></td>
   <td><input type="text" name="placeb" size="60" value="<?php echo $placeba; ?>"></td>
  </tr>
-
-<?
-  // residens
-  echo '<tr bgcolor="#ffff00"><td>'.$field_placel.'</td>';
-  echo '<td>';
-
-  //if ($inx_add == 4){
-     $inx_add = 0;
-     if(isset($_GET['placel'])){
-        $placel = $_GET['placel'];
-
-        $acnt = count($aresiden);
-        $resis = array("$inx_person", "", "$placel", "");//add residence
-        $aresiden[$acnt] = $resis;
-        $_SESSION['aresiden'] = $aresiden;
-//print_r($aresiden);
-     }
-  //}
-
-//print_r($aresiden);
-  echo '<select id="reside_sel" class="residen" name="reside_sel" size="1" onchange="OnSelectionChangeR (this)">';
-  $n = 0;
-  $residen_key = "";
-  for ($i = 0; $i < count($aresiden); $i++) {
-      echo '<option value="'.$i.'">'.$aresiden[$i][2].'</option>';
-
-      if($i == $residen_ind){
-        $datela = $aresiden[$i][1];
-        $mapsla = $aresiden[$i][3];
-      }
-
-      if($n == 0) $residen_key = "".$aresiden[$i][0]; else $residen_key .= ",".$aresiden[$i][0];
-      $n++;
-  }
-  echo '</select>';
-
-//print_r($aresiden); echo "<br>";
-//echo "Place:".$_GET[placel]."<br>";
-
-  echo "<input type=submit src='icons/ic_menu_add.png' witdh=24 height=24 onclick=\"onClickPlaceL(this)\" value='+'>";
-  echo "<input type=submit src='icons/ic_menu_delete.png' witdh=24 height=24 name='delReside' value='-'>";
-  echo '</td></tr>';
-
-  $adatel = array();
-  for($i = 0; $i < count($aresiden); $i++) {
-     $adatel[$i] = $aresiden[$i][1];
-  }
-
-?>
-
- <script>
-     function OnSelectionChangeR (select) {
-         const index = select.selectedIndex;
-         var selectedOption = select.options[index];
-         var options = selectedOption.value;
-         var option = options.split(":");
-
-         const pdatel = document.getElementById("datel");
-         var datelArray =  <?php echo json_encode($adatel); ?>;
-         pdatel.value = datelArray[index];
-     }
- </script>
-
- <script>
-	function onClickPlaceL (select) {
-		var placel = prompt("Please enter place:","Place");
-
-		// Handling user input
-		if (placel !== null) {
-			try {
-				window.location.href = "index.php?do=cpersone&id=<?php echo $id_person; ?>&edit=1&placel=" + placel;
-			} catch (e) {
-				//alert('Перенаправление не было осуществлено, но мы не унываем' + e);
-			}
-			alert("PLace, " + placel);
-			//alert("You canceled the input.");
-		} else {
-			//alert("You canceled the input.");
-		}
-	}
- </script>
-
- <tr bgcolor="#ffff00"><td><?php echo $field_datel; ?></td><td>
-  <input type="text" name="datel" id="datel" size="30" value="<?php echo $datela; ?>">
- </td></tr>
 
  <tr><td><?php echo $field_death; ?></td>
   <td><input type="text" name="death" size="25" value="<?php echo $deatha; ?>"></td>
@@ -1158,6 +1073,91 @@ if($log) exit;
  <tr bgcolor="#ebdac7"><td><?php echo $field_placew; ?></td>
   <td><input type="text" name="placew" id="placew" size="60" value="<?php echo $placewa; ?>"></td>
  </tr>
+
+<?
+  // residens
+  echo '<tr bgcolor="#ffff00"><td>'.$field_placel.'</td>';
+  echo '<td>';
+
+  //if ($inx_add == 4){
+     $inx_add = 0;
+     if(isset($_GET['placel'])){
+        $placel = $_GET['placel'];
+
+        $acnt = count($aresiden);
+        $resis = array("$inx_person", "", "$placel", "");//add residence
+        $aresiden[$acnt] = $resis;
+        $_SESSION['aresiden'] = $aresiden;
+//print_r($aresiden);
+     }
+  //}
+
+//print_r($aresiden);
+  echo '<select id="reside_sel" class="residen" name="reside_sel" size="1" onchange="OnSelectionChangeR (this)">';
+  $n = 0;
+  $residen_key = "";
+  for ($i = 0; $i < count($aresiden); $i++) {
+      echo '<option value="'.$i.'">'.$aresiden[$i][2].'</option>';
+
+      if($i == $residen_ind){
+        $datela = $aresiden[$i][1];
+        $mapsla = $aresiden[$i][3];
+      }
+
+      if($n == 0) $residen_key = "".$aresiden[$i][0]; else $residen_key .= ",".$aresiden[$i][0];
+      $n++;
+  }
+  echo '</select>';
+
+//print_r($aresiden); echo "<br>";
+//echo "Place:".$_GET[placel]."<br>";
+
+  echo "<input type=submit src='icons/ic_menu_add.png' witdh=24 height=24 onclick=\"onClickPlaceL(this)\" value='+'>";
+  echo "<input type=submit src='icons/ic_menu_delete.png' witdh=24 height=24 name='delReside' value='-'>";
+  echo '</td></tr>';
+
+  $adatel = array();
+  for($i = 0; $i < count($aresiden); $i++) {
+     $adatel[$i] = $aresiden[$i][1];
+  }
+
+?>
+
+ <script>
+     function OnSelectionChangeR (select) {
+         const index = select.selectedIndex;
+         var selectedOption = select.options[index];
+         var options = selectedOption.value;
+         var option = options.split(":");
+
+         const pdatel = document.getElementById("datel");
+         var datelArray =  <?php echo json_encode($adatel); ?>;
+         pdatel.value = datelArray[index];
+     }
+ </script>
+
+ <script>
+	function onClickPlaceL (select) {
+		var placel = prompt("Please enter place:","Place");
+
+		// Handling user input
+		if (placel !== null) {
+			try {
+				window.location.href = "index.php?do=cpersone&id=<?php echo $id_person; ?>&edit=1&placel=" + placel;
+			} catch (e) {
+				//alert('Перенаправление не было осуществлено, но мы не унываем' + e);
+			}
+			alert("PLace, " + placel);
+			//alert("You canceled the input.");
+		} else {
+			//alert("You canceled the input.");
+		}
+	}
+ </script>
+
+ <tr bgcolor="#ffff00"><td><?php echo $field_datel; ?></td><td>
+  <input type="text" name="datel" id="datel" size="30" value="<?php echo $datela; ?>">
+ </td></tr>
 
 
  <tr><td><?php echo $field_occu; ?></td>
