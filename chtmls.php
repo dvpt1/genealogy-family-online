@@ -25,9 +25,9 @@ if (!empty($_GET['lang'])) {
   $_COOKIE['myfamilytree_lang'] = $lang;
  }
 }
-echo "<br><br><br><br>LANG=".$lang."<br>";
-$url = $_SERVER['REQUEST_URI'];
-echo "<br>".$url."<br>";
+//echo "<br><br><br><br>LANG=".$lang."<br>";
+//$url = $_SERVER['REQUEST_URI'];
+//echo "<br>".$url."<br>";
 
 $filter = "";
 if(isset($_GET['filter'])){
@@ -37,7 +37,7 @@ if(isset($_POST['filter'])){
   $filter = $_POST['filter'];
   //header("Refresh: 0.5; index.php?filter=$filter");
 }
-echo "<br>".$filter."<br>";
+//echo "<br>".$filter."<br>";
 
 switch ($lang) {
 case 'en': include_once("languages/en.php"); break;

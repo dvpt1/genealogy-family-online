@@ -1,7 +1,7 @@
 <?php
 
 //const
-  $CntCol = 24; // количество колонок
+  $CntCol = 48; // количество колонок
 
   $timestamp = "";//date('YmdHisu');
 

@@ -245,4 +245,44 @@ function array_sort_by_column(&$arr, $col, $dir = SORT_ASC) {
     array_multisort($sort_col, $dir, $arr);
 }
 
+// * * //
+function deleteFile($s, $c)
+{
+    $retVal = "";
+    for ($i = 0; $i < strlen($s); $i++)
+    {
+        if ($s[$i] != $c)
+        {
+            $retVal .= $s[$i];
+        }
+    }
+    return $retVal;
+}
+
+// * * //
+function deleteFolder($folder) {
+   if (!is_dir($folder)) {
+       return false;
+   }
+   foreach (scandir($folder) as $item) {
+       if ($item === '.' || $item === '..') {
+           continue;
+       }
+       $itemPath = $folder . DIRECTORY_SEPARATOR . $item;
+       if (is_dir($itemPath)) {
+           deleteFolder($itemPath); // Recursive call for subdirectories
+       } else {
+           unlink($itemPath); // Delete file
+       }
+   }
+   return rmdir($folder); // Remove the now-empty folder
+}
+// Usage
+//$folder = "path/to/folder_with_contents";
+//if (deleteFolder($folder)) {
+//   echo "successfully";
+//} else {
+//   echo "filed";
+//}
+
 ?>
