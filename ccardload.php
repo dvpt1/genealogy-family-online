@@ -15,15 +15,7 @@ if($user_data == 0) exit;
 $id = $_POST['id'];
 $id = str_replace(array("\r", "\n"), '', $id);
 
-$uploaddir = "fotos/$id/";
-if (!file_exists($uploaddir)) {
-  mkdir($uploaddir, 0777, true);
-  //echo "Директория создана успешно!";
-} else {
-  //echo "Директория уже существует.";
-}
-//echo "path=$path<br>\n";
-
+$uploaddir = "cards/";
 //echo "uploaddir = $uploaddir\n";
 $file = basename($_FILES['userfile']['name']);
 $uploadfile = $uploaddir.$file;

@@ -16,12 +16,7 @@ if($user_data == 0) exit;
 //echo "dir=$dir<br>\n";
 
   $path = "fotos/".$id_person."/";
-  if (!file_exists($path)) {
-    mkdir($path, 0777, true);
-    //echo "Директория создана успешно!";
-  } else {
-    //echo "Директория уже существует.";
-  }
+  if (!file_exists($path)) {echo ""; exit;}
 //echo "path=$path<br>\n";
 
   $files = scandir($dir); // Получаем список файлов из этой директории
@@ -31,7 +26,7 @@ if($user_data == 0) exit;
     if(!empty($id_person)) if(substr($path, -1) != '/') $path .= "/";
     //echo "path=$path file=$files[$i]".substr($path, -1)."<br>";
     //echo "<a href='".$path.$files[$i]."'><img src='".$path.$files[$i]."' width=256 height=256 alt=".$files[$i]." /></a>";
-    echo "$path$files[$i]\n";
+    echo "$files[$i]\n";
   } 
 
 
