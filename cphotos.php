@@ -32,6 +32,13 @@ if($user_data == 0) exit;
     //echo "path=$path file=$files[$i]".substr($path, -1)."<br>";
     //echo "<a href='".$path.$files[$i]."'><img src='".$path.$files[$i]."' width=256 height=256 alt=".$files[$i]." /></a>";
     echo "$path$files[$i]\n";
+
+    //$input = "$path$files[$i]\n";
+    //var_dump($input);
+    //echo mb_convert_encoding($input, "UTF-8", "windows-1252");
+    //$output = iconv('windows-1252', 'UTF-8',$input);
+    //echo "$output\n";
+
   } 
 
 
