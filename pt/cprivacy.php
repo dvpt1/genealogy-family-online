@@ -1,0 +1,407 @@
+<title>Política de Privacidade</title>
+<br>
+<h1>Política de Privacidade</h1>
+<p>1º de janeiro de 2024 — Atualizado: 24 de março de 2024</p>
+<br>
+<p>
+Real
+Política de privacidade pessoal
+dados (doravante denominada Política de Privacidade)
+aplica-se a todas as informações
+em que este site está localizado
+o texto desta Política de Privacidade,
+poderá obter informações sobre o Usuário, bem como
+quaisquer programas e produtos hospedados
+nele.</p>
+<h2>1. DEFINIÇÃO DOS TERMOS</h2>
+<p>
+1.1
+Nesta Política de Privacidade
+Os seguintes termos são usados:</p>
+<p>
+1.1.1.
+“Administração do Site” – autorizado
+equipe de gerenciamento do local,
+agindo em seu nome, que
+organizar e (ou) realizar o processamento
+dados pessoais, e também determina
+finalidades do tratamento de dados pessoais,
+composição dos dados pessoais sujeitos a
+processamento, ações (operações) realizadas
+com dados pessoais.</p>
+<p>
+1.1.2.
+“Dados pessoais” - qualquer informação
+relacionados direta ou indiretamente
+definido ou determinável
+para um indivíduo (sujeito pessoal
+dados).</p>
+<p>
+1.1.3.
+“Tratamento de dados pessoais” - qualquer
+ação (operação) ou conjunto
+ações (operações) realizadas com
+usando ferramentas de automação
+ou sem o uso de tais meios com
+dados pessoais, incluindo coleta,
+registro, sistematização, acumulação,
+armazenamento, esclarecimento (atualização,
+mudança), extração, uso,
+transmissão (distribuição, provisão,
+acesso), despersonalização, bloqueio,
+remoção, destruição de pessoal
+dados.</p>
+<p>
+1.1.4.
+“Confidencialidade de informações pessoais
+dados" - cumprimento obrigatório
+A administração do site não exige
+permitir a sua distribuição deliberada
+sem o consentimento do sujeito pessoal
+dados ou a presença de outras informações legais
+motivos.</p>
+<p>
+1.1.5.
+“Usuário do site (doravante denominado Usuário)”
+– uma pessoa que tem acesso ao site através
+Internet e usando isso
+site para seus próprios fins.</p>
+<p>
+1.1.6.
+"Cookies" são um pequeno pedaço de dados
+enviado pelo servidor web e armazenado
+no computador do usuário
+cliente web ou navegador web sempre
+envia para o servidor web em uma solicitação HTTP quando
+tentando abrir a página correspondente
+site.</p>
+<p>
+1.1.7.
+“Endereço IP” é um endereço de rede exclusivo
+nó em uma rede de computadores construída
+via protocolo IP.</p>
+<h2>2. DISPOSIÇÕES GERAIS</h2>
+<p>
+2.1.
+Uso do site pelo usuário
+significa concordância com esta Política
+privacidade e condições de processamento
+dados pessoais do Usuário.</p>
+<p>
+2.2.
+Em caso de desacordo com os termos da Política
+privacidade O usuário deve
+pare de usar o site.</p>
+<p>
+2.3.Real
+Política de privacidade se aplica
+somente para este site. Administração
+não controla o site e não é responsável
+responsabilidade por sites de terceiros,
+para onde o usuário pode ir
+através dos links disponíveis neste site.</p>
+<p>
+2.4.
+A administração do site não verifica
+confiabilidade dos dados pessoais,
+fornecido pelo Usuário do Site.</p>
+<h2>3. ASSUNTO DA POLÍTICA DE PRIVACIDADE</h2>
+<p>
+3.1.
+Esta Política de Privacidade
+estabelece as obrigações da Administração
+site sobre não divulgação intencional
+dados pessoais que o Usuário
+atende diversas solicitações
+Administração do site (por exemplo, quando
+registrar-se no site, fazer um pedido,
+assinaturas de notificações, etc.)</p>
+<p>
+3.2.
+Dados pessoais permitidos
+processamento sob esta Política
+confidencialidade fornecida
+Pelo usuário preenchendo
+formulários especiais no Site e geralmente
+inclua as seguintes informações:</p>
+<p>
+3.2.1.
+sobrenome, nome, patronímico do Usuário;</p>
+<p>
+3.2.2.
+Telefone de contato do usuário;</p>
+<p>
+3.2.3.
+endereço de e-mail (e-mail);</p>
+<p>
+3.2.4.
+local de residência do Usuário e outros
+dados.</p>
+<p>
+3.3.
+A administração do site também aceita
+esforços para proteger dados pessoais,
+que são transferidos automaticamente para
+processo de visita às páginas do site:</p>
+<p>
+PI
+endereço;<br>
+informações de cookies;<br>
+Informação
+sobre o navegador (ou outro programa que
+acessa o site);<br>
+tempo
+acessar;<br>
+endereços visitados
+páginas;<br>
+referenciador (endereço do anterior
+páginas), etc.</p>
+<p>
+3.3.1.
+A desativação dos cookies pode impossibilitar
+acesso ao site.</p>
+<p>
+3.3.2.
+O site coleta estatísticas sobre
+Endereços IP de seus visitantes. Esse
+informações são usadas para identificar
+e resolver problemas técnicos, por
+controle da exatidão do realizado
+operações.</p>
+<p>
+3.4.
+Qualquer outra informação pessoal
+não especificado acima (histórico de compras,
+navegadores e sistemas operacionais usados
+sistemas, etc.) não está sujeito a intencional
+divulgação, exceto nos casos
+previsto nos parágrafos. 5.2. e 5.3. esse
+Política de Privacidade</p>
+<h2>4. FINS DE COLETA DE INFORMAÇÕES PESSOAIS DO USUÁRIO</h2>
+<p>
+4.1.
+Dados pessoais do usuário
+A administração do site pode usar
+para fins de:</p>
+<p>
+4.1.1.
+Identificação do usuário,
+cadastrado no site, para
+fazer um pedido e/oue) conclusões
+Acordo.</p>
+<p>
+4.1.2.
+Fornecendo acesso ao usuário
+para recursos personalizados
+site.<br>
+4.1.3. Estabelecimentos com o Usuário
+feedback, incluindo direção
+notificações, solicitações sobre
+utilização do site, prestação de serviços,
+processamento de solicitações e solicitações de
+Usuário.</p>
+<p>
+4.1.4.
+Determinando a localização do usuário
+para segurança,
+prevenção de fraudes.</p>
+<p>
+4.1.5.
+Atestados de precisão e integridade
+dados pessoais fornecidos
+Usuário.</p>
+<p>
+4.1.6.
+Crie uma conta para fazer
+compras, se o usuário tiver dado consentimento
+para criar uma conta.</p>
+<p>
+4.1.7.
+Notificações ao Usuário do Site sobre
+Status do pedido.</p>
+<p>
+4.1.8.
+Processar e receber pagamentos,
+declaração fiscal ou fiscal
+benefícios, disputas de pagamento, determinação
+direitos de receber uma linha de crédito
+Usuário.</p>
+<p>
+4.1.9.
+Fornecer ao usuário informações eficazes
+suporte técnico e ao cliente para
+problemas associados a
+usando o site.</p>
+<p>
+4.1.10.
+Fornecer ao usuário seu
+consentimentos, atualizações de produtos,
+ofertas especiais, informações sobre
+preços, newsletter e outras informações
+em nome do site ou em nome de parceiros
+site.</p>
+<p>
+4.1.11.
+Realização de atividades publicitárias
+com o consentimento do Usuário.</p>
+<p>
+4.1.12.
+Fornecendo acesso ao usuário
+para sites de terceiros ou serviços de parceiros
+este site para recebê-los
+ofertas, atualizações ou serviços.</p>
+<h2>5. MÉTODOS E TERMOS DE PROCESSAMENTO DE INFORMAÇÕES PESSOAIS</h2>
+<p>
+5.1.
+Tratamento dos dados pessoais do Utilizador
+realizado sem limite de tempo,
+por qualquer meio legal, incluindo
+sistemas de informação pessoal
+dados usando ferramentas
+automação ou sem
+tais fundos.</p>
+<p>
+5.2.
+O usuário concorda que
+A administração do site tem o direito de transferir
+dados pessoais a terceiros, em
+em particular, serviços de correio,
+organizações postais, operadores
+telecomunicações, exclusivamente para efeitos
+atendimento das solicitações do Usuário,
+emitido no site, no âmbito do Acordo
+oferta pública.</p>
+<p>
+5.3.
+Os dados pessoais do Utilizador poderão
+ser transferido para órgãos autorizados
+apenas poder estatal
+com base e na forma estabelecida
+legislação atual.</p>
+<h2>6. OBRIGAÇÕES DAS PARTES</h2>
+<p>
+6.1.
+O usuário compromete-se:</p>
+<p>
+6.1.1.
+Forneça informações corretas e verdadeiras
+informações sobre dados pessoais,
+necessário para usar o site.</p>
+<p>
+6.1.2.
+Atualize ou complemente o fornecido
+informações sobre dados pessoais em
+se essas informações mudarem.</p>
+<p>
+6.1.3.
+Tomar medidas para proteger o acesso a
+seus dados confidenciais armazenados
+no site.</p>
+<p>
+6.2.
+A administração do site compromete-se a:</p>
+<p>
+6.2.1.
+Use as informações recebidas
+exclusivamente para os fins especificados em
+cláusula 4 desta Política de Privacidade.</p>
+<p>
+6.2.2.
+Não divulgue dados pessoais
+Usuário, com exceção dos parágrafos. 5.2. E
+5.3. desta Política de Privacidade.</p>
+<p>
+6.2.3.
+Bloquear pessoal
+dados relativos ao assunto relevante
+O usuário, a partir do momento do contato ou
+solicitação do Usuário ou de seu representante legal
+representante ou autorizado
+órgão para a proteção dos direitos dos súditos
+dados pessoais para o período de verificação,
+em caso de detecção de não confiável
+dados pessoais ou ilegais
+ações.</p>
+<h2>7. RESPONSABILIDADE DAS PARTES</h2>
+<p>
+7.1.
+A administração do site é responsável
+para divulgação intencional de informações pessoais
+Dados do usuário de acordo com
+legislação atual, para
+exceto nos casos previstos
+pp. 5.2., 5.3. e 7.2. desta Política
+Privacidade.</p>
+<p>
+7.2.
+Em caso de perda ou divulgação
+Administração de dados pessoais
+o site não é responsável se
+estas informações confidenciais:</p>
+<p>
+7.2.1.
+Tornou-se domínio público até sua perda
+ou divulgação.</p>
+<p>
+7.2.2.
+Foi recebido de um terceiro antes
+no momento do seu recebimento pela Administração
+site.</p>
+<p>
+7.2.3.
+Foi obtido por terceiros através de
+acesso não autorizado a arquivos
+site.</p>
+<p>
+7.2.4.
+Foi divulgado com o consentimento do Usuário.</p>
+<p>
+7.3.
+O usuário é responsável por
+legalidade, correção e veracidade
+forneceu dados pessoais
+de acordo com o atual
+legislação.</p>
+<h2>8. RESOLUÇÃO DE DISPUTAS</h2>
+<p>
+8.1.
+Antes de apresentar uma reclamação em tribunal sobre litígios,
+decorrente da relação entre
+Usuário e Administração do Site
+site, é necessária apresentação
+reivindicações (proposta escrita para
+resolução voluntária da disputa).</p>
+<p>
+8.2
+.O destinatário da reclamação dentro de 30
+dias corridos a partir da data de recebimento
+reivindicações, notifica o requerente por escrito
+reclamações sobre o resultado do exame
+reivindicações.</p>
+<p>
+8.3.
+Se nenhum acordo for alcançado, a disputa será
+encaminhado ao tribunal para apreciação
+autoridade de acordo com a atual
+legislação.</p>
+<p>
+8.4.
+Para esta Política de Privacidade
+e relações entre Usuáriosateliê e
+A administração do site se aplica
+legislação atual.</p>
+<h2>9. CONDIÇÕES ADICIONAIS</h2>
+<p>
+9.1.
+A administração do site tem o direito de apresentar
+alterações nesta Política
+privacidade sem consentimento
+Usuário.</p>
+<p>
+9.2.
+Nova Política de Privacidade
+entra em vigor a partir do momento em que é postado
+no Site, salvo disposição em contrário
+nova edição da Política de Privacidade.</p>
+
+<p><br></p>

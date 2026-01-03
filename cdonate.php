@@ -6,6 +6,8 @@
 <br>
 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="PADDING-TOP: 0px; PADDING-BOTTOM: 0px; PADDING-RIGHT: 0px; PADDING-LEFT: 0px"><TBODY>
  <tr><td align="center"><br>
+
+ <br><a href="https://donate.stream/yoomoney4100146363478"><img src="../icons/donate.stream-yoomoney4100146363478.png"><br><b>https://donate.stream/yoomoney4100146363478</b></a>
  
  <h3><?php echo $msg01; ?></h3>
 

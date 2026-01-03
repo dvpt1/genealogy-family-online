@@ -1,0 +1,407 @@
+<título>Política de Privacidad</título>
+<br>
+<h1>Política de Privacidad</h1>
+<p>01 de enero de 2024 — Actualizado: 24 de marzo de 2024</p>
+<br>
+<p>
+Real
+Política de privacidad personal
+datos (en adelante, la Política de Privacidad)
+se aplica a toda la información
+en el que se encuentra este sitio
+el texto de esta Política de Privacidad,
+puede obtener información sobre el Usuario, así como
+cualquier programa y producto alojado
+en ello.</p>
+<h2>1. DEFINICIÓN DE TÉRMINOS</h2>
+<p>
+1.1
+En esta Política de Privacidad
+Se utilizan los siguientes términos:</p>
+<p>
+1.1.1.
+“Administración del sitio” – autorizado
+personal de administración del sitio,
+actuando en su nombre, quien
+organizar y (o) llevar a cabo el procesamiento
+datos personales, y también determina
+fines del procesamiento de datos personales,
+composición de los datos personales sujetos a
+procesamiento, acciones (operaciones) realizadas
+con datos personales.</p>
+<p>
+1.1.2.
+“Datos personales”: cualquier información
+relacionados directa o indirectamente
+definido o determinable
+a un individuo (sujeto de personal
+datos).</p>
+<p>
+1.1.3.
+“Procesamiento de datos personales” - cualquier
+acción (operación) o conjunto
+acciones (operaciones) realizadas con
+usando herramientas de automatización
+o sin el uso de tales medios con
+datos personales, incluida la recopilación,
+registro, sistematización, acumulación,
+almacenamiento, clarificación (actualización,
+cambio), extracción, uso,
+transmisión (distribución, suministro,
+acceso), despersonalización, bloqueo,
+remoción, destrucción de datos personales
+datos.</p>
+<p>
+1.1.4.
+"Confidencialidad de las personas
+datos" - cumplimiento obligatorio
+La administración del sitio no requiere
+permitir su distribución deliberada
+sin el consentimiento del sujeto de datos personales
+datos o la presencia de otras garantías legales
+terrenos.</p>
+<p>
+1.1.5.
+“Usuario del sitio (en adelante, Usuario)”
+– una persona que tiene acceso al sitio a través de
+Internet y el uso de este
+sitio web para sus propios fines.</p>
+<p>
+1.1.6.
+Las "cookies" son un pequeño dato
+enviado por el servidor web y almacenado
+en la computadora del usuario
+cliente web o navegador web cada vez
+envía al servidor web en una solicitud HTTP cuando
+intentando abrir la página correspondiente
+sitio.</p>
+<p>
+1.1.7.
+La “dirección IP” es una dirección de red única
+nodo en una red informática construida
+mediante protocolo IP.</p>
+<h2>2. DISPOSICIONES GENERALES</h2>
+<p>
+2.1.
+Uso del sitio por parte del usuario
+significa acuerdo con esta Política
+condiciones de privacidad y procesamiento
+datos personales del Usuario.</p>
+<p>
+2.2.
+En caso de desacuerdo con los términos de la Póliza
+privacidad El usuario debe
+deja de usar el sitio.</p>
+<p>
+2.3.Reales
+Se aplica la política de privacidad
+sólo a este sitio. Administración
+no controla el sitio y no es responsable
+responsabilidad por sitios de terceros,
+al que el Usuario puede acudir
+a través de los enlaces disponibles en este sitio.</p>
+<p>
+2.4.
+La administración del sitio no verifica.
+fiabilidad de los datos personales,
+proporcionado por el Usuario del Sitio.</p>
+<h2>3. OBJETO DE LA POLÍTICA DE PRIVACIDAD</h2>
+<p>
+3.1.
+Esta Política de Privacidad
+establece las obligaciones de la Administración
+sitio sobre no divulgación intencional
+datos personales que el Usuario
+prevé diversas solicitudes
+Administración del sitio (por ejemplo, cuando
+registrarse en el sitio web, realizar un pedido,
+suscripciones a notificaciones, etc.)</p>
+<p>
+3.2.
+Datos personales permitidos a
+procesamiento bajo esta Política
+confidencialidad proporcionada
+Por el usuario al completar
+formularios especiales en el Sitio y generalmente
+incluya la siguiente información:</p>
+<p>
+3.2.1.
+apellido, nombre, patronímico del Usuario;</p>
+<p>
+3.2.2.
+Número de teléfono de contacto del usuario;</p>
+<p>
+3.2.3.
+dirección de correo electrónico (correo electrónico);</p>
+<p>
+3.2.4.
+lugar de residencia del Usuario y otros
+datos.</p>
+<p>
+3.3.
+La administración del sitio también acepta
+esfuerzos para proteger los datos personales,
+que se transfieren automáticamente a
+proceso de visitar las páginas del sitio:</p>
+<p>
+IP
+dirección;<br>
+información de las cookies;<br>
+información
+sobre el navegador (u otro programa que
+accede al sitio);<br>
+tiempo
+acceso;<br>
+direcciones visitadas
+páginas;<br>
+referente (dirección del anterior
+páginas), etc.</p>
+<p>
+3.3.1.
+Deshabilitar las cookies puede hacer que sea imposible
+acceso al sitio.</p>
+<p>
+3.3.2.
+El sitio recopila estadísticas sobre
+Direcciones IP de sus visitantes. Este
+La información se utiliza para identificar.
+y resolver problemas técnicos, por
+control de la exactitud de lo realizado
+operaciones.</p>
+<p>
+3.4.
+Cualquier otra información personal
+no especificado anteriormente (historial de compras,
+navegadores y sistemas operativos utilizados
+sistemas, etc.) no está sujeto a daños intencionales.
+divulgación, excepto en los casos
+previsto en los párrafos. 5.2. y 5.3. este
+Política de privacidad</p>
+<h2>4. FINALIDADES DE LA RECOPILACIÓN DE INFORMACIÓN PERSONAL DEL USUARIO</h2>
+<p>
+4.1.
+Datos personales del usuario
+La administración del sitio puede utilizar
+a los efectos de:</p>
+<p>
+4.1.1.
+Identificación de usuario,
+registrado en el sitio, para
+realizar un pedido y/oyo) conclusiones
+Acuerdo.</p>
+<p>
+4.1.2.
+Proporcionar acceso al Usuario
+a recursos personalizados
+sitio.<br>
+4.1.3. Establecimientos con el Usuario
+retroalimentación, incluida la dirección
+notificaciones, solicitudes sobre
+uso del sitio, prestación de servicios,
+procesar solicitudes y solicitudes de
+Usuario.</p>
+<p>
+4.1.4.
+Determinar la ubicación del Usuario
+por seguridad,
+prevención de fraude.</p>
+<p>
+4.1.5.
+Declaraciones de exactitud e integridad
+datos personales proporcionados
+Usuario.</p>
+<p>
+4.1.6.
+Crea una cuenta para hacer
+compras, si el Usuario ha dado su consentimiento
+para crear una cuenta.</p>
+<p>
+4.1.7.
+Notificaciones al Usuario del Sitio sobre
+Estado del pedido.</p>
+<p>
+4.1.8.
+Procesar y recibir pagos,
+confirmación de impuestos o impuestos
+beneficios, disputas de pago, determinación
+derechos a recibir una línea de crédito
+Usuario.</p>
+<p>
+4.1.9.
+Proporcionar al Usuario una efectiva
+soporte técnico y al cliente para
+problemas asociados con
+usando el sitio.</p>
+<p>
+4.1.10.
+Proporcionar al Usuario su
+consentimientos, actualizaciones de productos,
+ofertas especiales, información sobre
+precios, newsletter y otra información
+en nombre del sitio o en nombre de los socios
+sitio.</p>
+<p>
+4.1.11.
+Realización de actividades publicitarias.
+con el consentimiento del Usuario.</p>
+<p>
+4.1.12.
+Proporcionar acceso al Usuario
+a sitios de terceros o servicios de socios
+este sitio para poder recibirlos
+ofertas, actualizaciones o servicios.</p>
+<h2>5. MÉTODOS Y TÉRMINOS DE PROCESAMIENTO DE INFORMACIÓN PERSONAL</h2>
+<p>
+5.1.
+Tratamiento de los datos personales del Usuario
+llevado a cabo sin límite de tiempo,
+por cualquier medio legal, incluyendo
+sistemas de información personal
+datos usando herramientas
+automatización o sin
+dichos fondos.</p>
+<p>
+5.2.
+El usuario acepta que
+La administración del sitio tiene derecho a transferir.
+datos personales a terceros, en
+en particular, servicios de mensajería,
+organizaciones postales, operadores
+telecomunicaciones, únicamente para los fines
+cumplimiento de las solicitudes de los Usuarios,
+emitido en el sitio web, en el marco del Acuerdo
+oferta pública.</p>
+<p>
+5.3.
+Los datos personales del Usuario podrán
+ser transferido a organismos autorizados
+poder estatal solamente
+en los términos y en la forma establecidos
+legislación vigente.</p>
+<h2>6. OBLIGACIONES DE LAS PARTES</h2>
+<p>
+6.1.
+El usuario se compromete:</p>
+<p>
+6.1.1.
+Proporcionar información correcta y veraz.
+información sobre datos personales,
+necesario para utilizar el sitio.</p>
+<p>
+6.1.2.
+Actualizar o complementar lo proporcionado
+información sobre datos personales en
+si esta información cambia.</p>
+<p>
+6.1.3.
+Tomar medidas para proteger el acceso a
+sus datos confidenciales almacenados
+en el sitio web.</p>
+<p>
+6.2.
+La administración del sitio se compromete:</p>
+<p>
+6.2.1.
+Utilice la información recibida.
+únicamente para los fines especificados en
+cláusula 4 de esta Política de Privacidad.</p>
+<p>
+6.2.2.
+No revelar datos personales
+Usuario, a excepción de los párrafos. 5.2. Y
+5.3. de esta Política de Privacidad.</p>
+<p>
+6.2.3.
+bloquear personal
+datos relativos a los pertinentes
+El usuario, desde el momento del contacto o
+solicitud del Usuario o su representante legal
+representante o autorizado
+organismo de protección de los derechos de los sujetos
+datos personales durante el período de verificación,
+en caso de detección de no confiable
+datos personales o ilegales
+acciones.</p>
+<h2>7. RESPONSABILIDAD DE LAS PARTES</h2>
+<p>
+7.1.
+La administración del sitio es responsable.
+por divulgación intencional de datos personales
+Datos del usuario de acuerdo con
+legislación vigente, para
+excepto en los casos previstos
+páginas 5.2., 5.3. y 7.2. de esta Política
+Privacidad.</p>
+<p>
+7.2.
+En caso de pérdida o divulgación
+Administración de datos personales
+el sitio no es responsable si
+esta información confidencial:</p>
+<p>
+7.2.1.
+Pasó a ser de dominio público hasta su pérdida.
+o divulgación.</p>
+<p>
+7.2.2.
+Fue recibido de un tercero antes
+el momento de su recepción por la Administración
+sitio.</p>
+<p>
+7.2.3.
+Fue obtenido por terceros a través de
+acceso no autorizado a archivos
+sitio.</p>
+<p>
+7.2.4.
+Fue divulgado con el consentimiento del Usuario.</p>
+<p>
+7.3.
+El usuario es responsable de
+licitud, corrección y veracidad
+Datos personales proporcionados
+de acuerdo con la corriente
+legislación.</p>
+<h2>8. RESOLUCIÓN DE DISPUTAS</h2>
+<p>
+8.1.
+Antes de presentar un reclamo ante el tribunal sobre disputas,
+que surge de la relación entre
+Usuario y administración del sitio
+sitio web, se requiere presentación
+reclamaciones (propuesta escrita para
+solución voluntaria de la disputa).</p>
+<p>
+8.2
+.El destinatario de la reclamación en un plazo de 30
+días naturales a partir de la fecha de recepción
+reclamaciones, notifica al solicitante por escrito
+quejas sobre los resultados del examen
+reclamaciones.</p>
+<p>
+8.3.
+Si no se llega a un acuerdo, la disputa se resolverá
+remitido al tribunal para su consideración
+autoridad de acuerdo con la actual
+legislación.</p>
+<p>
+8.4.
+A esta Política de Privacidad
+y relaciones entre Usuariostaller y
+La administración del sitio aplica.
+legislación vigente.</p>
+<h2>9. CONDICIONES ADICIONALES</h2>
+<p>
+9.1.
+La administración del sitio tiene derecho a presentar
+cambios a esta Política
+privacidad sin consentimiento
+Usuario.</p>
+<p>
+9.2.
+Nueva política de privacidad
+entra en vigor desde el momento de su publicación
+en el Sitio, a menos que se indique lo contrario
+nueva edición de la Política de Privacidad.</p>
+
+<p><br></p>

@@ -1,0 +1,407 @@
+<title>Datenschutzerklärung</title>
+<br>
+<h1>Datenschutzerklärung</h1>
+<p>01. Januar 2024 – Aktualisiert: 24. März 2024</p>
+<br>
+<p>
+Real
+Persönliche Datenschutzrichtlinie
+Daten (im Folgenden Datenschutzrichtlinie genannt)
+gilt für alle Angaben
+auf welcher Seite sich diese Seite befindet
+den Text dieser Datenschutzerklärung,
+kann Informationen über den Benutzer erhalten, sowie
+alle gehosteten Programme und Produkte
+darauf.</p>
+<h2>1. BEGRIFFSDEFINITION</h2>
+<p>
+1.1
+In dieser Datenschutzerklärung
+Folgende Begriffe werden verwendet:</p>
+<p>
+1.1.1.
+„Site-Administration“ – autorisiert
+Mitarbeiter der Standortleitung,
+in seinem Namen handeln, wer
+die Verarbeitung organisieren und (oder) durchführen
+personenbezogene Daten, und bestimmt auch
+Zwecke der Verarbeitung personenbezogener Daten,
+Zusammensetzung der personenbezogenen Daten
+Verarbeitung, durchgeführte Aktionen (Operationen).
+mit personenbezogenen Daten.</p>
+<p>
+1.1.2.
+„Personenbezogene Daten“ – alle Informationen
+direkt oder indirekt zusammenhängen
+definitiv oder bestimmbar
+an eine Einzelperson (Gegenstand der persönlichen
+Daten).</p>
+<p>
+1.1.3.
+„Verarbeitung personenbezogener Daten“ – beliebig
+Aktion (Operation) oder Satz
+Aktionen (Operationen), die mit ausgeführt werden
+Verwendung von Automatisierungstools
+oder ohne den Einsatz solcher Mittel mit
+personenbezogene Daten, einschließlich Erhebung,
+Aufzeichnung, Systematisierung, Akkumulation,
+Speicherung, Klärung (Aktualisierung,
+Veränderung), Gewinnung, Nutzung,
+Übertragung (Verteilung, Bereitstellung,
+Zugriff), Depersonalisierung, Sperrung,
+Entfernung, Zerstörung persönlicher
+Daten.</p>
+<p>
+1.1.4.
+„Vertraulichkeit persönlicher
+Daten" - zwingende Einhaltung
+Die Site-Administration erfordert nicht
+ermöglichen deren bewusste Verbreitung
+ohne die Zustimmung des Betroffenen
+Daten oder das Vorhandensein anderer rechtlicher
+Gründe.</p>
+<p>
+1.1.5.
+„Site-Benutzer (im Folgenden als Benutzer bezeichnet)“
+– eine Person, die über Zugriff auf die Website hat
+Internet und dessen Nutzung
+Website für Ihre eigenen Zwecke.</p>
+<p>
+1.1.6.
+„Cookies“ sind kleine Datenmengen
+vom Webserver gesendet und gespeichert
+auf dem Computer des Benutzers
+Webclient oder Webbrowser jedes Mal
+sendet wann eine HTTP-Anfrage an den Webserver
+versuche die entsprechende Seite zu öffnen
+Website.</p>
+<p>
+1.1.7.
+„IP-Adresse“ ist eine eindeutige Netzwerkadresse
+Knotenpunkt in einem Computernetzwerk
+über IP-Protokoll.</p>
+<h2>2. ALLGEMEINE BESTIMMUNGEN</h2>
+<p>
+2.1.
+Nutzung der Website durch den Benutzer
+bedeutet Zustimmung zu dieser Richtlinie
+Datenschutz- und Verarbeitungsbedingungen
+personenbezogene Daten des Nutzers.</p>
+<p>
+2.2.
+Im Falle einer Unstimmigkeit mit den Bedingungen der Richtlinie
+Privatsphäre Der Benutzer muss
+Beenden Sie die Nutzung der Website.</p>
+<p>
+2.3.Echt
+Es gelten die Datenschutzbestimmungen
+nur auf dieser Seite. Verwaltung
+kontrolliert die Website nicht und ist nicht verantwortlich
+Haftung für Websites Dritter,
+zu dem der Benutzer gehen kann
+über die auf dieser Website verfügbaren Links.</p>
+<p>
+2.4.
+Die Site-Administration prüft nicht
+Zuverlässigkeit personenbezogener Daten,
+vom Site-Benutzer bereitgestellt.</p>
+<h2>3. GEGENSTAND DER DATENSCHUTZERKLÄRUNG</h2>
+<p>
+3.1.
+Diese Datenschutzrichtlinie
+legt die Pflichten der Verwaltung fest
+Website zur absichtlichen Geheimhaltung
+persönliche Daten, die der Benutzer
+sorgt für verschiedene Wünsche
+Site-Administration (zum Beispiel wann
+Registrierung auf der Website, Aufgabe einer Bestellung,
+Abonnements für Benachrichtigungen usw.)</p>
+<p>
+3.2.
+Persönliche Daten erlaubt
+Verarbeitung im Rahmen dieser Richtlinie
+Vertraulichkeit gewährleistet
+Durch den Benutzer durch Ausfüllen
+Sonderformen auf der Website und in der Regel
+die folgenden Informationen enthalten:</p>
+<p>
+3.2.1.
+Nachname, Vorname, Vatersname des Benutzers;</p>
+<p>
+3.2.2.
+Kontakttelefonnummer des Benutzers;</p>
+<p>
+3.2.3.
+E-Mail-Adresse (E-Mail);</p>
+<p>
+3.2.4.
+Wohnsitz des Nutzers und anderer
+Daten.</p>
+<p>
+3.3.
+Die Site-Administration akzeptiert auch
+Bemühungen zum Schutz personenbezogener Daten,
+die automatisch übertragen werden
+Prozess des Besuchs von Seiten der Website:</p>
+<p>
+IP
+Adresse;<br>
+Informationen aus Cookies;<br>
+Information
+über den Browser (oder ein anderes Programm, das
+greift auf die Website zu);<br>
+Zeit
+Zugriff;<br>
+besuchte Adressen
+Seiten;<br>
+Referrer (Adresse des vorherigen
+Seiten) usw.</p>
+<p>
+3.3.1.
+Das Deaktivieren von Cookies kann dazu führen, dass dies nicht möglich ist
+Zugriff auf die Website.</p>
+<p>
+3.3.2.
+Die Website sammelt Statistiken darüber
+IP-Adressen Ihrer Besucher. Das
+Informationen werden zur Identifizierung verwendet
+und das Lösen technischer Probleme, z
+Kontrolle der Richtigkeit der durchgeführten Maßnahmen
+Operationen.</p>
+<p>
+3.4.
+Alle anderen persönlichen Informationen
+oben nicht angegeben (Kaufhistorie,
+verwendete Browser und Betriebssysteme
+Systeme etc.) unterliegt keiner vorsätzlichen Haftung
+Offenlegung, außer in Einzelfällen
+in den Absätzen vorgesehen. 5.2. und 5.3. Das
+Datenschutzrichtlinie</p>
+<h2>4. ZWECKE DER ERFASSUNG PERSÖNLICHER DATEN DES BENUTZERS</h2>
+<p>
+4.1.
+Persönliche Daten des Benutzers
+Die Site-Administration kann verwenden
+für die Zwecke:</p>
+<p>
+4.1.1.
+Benutzeridentifikation,
+auf der Website registriert, z
+eine Bestellung aufgeben und/oderi) Schlussfolgerungen
+Vereinbarung.</p>
+<p>
+4.1.2.
+Bereitstellung des Zugriffs für den Benutzer
+zu personalisierten Ressourcen
+Website.<br>
+4.1.3. Einrichtungen mit dem Benutzer
+Feedback, einschließlich Richtung
+Benachrichtigungen, Anfragen bzgl
+Nutzung der Website, Bereitstellung von Dienstleistungen,
+Bearbeitung von Anfragen und Anträgen von
+Benutzer.</p>
+<p>
+4.1.4.
+Bestimmung des Standorts des Benutzers
+für Sicherheit,
+Betrugsprävention.</p>
+<p>
+4.1.5.
+Bescheinigungen über Richtigkeit und Vollständigkeit
+personenbezogene Daten zur Verfügung gestellt
+Benutzer.</p>
+<p>
+4.1.6.
+Erstellen Sie ein Konto, um es zu erstellen
+Käufe, sofern der Nutzer seine Einwilligung erteilt hat
+um ein Konto zu erstellen.</p>
+<p>
+4.1.7.
+Benachrichtigungen an den Site-Benutzer über
+Bestellstatus.</p>
+<p>
+4.1.8.
+Abwicklung und Empfang von Zahlungen,
+Steuer oder Steuerbestätigung
+Leistungen, Zahlungsstreitigkeiten, Bestimmung
+Anspruch auf eine Kreditlinie
+Benutzer.</p>
+<p>
+4.1.9.
+Bereitstellung effektiver Informationen für den Benutzer
+Kunden- und technischer Support für
+damit verbundene Probleme
+Nutzung der Website.</p>
+<p>
+4.1.10.
+Bereitstellung des Benutzers
+Einwilligungen, Produktaktualisierungen,
+Sonderangebote, Informationen über
+Preise, Newsletter und andere Informationen
+im Namen der Website oder im Namen von Partnern
+Website.</p>
+<p>
+4.1.11.
+Durchführung von Werbemaßnahmen
+mit Zustimmung des Nutzers.</p>
+<p>
+4.1.12.
+Bereitstellung des Zugriffs für den Benutzer
+an Websites Dritter oder Partnerdienste
+dieser Website, um sie zu erhalten
+Angebote, Updates oder Dienstleistungen.</p>
+<h2>5. METHODEN UND BEDINGUNGEN ZUR VERARBEITUNG PERSONENBEZOGENER DATEN</h2>
+<p>
+5.1.
+Verarbeitung personenbezogener Daten des Nutzers
+ohne zeitliche Begrenzung durchgeführt werden,
+mit allen rechtlichen Mitteln, einschließlich
+persönliche Informationssysteme
+Daten mithilfe von Tools
+Automatisierung oder ohne
+solche Fonds.</p>
+<p>
+5.2.
+Der Nutzer erklärt sich damit einverstanden
+Die Site-Administration hat das Recht zur Übertragung
+personenbezogene Daten an Dritte weiterzugeben
+insbesondere Kurierdienste,
+Postorganisationen, Betreiber
+Telekommunikation, ausschließlich für die Zwecke
+Erfüllung von Nutzerwünschen,
+im Rahmen der Vereinbarung auf der Website veröffentlicht
+öffentliches Angebot.</p>
+<p>
+5.3.
+Die persönlichen Daten des Benutzers können
+an autorisierte Stellen übertragen werden
+Nur Staatsgewalt
+aus den festgelegten Gründen und in der festgelegten Weise
+aktuelle Gesetzgebung.</p>
+<h2>6. PFLICHTEN DER PARTEIEN</h2>
+<p>
+6.1.
+Der Nutzer verpflichtet sich:</p>
+<p>
+6.1.1.
+Geben Sie korrekt und wahrheitsgetreu an
+Auskunft über personenbezogene Daten,
+zur Nutzung der Website erforderlich.</p>
+<p>
+6.1.2.
+Aktualisieren oder ergänzen Sie das bereitgestellte
+Informationen über personenbezogene Daten in
+wenn sich diese Informationen ändern.</p>
+<p>
+6.1.3.
+Ergreifen Sie Maßnahmen, um den Zugang zu schützen
+Ihre vertraulichen Daten werden gespeichert
+auf der Website.</p>
+<p>
+6.2.
+Die Site-Administration verpflichtet sich:</p>
+<p>
+6.2.1.
+Nutzen Sie die erhaltenen Informationen
+ausschließlich für die in genannten Zwecke
+Ziffer 4 dieser Datenschutzerklärung.</p>
+<p>
+6.2.2.
+Geben Sie keine personenbezogenen Daten weiter
+Benutzer, mit Ausnahme von Absätzen. 5.2. Und
+5.3. dieser Datenschutzrichtlinie.</p>
+<p>
+6.2.3.
+Persönlich sperren
+Daten über die relevanten
+Der Benutzer, ab dem Moment der Kontaktaufnahme bzw
+Auf Wunsch des Nutzers oder seines gesetzlichen Vertreters
+Vertreter oder Bevollmächtigter
+Körperschaft zum Schutz der Rechte der Untertanen
+personenbezogene Daten für den Zeitraum der Überprüfung,
+im Falle der Entdeckung von unzuverlässig
+personenbezogene Daten oder illegal
+Aktionen.</p>
+<h2>7. VERANTWORTUNG DER PARTEIEN</h2>
+<p>
+7.1.
+Verantwortlich ist die Site-Administration
+wegen vorsätzlicher Offenlegung personenbezogener Daten
+Nutzerdaten gem
+aktuelle Gesetzgebung, z
+außer in den vorgesehenen Fällen
+p.p. 5.2., 5.3. und 7.2. dieser Richtlinie
+Datenschutz.</p>
+<p>
+7.2.
+Bei Verlust oder Offenlegung
+Verwaltung personenbezogener Daten
+Die Website ist nicht verantwortlich, wenn
+diese vertraulichen Informationen:</p>
+<p>
+7.2.1.
+Wurde bis zu seinem Verlust gemeinfrei
+oder Offenlegung.</p>
+<p>
+7.2.2.
+Wurde zuvor von einem Dritten erhalten
+zum Zeitpunkt des Eingangs bei der Verwaltung
+Website.</p>
+<p>
+7.2.3.
+Wurde von Dritten erlangt durch
+unbefugter Zugriff auf Dateien
+Website.</p>
+<p>
+7.2.4.
+Wurde mit Zustimmung des Nutzers offengelegt.</p>
+<p>
+7.3.
+Der Benutzer ist dafür verantwortlich
+Rechtmäßigkeit, Korrektheit und Wahrhaftigkeit
+bereitgestellte personenbezogene Daten
+entsprechend dem Strom
+Gesetzgebung.</p>
+<h2>8. Streitbeilegung</h2>
+<p>
+8.1.
+Bevor Sie eine Klage wegen Streitigkeiten vor Gericht einreichen,
+entsteht aus der Beziehung zwischen
+Site-Benutzer und -Administration
+Website, Präsentation ist erforderlich
+Ansprüche (schriftlicher Vorschlag für
+freiwillige Beilegung der Streitigkeit).</p>
+<p>
+8.2
+.Der Empfänger der Forderung innerhalb von 30
+Kalendertage ab dem Datum des Erhalts
+Ansprüche, teilt dies dem Antragsteller schriftlich mit
+Beschwerden über die Ergebnisse der Prüfung
+Ansprüche.</p>
+<p>
+8.3.
+Kommt keine Einigung zustande, kommt es zum Streit
+zur Prüfung an das Gericht verwiesen
+Autorität gemäß der aktuellen
+Gesetzgebung.</p>
+<p>
+8.4.
+Zu dieser Datenschutzerklärung
+und Beziehungen zwischen BenutzernAtelier und
+Es gilt die Site-Administration
+aktuelle Gesetzgebung.</p>
+<h2>9. ZUSÄTZLICHE BEDINGUNGEN</h2>
+<p>
+9.1.
+Die Site-Administration hat das Recht zur Einführung
+Änderungen dieser Richtlinie
+Privatsphäre ohne Zustimmung
+Benutzer.</p>
+<p>
+9.2.
+Neue Datenschutzrichtlinie
+tritt ab dem Zeitpunkt der Veröffentlichung in Kraft
+auf der Website, sofern nicht anders angegeben
+Neuauflage der Datenschutzerklärung.</p>
+
+<p><br></p>

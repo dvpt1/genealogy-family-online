@@ -519,7 +519,6 @@ function _end_html($user)
  echo '<div class="navbar" id="myNavbar">';
  echo '<table><tr><td align=center valign=center>';
  echo '<a href="?do=cpersone&id=0&title='.$ic_menu_add.'"><img src="icons/ic_menu_add.png" width=24 height=24>'.$ic_menu_add.'</a>';
-// echo '<a href="?lang='.$lang.'&do=chelp&title='.$mn_menu_help.'"><img src="icons/ic_menu_help.png" width=24 height=24>'.$mn_menu_help.'</a>';
  echo '</td><td align=center valign=center>';
 ?>
 <form method="POST" action="index.php?filter=<?php echo $filter; ?>">
@@ -548,6 +547,10 @@ function _end_html($user)
    }
    echo '</form>';
  }
+ echo '</td><td align=right valign=center>';
+ echo '<a href="?lang='.$lang.'&do=cdonate&title='.$mn_menu_donate.'">'.$mn_menu_donate.'</a>';
+ echo '<a href="?lang='.$lang.'&do=cprivacy&title='.$mn_menu_privacy.'">'.$mn_menu_privacy.'</a>';
+ echo '<a href="?lang='.$lang.'&do=cmission&title='.$mn_menu_mission.'">'.$mn_menu_mission.'</a>';
  echo '</td></tr></table>';
  echo '</div>';
  ?>

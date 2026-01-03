@@ -1,0 +1,407 @@
+<title>Politique de confidentialité</title>
+<br>
+<h1>Politique de confidentialité</h1>
+<p>1 janvier 2024 – Mise à jour : 24 mars 2024</p>
+<br>
+<p>
+Réel
+Politique de confidentialité personnelle
+données (ci-après dénommée la Politique de Confidentialité)
+s'applique à toutes les informations
+sur lequel se trouve ce site
+le texte de cette politique de confidentialité,
+peut obtenir des informations sur l’Utilisateur, ainsi que
+tous les programmes et produits hébergés
+dessus.</p>
+<h2>1. DÉFINITION DES TERMES</h2>
+<p>
+1.1
+Dans cette politique de confidentialité
+Les termes suivants sont utilisés :</p>
+<p>
+1.1.1.
+« Administration du site » – autorisé
+personnel de direction du site,
+agissant en son nom, qui
+organiser et (ou) effectuer le traitement
+données personnelles, et détermine également
+finalités du traitement des données personnelles,
+composition des données personnelles soumises à
+traitement, actions (opérations) effectuées
+avec des données personnelles.</p>
+<p>
+1.1.2.
+"Données personnelles" - toute information
+se rapportant directement ou indirectement
+défini ou déterminable
+à un particulier (sous réserve de
+données).</p>
+<p>
+1.1.3.
+« Traitement de données personnelles » - tout
+action (opération) ou ensemble
+actions (opérations) effectuées avec
+utiliser des outils d'automatisation
+ou sans l'utilisation de tels moyens avec
+données personnelles, y compris la collecte,
+enregistrement, systématisation, accumulation,
+stockage, clarification (mise à jour,
+changement), extraction, utilisation,
+transport (distribution, mise à disposition,
+accès), dépersonnalisation, blocage,
+enlèvement, destruction de données personnelles
+données.</p>
+<p>
+1.1.4.
+"Confidentialité des données personnelles
+données" - conformité obligatoire
+L'administration du site ne nécessite pas
+permettre leur distribution volontaire
+sans le consentement du sujet de la personne
+données ou la présence d'autres
+motifs.</p>
+<p>
+1.1.5.
+« Utilisateur du site (ci-après dénommé Utilisateur) »
+– une personne ayant accès au site via
+Internet et son utilisation
+site Web pour vos propres besoins.</p>
+<p>
+1.1.6.
+Les « cookies » sont un petit morceau de données
+envoyé par le serveur web et stocké
+sur l'ordinateur de l'utilisateur
+client Web ou navigateur Web à chaque fois
+envoie au serveur Web dans une requête HTTP lorsque
+j'essaye d'ouvrir la page correspondante
+site.</p>
+<p>
+1.1.7.
+« L'adresse IP » est une adresse réseau unique
+nœud dans un réseau informatique construit
+via le protocole IP.</p>
+<h2>2. DISPOSITIONS GÉNÉRALES</h2>
+<p>
+2.1.
+Utilisation du site par l'utilisateur
+signifie l'accord avec cette politique
+conditions de confidentialité et de traitement
+données personnelles de l'Utilisateur.</p>
+<p>
+2.2.
+En cas de désaccord avec les termes de la Politique
+confidentialité L'utilisateur doit
+arrêtez d'utiliser le site.</p>
+<p>
+2.3.Réel
+La politique de confidentialité s'applique
+uniquement sur ce site. Administration
+ne contrôle pas le site et n'est pas responsable
+responsabilité pour les sites tiers,
+auquel l'Utilisateur peut se rendre
+via les liens disponibles sur ce site.</p>
+<p>
+2.4.
+L'administration du site ne vérifie pas
+fiabilité des données personnelles,
+fourni par l'Utilisateur du Site.</p>
+<h2>3. SUJET DE LA POLITIQUE DE CONFIDENTIALITÉ</h2>
+<p>
+3.1.
+Cette politique de confidentialité
+établit les obligations de l'Administration
+site sur la non-divulgation intentionnelle
+les données personnelles que l'Utilisateur
+prévoit diverses demandes
+L'administration du site (par exemple, lorsque
+s'inscrire sur le site, passer une commande,
+abonnements aux notifications, etc.)</p>
+<p>
+3.2.
+Données personnelles autorisées à
+traitement en vertu de la présente politique
+confidentialité assurée
+Par l'utilisateur en remplissant
+formulaires spéciaux sur le Site et généralement
+inclure les informations suivantes :</p>
+<p>
+3.2.1.
+nom, prénom, patronyme de l'Utilisateur ;</p>
+<p>
+3.2.2.
+Numéro de téléphone de contact de l'utilisateur ;</p>
+<p>
+3.2.3.
+adresse e-mail (e-mail);</p>
+<p>
+3.2.4.
+lieu de résidence de l'Utilisateur et des autres
+données.</p>
+<p>
+3.3.
+L'administration du site accepte également
+efforts pour protéger les données personnelles,
+qui sont automatiquement transférés vers
+processus de visite des pages du site :</p>
+<p>
+IP
+adresse ;<br>
+informations provenant des cookies ;<br>
+information
+à propos du navigateur (ou d'un autre programme qui
+accède au site);<br>
+temps
+accès ;<br>
+adresses visitées
+pages ;<br>
+référent (adresse du précédent
+pages), etc.</p>
+<p>
+3.3.1.
+La désactivation des cookies peut rendre impossible
+accès au site.</p>
+<p>
+3.3.2.
+Le site collecte des statistiques sur
+Adresses IP de vos visiteurs. Ce
+les informations sont utilisées pour identifier
+et résoudre des problèmes techniques, par exemple
+contrôle de l'exactitude des travaux effectués
+opérations.</p>
+<p>
+3.4.
+Toute autre information personnelle
+non précisé ci-dessus (historique des achats,
+navigateurs et systèmes d'exploitation utilisés
+systèmes, etc.) n’est pas soumis à des
+divulgation, sauf dans les cas
+prévu aux paragraphes. 5.2. et 5.3. ce
+Politique de confidentialité</p>
+<h2>4. OBJECTIFS DE LA COLLECTE DES INFORMATIONS PERSONNELLES DE L'UTILISATEUR</h2>
+<p>
+4.1.
+Données personnelles de l'utilisateur
+L'administration du site peut utiliser
+aux fins de :</p>
+<p>
+4.1.1.
+Identification de l'utilisateur,
+inscrit sur le site, pour
+passer une commande et/oui) conclusions
+Accord.</p>
+<p>
+4.1.2.
+Fournir à l'utilisateur un accès
+vers des ressources personnalisées
+site.<br>
+4.1.3. Etablissements avec l'Utilisateur
+rétroaction, y compris la direction
+notifications, demandes concernant
+utilisation du site, prestation de services,
+traiter les demandes et les candidatures de
+Utilisateur.</p>
+<p>
+4.1.4.
+Détermination de la localisation de l'utilisateur
+pour la sécurité,
+prévention de la fraude.</p>
+<p>
+4.1.5.
+Attestations d'exactitude et d'exhaustivité
+données personnelles fournies
+Utilisateur.</p>
+<p>
+4.1.6.
+Créez un compte pour faire
+achats, si l'Utilisateur a donné son consentement
+pour créer un compte.</p>
+<p>
+4.1.7.
+Notifications à l'utilisateur du site concernant
+Statut de la commande.</p>
+<p>
+4.1.8.
+Traiter et recevoir les paiements,
+taxe ou confirmation fiscale
+prestations, litiges de paiement, détermination
+droits de recevoir une marge de crédit
+Utilisateur.</p>
+<p>
+4.1.9.
+Fournir à l’Utilisateur des services efficaces
+support client et technique pour
+problèmes liés à
+en utilisant le site.</p>
+<p>
+4.1.10.
+Fournir à l'Utilisateur son
+consentements, mises à jour du produit,
+offres spéciales, informations sur
+prix, newsletter et autres informations
+au nom du site ou au nom de partenaires
+site.</p>
+<p>
+4.1.11.
+Réalisation d'activités publicitaires
+avec le consentement de l'Utilisateur.</p>
+<p>
+4.1.12.
+Fourniture d'accès à l'Utilisateur
+vers des sites tiers ou des services partenaires
+ce site afin de les recevoir
+offres, mises à jour ou services.</p>
+<h2>5. MÉTHODES ET CONDITIONS DE TRAITEMENT DES INFORMATIONS PERSONNELLES</h2>
+<p>
+5.1.
+Traitement des données personnelles de l'Utilisateur
+effectué sans limite de temps,
+par tout moyen légal, y compris
+systèmes d'informations personnelles
+données à l'aide d'outils
+automatisation ou sans
+de tels fonds.</p>
+<p>
+5.2.
+L'utilisateur accepte que
+L'administration du site a le droit de transférer
+données personnelles à des tiers, dans
+en particulier, les services de messagerie,
+organisations postales, opérateurs
+télécommunications, uniquement aux fins
+la satisfaction des demandes des Utilisateurs,
+diffusé sur le site Internet, dans le cadre de l'Accord
+offre publique.</p>
+<p>
+5.3.
+Les données personnelles de l'Utilisateur peuvent
+être transféré aux organismes habilités
+le pouvoir de l'État uniquement
+pour les motifs et selon les modalités établis
+législation en vigueur.</p>
+<h2>6. OBLIGATIONS DES PARTIES</h2>
+<p>
+6.1.
+L'utilisateur s'engage :</p>
+<p>
+6.1.1.
+Fournir des informations correctes et véridiques
+des informations sur les données personnelles,
+nécessaire pour utiliser le site.</p>
+<p>
+6.1.2.
+Mettre à jour ou compléter les informations fournies
+informations sur les données personnelles dans
+si ces informations changent.</p>
+<p>
+6.1.3.
+Prendre des mesures pour protéger l'accès à
+vos données confidentielles stockées
+sur le site Web.</p>
+<p>
+6.2.
+L'administration du site s'engage :</p>
+<p>
+6.2.1.
+Utiliser les informations reçues
+uniquement aux fins spécifiées dans
+clause 4 de cette politique de confidentialité.</p>
+<p>
+6.2.2.
+Ne divulguez pas de données personnelles
+Utilisateur, à l'exception des paragraphes. 5.2. Et
+5.3. de cette politique de confidentialité.</p>
+<p>
+6.2.3.
+Bloquer les informations personnelles
+données relatives à la personne concernée
+L'utilisateur, à partir du moment du contact ou
+demande de l'Utilisateur ou de son représentant légal
+représentant ou autorisé
+organisme de protection des droits des sujets
+les données personnelles pour la période de vérification,
+en cas de détection de données peu fiables
+données personnelles ou illégales
+actions.</p>
+<h2>7. RESPONSABILITÉ DES PARTIES</h2>
+<p>
+7.1.
+L'administration du site est responsable
+pour divulgation intentionnelle de données personnelles
+Données utilisateur conformément à
+la législation en vigueur, pour
+sauf dans les cas prévus
+p.p. 5.2., 5.3. et 7.2. de cette politique
+Confidentialité.</p>
+<p>
+7.2.
+En cas de perte ou de divulgation
+Gestion des données personnelles
+le site n'est pas responsable si
+ces informations confidentielles :</p>
+<p>
+7.2.1.
+Devenu domaine public jusqu'à sa perte
+ou divulgation.</p>
+<p>
+7.2.2.
+A été reçu d'un tiers avant
+au moment de sa réception par l'Administration
+site.</p>
+<p>
+7.2.3.
+A été obtenu par des tiers via
+accès non autorisé aux fichiers
+site.</p>
+<p>
+7.2.4.
+A été divulgué avec le consentement de l'utilisateur.</p>
+<p>
+7.3.
+L'utilisateur est responsable de
+légalité, exactitude et véracité
+fourni des données personnelles
+conformément à l'actuel
+législation.</p>
+<h2>8. RÉSOLUTION DES LITIGES</h2>
+<p>
+8.1.
+Avant de déposer une plainte devant le tribunal concernant un litige,
+découlant de la relation entre
+Utilisateur et administration du site
+site Internet, une présentation est requise
+réclamations (proposition écrite de
+règlement volontaire du différend).</p>
+<p>
+8.2
+.Le destinataire de la réclamation dans un délai de 30
+jours calendaires à compter de la date de réception
+réclamations, informe le demandeur par écrit
+plaintes concernant les résultats de l'examen
+réclamations.</p>
+<p>
+8.3.
+Si aucun accord n'est trouvé, le différend sera
+renvoyé au tribunal pour examen
+autorité conformément à la législation en vigueur
+législation.</p>
+<p>
+8.4.
+Vers cette politique de confidentialité
+et relations entre Utilisateursatelier et
+L'administration du site s'applique
+législation en vigueur.</p>
+<h2>9. CONDITIONS SUPPLÉMENTAIRES</h2>
+<p>
+9.1.
+L'administration du site a le droit d'introduire
+modifications apportées à cette politique
+vie privée sans consentement
+Utilisateur.</p>
+<p>
+9.2.
+Nouvelle politique de confidentialité
+prend effet à partir du moment où il est publié
+sur le Site, sauf disposition contraire
+nouvelle édition de la Politique de Confidentialité.</p>
+
+<p><br></p>
