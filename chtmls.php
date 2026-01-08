@@ -8,6 +8,9 @@ include_once("cvars.php");
 global $user;
 global $https;
 global $filter;
+global $lang;
+global $langi;
+global $langs;
 
 // получаем язык
 if (!empty($_GET['lang'])) {
@@ -19,13 +22,13 @@ if (!empty($_GET['lang'])) {
   $lang = $_COOKIE['myfamilytree_lang'];
  }else{   //echo 'Куки НЕ установлены!<br>';
   $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
-  $acceptLang = ['en', 'ru', 'fr', 'it', 'de', 'es', 'pt']; 
+  $acceptLang = ['en', 'fr', 'it', 'de', 'es', 'pt', 'ro', 'ru', 'ua', 'be']; 
   $lang = in_array($lang, $acceptLang) ? $lang : 'en';
   setcookie('myfamilytree_lang', $lang);
   $_COOKIE['myfamilytree_lang'] = $lang;
  }
 }
-//echo "<br><br><br><br>LANG=".$lang."<br>";
+//echo "<br><br><br><br>LANG=".$lang.strtolower($_SERVER["HTTP_ACCEPT_LANGUAGE"])."<br>";
 //$url = $_SERVER['REQUEST_URI'];
 //echo "<br>".$url."<br>";
 
@@ -41,14 +44,19 @@ if(isset($_POST['filter'])){
 
 switch ($lang) {
 case 'en': include_once("languages/en.php"); break;
-case 'ru': include_once("languages/ru.php"); break;
 case 'fr': include_once("languages/fr.php"); break;
 case 'it': include_once("languages/it.php"); break;
 case 'de': include_once("languages/de.php"); break;
 case 'es': include_once("languages/es.php"); break;
+case 'ru': include_once("languages/ru.php"); break;
+case 'ro': include_once("languages/ro.php"); break;
 case 'pt': include_once("languages/pt.php"); break;
+case 'ua': include_once("languages/ua.php"); break;
+case 'be': include_once("languages/be.php"); break;
 default:   include_once("languages/en.php"); break;
 }
+$langi = array_search($lang, $langs);
+
 
 function _begin_html($user)
 {
@@ -73,7 +81,7 @@ function _begin_html($user)
  global $ic_menu_load;
  global $ic_menu_delete;
 
- global $title, $descript, $keyword, $langi, $langs;
+ global $title, $descript, $keyword, $lang, $langi, $langs;
 
  if (!empty($_GET['title'])){
   $title = $_GET['title'];
@@ -87,7 +95,7 @@ function _begin_html($user)
  $key_word = str_replace(" ",",",$descript);
 // $key_word = str_replace(".","",$descript);
 // echo '<br><br><br><br><br>'.$title.'<br>'.$descript.'<br>'.$keyword;
-
+// echo "<br><br><br><br>LANG=".$langi."<br>";
  ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
@@ -194,25 +202,25 @@ function _begin_html($user)
 
 <script language="javascript">
 var langname = Array()
-langname[0] = 'Русский    ';
-langname[1] = 'English    ';
-langname[2] = 'Deutsch    ';
-langname[3] = 'Français   ';
-langname[4] = 'Italiano   ';
-langname[5] = 'Español    ';
-langname[6] = 'Română     ';
+langname[0] = 'English    ';
+langname[1] = 'Deutsch    ';
+langname[2] = 'Français   ';
+langname[3] = 'Italiano   ';
+langname[4] = 'Español    ';
+langname[5] = 'Română     ';
+langname[6] = 'Русский    ';
 langname[7] = 'Português  ';
 langname[8] = 'Український';
 langname[9] = 'Беларускі  ';
 
 var langhref = Array()
-langhref[0] = '?lang=ru';
-langhref[1] = '?lang=en';
-langhref[2] = '?lang=de';
-langhref[3] = '?lang=fr';
-langhref[4] = '?lang=it';
-langhref[5] = '?lang=es';
-langhref[6] = '?lang=ro';
+langhref[0] = '?lang=en';
+langhref[1] = '?lang=de';
+langhref[2] = '?lang=fr';
+langhref[3] = '?lang=it';
+langhref[4] = '?lang=es';
+langhref[5] = '?lang=ro';
+langhref[6] = '?lang=ru';
 langhref[7] = '?lang=pt';
 langhref[8] = '?lang=ua';
 langhref[9] = '?lang=be';
@@ -237,17 +245,6 @@ function openDir( form ) {
  cururl = form.fieldname.options[ newIndex ].value; 
  window.location.assign( cururl ); 
 } 
-</script>
-
-<script language="javascript">
-function Copyright() { 
- document.write("<cite><center><font color=black>")
- document.write("Copyright &copy; 2005-2026 Dmitriy Konyuhov. All right reserved.")
- document.write("E-Mail: <a href=mailto:dvpt@narod.ru>dvpt@narod.ru</a><br>")
- document.write('<script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script><div class="yashare-auto-init" data-yashareType="link" data-yashareQuickServices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,friendfeed,lj"')
- document.write("</font></center></cite>")
- document.write("<hr width=70%>")
-}
 </script>
 
 <script type="text/javascript">
