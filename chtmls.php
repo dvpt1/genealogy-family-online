@@ -73,7 +73,7 @@ function _begin_html($user)
  global $ic_menu_load;
  global $ic_menu_delete;
 
- global $title, $descript, $keyword, $lang;
+ global $title, $descript, $keyword, $langi, $langs;
 
  if (!empty($_GET['title'])){
   $title = $_GET['title'];
@@ -107,6 +107,7 @@ function _begin_html($user)
 <link rel="manifest" href="/icons/site.webmanifest">
 
 <link rel="stylesheet" href="main.css">
+<!--<script src="menu.js"></script>-->
 
 </head>
 
@@ -191,6 +192,64 @@ function _begin_html($user)
  <button id="acceptCookie">Accept</button> 
 </div>
 
+<script language="javascript">
+var langname = Array()
+langname[0] = 'Русский    ';
+langname[1] = 'English    ';
+langname[2] = 'Deutsch    ';
+langname[3] = 'Français   ';
+langname[4] = 'Italiano   ';
+langname[5] = 'Español    ';
+langname[6] = 'Română     ';
+langname[7] = 'Português  ';
+langname[8] = 'Український';
+langname[9] = 'Беларускі  ';
+
+var langhref = Array()
+langhref[0] = '?lang=ru';
+langhref[1] = '?lang=en';
+langhref[2] = '?lang=de';
+langhref[3] = '?lang=fr';
+langhref[4] = '?lang=it';
+langhref[5] = '?lang=es';
+langhref[6] = '?lang=ro';
+langhref[7] = '?lang=pt';
+langhref[8] = '?lang=ua';
+langhref[9] = '?lang=be';
+
+function buildLang( langsele ) { 
+ document.write('<form name=lang>');
+ document.write('<select name="fieldname" onChange="openDir( this.form )" style="background-color: rgb(255,238,255); font-weight: bold">');
+ document.write('');
+ for (i=0; i< langname.length; i++) {
+  if (i==langsele) {
+   document.write('<OPTION value='+langhref[i]+' SELECTED>'+langname[i]+'</OPTION>');
+  } else {
+   document.write('<OPTION value='+langhref[i]+'>'+langname[i]+'</OPTION>');
+  }
+ }
+ document.write('</select>');
+ document.write('</form>');
+} 
+
+function openDir( form ) { 
+ var newIndex = form.fieldname.selectedIndex; 
+ cururl = form.fieldname.options[ newIndex ].value; 
+ window.location.assign( cururl ); 
+} 
+</script>
+
+<script language="javascript">
+function Copyright() { 
+ document.write("<cite><center><font color=black>")
+ document.write("Copyright &copy; 2005-2026 Dmitriy Konyuhov. All right reserved.")
+ document.write("E-Mail: <a href=mailto:dvpt@narod.ru>dvpt@narod.ru</a><br>")
+ document.write('<script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script><div class="yashare-auto-init" data-yashareType="link" data-yashareQuickServices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,friendfeed,lj"')
+ document.write("</font></center></cite>")
+ document.write("<hr width=70%>")
+}
+</script>
+
 <script type="text/javascript">
 // set cookie according to you
 var cookieName= "CodingStatus";
@@ -199,12 +258,11 @@ var cookieExpireDays= 30;
 
 // when users click accept button
 let acceptCookie= document.getElementById("acceptCookie");
-acceptCookie.onclick= function(){
-    createCookie(cookieName, cookieValue, cookieExpireDays);
+  acceptCookie.onclick= function(){
+  createCookie(cookieName, cookieValue, cookieExpireDays);
 }
-
 // function to set cookie in web browser
- let createCookie= function(cookieName, cookieValue, cookieExpireDays){
+  let createCookie= function(cookieName, cookieValue, cookieExpireDays){
   let currentDate = new Date();
   currentDate.setTime(currentDate.getTime() + (cookieExpireDays*24*60*60*1000));
   let expires = "expires=" + currentDate.toGMTString();
@@ -216,9 +274,8 @@ acceptCookie.onclick= function(){
   }
 
  }
-
 // get cookie from the web browser
-let getCookie= function(cookieName){
+  let getCookie= function(cookieName){
   let name = cookieName + "=";
   let decodedCookie = decodeURIComponent(document.cookie);
   let ca = decodedCookie.split(';');
@@ -235,13 +292,12 @@ let getCookie= function(cookieName){
 }
 // check cookie is set or not
 let checkCookie= function(){
-    let check=getCookie(cookieName);
-    if(check==""){
-        document.getElementById("cookiePopup").style.display = "block";
-    }else{
-        
-        document.getElementById("cookiePopup").style.display = "none";
-    }
+  let check=getCookie(cookieName);
+  if(check==""){
+      document.getElementById("cookiePopup").style.display = "block";
+  }else{
+      document.getElementById("cookiePopup").style.display = "none";
+  }
 }
 checkCookie();
 </script>
@@ -290,10 +346,12 @@ checkCookie();
  echo '<li><a href=?do=cglob'.$id_person.'&title='.$mn_menu_glob.'><img src="icons/mn_menu_glob.png" height=36 width=36>'.$mn_menu_glob.'</a></li>';
  echo '</ul>';
  echo '</td></tr></table>';
+ echo '</td><td>';
+ echo "<script>buildLang(".$langi.")</script>";
  echo '</td></tr></table>';
  echo '</div>';
-
 }
+
 
 function _index_html($user)
 {
@@ -509,12 +567,18 @@ function _end_html($user)
  global $mn_menu_mission; 
  global $mn_menu_useful; 
  global $mn_menu_help; 
+ global $mn_menu_add;
+ global $mn_menu_privacy;
+ global $mn_menu_mission;
  global $ic_menu_add;
  global $ic_menu_file;
  global $ic_menu_load;
  global $ic_menu_delete;
  global $ic_menu_filter;
  global $filter;
+ global $enter1;
+ global $exit1;
+ global $room1;
 
  echo '<div class="navbar" id="myNavbar">';
  echo '<table><tr><td align=center valign=center>';
@@ -529,10 +593,10 @@ function _end_html($user)
  echo '</td><td align=center valign=center>';
  if (!empty($user)) {
    echo "&nbsp;<a href=mailto:".$user['name'].">".$user['name']."</a>&nbsp;"; 
-   echo "&nbsp;<a href=?do=user>Кабинет</a>&nbsp;";
-   echo "&nbsp;<a href=?do=logout>Выйти</a>&nbsp;";
+   echo "&nbsp;<a href=?do=user>".$room1."</a>&nbsp;";
+   echo "&nbsp;<a href=?do=logout>".$exit1."</a>&nbsp;";
  } else {
-   echo "&nbsp;<a href=?do=login>Войти</a>&nbsp;";
+   echo "&nbsp;<a href=?do=login>".$enter1."</a>&nbsp;";
  }
  echo '</td><td align=center valign=center>';
  if($user['id'] == 1) {

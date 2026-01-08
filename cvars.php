@@ -79,7 +79,8 @@
   $spouses = array();
   $residences = array();
 
-  //$lang = '';
+  $langi = 0;
+  $langs = '';
   //$page = '';
   $person = "";
   $gedcom = "";
