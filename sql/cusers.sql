@@ -46,6 +46,26 @@ CREATE TABLE `cusers` (
   `notes` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE `cusers` (
+  `id` int NOT NULL,
+  `name` varchar(100) NOT NULL DEFAULT '',
+  `pass` varchar(128) NOT NULL DEFAULT '',
+  `fio` varchar(160) NOT NULL DEFAULT '',
+  `country` varchar(40) NOT NULL DEFAULT '',
+  `postcode` varchar(20) NOT NULL DEFAULT '',
+  `city` varchar(40) NOT NULL DEFAULT '',
+  `address` varchar(160) NOT NULL DEFAULT '',
+  `phone` varchar(30) NOT NULL DEFAULT '',
+  `http` varchar(160) NOT NULL DEFAULT '',
+  `activation` varchar(255) NOT NULL,
+  `status` enum('0','1') NOT NULL DEFAULT '0',
+  `acces` enum('0','1','2') NOT NULL DEFAULT '0',
+  `two_factor_code` varchar(6) NOT NULL DEFAULT '',
+  `two_factor_expires_at` varchar(11) NOT NULL DEFAULT '',
+  `notes` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
 --
 -- Дамп данных таблицы `cusers`
 --
