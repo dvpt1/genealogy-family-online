@@ -23,6 +23,8 @@ but a pressing need.
 <!-- Menu-Beg -->
 <script>MenuLeft()</script>
 <!-- Menu-End -->
+
+<div id="content">
 <h4>&nbsp;<a name="INSTALL1"></a> </h4>
 <center><h2>Установка</h2></center>
 <h3>Архив</h3>
@@ -34,19 +36,61 @@ target="_blank">GITHUB</a></li>
 <h4>&nbsp;<a name="INSTALL2"></a> </h4>
 <h3>Установка</h3>
 <ul>
-  <li>Загрузите распакованный архив на свой сайт по FTP, SFTP или иными средствами</li>
+  <li>Загрузите распакованный архив на свой сайт по FTP, SFTP или иными средствами в корень сайта или отдельную папку на сайте</li>
 </ul>
 <h4>&nbsp;<a name="INSTALL3"></a> </h4>
 <h3>Настройка</h3>
 <ul>
-  <li>Установите папке - cards - пправа доступа 755</li>
+  <li>Установите папке - cards - права доступа 755</li>
+  <li>Установите папке - fotos - права доступа 755</li>
   <li>Настройте файл ccfg.php</li>
+<pre>
+$https = 'https://site.online';
+$pepper = '';
+$admlogin = '';
+$admpswrd = '';
+$cntp = 25;
+
+$CONFIG                  = array();
+$CONFIG['HOST_NAME']     = 'localhost';
+$CONFIG['DATABASE_NAME'] = '';
+$CONFIG['DB_USERNAME']   = '';
+$CONFIG['DB_PASSWORD']   = '';
+</pre>
   <li>Создайте в MySQL таблицы `csessions` и `cusers`</li>
+<pre>
+CREATE TABLE `cusers` (
+  `id` int NOT NULL,
+  `name` varchar(100) NOT NULL DEFAULT '',
+  `pass` varchar(128) NOT NULL DEFAULT '',
+  `fio` varchar(160) NOT NULL DEFAULT '',
+  `country` varchar(40) NOT NULL DEFAULT '',
+  `postcode` varchar(20) NOT NULL DEFAULT '',
+  `city` varchar(40) NOT NULL DEFAULT '',
+  `address` varchar(160) NOT NULL DEFAULT '',
+  `phone` varchar(30) NOT NULL DEFAULT '',
+  `http` varchar(160) NOT NULL DEFAULT '',
+  `activation` varchar(255) NOT NULL,
+  `status` enum('0','1') NOT NULL DEFAULT '0',
+  `acces` enum('0','1','2') NOT NULL DEFAULT '0',
+  `two_factor_code` varchar(6) NOT NULL DEFAULT '',
+  `two_factor_expires_at` varchar(11) NOT NULL DEFAULT '',
+  `notes` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `csessions` (
+  `session` varchar(32) NOT NULL default '',
+  `id` int(11) NOT NULL default '0',
+  `name` varchar(80) NOT NULL default '',
+  PRIMARY KEY  (`session`)
+) ENGINE=MyISAM;
+</pre>
   <li>Создайте первого пользователя - это будет superuser</li>
   <li>Создайте пользователя - quest@quest.qu - с паролем - quest - (по желанию). Это будет гостевой доступ к вашему порталу, по нему можно только смотреть информацию.</li>
 </ul>
 
 <br />
+
 </div>
 <h4>&nbsp;</h4>
 <div id="foot"> Copyright &copy; Konyuhov D.L. </div>
