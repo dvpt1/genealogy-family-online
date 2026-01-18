@@ -14,7 +14,8 @@ if($user_data == 0) exit;
 
 $id = $_POST['id'];
 $id_person = str_replace(array("\r", "\n"), '', $id);
-$dir = __DIR__."/fotos/$id_person/"; // Путь к директории, в которой лежат изображения
+$number = str_pad($id_person, 6, '0', STR_PAD_LEFT); // "000001"
+$dir = __DIR__."/fotos/$number/"; // Путь к директории, в которой лежат изображения
 
 //$uploaddir = "fotos/$id_person/";
 //echo "uploaddir = $uploaddir\n";

@@ -15,7 +15,8 @@ if($user_data == 0) exit;
   $dir = __DIR__."/fotos/$id_person/"; // Путь к директории, в которой лежат изображения
 //echo "dir=$dir<br>\n";
 
-  $path = "fotos/".$id_person."/";
+  $number = str_pad($id_person, 6, '0', STR_PAD_LEFT); // "000001"
+  $path = "fotos/".$number."/";
   if (!file_exists($path)) {echo ""; exit;}
 //echo "path=$path<br>\n";
 

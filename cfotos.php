@@ -13,14 +13,16 @@ $users = _check_datauserid($user['id']);
   if (isset($_GET['id'])){
     $id_person = $_GET['id'];
     $nm_person = $_GET['name'];
+    $number = str_pad($id_person, 6, '0', STR_PAD_LEFT); // "000001"
 
-    $dir = __DIR__."/fotos/$id_person/"; // Путь к директории, в которой лежат изображения
+    $dir = __DIR__."/fotos/$number/"; // Путь к директории, в которой лежат изображения
   }else{
     $dir = __DIR__."/fotos/"; // Путь к директории, в которой лежат изображения
   }
 //echo "$dir<br>";
 
-  $path = "fotos/".$id_person;
+  $number = str_pad($id_person, 6, '0', STR_PAD_LEFT); // "000001"
+  $path = "fotos/".$number;
   if (!file_exists($path)) {
     mkdir($path, 0777, true);
     //echo "Директория создана успешно!";

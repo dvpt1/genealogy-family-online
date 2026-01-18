@@ -479,9 +479,9 @@ if (!empty($_GET['page'])){
 	} else if ($do == 'ccontact') {
 		include_once("ccontact.php");
 	} else if ($do == 'cprivacy') {
-		include_once($lang."/cprivacy.php");
+		include_once("languages/".$lang."-privacy.php");
 	} else if ($do == 'cmission') {
-		include_once($lang."/cmission.php");
+		include_once("languages/".$lang."-mission.php");
 	} else if ($do == 'chelp') {
 		include_once("chelp.php");
 	} else if ($do == 'cappstores') {

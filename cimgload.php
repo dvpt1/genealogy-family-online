@@ -15,7 +15,8 @@ if($user_data == 0) exit;
 $id = $_POST['id'];
 $id = str_replace(array("\r", "\n"), '', $id);
 
-$uploaddir = "fotos/$id/";
+$number = str_pad($id_person, 6, '0', STR_PAD_LEFT); // "000001"
+$uploaddir = "fotos/$number/";
 if (!file_exists($uploaddir)) {
   mkdir($uploaddir, 0777, true);
   //echo "Директория создана успешно!";

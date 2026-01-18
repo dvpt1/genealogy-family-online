@@ -22,7 +22,8 @@ $password = preg_replace("/\r|\n/", '', $password);
 
 echo "access=".$username.":".$password.":".$id."\n";
 
-$uploaddir = "fotos/$id/";
+$number = str_pad($id, 6, '0', STR_PAD_LEFT); // "000001"
+$uploaddir = "fotos/$number/";
 echo "uploaddir = $uploaddir\n";
 $file = basename($_FILES['userfile']['name']);
 $uploadfile = $uploaddir.$file;
