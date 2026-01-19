@@ -9,16 +9,15 @@ include_once("csub.php");
 $user_data = _check_database($_POST['username'], $_POST['password']);
 if($user_data == 0) exit;
 
-  $id_person = $_POST['id'];
-//echo "id_person=$id_person<br>\n";
-
-  $dir = __DIR__."/fotos/$id_person/"; // Путь к директории, в которой лежат изображения
-//echo "dir=$dir<br>\n";
-
+  $id = $_POST['id'];
+  $id_person = str_replace(array("\r", "\n"), '', $id);
   $number = str_pad($id_person, 6, '0', STR_PAD_LEFT); // "000001"
+  $dir = __DIR__."/fotos/$number/"; // Путь к директории, в которой лежат изображения
   $path = "fotos/".$number."/";
-  if (!file_exists($path)) {echo ""; exit;}
+//echo "id_person=$id_person<br>\n";
+//echo "dir=$dir<br>\n";
 //echo "path=$path<br>\n";
+  if (!file_exists($path)) {echo ""; exit;}
 
   $files = scandir($dir); // Получаем список файлов из этой директории
   $files = excess($files); // Удаляем лишние файлы

@@ -1,5 +1,5 @@
 <br><br>
-<h1>The Port's Mission: To Unite Families and Relatives Around the World.</h1>
+<h1>Mission: To unite families and relatives around the world.</h1>
 
 <h2><i>It all started with a small idea, which later grew into a great inspiration – to unite relatives around the world. This task seemed impossible due to the different time zones, distances, and work schedules of each family member. However, thanks to modern technology, we were able to create a virtual family gathering where everyone could participate from anywhere in the world. Intertwined with warm words, laughter, and memories, we were able to feel connected despite the distance. It was an unforgettable experience that reminded us of the importance of family and unity, even if we are scattered across the globe.</i></h2>
 

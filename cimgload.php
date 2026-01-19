@@ -13,8 +13,7 @@ $user_data = _check_database($username, $password);
 if($user_data == 0) exit;
 
 $id = $_POST['id'];
-$id = str_replace(array("\r", "\n"), '', $id);
-
+$id_person = str_replace(array("\r", "\n"), '', $id);
 $number = str_pad($id_person, 6, '0', STR_PAD_LEFT); // "000001"
 $uploaddir = "fotos/$number/";
 if (!file_exists($uploaddir)) {
