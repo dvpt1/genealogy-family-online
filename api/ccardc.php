@@ -5,15 +5,16 @@ if(empty($_POST['username']) || empty($_POST['password'])){
   exit;
 }
 
-include_once("ccfg.php");
-include_once("csub.php");
+include_once("../ccfg.php");
+include_once("../csub.php");
 
 $user_data = _check_database($_POST['username'], $_POST['password']);
 if($user_data == 0) {
   exit;
 }
 
-$mainPath = __DIR__ ;//. '/cardfile/';
+$p = __DIR__;
+$mainPath = substr($p,0,strlen($p)-4);
 $files = glob($mainPath."/cards/*.card");
 
 $persons = [];

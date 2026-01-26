@@ -5,10 +5,10 @@ if(empty($_POST['username']) || empty($_POST['password'])){
   exit;
 }
 
-include_once("ccfg.php");
-include_once("chtmls.php");
-include_once("cvars.php");
-include_once("cdatabases.php");
+include_once("../ccfg.php");
+include_once("../chtmls.php");
+include_once("../cvars.php");
+include_once("../cdatabases.php");
 
 $user_data = _check_database($_POST['username'], $_POST['password']);
 if($user_data == 0) {
@@ -31,7 +31,7 @@ if($user_data == 0) {
   global $spouses;
 
   if(count((array)$persons) == 0){
-	include_once("cimport.php");
+	include_once("../cimport.php");
   }
 
   if($_POST['id'] == 0){
@@ -118,13 +118,17 @@ if($user_data == 0) {
  
   // Generate json file
   $number = str_pad($id_person, 6, '0', STR_PAD_LEFT); // "000001"
-  $file = __DIR__ ."/cards/$number.card";
+
+  $p = __DIR__;
+  $mainPath = substr($p,0,strlen($p)-4);
+
+  $file = "$mainPath/cards/$number.card";
   file_put_contents($file, $jsonPersonvar);
 
 ////////////////////////////////////////////////////////////
-  file_put_contents("timestamp", $timestamp);
+  file_put_contents("../timestamp", $timestamp);
 ////////////////////////////////////////////////////////////
 
-echo " PERSONA=".$_POST['persona'].$_POST['fathers'].$_POST['mothers'].$_POST['spouses'];
+//echo " PERSONA=".$_POST['persona'].$_POST['fathers'].$_POST['mothers'].$_POST['spouses'];
 
 ?>

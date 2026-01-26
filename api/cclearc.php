@@ -5,11 +5,11 @@ if(empty($_POST['username']) || empty($_POST['password'])){
   exit;
 }
 
-include_once("ccfg.php");
-include_once("chtmls.php");
-include_once("cutils.php");
-include_once("cvars.php");
-include_once("cdatabases.php");
+include_once("../ccfg.php");
+include_once("../chtmls.php");
+include_once("../cutils.php");
+include_once("../cvars.php");
+include_once("../cdatabases.php");
 
 $user_data = _check_database($_POST['username'], $_POST['password']);
 if($user_data == 0) {
@@ -21,7 +21,13 @@ if($user_data == 0) {
 
 echo "<br><br>CLEAR ALL<br><br>\n";
 
-  $cardsPath = __DIR__ . '/cards/';
+  $p = __DIR__;
+echo "<br>$p<br>\n";
+
+  $mainPath = substr($p,0,strlen($p)-4);
+echo "<br>$maiPath<br>\n";
+
+  $cardsPath = "$mainPath/cards/";
 echo "<br>$cardsPath<br>\n";
 
   $files = glob($cardsPath."*.card");
@@ -33,7 +39,7 @@ echo "<br>$cardsPath<br>\n";
     }
   }
 
-  $fotosPath = __DIR__ . '/fotos/';
+  $fotosPath = "$mainPath/fotos/";
 echo "<br>$fotosPath<br>\n";
 
   $folders = glob($fotosPath."*");
@@ -47,7 +53,7 @@ echo "<br>$fotosPath<br>\n";
 
 ////////////////////////////////////////////////////////////
   $timestamp = date('YmdHisu');
-  file_put_contents("timestamp", $timestamp);
+  file_put_contents("../timestamp", $timestamp);
 ////////////////////////////////////////////////////////////
 
 

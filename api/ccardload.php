@@ -6,8 +6,8 @@ $password = $_POST['password']; $password = preg_replace("/\r|\n/", '', $passwor
 //echo "access=".$_POST['username'].$_POST['password'].$_POST['id']."\n\n";
 if(empty($username) || empty($password)) exit;
 
-include_once("ccfg.php");
-include_once("csub.php");
+include_once("../ccfg.php");
+include_once("../csub.php");
 
 $user_data = _check_database($username, $password);
 if($user_data == 0) exit;

@@ -3,27 +3,25 @@
 //echo "access=".$_POST['username'].$_POST['password'].$_POST['id']."\n";
 if(empty($_POST['username']) || empty($_POST['password'])) exit;
 
-include_once("ccfg.php");
-include_once("csub.php");
+include_once("../ccfg.php");
+include_once("../csub.php");
 
 $user_data = _check_database($_POST['username'], $_POST['password']);
 if($user_data == 0) exit;
 
-  $id_person = $_POST['id'];
-//echo "id_person=$id_person<br>\n";
-
   $id = $_POST['id'];
   $id_person = str_replace(array("\r", "\n"), '', $id);
   $number = str_pad($id_person, 6, '0', STR_PAD_LEFT); // "000001"
-  $dir = __DIR__."/fotos/$number/"; // Путь к директории, в которой лежат изображения
-  $path = "fotos/".$number."/";
-  if (!file_exists($path)) {
-    mkdir($path, 0777, true);
-    //echo "Директория создана успешно!";
-  } else {
-    //echo "Директория уже существует.";
-  }
+
+  $p = __DIR__;
+  $mainPath = substr($p,0,strlen($p)-4);
+
+  $dir = "$mainPath/fotos/$number/"; // Путь к директории, в которой лежат изображения
+  $path = "fotos/$number/";
+//echo "id_person=$id_person<br>\n";
+//echo "dir=$dir<br>\n";
 //echo "path=$path<br>\n";
+  if (!file_exists($path)) {echo ""; exit;}
 
   $files = scandir($dir); // Получаем список файлов из этой директории
   $files = excess($files); // Удаляем лишние файлы
@@ -32,14 +30,7 @@ if($user_data == 0) exit;
     if(!empty($id_person)) if(substr($path, -1) != '/') $path .= "/";
     //echo "path=$path file=$files[$i]".substr($path, -1)."<br>";
     //echo "<a href='".$path.$files[$i]."'><img src='".$path.$files[$i]."' width=256 height=256 alt=".$files[$i]." /></a>";
-    echo "$path$files[$i]\n";
-
-    //$input = "$path$files[$i]\n";
-    //var_dump($input);
-    //echo mb_convert_encoding($input, "UTF-8", "windows-1252");
-    //$output = iconv('windows-1252', 'UTF-8',$input);
-    //echo "$output\n";
-
+    echo "$files[$i]\n";
   } 
 
 
