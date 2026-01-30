@@ -16,12 +16,16 @@ include_once("chtmls.php");
 
 $msg = "";
 if(isset($_POST['submit'])) {
- $user_data = _check_datauser(fm($_POST['user']));
 
- $pos = strpos($user_data, '@');
+//echo $_POST['submit'].$_POST['user'].$_POST['pass']."<br>";
+ $email = $_POST['user'];
+ $pos = strpos($email, '@');
  if($pos == false) return -1;
- $pos = strpos($user_data, '.');
+ $pos = strpos($email, '.');
  if($pos == false) return -1;
+
+ $user_data = _check_datauser(fm($_POST['user']));
+//print_r($user_data);
 
  if($user_data == 0) {
 
@@ -29,6 +33,8 @@ if(isset($_POST['submit'])) {
   $activation = md5($email.time()); // encrypted email+timestamp
   $acces = 2;
   $alink = $https."/cact.php?code=$activation";
+
+//echo $password.$alink."<br>";
  
   _adduser_database(fm($_POST['user']),fm($_POST['pass']),fm($_POST['fio']),fm($_POST['country']),fm($_POST['postcode']),fm($_POST['city']),fm($_POST['address']),fm($_POST['phone']),fm($_POST['http']),fm($_POST['notes']),$activation,$acces);
   $msg = $regs1;

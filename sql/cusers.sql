@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `cusers` (
   `id` int NOT NULL,
-  `name` varchar(100) NOT NULL DEFAULT '',
-  `pass` varchar(128) NOT NULL DEFAULT '',
-  `fio` varchar(160) NOT NULL DEFAULT '',
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `pass` varchar(255) NOT NULL DEFAULT '',
+  `fio` varchar(255) NOT NULL DEFAULT '',
   `country` varchar(40) NOT NULL DEFAULT '',
   `postcode` varchar(20) NOT NULL DEFAULT '',
   `city` varchar(40) NOT NULL DEFAULT '',
@@ -48,9 +48,9 @@ CREATE TABLE `cusers` (
 
 CREATE TABLE `cusers` (
   `id` int NOT NULL,
-  `name` varchar(100) NOT NULL DEFAULT '',
-  `pass` varchar(128) NOT NULL DEFAULT '',
-  `fio` varchar(160) NOT NULL DEFAULT '',
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `pass` varchar(255) NOT NULL DEFAULT '',
+  `fio` varchar(255) NOT NULL DEFAULT '',
   `country` varchar(40) NOT NULL DEFAULT '',
   `postcode` varchar(20) NOT NULL DEFAULT '',
   `city` varchar(40) NOT NULL DEFAULT '',
