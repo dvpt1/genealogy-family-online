@@ -24,19 +24,13 @@ if(isset($_POST['saveuser'])) {
 $msg = "";
 if(isset($_POST['savepass'])) {
  if ($_POST['pass'] == "") { $msg = $user1; }
- //else if ($_POST['pass'] != $user['pass']) { $msg = $user2; }
-
+ else if ($_POST['pass'] != $user['pass']) { $msg = $user2; }
  else if ($_POST['pass1'] == "") { $msg = $user3; }
  else if ($_POST['pass2'] == "") { $msg = $user4; }
  else if ($_POST['pass1'] != $_POST['pass2']) { $msg = $user5; }
  if ($msg == "") { 
-    $subject = "New pass";
-    $pass = $_POST['pass1'];
-    $letter = $forgot5."\n\n".$forgot6.$user['name']."\n".$forgot4.": ".$pass."\n\n".$forgot7."\n$https\n";
-    mail($user['name'],$subject,$letter);
-
-    _savepass_database($user['name'],$pass);
-    $msg = $user6;
+  _savepass_database($user['name'],$_POST['pass1']);
+  $msg = $user6;
   }
  }
 $user = _check_datauser($user['name']);
@@ -50,9 +44,9 @@ $user = _check_datauser($user['name']);
  if ($msg != "") echo "<br><font color='red'><b>$msg</b></font>";
 
  ?>
- <h4><a href="index.php"><img src="icons/ic_menu_back.png"></a></h4>
+ <h4><a href="cadm.php"><img src="icons/ic_menu_back.png"></a></h4>
 
- <form name="adduser" action="cuser.php" method="post">
+ <form name="adduser" action="cusea.php" method="post">
  <table width="350" border="0" cellpadding="2">
  <b><?php echo $edtt; ?></b>
  <tr><td><?php echo $lgnmail; ?></td>

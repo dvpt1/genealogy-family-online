@@ -33,33 +33,31 @@ if(isset($_POST['login'])) {
  if ($msg == "") { 
   $user_data = _check_database(fm($_POST['user']),fm($_POST['pass']));
 
-//print_r($user_data); echo $_POST['user']."<br>";
-
   if($user_data == 0) {
     $msg = $login5;
   } else {
     $msg = $login8.$_POST['user'];
 
-	$Q = mysql_query("SELECT id,status FROM cusers WHERE name='".$_POST['user']."'");
+	$Q = mysql_query("SELECT id,status FROM cusers WHERE name='".fm($_POST['user'])."'");
 	if($Q){
 		$vars = mysql_fetch_array($Q);
 		$status = $vars['status'];
+//echo "status = $status<br>";
 		if($status == 1){
 			$b = true;
 			$twotime = time();
 			$user_data = _check_useract(fm($_POST['user']));
+
 			if($user_data == 0) {
 				$msg = $login5;
 			} else {
 				if(strcmp($_POST['user'], "quest@quest.qu") == 0) {
 					$b = false;
-//$msg="Ваш аккаунт активирован $status".$_POST['user'].":".$_POST['pass'].":".$user_data['two_factor_code']." ". $_POST['code']; 
 					_set_cookie($user_data,fm($_POST['rem']),session_id(),fm($_POST['user']));
 				}else{
 					if(trim($user_data['two_factor_code']) == trim($_POST['code'])){
 						if($user_data['two_factor_expires_at']+600 > $twotime){//10minut
 							$b = false;
-//$msg="Ваш аккаунт активирован $status".$_POST['user'].":".$_POST['pass'].":".$user_data['two_factor_code']." ". $_POST['code']; 
 							_set_cookie($user_data,fm($_POST['rem']),session_id(),fm($_POST['user']));
 						}else{
 							$msg=$login7; 
@@ -67,16 +65,16 @@ if(isset($_POST['login'])) {
 					}
 				}
 			}
-
 			if($b){
 				$twonumber = random_int(100000, 999999);
 				_savetwo_database($_POST['user'], $twonumber, $twotime);
+
 				mail($_POST['user'], 'Activation TwoFactor', 'TwoFactor Number: '.$twonumber);
 			}
 		}else{
 			$msg = $login6; 
 
-			$password = md5($_POST['pass']); // encrypted password
+			//??$password = md5($_POST['pass']); // encrypted password
 			$activation = md5($email.time()); // encrypted email+timestamp
 			$alink = "$https/cact.php?code=$activation";
 
@@ -89,15 +87,14 @@ if(isset($_POST['login'])) {
 			mail($_POST['user'],"Activation - $https","$alink");
 		}
 	}
+    } 
 
-  } 
+  }
+  $prm1 = $_POST['user'];
+  $prm2 = $_POST['pass'];
+  $prm3 = $_POST['code'];
 
- }
- $prm1 = $_POST['user'];
- $prm2 = $_POST['pass'];
- $prm3 = $_POST['code'];
-
- function_alert($msg);
+  function_alert($msg);
 }
 
 //$user = array();

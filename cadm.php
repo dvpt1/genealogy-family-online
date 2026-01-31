@@ -57,7 +57,7 @@ echo ("<td>$row[fio]</td>");
 echo ("<td>$row[activation]</td>");
 echo ("<td>$row[status]</td>");
 echo ("<td>$row[acces]</td>");
-echo ("<td><a href=\"cuser.php?name=$row[name]\"><img src=\"icons/ic_menu_edit.png\" height=30 width=30></a></td>");
+echo ("<td><a href=\"cusea.php?name=$row[name]\"><img src=\"icons/ic_menu_edit.png\" height=30 width=30></a></td>");
 echo ("<td><a href=\"cadm.php?name=$row[name]&action=delete&id=$row[id]\" onclick='return confirm_delete()'><img src=\"icons/ic_menu_delete.png\" height=30 width=30></a></td>");
 echo ("</tr>");
 }

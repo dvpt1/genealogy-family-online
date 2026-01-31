@@ -14,12 +14,15 @@ if(isset($_POST['forgot'])) {
  if ($msg == "") {
   $user_data = _check_datauser(fm($_POST['user']));
   if($user_data == 0) {
-    $msg = $forgot3;
+    //$msg = $forgot3;
   } else {
-    $subject = $forgot4;
-    $letter = $forgot5."\n\n".$forgot6.$_POST['user']."\n".$forgot4.": ".$user_data['pass']."\n\n".$forgot7."\n$https\n";
+    $subject = "Forgot pass";
+    $pass = generate_password(8);
+    $letter = $forgot5."\n\n".$forgot6.$_POST['user']."\n".$forgot4.": ".$pass."\n\n".$forgot7."\n$https\n";
     mail($_POST['user'],$subject,$letter);
     $msg = $forgot8.$_POST['user'];
+
+    _savepass_database($_POST['user'],$pass);
   }
  }
  $prm1 = $_POST['user'];
