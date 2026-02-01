@@ -20,19 +20,12 @@ function _check_database($user, $pass)
   if(mysql_num_rows($Q) == 0) return 0;
   $user_data = mysql_fetch_array($Q);
   $hash = $user_data['pass'];
-//echo "hash: ".$hash."<br>";
 
-  // Сравниваем сохранённый хеш с открытым паролем
   if (password_verify($pass, $hash)) {
-    // Проверяем, не изменился ли алгоритм или параметры
     if (password_needs_rehash($hash, PASSWORD_BCRYPT)) {
-        // Если были изменения, перехешируем и заменяем старый хеш новым
         $newHash = password_hash($pass, PASSWORD_BCRYPT);
-        //echo "// Обновляем запись пользователя новым $newHash <br>";
         _savehash_database($user, $newHash);
     }
-    //echo "// Авторизуем пользователя <br>";
-
     return $user_data;
   }
 
@@ -41,7 +34,6 @@ function _check_database($user, $pass)
 
 function _check_datausers()
 {
-//id,name,pass,fio,country,postcode,city,address,phone,http,activation,status,acces,two_factor_code,two_factor_expires_at,notes
   $query = "SELECT `id`,`name`,`pass`,`fio`,`country`,`postcode`,`city`,`address`,`phone`,`http`,`activation`,`status`,`acces`,`two_factor_code`,`two_factor_expires_at`,`notes` FROM `cusers`";
   $result = mysql_query($query);
   return $result;
@@ -119,12 +111,16 @@ function _adduser_database($user, $pass, $fio, $country, $postcode, $city, $addr
   $pwd_hashed = password_hash($pass, PASSWORD_BCRYPT);
 
   $Q = mysql_query("INSERT INTO cusers (name,pass,fio,country,postcode,city,address,phone,http,notes,activation,acces) VALUES ('$user','$pwd_hashed','$fio','$country','$postcode','$city','$address','$phone','$http','$notes','$activation','$acces')");
-//echo "Q: ".$Q."<br>"; 
 }
 
-function _saveuser_database($user, $fio, $country, $postcode, $city, $address, $phone, $http, $status, $access, $notes)
+function _saveadmin_database($user, $fio, $country, $postcode, $city, $address, $phone, $http, $status, $access, $notes)
 {
   $Q = mysql_query("UPDATE cusers SET fio='$fio',country='$country',postcode='$postcode',city='$city',address='$address',phone='$phone',http='$http',status='$status',acces='$access',notes='$notes' WHERE name='$user'");
+}
+
+function _saveuser_database($user, $fio, $country, $postcode, $city, $address, $phone, $http, $notes)
+{
+  $Q = mysql_query("UPDATE cusers SET fio='$fio',country='$country',postcode='$postcode',city='$city',address='$address',phone='$phone',http='$http',notes='$notes' WHERE name='$user'");
 }
 
 function _savehash_database($user, $hashnew)
@@ -146,7 +142,6 @@ function _saveact_database($user, $code)
 function _savetwo_database($user, $two_num, $two_time)
 {
   $Q = mysql_query("UPDATE cusers SET two_factor_code='$two_num',two_factor_expires_at='$two_time' WHERE name='$user'");
-//echo "Q: ".$Q."<br>"; 
 }
 
 function _check_auth($cookie)

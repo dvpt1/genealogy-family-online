@@ -220,4 +220,7 @@ $cookier='Cookie-Richtlinie und Datenschutz.';
 
 $questdel='Sind Sie sicher, dass Sie löschen möchten?';
 
+$access='Zugriff:';
+$status='Status:';
+
 ?>

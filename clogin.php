@@ -42,7 +42,6 @@ if(isset($_POST['login'])) {
 	if($Q){
 		$vars = mysql_fetch_array($Q);
 		$status = $vars['status'];
-//echo "status = $status<br>";
 		if($status == 1){
 			$b = true;
 			$twotime = time();
@@ -51,17 +50,12 @@ if(isset($_POST['login'])) {
 			if($user_data == 0) {
 				$msg = $login5;
 			} else {
-				if(strcmp($_POST['user'], "quest@quest.qu") == 0) {
-					$b = false;
-					_set_cookie($user_data,fm($_POST['rem']),session_id(),fm($_POST['user']));
-				}else{
-					if(trim($user_data['two_factor_code']) == trim($_POST['code'])){
-						if($user_data['two_factor_expires_at']+600 > $twotime){//10minut
-							$b = false;
-							_set_cookie($user_data,fm($_POST['rem']),session_id(),fm($_POST['user']));
-						}else{
-							$msg=$login7; 
-						}
+				if(trim($user_data['two_factor_code']) == trim($_POST['code'])){
+					if($user_data['two_factor_expires_at']+600 > $twotime){//10minut
+						$b = false;
+						_set_cookie($user_data,fm($_POST['rem']),session_id(),fm($_POST['user']));
+					}else{
+						$msg=$login7; 
 					}
 				}
 			}

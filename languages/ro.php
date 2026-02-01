@@ -221,4 +221,7 @@ $cookier='Politica privind cookie-urile și Politica de confidențialitate.';
 
 $questdel='Sigur că doriți să ștergeți?';
 
+$access='Acces:';
+$status='Stare:';
+
 ?>

@@ -220,4 +220,7 @@ $cookier='Politique en matière de cookies et confidentialité.';
 
 $questdel='Êtes-vous sûr de vouloir supprimer?';
 
+$access='Accès:';
+$status='Statut:';
+
 ?>

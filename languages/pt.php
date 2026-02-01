@@ -220,4 +220,7 @@ $cookier='Política de Cookies e Privacidade.';
 
 $questdel='Tem certeza que deseja excluir?';
 
+$access='Acesso:';
+$status='Estado:';
+
 ?>

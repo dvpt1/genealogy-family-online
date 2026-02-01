@@ -5,23 +5,19 @@ include_once("ccfg.php");
 include_once("csub.php");
 include_once("chtmls.php");
 
-//$user = _check_auth($_COOKIE);
+$msg = "";
 if(isset($_GET[name])){
   $user = _check_datauser($_GET[name]);
-//print_r( $user); echo "get<br>";
 }
 if(isset($_POST[name])){
   $user = _check_datauser($_POST[name]);
-//print_r( $user); echo "post<br>";
 }
 
-//_begin_html($user);
 if(isset($_POST['saveuser'])) {
-  _saveuser_database($user['name'],fm($_POST['fio']),fm($_POST['country']),fm($_POST['postcode']),fm($_POST['city']),fm($_POST['address']),fm($_POST['phone']),fm($_POST['http']),fm($_POST['status']),fm($_POST['access']),fm($_POST['notes']));
+  _saveuser_database($user['name'],fm($_POST['fio']),fm($_POST['country']),fm($_POST['postcode']),fm($_POST['city']),fm($_POST['address']),fm($_POST['phone']),fm($_POST['http']),fm($_POST['notes']));
   $msg = $user7;
 }
-//??md5
-$msg = "";
+
 if(isset($_POST['savepass'])) {
  if ($_POST['pass'] == "") { $msg = $user1; }
  //else if ($_POST['pass'] != $user['pass']) { $msg = $user2; }
@@ -39,10 +35,7 @@ if(isset($_POST['savepass'])) {
     $msg = $user6;
   }
  }
-$user = _check_datauser($user['name']);
-//print_r( $user); echo "<br>";
-
-//_edit_user($user);
+ $user = _check_datauser($user['name']);
 
  $msg = $GLOBALS["msg"];
  global $edtt, $lgnmail, $pwdold, $pwdnew1, $pwdnew2, $pwdizm, $fio, $country, $post, $city, $adres, $phone, $www, $note, $registr, $save; 
@@ -52,11 +45,11 @@ $user = _check_datauser($user['name']);
  ?>
  <h4><a href="index.php"><img src="icons/ic_menu_back.png"></a></h4>
 
- <form name="adduser" action="cuser.php" method="post">
+ <form name="adduser" action="cuser.php?do=user" method="post">
  <table width="350" border="0" cellpadding="2">
  <b><?php echo $edtt; ?></b>
  <tr><td><?php echo $lgnmail; ?></td>
-  <td><input type="text" name="name" size="60" value="<?php echo $user['name']; ?>"></b></td>
+  <td><input type="text" name="name" size="60" value="<?php echo $user['name']; ?>" readonly></b></td>
  </tr>
  <tr><td><?php echo $pwdold; ?></td>
   <td><input type="password" name="pass" size="20"></td>
@@ -92,12 +85,6 @@ $user = _check_datauser($user['name']);
  <tr><td><?php echo $www; ?></td>
   <td><input type="text" name="http" size="40" value="<?php echo $user['http']; ?>"></td>
  </tr>
- <tr><td><?php echo $status; ?></td>
-  <td><input type="text" name="status" size="40" value="<?php echo $user['status']; ?>"></td>
- </tr>
- <tr><td><?php echo $access; ?></td>
-  <td><input type="text" name="access" size="40" value="<?php echo $user['acces']; ?>"></td>
- </tr>
  <tr><td><?php echo $note; ?></td>
   <td><textarea name="notes" rows="5" cols="80"><?php echo $user['notes']; ?></textarea></td>
  </tr>
@@ -111,7 +98,5 @@ $user = _check_datauser($user['name']);
  
  <p><br><br><br><br></p>
  <?
-
-//_end_html();
 
 ?>

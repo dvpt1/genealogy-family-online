@@ -5,23 +5,19 @@ include_once("ccfg.php");
 include_once("csub.php");
 include_once("chtmls.php");
 
-//$user = _check_auth($_COOKIE);
+$msg = "";
+
 if(isset($_GET[name])){
   $user = _check_datauser($_GET[name]);
-//print_r( $user); echo "get<br>";
 }
 if(isset($_POST[name])){
   $user = _check_datauser($_POST[name]);
-//print_r( $user); echo "post<br>";
 }
 
-//_begin_html($user);
 if(isset($_POST['saveuser'])) {
-  _saveuser_database($user['name'],fm($_POST['fio']),fm($_POST['country']),fm($_POST['postcode']),fm($_POST['city']),fm($_POST['address']),fm($_POST['phone']),fm($_POST['http']),fm($_POST['status']),fm($_POST['access']),fm($_POST['notes']));
+  _saveadmin_database($user['name'],fm($_POST['fio']),fm($_POST['country']),fm($_POST['postcode']),fm($_POST['city']),fm($_POST['address']),fm($_POST['phone']),fm($_POST['http']),fm($_POST['status']),fm($_POST['access']),fm($_POST['notes']));
   $msg = $user7;
 }
-//??md5
-$msg = "";
 if(isset($_POST['savepass'])) {
  if ($_POST['pass'] == "") { $msg = $user1; }
  else if ($_POST['pass'] != $user['pass']) { $msg = $user2; }
@@ -33,13 +29,10 @@ if(isset($_POST['savepass'])) {
   $msg = $user6;
   }
  }
-$user = _check_datauser($user['name']);
-//print_r( $user); echo "<br>";
-
-//_edit_user($user);
+ $user = _check_datauser($user['name']);
 
  $msg = $GLOBALS["msg"];
- global $edtt, $lgnmail, $pwdold, $pwdnew1, $pwdnew2, $pwdizm, $fio, $country, $post, $city, $adres, $phone, $www, $note, $registr, $save; 
+ global $edtt, $lgnmail, $pwdold, $pwdnew1, $pwdnew2, $pwdizm, $fio, $country, $post, $city, $adres, $phone, $www, $note, $registr, $save, $access, $status; 
 
  if ($msg != "") echo "<br><font color='red'><b>$msg</b></font>";
 
@@ -50,20 +43,7 @@ $user = _check_datauser($user['name']);
  <table width="350" border="0" cellpadding="2">
  <b><?php echo $edtt; ?></b>
  <tr><td><?php echo $lgnmail; ?></td>
-  <td><input type="text" name="name" size="60" value="<?php echo $user['name']; ?>"></b></td>
- </tr>
- <tr><td><?php echo $pwdold; ?></td>
-  <td><input type="password" name="pass" size="20"></td>
- </tr>
- <tr><td><?php echo $pwdnew1; ?></td>
-  <td><input type="password" name="pass1" size="20"></td>
- </tr>
- <tr><td><?php echo $pwdnew2; ?></td>
-  <td><input type="password" name="pass2" size="20"></td>
- </tr>
- <tr><td colspan="2" align="left">
-  <input type="submit" name="savepass" value="<?php echo $pwdizm; ?>">
-  </td>
+  <td><input type="text" name="name" size="60" value="<?php echo $user['name']; ?>" readonly></b></td>
  </tr>
  <tr><td><?php echo $fio; ?></td>
   <td><input type="text" name="fio" size="60" value="<?php echo $user['fio']; ?>"></td>

@@ -220,4 +220,7 @@ $cookier='Cookie Policy & Privacy';
 
 $questdel='Are you sure you want to delete?';
 
+$access='Access:';
+$status='Status:';
+
 ?>

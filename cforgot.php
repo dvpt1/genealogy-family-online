@@ -36,6 +36,8 @@ if(isset($_POST['forgot'])) {
 
  if ($msg != "") echo "<br><font color='red'><b>$msg</b></font>";
  ?>
+ <h4><a href="index.php"><img src="icons/ic_menu_back.png"></a></h4>
+
  <br><br><br><br>
  <center>
  <table width="350" align="center" border="0" cellpadding="2">
