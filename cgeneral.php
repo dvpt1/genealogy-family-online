@@ -174,11 +174,14 @@ $users = _check_datauserid($user['id']);
       $inx = $persons[$i][$fldINX];
       $id = $persons[$i][$fldID];
       $name = $persons[$i][$fldPER];
+
       echo "<a href=?do=cperson&id=".$id.">";
       echo "<b>".$name."</b></a>&nbsp;&nbsp;";
-
       if($users['id'] > 0 && $users['acces'] < 2){
+
         echo "<a href=?do=cpersone&id=".$id."&go=1><img src='icons/ic_menu_edit.png' witdh=24 height=24></a>";
+      }else{
+        echo "<br>";
       }
 
       echo "<a href=?do=cperson&id=".$id."&go=1>";
