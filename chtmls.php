@@ -524,7 +524,8 @@ if (!empty($_GET['page'])){
 	$do != 'crings' &&
 	$do != 'cgenr' &&
 	$do != 'ccaln' &&
-	$do != 'cglob')
+	$do != 'cglob' &&
+	$do != 'user')
 	{
 ?>
 <script>

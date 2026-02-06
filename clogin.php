@@ -105,7 +105,10 @@ if(isset($_POST['login'])) {
    <td><input type="text" name="user" size="40" value="<?php echo $prm1; ?>"></td>
  </tr>
  <tr><td><?php echo $pwd3; ?></td>
-  <td><input type="password" name="pass" size="20" value="<?php echo $prm2; ?>"></td>
+  <td>
+  <input type="password" name="pass" size="20" value="<?php echo $prm2; ?>" id="passInput">
+  <input type="checkbox" onclick="showPassword()">Show
+  </td>
  </tr>
  <tr><td><?php echo $cod3; ?></td>
   <td><input type="text" name="code" size="10" value="<?php echo $prm3; ?>"></td>
@@ -127,6 +130,18 @@ if(isset($_POST['login'])) {
  </form>
  </center>
  <br>
+
+<script language="javascript">
+function showPassword() {
+  var x = document.getElementById("passInput");
+  if (x.type === "password") {
+    x.type = "text"; // Changes to visible text
+  } else {
+    x.type = "password"; // Changes back to hidden
+  }
+}
+</script>
+
 <?
 //_end_html();
 //}
