@@ -1,0 +1,152 @@
+<!--
+Genealogy Family Online » est la clé pour créer des archives interactives et vivantes
+qui uniront les générations et préserveront la mémoire du passé pour l'avenir.
+
+À l'ère du numérique, où les frontières s'effacent d'un clic, la possibilité de réunir l'histoire de votre famille,
+où que soient ses membres, devient non seulement un désir,
+
+mais une nécessité impérieuse.
+
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>Généalogie familiale en ligne</title>
+
+<!-- menu-script-beg -->
+
+<link rel="STYLESHEET" type="text/css" href="style.css">
+
+<SCRIPT SRC="menu.js"></SCRIPT>
+
+<!-- menu-script-end -->
+
+</head>
+
+<body>
+
+<div id="head">
+
+<h1>Généalogie familiale En ligne</h1>
+</div>
+<!-- Menu-Beg -->
+
+<script>MenuLeft()</script>
+<!-- Menu-End -->
+
+<div id="content">
+<h4>&nbsp;<a name="INSTALL1"></a> </h4>
+
+<center><h2>Installation</h2></center>
+
+<h3>Archive</h3>
+
+<ul>
+<li>Téléchargez l'archive depuis <a href="https://github.com/dvpt1/genealogy-family-online"
+target="_blank">GITHUB</a></li>
+
+<li>Décompressez-la sur votre ordinateur</li>
+
+</ul>
+<img src="../icons/github-files.png" width=350 height=350>
+
+...<br />
+<h4>&nbsp;<a name="INSTALL2"></a> </h4>
+<h3>Installation</h3>
+
+<ul>
+<li>Téléversez l'archive décompressée sur votre site web via FTP, SFTP ou tout autre moyen, à la racine du site ou dans un dossier dédié.</li>
+</ul>
+<h4>&nbsp;<a name="INSTALL3"></a> </h4>
+<h3>Configuration</h3>
+
+<ul>
+<li>Attribuez les permissions 755 au dossier -cards.</li>
+<li>Attribuez les permissions 755 au dossier -fotos.</li>
+<li>Configurez le fichier ccfg.php.</li>
+
+<pre>
+$https = 'https://site.online';
+
+$CONFIG = array();
+
+$CONFIG['HOST_NAME'] = 'localhost';
+
+$CONFIG['DATABASE_NAME'] = '';
+
+$CONFIG['DB_USERNAME'] = '';
+
+$CONFIG['DB_PASSWORD'] = '';
+
+</pre>
+
+<li>Créer les tables `csessions` et `cusers` dans MySQL</li>
+
+<pre>CREATE TABLE `cusers` (
+`id` int NOT NULL,
+`name` varchar(100) NOT NULL DEFAULT '',
+`pass` varchar(128) NOT NULL DEFAULT '',
+`fio` varchar(160) NOT NULL DEFAULT '',
+`country` varchar(40) NOT NULL DEFAULT '',
+`postcode` varchar(20) NOT NULL DEFAULT '',
+`city` varchar(40) NOT NULL DEFAULT '',
+`address` varchar(160) NOT NULL DEFAULT '',
+`phone` varchar(30) NOT NULL DEFAULT '',
+`http` varchar(160) NOT NULL DEFAULT '',
+`activation` varchar(255) NOT NULL,
+`status` enum('0','1') NOT NULL DEFAULT '0',
+`acces` enum('0','1','2') NOT NULL DEFAULT '0',
+`two_factor_code` varchar(6) NOT NULL DEFAULT '',
+`two_factor_expires_at` varchar(11) NOT NULL DEFAULT '',
+`notes` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `csessions` (
+`session` varchar(32) NOT NULL default '',
+`id` int(11) NOT NULL default '0',
+`name` varchar(80) NOT NULL default '',
+PRIMARY KEY (`session`)
+) ENGINE=MyISAM;
+
+</pre>
+<li>Créez votre premier utilisateur : ce sera le superutilisateur.</li>
+
+</ul>
+
+<p>Téléchargez le modèle de plateforme depuis GitHub : https://github.com/dvpt1/genealogy-family-online.
+
+Téléversez l’archive décompressée sur votre site web via FTP, SFTP ou toute autre méthode, à la racine de votre site ou dans un dossier dédié.</p>
+
+<p>Configurez le fichier de configuration du site web : ccfg.php. Créez une base de données MySQL ainsi que les tables « csessions » et « cusers ».
+
+Créez votre premier utilisateur : ce sera le superutilisateur.
+
+Un lien d'activation du nouvel utilisateur vous sera envoyé par courriel.
+
+Cliquez sur le lien.
+
+Après activation, l'utilisateur se verra attribuer le niveau d'accès 2.
+
+Pour modifier le niveau d'accès, l'administrateur du site doit attribuer à l'utilisateur le niveau 1 ou 2 dans le panneau cadm.php. Par exemple : attribuez à l'utilisateur le niveau d'accès 1 ou 2.
+
+Pour vous connecter au site, saisissez votre nom d'utilisateur et votre mot de passe. Cliquez sur « Se connecter ».
+
+Un code à 6 chiffres vous sera envoyé par courriel. Saisissez-le dans le champ prévu à cet effet. Cliquez à nouveau sur « Se connecter ».
+
+Remarque : si vous ne recevez aucun courriel, veuillez vérifier votre dossier de courriers indésirables.
+
+<br />
+
+</div>
+
+<h4>&nbsp;</h4>
+
+<div id="foot"> Copyright © Konyuhov D.L. </div>
+</body>
+</html>

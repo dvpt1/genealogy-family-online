@@ -1,0 +1,106 @@
+<!--
+"Genealogy Family Online" è la chiave per creare un archivio interattivo e vivo
+che unirà le generazioni e preserverà la memoria del passato per il futuro.
+Nell'era digitale, in cui i confini vengono cancellati con un clic, la possibilità di unire
+la storia della propria famiglia, ovunque si trovino i suoi membri, sta diventando non solo un desiderio,
+ma un'esigenza impellente. -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Genealogia di famiglia online</title>
+<!-- menu-script-beg -->
+<link rel="STYLESHEET" type="text/css" href="style.css">
+<SCRIPT SRC="menu.js"></SCRIPT>
+<!-- menu-script-end -->
+</head>
+<body>
+<div id="head">
+<h1>Genealogia di famiglia Online
+</div>
+<!-- Menu-Beg -->
+<script>MenuLeft()</script>
+<!-- Menu-End -->
+
+<div id="content">
+<h4>&nbsp;<a name="INSTALL1"></a> </h4>
+<center><h2>Installazione</h2></center>
+<h3>Archivio</h3>
+<ul>
+<li>Scarica l'archivio da <a href="https://github.com/dvpt1/genealogy-family-online"
+target="_blank">GITHUB</a></li>
+<li>Decomprimilo sul tuo computer</li>
+</ul>
+<img src="../icons/github-files.png" width=350 height=350>
+...<br />
+<h4>&nbsp;<a name="INSTALL2"></a> </h4>
+<h3>Installazione</h3>
+<ul>
+<li>Carica l'archivio decompresso sul tuo sito web tramite FTP, SFTP o altri mezzi nella root del sito web o in una cartella separata sul sito web.</li>
+</ul>
+<h4>&nbsp;<a name="INSTALL3"></a> </h4>
+<h3>Configurazione</h3>
+<ul>
+<li>Imposta la cartella -cards su 755 permessi.</li>
+<li>Imposta la cartella -fotos su 755 permessi.</li>
+<li>Configura il file ccfg.php.</li>
+<pre>
+$https = 'https://site.online';
+$CONFIG = array();
+$CONFIG['HOST_NAME'] = 'localhost';
+$CONFIG['DATABASE_NAME'] = '';
+$CONFIG['NOME_UTENTE_DB'] = '';
+$CONFIG['PASSWORD_DB'] = '';
+</pre>
+<li>Crea le tabelle `csessions` e `cusers` in MySQL</li>
+<pre>
+CREATE TABLE `cusers` (
+`id` int NOT NULL,
+`name` varchar(100) NOT NULL DEFAULT '',
+`pass` varchar(128) NOT NULL DEFAULT '',
+`fio` varchar(160) NOT NULL DEFAULT '',
+`country` varchar(40) NOT NULL DEFAULT '',
+`postcode` varchar(20) NOT NULL DEFAULT '',
+`city` varchar(40) NOT NULL DEFAULT '',
+`address` varchar(160) NOT NULL DEFAULT '',
+`phone` varchar(30) NOT NULL DEFAULT '',
+`http` varchar(160) NOT NULL DEFAULT '',
+`attivazione` varchar(255) NON NULLO,
+`stato` enum('0','1') NON NULLO DEFAULT '0',
+`accesso` enum('0','1','2') NON NULLO DEFAULT '0',
+`codice_a_due_fattori` varchar(6) NON NULLO DEFAULT '',
+`scadenza_due_fattori` varchar(11) NON NULLO DEFAULT '',
+`note` testo NON NULLO
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `csessions` (
+`session` varchar(32) NOT NULL default '',
+`id` int(11) NOT NULL default '0',
+`name` varchar(80) NOT NULL default '',
+PRIMARY KEY (`session`)
+) ENGINE=MyISAM;
+</pre>
+<li>Crea il tuo primo utente: sarà il superutente.</li>
+</ul>
+
+<p>Scarica il modello della piattaforma da GitHub https://github.com/dvpt1/genealogy-family-online.
+Carica l'archivio decompresso sul tuo sito web tramite FTP, SFTP o un altro metodo nella root del tuo sito web o in una cartella separata sul tuo sito web.</p>
+
+<p>Configura i file di configurazione del sito web - ccfg.php. Crea un database MySQL e le tabelle "csessions" e "cusers". Crea il tuo primo utente: sarà un superutente.
+Un link per attivare il nuovo utente verrà inviato al tuo indirizzo email.
+Clicca sul link nell'email.
+Dopo l'attivazione, all'utente verrà assegnato il livello di accesso 2.
+Per modificare il livello di accesso, l'amministratore del sito deve assegnare all'utente il livello di accesso 1 o 2 nel pannello cadm.php. Ad esempio, assegna all'utente il livello di accesso 1 o 2.</p>
+
+<p>Per accedere al sito, inserisci nome utente e password. Clicca su "Accedi".
+Un codice di 6 cifre verrà inviato al tuo indirizzo email. Inseriscilo nel campo codice. Clicca di nuovo su "Accedi".
+Nota: se non ricevi email, controlla la cartella SPAM.</p>
+
+<br />
+
+</div>
+<h4>&nbsp;</h4>
+<div id="foot"> Copyright &copy; Konyuhov D.L. </div>
+</body>
+</html>

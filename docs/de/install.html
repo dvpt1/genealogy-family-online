@@ -1,0 +1,140 @@
+<!-- "Genealogy Family Online" ist Ihr Schlüssel zur Erstellung eines interaktiven, lebendigen Archivs, das Generationen verbindet und die Erinnerung an die Vergangenheit für die Zukunft bewahrt.
+Im digitalen Zeitalter, in dem Grenzen mit einem Klick verschwinden, wird die Möglichkeit, die Geschichte Ihrer Familie zu vereinen, wo immer sich ihre Mitglieder befinden, nicht nur zu einem Wunsch, sondern zu einer dringenden Notwendigkeit.
+
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Online-Familiengenealogie</title>
+<!-- menu-script-beg -->
+<link rel="STYLESHEET" type="text/css" href="style.css">
+<SCRIPT SRC="menu.js"></SCRIPT>
+<!-- menu-script-end -->
+
+</head>
+<body>
+<div id="head">
+<h1>Familiengenealogie Online</h1>
+</div>
+<!-- Menu-Beg -->
+<script>MenuLeft()</script>
+<!-- Menu-End -->
+
+<div id="content">
+<h4>&nbsp;<a name="INSTALL1"></a> </h4>
+<center><h2>Installation</h2></center>
+<h3>Archiv</h3>
+<ul>
+<li>Laden Sie das Archiv von <a href="https://github.com/dvpt1/genealogy-family-online" </ul> </ul> herunter.
+<li>Entpacken Sie es auf Ihrem Computer.</li>
+</ul>
+<img src="../icons/github-files.png" width=350 height=350>
+...<br />
+<h4>&nbsp;<a name="INSTALL2"></a> </h4>
+<h3>Installation</h3>
+<ul>
+<li>Laden Sie das entpackte Archiv per FTP, SFTP oder einem anderen Verfahren in das Stammverzeichnis Ihrer Website oder in einen separaten Ordner hoch.</li>
+</ul>
+<h4>&nbsp;<a name="INSTALL3"></a> </h4>
+<h3>Konfiguration</h3>
+<ul>
+<li>Setzen Sie die Berechtigungen für den Ordner „-cards“ auf 755.</li>
+<li>Setzen Sie die Berechtigungen für den Ordner „-fotos“ auf 755.</li>
+<li>Konfigurieren Sie die Datei „ccfg.php“.</li>
+<pre>
+$https = 'https://site.online';
+
+$CONFIG = array();
+
+$CONFIG['HOST_NAME'] = 'localhost';
+
+$CONFIG['DATABASE_NAME'] = '';
+
+$CONFIG['DB_USERNAME'] = '';
+
+$CONFIG['DB_PASSWORD'] = '';
+
+</pre>
+
+<li>Erstellen Sie die Tabellen `csessions` und `cusers` in MySQL</li>
+
+<pre>
+CREATE TABLE `cusers` (
+
+`id` int NOT NULL,
+
+`name` varchar(100) NOT NULL DEFAULT '',
+
+`pass` varchar(128) NOT NULL DEFAULT '',
+
+`fio` varchar(160) NOT NULL DEFAULT '',
+
+`country` varchar(40) NOT NULL DEFAULT '',
+
+`postcode` varchar(20) NOT NULL DEFAULT '',
+
+`city` varchar(40) NOT NULL DEFAULT '',
+
+`address` varchar(160) NOT NULL DEFAULT '',
+
+`phone` varchar(30) NOT NULL DEFAULT '',
+
+`http` varchar(160) NOT NULL DEFAULT '',
+
+`activation` varchar(255) NOT NULL,
+
+`status` enum('0','1') NOT NULL DEFAULT '0',
+
+`acces` enum('0','1','2') NOT NULL DEFAULT '0',
+
+`two_factor_code` varchar(6) NOT NULL DEFAULT '',
+
+`two_factor_expires_at` varchar(11) NOT NULL DEFAULT '',
+
+`notes` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `csessions` (
+`session` varchar(32) NOT NULL default '',
+`id` int(11) NOT NULL default '0',
+`name` varchar(80) NOT NULL default '',
+PRIMARY KEY (`session`)
+) ENGINE=MyISAM;
+
+</pre>
+<li>Erstellen Sie Ihren ersten Benutzer – dies wird der Superuser sein.</li>
+
+</ul>
+
+<p>Laden Sie die Plattformvorlage von GitHub herunter: https://github.com/dvpt1/genealogy-family-online.
+
+Laden Sie das entpackte Archiv per FTP, SFTP oder einer anderen Methode in das Stammverzeichnis Ihrer Website oder in einen separaten Ordner hoch.</p>
+
+<p>Konfigurieren Sie die Website-Konfigurationsdateien – ccfg.php. Erstellen Sie eine MySQL-Datenbank und die Tabellen „csessions“ und „cusers“.
+
+Erstellen Sie Ihren ersten Benutzer – dies wird der Superuser sein.
+
+Ein Link zur Aktivierung des neuen Benutzers wird an Ihre E-Mail-Adresse gesendet.
+
+Klicken Sie auf den Link in der E-Mail.
+
+Nach der Aktivierung wird dem Benutzer Zugriffsebene 2 zugewiesen.
+
+Um die Zugriffsebene zu ändern, muss der Website-Administrator dem Benutzer im Panel cadm.php Zugriffsebene 1 oder 2 zuweisen. Weisen Sie dem Benutzer beispielsweise Zugriffsebene 1 oder 2 zu.</p>
+
+<p>Geben Sie zum Anmelden Ihren Benutzernamen und Ihr Passwort ein. Klicken Sie auf „Anmelden“.
+
+Sie erhalten einen 6-stelligen Code per E-Mail. Geben Sie diesen im Codefeld ein. Klicken Sie erneut auf „Anmelden“.
+
+Hinweis: Sollten Sie keine E-Mails erhalten, überprüfen Sie bitte Ihren Spam-Ordner.</p>
+
+<br />
+
+</div>
+<h4>&nbsp;</h4>
+<div id="foot"> Copyright © Konyuhov D.L. </div>
+
+</body>
+</html>

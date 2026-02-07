@@ -1,0 +1,108 @@
+<!--
+"Genealogical Data Online" is your key to creating an interactive, living archive
+that will unite generations and preserve the memory of the past for the future.
+In the digital age, when borders are erased with one click, the ability to unite the
+history of your family, wherever its members are, is becoming not just a desire,
+but a pressing need.
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Family Genealogy Online</title>
+<!-- menu-script-beg -->
+<link rel="STYLESHEET" type="text/css" href="style.css">
+<SCRIPT SRC="menu.js"></SCRIPT>
+<!-- menu-script-end -->
+</head>
+<body>
+<div id="head">
+<h1>Genealogy Family Online</h1>
+</div>
+<!-- Menu-Beg -->
+<script>MenuLeft()</script>
+<!-- Menu-End -->
+
+<div id="content">
+<h4>&nbsp;<a name="INSTALL1"></a> </h4>
+<center><h2>Installation</h2></center>
+<h3>Archive</h3>
+<ul>
+<li>Download the archive from <a href="https://github.com/dvpt1/genealogy-family-online"
+target="_blank">GITHUB</a></li>
+<li>Unzip it to your computer</li>
+</ul>
+<img src="../icons/github-files.png" width=350 height=350>
+...<br />
+<h4>&nbsp;<a name="INSTALL2"></a> </h4>
+<h3>Installation</h3>
+<ul>
+<li>Upload the unzipped archive to your website via FTP, SFTP, or other means to the root of the website or a separate folder on the website.</li>
+</ul>
+<h4>&nbsp;<a name="INSTALL3"></a> </h4>
+<h3>Configuration</h3>
+<ul>
+<li>Set the -cards folder to 755 permissions.</li>
+<li>Set the -fotos folder to 755 permissions.</li>
+<li>Configure the ccfg.php file.</li>
+<pre>
+$https = 'https://site.online';
+$CONFIG = array();
+$CONFIG['HOST_NAME'] = 'localhost';
+$CONFIG['DATABASE_NAME'] = '';
+$CONFIG['DB_USERNAME'] = '';
+$CONFIG['DB_PASSWORD'] = '';
+</pre> 
+<li>Create the `csessions` and `cusers` tables in MySQL</li>
+<pre>
+CREATE TABLE `cusers` ( 
+`id` int NOT NULL, 
+`name` varchar(100) NOT NULL DEFAULT '', 
+`pass` varchar(128) NOT NULL DEFAULT '', 
+`fio` varchar(160) NOT NULL DEFAULT '', 
+`country` varchar(40) NOT NULL DEFAULT '', 
+`postcode` varchar(20) NOT NULL DEFAULT '', 
+`city` varchar(40) NOT NULL DEFAULT '', 
+`address` varchar(160) NOT NULL DEFAULT '', 
+`phone` varchar(30) NOT NULL DEFAULT '', 
+`http` varchar(160) NOT NULL DEFAULT '', 
+`activation` varchar(255) NOT NULL, 
+`status` enum('0','1') NOT NULL DEFAULT '0', 
+`acces` enum('0','1','2') NOT NULL DEFAULT '0', 
+`two_factor_code` varchar(6) NOT NULL DEFAULT '', 
+`two_factor_expires_at` varchar(11) NOT NULL DEFAULT '', 
+`notes` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+CREATE TABLE `csessions` (
+`session` varchar(32) NOT NULL default '',
+`id` int(11) NOT NULL default '0',
+`name` varchar(80) NOT NULL default '',
+PRIMARY KEY (`session`)
+) ENGINE=MyISAM;
+</pre>
+<li>Create your first user - this will be the superuser.</li>
+</ul>
+
+<p>Download the platform template from GitHub https://github.com/dvpt1/genealogy-family-online.
+Upload the unzipped archive to your website via FTP, SFTP, or another method to the root of your website or to a separate folder on your website.</p>
+
+<p>Configure the website configuration files - ccfg.php. Create a MySQL database and the "csessions" and "cusers" tables.
+Create your first user—this will be a superuser.
+A link to activate the new user will be sent to your email address.
+Click the link in the email.
+After activation, the user is assigned access level 2.
+To change the access level, the site administrator must assign the user access level 1 or 2 in the cadm.php panel. For example, assign the user access level 1 or 2.</p>
+
+<p>To log in to the site, enter your username and password. Click "Login."
+A 6-digit code will be sent to your email address. Enter it in the code field. Click "Login" again.
+Note: if you don't receive any emails, check your SPAM folder.</p>
+
+<br />
+
+</div>
+<h4>&nbsp;</h4>
+<div id="foot"> Copyright &copy; Konyuhov D.L. </div>
+</body>
+</html>
