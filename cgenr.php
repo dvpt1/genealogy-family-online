@@ -202,9 +202,6 @@ function DrawMenGenr($Index)
   $htm .= "<td align='center' valign='top' width='10%'>".$L."</td>";
   $htm .= "<td width='80%'>";
 
-  //$path = $getdir.$person[$fldPER].".jpg"; // Получаем путь к картинке
-  //$htm .= "<img src='$path' alt='$person[$fldPER]' title='$person[$fldPER]' width='48' heigth='48' align=left>"; // Вывод превью картинки
-
   if(!empty($person[$fldICON])){
     $htm .= "<img src='data:image/jpeg;base64,".$person[$fldICON]."' width='48' heigth='48' align=left>";
   }else{

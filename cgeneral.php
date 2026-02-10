@@ -34,9 +34,7 @@ function General()
 
   global $timestamp;
 
-//$filename = __DIR__ . '/file.txt';
 $tstamp = file_get_contents("timestamp");
-//echo "<br><br> timestamp = $timestamp == tstamp = $tstamp<br>";
 ?>
 
 <script type="text/javascript">
@@ -63,18 +61,6 @@ $tstamp = file_get_contents("timestamp");
 
 GLOBAL $user;
 $users = _check_datauserid($user['id']);
-
-//print_r($user);echo "<br>";
-//print_r($users)."<br>";
-//echo $users['id'].":".$users['name'].":".$users['status'].":".$users['acces']."<br>";
-//$file = __DIR__ ."/cards/$number.card";
-//echo "file=$file <br>";
-//echo "p=$p <br>";
-//echo "count=$count <br>";
-//echo "total=$total <br>";
-//echo "userId=".$_COOKIE['myfamilytree_userid']."userName=".$_COOKIE['myfamilytree_username']."<br>";
-//echo "userId=".$user['id']."userName=".$user['name']."<br>";
-//echo "filter=$filter <br>";
 
   $flt = "";
   if(!empty($filter)) $flt = "&filter=$filter";
@@ -210,9 +196,6 @@ $users = _check_datauserid($user['id']);
   }
   echo "</table>\n"; // Закрываем таблицу
   //echo "<h4>".$getmemo."</h4>";
-
-//for ($i = 0; $i < count($persons); $i++) echo "PERSON: ".$persons[$i][0]."|".$persons[$i][1]."|".$persons[$i][2]."|".$persons[$i][3]."|".$persons[$i][4]."|".$persons[$i][5]."|".$persons[$i][6]."|".$persons[$i][7]."|".$persons[$i][8]."|".$persons[$i][9]."|".$persons[$i][12]."|".$persons[$i][13]."|".$persons[$i][14]."<br>";
-//for ($i = 0; $i < count($persons); $i++) echo "PERSON: ".$persons[$i][$fldBEG]."|".$persons[$i][$fldEND]."|".$persons[$i][$fldPER]."|".$persons[$i][$fldFAT]."|".$persons[$i][$fldMOT]."|".$persons[$i][$fldSEX]."|".$persons[$i][$fldICON]."|"."<br>";
 
   echo "<p><br></p>";
 }

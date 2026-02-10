@@ -4,11 +4,6 @@ include_once("ccfg.php");
 include_once("cutils.php");
 include_once("cvars.php");
 
-//$user = _check_auth($_COOKIE);
-//global $userId;
-//$userId = $user['id'];
-//$user = "admin@dnadata";//_check_user($_COOKIE);
-
 $user = array();
 $user['id'] = $_COOKIE['myfamilytree_userid'];
 $user['name'] = $_COOKIE['myfamilytree_username'];
@@ -234,10 +229,8 @@ echo "=== GEDCOM File==".$getfile."<br>";
 		    $resiIs = false;
         
                     $cur++;
-//echo "=== cur=".$cur."<br>";
                     $indi_inx[] = $cur;//индекс по порядку
                     $indi_id[] = strNumBetween(substr($s, 1));//индекс по gedcom
-//echo $cur.":".strNumBetween(substr($s, 1))."<br>";
                     $indi_famc[] = -1;
                     $indi_fams[] = -1;
                     $indi_note[] = -1;
@@ -346,7 +339,6 @@ echo "=== GEDCOM File==".$getfile."<br>";
                         }
         
                         $listPerson[$cur] = $person;
-echo "=== current person = $indi_inx[$cur] = $indi_id[$cur] = $listPerson[$cur] <br>";
                         // переменные в ноль
                         $chan = false;
                         $birt = false;
@@ -1063,20 +1055,19 @@ echo "=== current person = $indi_inx[$cur] = $indi_id[$cur] = $listPerson[$cur] 
         }
     }
 
-///////////////////////////////////////////////////////////////////////
-//echo "    // Add fathers <br>";
+// Add fathers <br>";
     for ($i = 0; $i < count($listFatherId); $i++)
     {
         $fathers[$i] = array($listFChildId[$i], $listFatherId[$i]);
     }
 
-//echo "    // Add mothers <br>";
+// Add mothers <br>";
     for ($i = 0; $i < count($listMotherId); $i++)
     {
         $mothers[$i] = array($listMChildId[$i], $listMotherId[$i]);
     }
 
-//echo "    // Add spouses <br>";
+// Add spouses <br>";
     for ($i = 0; $i < count($listSpouseId); $i++)
     {
         $b = true;
@@ -1115,16 +1106,9 @@ echo "=== current person = $indi_inx[$cur] = $indi_id[$cur] = $listPerson[$cur] 
 
      }
 
-//echo "    // Add persons count = ".count($listPerson)."<br>";;
-//for ($i = 0; $i < count($spouses); $i++) echo "SPOUSE $i: ".$spouses[$i][$fldSPOUS1]." | ".$spouses[$i][$fldSPOUS2]." | ".$spouses[$i][$fldWEDDIN]." | ".$spouses[$i][$fldPLACEW]." | ".$spouses[$i][$fldMAPSW]." |<br>";
-//echo "=== listLiveId =="; print_r($listLiveId); echo "<br>";
-//echo "=== listDatel =="; print_r($listDatel); echo "<br>";
-//echo "=== listPlacel =="; print_r($listPlacel); echo "<br>";
-
     for ($i = 0; $i < count($listPerson); $i++)
     {
 	$id_person = $indi_inx[$i]+1;
-//echo "person = $indi_inx[$i] = $id_person = $listPerson[$i] <br>";
 
         $sPlaceb = $listPlaceb[$i];
         $p1 = strpos($sPlaceb, "[");
@@ -1232,7 +1216,6 @@ echo "=== current person = $indi_inx[$cur] = $indi_id[$cur] = $listPerson[$cur] 
 	$jsonPerson->burialday->place = $sPlacet;
 	$jsonPerson->burialday->maps = "";
 
-//echo "=== $listFather[$i] : listfathers<br>";
 	if($listFather[$i] != ""){
 	    $idf = -1;
 	    $fats = array();
@@ -1245,7 +1228,6 @@ echo "=== current person = $indi_inx[$cur] = $indi_id[$cur] = $listPerson[$cur] 
 	    $jsonPerson->fathers = $fats;
 	}
 
-//echo "=== $listMother[$i] : listmothers<br>";
 	if($listMother[$i] != ""){
 	    $idm = -1;
 	    $mots = array();
@@ -1259,7 +1241,6 @@ echo "=== current person = $indi_inx[$cur] = $indi_id[$cur] = $listPerson[$cur] 
 
 	}
 
-//echo "=== $listSpouse[$i] : listspouses<br>";
         $spss = array();
         for ($ii = 0; $ii < count($spouses); $ii++)
         {
@@ -1267,7 +1248,6 @@ echo "=== current person = $indi_inx[$cur] = $indi_id[$cur] = $listPerson[$cur] 
               $inx_per = 0 + intval($spouses[$ii][$fldSPOUS2]);
               $id_per = $indi_inx[$inx_per] + 1;//$persons[$inx_per][$fldID];
               $spss[] = array("id" => $id_per, "wedding" => $spouses[$ii][$fldWEDDIN], "place" => $spouses[$ii][$fldPLACEW], "maps" => $spouses[$ii][$fldMAPSW]);
-//echo "=== spss1 = $i = $inx_per == spss<br>";
               //break;
            }
         }
@@ -1277,13 +1257,11 @@ echo "=== current person = $indi_inx[$cur] = $indi_id[$cur] = $listPerson[$cur] 
               $inx_per = 0 + intval($spouses[$ii][$fldSPOUS1]);
               $id_per = $indi_inx[$inx_per] + 1;//$persons[$inx_per][$fldID];
               $spss[] = array("id" => $id_per, "wedding" => $spouses[$ii][$fldWEDDIN], "place" => $spouses[$ii][$fldPLACEW], "maps" => $spouses[$ii][$fldMAPSW]);
-//echo "=== spss2 = $i = $inx_per == spss<br>";
               //break;
            }
         }
         if(count($spss) > 0){
            $jsonPerson->spouses = $spss;
-//print_r($spss); echo " == spss<br>";
         }
 
 	$jsonPerson->occupation = $listOccu[$i];
@@ -1304,7 +1282,6 @@ echo "=== current person = $indi_inx[$cur] = $indi_id[$cur] = $listPerson[$cur] 
  
 	////////////////////////////////////////////////// save
 	$number = str_pad($id_person, 6, '0', STR_PAD_LEFT); // "000001"
-/*echo "number = ".$number." : ".$jsonPersonvar." : gender = ".$gender."<br>";*/
 
 	// Generate json file
 	file_put_contents("cards/$number.card", $jsonPersonvar);
@@ -1314,23 +1291,6 @@ echo "=== current person = $indi_inx[$cur] = $indi_id[$cur] = $listPerson[$cur] 
     file_put_contents("timestamp", $timestamp);
 ////////////////////////////////////////////////////////////
   }
-
-//echo "<br><br><br><br>";
-//for ($i = 0; $i < count($listPerson); $i++) echo "PERSON: ".$listBirth[$i].";".$listDeath[$i].";".$listPerson[$i].";".$father.";".$mother.";".$gender.";".$sPlaceb.";".$sPlaced.";".$spouse."<br>";
-//for ($i = 0; $i < count($persons); $i++) echo "PERSON: ".$persons[$i][0]."|".$persons[$i][1]."|".$persons[$i][2]."|".$persons[$i][3]."|".$persons[$i][4]."|".$persons[$i][5]."|".$persons[$i][6]."|".$persons[$i][7]."|".$persons[$i][8]."|".$persons[$i][9]."<br>";
-//for ($i = 0; $i < count($persons); $i++) echo "PERSONS: ".$persons[$i][$fldINX]."|".$persons[$i][$fldID]."|".$persons[$i][$fldSEX]."|".$persons[$i][$fldPER]."|".$persons[$i][$fldBEG]."|".$persons[$i][$fldEND]."|".$persons[$i][$fldFAT]."|".$persons[$i][$fldMOT]."|".$persons[$i][$fldSPS]."|"."<br>";
-//for ($i = 0; $i < count($listFather); $i++) echo "FATHER: ".$listFather[$i]."<br>";
-//for ($i = 0; $i < count($listMother); $i++) echo "MOTHER: ".$listMother[$i]."<br>";
-//for ($i = 0; $i < count($listSpouse); $i++) echo "SPOUSE: ".$listSpouse[$i]."<br>";
-//for ($i = 0; $i < count($fathers); $i++) echo "FATHER: ".$fathers[$i][0]."|".$fathers[$i][1]."<br>";
-//for ($i = 0; $i < count($mothers); $i++) echo "MOTHER: ".$mothers[$i][0]."|".$mothers[$i][1]."<br>";
-//for ($i = 0; $i < count($spouses); $i++) echo "SPOUSES: ".$spouses[$i][$fldSPOUS1]." | ".$spouses[$i][$fldSPOUS2]." | ".$spouses[$i][$fldWEDDIN]." | ".$spouses[$i][$fldPLACEW]." | ".$spouses[$i][$fldMAPSW]." |<br>";
-//for ($i = 0; $i < count($listFChildId); $i++) {echo "CHILDFATHER=".$listFChildId[$i].";".$listFatherId[$i]."<br>";}
-//for ($i = 0; $i < count($listMChildId); $i++) {echo "CHILDMOTHER=".$listMChildId[$i].";".$listMotherId[$i]."<br>";}
-//for ($i = 0; $i < count($listSpouseId); $i++) {echo "SPOUSEID=".$listSChildId[$i].";".$listSpouseId[$i]."<br>";}
-//echo "persons=".count($persons)."<br>";
-//echo "fathers=".count($fathers)."<br>";
-//echo "mothers=".count($mothers)."<br>";
 
 }
 
@@ -1378,13 +1338,6 @@ function InsertSpouse()
         $imother = -1;
     }
 
-//global $persons;
-//global $fldPER;
-//echo "=== ".$fatherId.":".$motherId."<br>";
-//echo "=== ".$ifather.":".$imother."<br>";
-//echo "=== ".$persons[$ifather][$fldPER].":".$persons[$imother][$fldPER]."<br>";
-//echo "=== ".$sWeddin.":".$sPlacew.":".$sMapsw."<br>";
-
     if (($ifather > -1) && ($imother > -1))
     {
         if (!empty($sWeddin) || !empty($sPlacew) || !empty($sMapsw))
@@ -1399,7 +1352,6 @@ function InsertSpouse()
         $wife = $listWife[$ifather];
         if ($listPerson[$imother] != $listPerson[$ifather])
         {
-//echo "=== InsertSpouse wife ==($wife)<br>";
             if (!empty($wife))
             {
                 if (!strpos($wife, $listPerson[$imother]))
@@ -1428,7 +1380,6 @@ function InsertSpouse()
         $husband = $listWife[$imother];
         if ($listPerson[$ifather] != $listPerson[$imother])
         {
-//echo "=== InsertSpouse husband ==($husband)<br>";
             if (!empty($husband))
             {
                 if (!strpos($husband, $listPerson[$ifather]))

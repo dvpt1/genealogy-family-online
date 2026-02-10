@@ -224,17 +224,6 @@ FUNCTION DateDMY($D, $M, $Y, $DateFormat)
     return $Result;
 }
 
-/*function validateForm() {
- var x = document.getElementById('sifOS').value;
- if (x == null || x == 0 || x == "0") {
-     return false;
- } else {
-     document.form.submit();
-     window.close();
-
- }
-}*/
-
 //array_sort_by_column($array, 'order');
 function array_sort_by_column(&$arr, $col, $dir = SORT_ASC) {
     $sort_col = array();

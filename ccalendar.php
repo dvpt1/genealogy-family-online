@@ -40,10 +40,7 @@ function Calendar()
 
   if(isset($_GET['title'])) $title = $_GET['title'];//номер текущего года
 
-//echo date("d/m/Y");
   $d = getdate(); // использовано текущее время
-  //foreach ( $d as $key => $val ) echo "$key = $val";
-//echo "<hr>Сегодня: $d[mday].$d[mon].$d[year]";
 
   $year = $d[year];
   $month = $d[mon];
@@ -56,13 +53,9 @@ function Calendar()
   $d = date('d');//номер текущего дня
   $w = date('w');//порядковый номер дня недели
 
-//echo "<hr>Сегодня1: ".$y.":".$m.":".$d.":".$w.":";
-
   if(isset($_GET['year'])) $year = $_GET['year'];//номер текущего года
   if(isset($_GET['month'])) $month = $_GET['month'];//номер текущего года
   if(isset($_GET['day'])) $day = $_GET['day'];//номер текущего года
-
-//echo "<hr>Сегодня2: ".$year.":".$month.":".$day.":".$w.":";
 
   if(isset($_GET['year']) || !isset($_GET['year'])) $title .= " $nameyear $year";
   if(isset($_GET['month'])) $title .= " $namemonth $mon[$month]";
@@ -88,9 +81,6 @@ function Calendar()
     echo "<p><font size=+4>$nameyear $year</font></p>";
     echo "<p><font size=+8>$namemonth $mon[$month]</font></p>";
     echo "<p><font size=+12>$nameday $day</font></p>";
-
-    //LoadImenini1($month, $day);
-
     echo "</center>";
 
     for ($i = 0; $i < count($birthPersons); $i++) {
@@ -331,37 +321,6 @@ function NumMonthHorz($nm, $rw, $cl)
 function GetBirthDay($nmon, $nday)
 {
   global $persons;
-/*
-$string = '2015-07-05 06:02:09'; // наша дата в string
-$date = new DateTime($string);
-
-// день 
-$day = $date->format('d'); // 05 
-$day = $date->format('j'); // 5
-
-// месяц 
-$month = $date->format('m'); // 07 
-$month = $date->format('n'); // 7 
-
-// дней в указанном месяце 
-$days = $date->format('t'); // 31 
-
-// год 
-$year = $date->format('Y'); // 2015 
-$year = $date->format('y'); // 15
-
-// день недели  1 - понедельник, 7 - воскресенье 
-$dayWeek = $date->format('N'); // 7 
-
-// порядковый номер дня в году 
-$dayYear = $date->format('z'); // 185 (начинается с 0) 
-
-// високосный год (0 - нет, 1 - да)
-$year = $date->format('L'); // 0 
-
-// timestamp
-$timestamp = $date->getTimestamp(); // 143692932915
-*/
   for ($i = 0; $i < count($persons); $i++) {
       $string = $persons[$i][$fldBEG]; // наша дата в string
       $date = new DateTime($string);
@@ -386,19 +345,6 @@ function GetHoliDay($nmon, $nday)
     return False;
   }*/
   return false;
-}
-
-function LoadImenini1($nmon, $nday)
-{
-/*  GLOBAL $imenini;
-  $q = mysql_query('SELECT link FROM imenini WHERE month='.$nmon.' AND day='.$nday)
-	or die(mysql_error());
-  if(mysql_num_rows($q) != 0) {
-    echo "<b>$imenini: </b>";
-    while ($r = mysql_fetch_array($q)) {
-	echo '<b>'.$r['link'].'</b>';
-    }
-  }*/
 }
 
 ?>

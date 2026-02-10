@@ -373,11 +373,6 @@ function AddInfoBranch($PersonId, $FatherId, $MotherId, $SpouseId, $X1, $Y1, $X2
   global $aX2;
   global $aY2;
 
-//global $persons;
-//global $fldPER;
-//$person = $persons[$PersonId];
-//echo "=== AddInfoBranch = $PersonId, $FatherId, $MotherId, $SpouseId, $X1, $Y1, $X2, $Y2 $person[$fldPER]<br>";
-
   $aPerson[] = $PersonId;
   $aFather[] = $FatherId;
   $aMother[] = $MotherId;
@@ -452,9 +447,6 @@ function DrawMenHTML($Index)
       $htm .= "<div class='blockn' style='POSITION: absolute; LEFT: 0px; TOP: 0px; WIDTH: 220px; HEIGHT: 65px'>";
   }
 
-
-  //$path = $getdir.$person[$fldPER].".jpg"; // Получаем путь к картинке
-  //$htm .= "<img src='$path' alt='$person[$fldPER]' title='$person[$fldPER]' width='48' heigth='48' align=left>"; // Вывод превью картинки
   if(!empty($person[$fldICON])){
     $htm .= "<img src='data:image/jpeg;base64,".$person[$fldICON]."' width='48' heigth='48' align=left>";
   }else{
@@ -481,7 +473,6 @@ function DrawMenHTML($Index)
 
   $htm .= "<font size=-1>".$person[$fldPER];
   $htm .= "<br><i>".$dates."</i></font>";
-  //$htm .= "<br>=$X1=$Y1==$X2=$Y2=";
   $htm .= "</div>";
   $htm .= "</div>";
 

@@ -1,9 +1,6 @@
 <?php
 
 include_once("cvars.php");
-//include_once("cutils.php");
-//$filter = "";
-//if(isset($_GET['filter']) $filter = $_GET['filter'];
 
 Gedcom_Import();
 
@@ -142,9 +139,7 @@ function Gedcom_Import()
   $ok;
 
   // import persons
-//echo "<br><br>IMPORT<br><br>";
   $mainPath = __DIR__ . '/cards/';
-//echo "<br><br>$mainPath<br> $filter<br>";
 
   $fil = false;
   if(empty($filter)) $fil = true;
@@ -155,19 +150,12 @@ function Gedcom_Import()
   $isps = 0;
   $inx = 0;
   foreach ($files as $fileName) {
-    //echo "<hr width=50%>";
-    //echo "$fileName size " . filesize($fileName) . "<br>\n";
-
     // The JSON file
     // Read the file into a variable
     $jsonData = file_get_contents("$fileName");
     // Decode the JSON data into a PHP associative array
     $dataPerson = json_decode($jsonData, true);
-    //print_r($dataPerson);
     
-    //$name0 = basename($fileName); // To get file name
-    //$name1 = pathinfo($fileName, PATHINFO_EXTENSION); // To get extension
-    //$name2 = pathinfo($fileName, PATHINFO_FILENAME); // File name without extension
     // Начинаем столбец
     $id = $dataPerson['id'];//pathinfo($fileName, PATHINFO_FILENAME); // File name without extension
     $person = $dataPerson['person'];
@@ -201,39 +189,23 @@ function Gedcom_Import()
     $favtorup   = $dataPerson['stamp']['avtorup'];
     $fdatetimeup = $dataPerson['stamp']['datetimeup'];
 
-    //echo "<hr width=50%>";
-    //echo "id = ".$id."<br>";
-    //echo "inx = ".$inx."<br>";
-    //echo "gender = ".$gender."<br>";
-    //echo "person = ".$person." =<br>";
-    //echo "father = ".print_r($father)."=<br>";
-    //echo "mother = ".print_r($mother)."=<br>";
-    //echo "spouse = ".print_r($spouse)."=<br>";
-    //echo "residence = ".print_r($residence)."=<br>";
-    //echo "<hr width=75%>";
-
     // Add fathers
-    //print_r($father); echo "== father ==<br>";
     $ft = "";
     for ($i = 0; $i < count($father); $i++){
       if($ft == "") {$ft = $father[$i]['id'];} else {$ft += ",".$father[$i]['id'];}
       $fathers[$ifat] = array($id, $father[$i]['id']);
       $ifat++;
     }
-    //echo "ft = ".$ft."<br>";
 
     // Add mothers
-    //print_r($mother); echo "== mother ==<br>";
     $mt = "";
     for ($i = 0; $i < count($mother); $i++){
       if($mt == "") {$mt = $mother[$i]['id'];} else {$mt += ",".$mother[$i]['id'];}
       $mothers[$imot] = array($id, $mother[$i]['id']);
       $imot++;
     }
-    //echo "mt = ".$mt."<br>";
 
     // Add spouses
-    //print_r($spouse); echo "== spouse ==<br>";
     $st = 0;
     for ($i = 0; $i < count($spouse); $i++)
     {
@@ -275,8 +247,8 @@ function Gedcom_Import()
             if($st == "") {$st = $spouse[$i]['id'];} else {$st += ",".$spouse[$i]['id'];}
         }
     }
+
     // Add residence
-    //print_r($residence); echo "== residences ==<br>";
     for ($i = 0; $i < count($residence); $i++)
     {
         $sDatel = $residence[$i]['date'];;
@@ -300,11 +272,9 @@ function Gedcom_Import()
 	    $st,
 	    $birthplace, 
 	    $deathplace, 
-	    //$resiplace,
 	    $burialplace,
 	    $birthmaps,
 	    $deathmaps,
-	    //$resimaps,
 	    $burialmaps,
 	    $occupation,
 	    $national,
@@ -390,32 +360,6 @@ function Gedcom_Import()
     }
   }
 
-//echo "<br><br><br><br>";
-//for ($i = 0; $i < count($listPerson); $i++) echo "PERSON: ".$listBirth[$i].";".$listDeath[$i].";".$listPerson[$i].";".$father.";".$mother.";".$gender.";".$sPlaceb.";".$sPlaced.";".$spouse."<br>";
-//for ($i = 0; $i < count($persons); $i++) echo "PERSON: ".$persons[$i][0]."|".$persons[$i][1]."|".$persons[$i][2]."|".$persons[$i][3]."|".$persons[$i][4]."|".$persons[$i][5]."|".$persons[$i][6]."|".$persons[$i][7]."|".$persons[$i][8]."|".$persons[$i][9]."<br>";
-//for ($i = 0; $i < count($persons); $i++) echo "PERSON: ".$persons[$i][$fldINX]."|".$persons[$i][$fldID]."|".$persons[$i][$fldPERL]."|".$persons[$i][$fldPERF]."|".$persons[$i][$fldPERS]."|".$persons[$i][$fldFAT]."|".$persons[$i][$fldMOT]."|".$persons[$i][$fldSEX]."<br>";//"|".$persons[$i][$fldICON]."|".
-//for ($i = 0; $i < count($listFather); $i++) echo "FATHER: ".$listFather[$i]."<br>";
-//for ($i = 0; $i < count($listMother); $i++) echo "MOTHER: ".$listMother[$i]."<br>";
-//for ($i = 0; $i < count($fathers); $i++) echo "FATHER: ".$fathers[$i][0]."|".$fathers[$i][1]."<br>";
-//for ($i = 0; $i < count($mothers); $i++) echo "MOTHER: ".$mothers[$i][0]."|".$mothers[$i][1]."<br>";
-//for ($i = 0; $i < count($spouses); $i++) echo "SPOUSE $i: ".$spouses[$i][$fldSPOUS1]." | ".$spouses[$i][$fldSPOUS2]." | ".$spouses[$i][$fldWEDDIN]." | ".$spouses[$i][$fldPLACEW]." | ".$spouses[$i][$fldMAPSW]." |<br>";
-//for ($i = 0; $i < count($listFChildId); $i++) {echo "CHILDFATHER=".$listFChildId[$i].";".$listFatherId[$i]."<br>";}
-//for ($i = 0; $i < count($listMChildId); $i++) {echo "CHILDMOTHER=".$listMChildId[$i].";".$listMotherId[$i]."<br>";}
-//for ($i = 0; $i < count($listSpouseId); $i++) {echo "SPOUSEID=".$listSChildId[$i].";".$listSpouseId[$i]."<br>";}
-//for ($i = 0; $i < count($peoples); $i++) echo "PEOPLES: ".$peoples[$i][0]." | ".$peoples[$i][1]." | ".$peoples[$i][2]." | ".peoples[$i][3]." | ".peoples[4]." | "."<br>";
-//for ($i = 0; $i < count($residences); $i++){
- //if($residences[$i][0] == 0){
-//  echo "RESIDENCE: ".$residences[$i][0]." | ".$residences[$i][1]." | ".$residences[$i][2]." | "."<br>";
- //}
-//}
-//echo "persons=".count($persons)."<br>";
-//echo "fathers=".count($fathers)."<br>";
-//echo "mothers=".count($mothers)."<br>";
-//echo "spouses=".count($spouses)."<br>";
-//echo "residences=".count($residences)."<br>";
-
 }
-  
-  
 
 ?>

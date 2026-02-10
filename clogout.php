@@ -13,14 +13,6 @@ $user = _check_user($_COOKIE);
 echo "<br><br><br><br>";
 echo "<h4><a href=\"index.php\"><img src=\"icons/ic_menu_back.png\"></a></h4>";
 
-//echo print_r($user); echo "<br>";
-//echo "=id=".$user['id']."<br>";
-//echo "=name=".$user['name']."<br>";
-
-//_begin_html($user);
-//_logout_html();
-//Logout($user);
-
  global $lang;
  global $do;
  global $error14;
@@ -40,12 +32,5 @@ if (isset($_SERVER['HTTP_COOKIE'])) {
 }
 
 $user = _check_user($_COOKIE);
-
-//echo "<br><br><br>clogout2<br>";
-//echo print_r($user); echo "<br>";
-//echo "=id=".$user['id']."<br>";
-//echo "=name=".$user['name']."<br>";
-
-//_end_html();
 
 ?>

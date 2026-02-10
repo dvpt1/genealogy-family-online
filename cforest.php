@@ -129,7 +129,6 @@ echo "<br><br><br><br><br><br>";
   // Рисую ФИО
   for ($i = 0; $i < count($persons); $i++)
   {
-//echo "=== boxperson ===".$i.">=".$aX1[$i].":".$aY1[$i]."=".$persons[$i][$fldPER]."<br>";
       echo DrawPerson($i, $aX1[$i], $aY1[$i]);
   }
 
@@ -172,8 +171,6 @@ echo "<br><br><br><br><br><br>";
 
 function ParentsChilds($PersonInx, $PersonId, $X, $Y)
 {
-//echo "=== ParentsChilds ===".$PersonInx.":".$PersonId."=".$X.":".$Y."=<br>";
-
   global $cnt_persons;
 
   global $fldINX;
@@ -209,8 +206,6 @@ function ParentsChilds($PersonInx, $PersonId, $X, $Y)
   $dY = 0;
   $iCol = 0;
 
-//echo "=== ParentsChilds ===[".$PersonId."]=".$X.":".$Y."=".$persons[$PersonInx][$fldPER]." = $PersonInx<br>";
-
   $b = AddInfo($PersonInx, $X, $Y, true);
   if (!$b) return $dX;
 
@@ -220,17 +215,12 @@ function ParentsChilds($PersonInx, $PersonId, $X, $Y)
   $childers1 = getFatherc($PersonInx);
   $childers2 = getMotherc($PersonInx);
 
-//print_r($childers1); echo "=== childers1<br>";
-//print_r($childers2); echo "=== childers2<br>";
-//echo "=== ParentsChilds count===[".count($childers1)."]=[".count($childers2)."]<br>";
-
   // если отец или мать
   if (count($childers1) > 0)
   {
     for ($iFat = 0; $iFat < count($childers1); $iFat++)
     {
       $imothers = getMothers($childers1[$iFat][$fldCHILD]);
-//print_r($imothers); echo "=== imothers<br>";
 
       for ($iMot = 0; $iMot < count($imothers); $iMot++)
       {
@@ -239,13 +229,10 @@ function ParentsChilds($PersonInx, $PersonId, $X, $Y)
           if (!$b) break;
       }
 
-      //if (b)
-      //{
       $inx = $childers1[$iFat][$fldCHILD];
       $id = $persons[$inx][$fldID];
       $dY = $dY + ParentsChilds($inx, $id, $dY + $X + 50 + 250 * $iCol, $Y + 150);
       $iCol++;
-      //}
     }
   }
   else if (count($childers2) > 0)
@@ -253,14 +240,6 @@ function ParentsChilds($PersonInx, $PersonId, $X, $Y)
     for ($iMot = 0; $iMot < count($childers2); $iMot++)
     {
       $ifathers = getFathers($childers2[$iMot][$fldCHILD]);
-//print_r($ifathers); echo "=== ifathers<br>";
-
-      /*for ($iFat = 0; $iFat < count($ifathers); $iFat++)
-      {
-          $dX = $dX + 250;
-          $b = AddInfo($ifathers[$iFat][$fldPAREN], $X + $dX, $Y, false);
-          if (!$b) break;
-      }*/
 
       if (count($ifathers) == 0)
       {
@@ -299,8 +278,6 @@ function AddInfo($Inx, $X, $Y, $B)
   global $ibegin;
   global $level;
 
-//echo "=== AddInfo =[".$Inx."]=".$X.":".$Y."=".$persons[$Inx][$fldPER]." $level<br>";
-
   if ($B){
 
       for ($i = $ibegin; $i < count($aPerson); $i++)
@@ -310,7 +287,6 @@ function AddInfo($Inx, $X, $Y, $B)
               $serror .= $field_name." ".$persons[$Inx][$fldPER]." ??? ";
 
               $parents = getParentsI($Inx);
-//  echo "=== AddInfo parents=".count($parents)."<br>";
               if (count($parents) > 0)
               {
                   $serror .= "{".$field_parent;
@@ -323,7 +299,6 @@ function AddInfo($Inx, $X, $Y, $B)
               }
 
               $childrs = getChildrensI($Inx);
-//  echo "=== AddInfo childrs=".count($childrs)."<br>";
               if (count($childrs) > 0)
               {
                   $serror .= "{".$field_child;
@@ -372,8 +347,6 @@ function DrawPerson($I, $X, $Y)
 
   global $persons;
   $person = $persons[$I];
-
-//echo "=== DrawPerson =".$I."=".$X.":".$Y."=".$persons[$I][$fldPER]."<br>";
 
   $htm = "";
 
@@ -457,13 +430,7 @@ function Linkas($iParent, $iChild, $fm)
   $aB1c = $aBougth[$iChild];
   $aB1p = $aBougth[$iParent];
 
-//echo "=== Links =$iChild==$iParent == [$aX1c]=[$aY1c] == [$aX1p]=[$aY1p] == [$aB1c]=[$aB1b]<br>";
-
   $htm = "";
-
-  //$htm .= "=== $iParent =11= $aBougth[$iParent]:$aX1[$iParent]:$aY1[$iParent]<br>";
-  //$htm .= "=== $iChild =21= $aBougth[$iChild]:$aX1[$iChild]:$aY1[$iChild]<br>";
-  //return $htm;
 
   // если
   if ($aX1p > $aX1c)
@@ -637,9 +604,6 @@ function Linkas1($iParent, $iChild, $fm)
   $aB1b = $aBougth[$iParent];
 
   $htm = "";
-  //$htm .= "=== $iParent =12= $aBougth[$iParent]:$aX1[$iParent]:$aY1[$iParent]<br>";
-  //$htm .= "=== $iChild =22= $aBougth[$iChild]:$aX1[$iChild]:$aY1[$iChild]<br>";
-  //return $htm;
 
   // если
   if ($aX1p > $aX1c)

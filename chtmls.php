@@ -312,13 +312,11 @@ checkCookie();
 </script>
 
 <?php
- if(isset($_COOKIE['myfamilytree_gedcom'])){   //echo 'Куки успешно установлены!<br>';
+ if(isset($_COOKIE['myfamilytree_gedcom'])){
    $getfile = 'gedcom/'.$_COOKIE['myfamilytree_gedcom'];
- }else{   //echo 'Куки НЕ установлены!<br>';
+ }else{
    $getfile = 'gedcom/kings.ged';
  }
-
-//echo "<br><br><br><br>";print_r($user);echo $user['id'].":".$user['name'].":".$user['status'].":".$user['acces']."<br>";
 
  $id_person = '';
  $do = 'cmain';
@@ -395,9 +393,9 @@ if (!empty($_GET['page'])){
 	include_once($page);
 }else{
 	$getfile ='';
-	if(isset($_COOKIE['myfamilytree_gedcom'])){   //echo 'Куки успешно установлены!<br>';
+	if(isset($_COOKIE['myfamilytree_gedcom'])){
 		$getfile = 'gedcom/'.$_COOKIE['myfamilytree_gedcom'];
-	}else{   //echo 'Куки НЕ установлены!<br>';
+	}else{
 		if ($user['id'] < 1) $getfile = 'gedcom/kings.ged';
 	}
 
@@ -504,17 +502,8 @@ if (!empty($_GET['page'])){
 		include_once("cregs.php");
 	} else if ($do == 'forgot') {
 		include_once("cforgot.php");
-	} else if ($do == 'cupload') {//   include_once("upload.php");
+	} else if ($do == 'cupload') {
 	}
-
-/*=========================================*/
-//echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
-//echo "===File==".$getfile."<br>";
-//echo "===Persons==".Count($persons)."<br>";
-//echo "===User==".$user['id']."<br>";
-//echo "===do=".$do."<br>";
-//echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
-/*=========================================*/
 
 	if (
 	$do != 'cpersone' && 

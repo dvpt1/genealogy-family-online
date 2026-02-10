@@ -169,9 +169,6 @@ function DrawMenRing($I)
       $htm .= "<div class='blockn' style='WIDTH: 220px; HEIGHT: 65px'>";
   }
 
-  //$path = $getdir.$person[$fldPER].".jpg"; // Получаем путь к картинке
-  //$htm .= "<img src='$path' alt='$person[$fldPER]' title='$person[$fldPER]' width='48' heigth='48' align=left>"; // Вывод превью картинки
-
   if(!empty($person[$fldICON])){
     $htm .= "<img src='data:image/jpeg;base64,".$person[$fldICON]."' width='48' heigth='48' align=left>";
   }else{

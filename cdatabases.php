@@ -39,7 +39,6 @@ function getProgenitors()
   $progenitors = array();
   for ($i = 0; $i < count($persons); $i++) {
       if (empty($persons[$i][$fldFAT]) && empty($persons[$i][$fldMOT])) {
-//echo $persons[$i][$fldPER]."<br>";
          $progenitors[] = $persons[$i];
       }
   }
@@ -180,7 +179,6 @@ function getBirthPersons()
   $personsb = array();
   for ($i = 0; $i < count($persons); $i++) {
       if (!empty($persons[$i][$fldBEG])) {
-//echo $persons[$i][$fldBEG].$persons[$i][$fldPER]."<br>";
          $personsb[] = $persons[$i];
       }
   }
@@ -197,7 +195,6 @@ function getDeathPersons()
   $personsd = array();
   for ($i = 0; $i < count($persons); $i++) {
       if (!empty($persons[$i][$fldBEG])) {
-//echo $persons[$i][$fldBEG].$persons[$i][$fldPER]."<br>";
          $personsd[] = $persons[$i];
       }
   }
@@ -207,7 +204,6 @@ function getDeathPersons()
 /* * */
 function getBirthPersons1($month)
 {
-//echo "$month $day<br>";
   global $persons;
   global $fldBEG;
   global $fldEND;
@@ -224,7 +220,6 @@ function getBirthPersons1($month)
 
       if (intval($month) == intval($m))
       {
-//echo ":".$month.":".$day.":".$m.":".$d.":".$persons[$i][$fldPER]."<br>";
          $personsb[] = $persons[$i];
       }
     }
@@ -236,7 +231,6 @@ function getBirthPersons1($month)
 /* * */
 function getBirthPersons2($month, $day)
 {
-//echo "$month $day<br>";
   global $persons;
   global $fldBEG;
   global $fldEND;
@@ -253,7 +247,6 @@ function getBirthPersons2($month, $day)
 
          if (intval($month) == intval($m) && intval($day) == intval($d))
          {
-//echo ":".$month.":".$day.":".$m.":".$d.":".$persons[$i][$fldPER]."<br>";
             $personsb[] = $persons[$i];
          }
       }

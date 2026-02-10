@@ -4,10 +4,6 @@ include_once("ccfg.php");
 include_once("cutils.php");
 include_once("cvars.php");
 
-//$user = _check_auth($_COOKIE);
-//global $userId;
-//$userId = $user['id'];
-
 //$user = "admin@dnadata";//_check_user($_COOKIE);
 $user = array();
 $user['id'] = $_COOKIE['myfamilytree_userid'];
@@ -212,26 +208,16 @@ echo '===input_name='.$input_name.'<br>';
 		
 		// Выводим сообщение о результате загрузки.
 		if (!empty($success)) {
-//echo "==== <b>$userId==$getfile</b> ===<br>";
-
 			$gedcom = '';
 			if($userId > 0){
 			   $getfile = 'gedcom/'.$getfile;
-//echo "==== <b>$userId==$getfile</b> ===<br>";
 			   if (file_exists($getfile)) {
 				$fp = fopen($getfile, "r");
 				$gedcom = fread($fp, filesize($getfile));
 				fclose($fp);
 
                                 $currentDateTime = date('Y-m-d H:i:s');
-                                /*$_id = _idgedcom_database($userId);
-                                if($_id > 0){
-					_savegedcom_database($_id,$gedcom,$currentDateTime);
-                                }else{
-					_addgedcom_database($userId,$gedcom,$currentDateTime);
-                                }*/
 
-//echo "==== <b>cgedcomimp.php</b> ===<br>";
 				include_once("cgedcomimp.php");
 			   }
 			}

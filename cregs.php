@@ -6,18 +6,10 @@ session_start();
 include_once("ccfg.php");
 include_once("csub.php");
 include_once("chtmls.php");
-//_already_logged($_COOKIE);
-
-//Regs();
-
-//_begin_html($user);
-//function Regs()
-//{
 
 $msg = "";
 if(isset($_POST['submit'])) {
 
-//echo $_POST['submit'].$_POST['user'].$_POST['pass']."<br>";
  $email = $_POST['user'];
  $pos = strpos($email, '@');
  if($pos == false) return -1;
@@ -25,7 +17,6 @@ if(isset($_POST['submit'])) {
  if($pos == false) return -1;
 
  $user_data = _check_datauser(fm($_POST['user']));
-//print_r($user_data);
 
  if($user_data == 0) {
 
@@ -34,8 +25,6 @@ if(isset($_POST['submit'])) {
   $acces = 2;
   $alink = $https."/cact.php?code=$activation";
 
-//echo $password.$alink."<br>";
- 
   _adduser_database(fm($_POST['user']),fm($_POST['pass']),fm($_POST['fio']),fm($_POST['country']),fm($_POST['postcode']),fm($_POST['city']),fm($_POST['address']),fm($_POST['phone']),fm($_POST['http']),fm($_POST['notes']),$activation,$acces);
   $msg = $regs1;
 
@@ -44,17 +33,13 @@ if(isset($_POST['submit'])) {
   echo "Send ACTIVATION link to - ".$_POST['user']."<br>";
 
   mail($_POST['user'],"Activation from - $https","$alink");
-  //sleep(10);
 
-  //_login_html();
-  ///header("Location: clogin.php");
   return 0;
  } else {  
   $msg = $regs2;
  }
 }
 
-//_regs_html();
  global $lang;
 
  $msg = $GLOBALS["msg"];
@@ -112,6 +97,5 @@ if(isset($_POST['submit'])) {
  <br><br><br><br>
  </center>
 <?
-//_end_html();
 
 ?>

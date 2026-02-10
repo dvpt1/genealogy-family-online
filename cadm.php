@@ -12,14 +12,11 @@ global $questdel;
 
 //_already_logged($_COOKIE);
 $user = _check_user($_COOKIE);
-//echo print_r($user); echo "<br>";
 if($user['id'] != 1) return;
 echo $user['name']."<br>";
 
 if(isset($_GET['action'])) {
-	//echo "action = ".$_GET['id'].":".$_GET['action']."<br>";
 	$c = mysql_query("DELETE FROM cusers WHERE id=".$_GET['id']);
-	//echo $c."<br>";
 }
 
 ?>

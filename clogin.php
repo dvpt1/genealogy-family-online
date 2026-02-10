@@ -6,12 +6,7 @@ session_start();
 include_once("ccfg.php");
 include_once("csub.php");
 include_once("chtmls.php");
-//_already_logged($_COOKIE);
-//$user = _check_user($_COOKIE);
 
-//Login();
-//function Login()
-//{
 global $https;
 global $lang;
 global $lgn1,$pwd3,$cod3,$foglgn1,$registr,$fogpwd3,$enter1,$login6,$login7,$login8;
@@ -91,11 +86,6 @@ if(isset($_POST['login'])) {
   function_alert($msg);
 }
 
-//$user = array();
-//$user['id'] = 1;
-//_begin_html($user);
-//_login_html();
-//echo '<br><br>'.$lang.$lgn1.$pwd3.$foglgn1.$registr.$fogpwd3.$enter1;
  ?>
  <br><br><br><br>
  <center>
@@ -143,8 +133,6 @@ function showPassword() {
 </script>
 
 <?
-//_end_html();
-//}
 
 function function_alert($msg) {
     echo "<script type='text/javascript'>alert('$msg');</script>";

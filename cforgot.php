@@ -28,8 +28,6 @@ if(isset($_POST['forgot'])) {
  $prm1 = $_POST['user'];
  }
 
-//_begin_html($user);
-//_forgot_html();
  $msg = $GLOBALS["msg"];
  $prm1 = $GLOBALS["prm1"];
  global $lgn1,$fog1;
@@ -55,6 +53,5 @@ if(isset($_POST['forgot'])) {
  </center>
  <br>
 <?
-//_end_html();
 
 ?>
