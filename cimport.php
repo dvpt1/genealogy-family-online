@@ -157,20 +157,17 @@ function Gedcom_Import()
     $dataPerson = json_decode($jsonData, true);
     
     // Начинаем столбец
-    $id = $dataPerson['id'];//pathinfo($fileName, PATHINFO_FILENAME); // File name without extension
+    $id = $dataPerson['id'];
     $person = $dataPerson['person'];
     $gender = $dataPerson['gender'];
     $birthday = $dataPerson['birthday']['date'];//date
-    //$residay = $dataPerson['residay']['date'];
     $deathday = $dataPerson['deathday']['date'];
     $burialday = $dataPerson['burialday']['date'];
     $birthplace = $dataPerson['birthday']['place'];//place
-    //$resiplace = $dataPerson['residay']['place'];
     $deathplace = $dataPerson['deathday']['place'];
     $burialplace = $dataPerson['burialday']['place'];
     $birthmaps = $dataPerson['birthday']['maps'];//map
     $deathmaps = $dataPerson['deathday']['maps'];
-    //$resimaps = $dataPerson['residay']['maps'];
     $burialmaps = $dataPerson['burialday']['maps'];
     $father = $dataPerson['fathers'];
     $mother = $dataPerson['mothers'];

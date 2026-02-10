@@ -2,10 +2,15 @@
 
 include_once("ccfg.php");
 include_once("csub.php");
+include_once("chtmls.php");
 
 $user = _check_auth($_COOKIE);
 $users = _check_datauserid($user['id']);
 //echo $users['id'].":".$users['acces'];
+
+GLOBAL $field_foto;
+GLOBAL $ic_menu_delete;
+GLOBAL $ic_menu_load;
 
   $inx_person = -1;
   $id_person = 0;
@@ -19,7 +24,6 @@ $users = _check_datauserid($user['id']);
   }else{
     $dir = __DIR__."/fotos/"; // Путь к директории, в которой лежат изображения
   }
-//echo "$dir<br>";
 
   $number = str_pad($id_person, 6, '0', STR_PAD_LEFT); // "000001"
   $path = "fotos/".$number;
@@ -29,7 +33,6 @@ $users = _check_datauserid($user['id']);
   } else {
     //echo "Директория уже существует.";
   }
-//echo "$path<br>";
 
   if(isset($_POST['addimage'])) {
     $file = $dir.$_FILES['path']['name'];
@@ -54,8 +57,8 @@ $users = _check_datauserid($user['id']);
 ?>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <form name="form1" action="" enctype="multipart/form-data" method="post">
-  <input type="file" name="path" title="Фотография" />
-  <input type="submit" name="addimage" title="Загрузить" value="+" />
+  <input type="file" name="path" title="<?php echo $field_foto ?>" />
+  <input type="submit" name="addimage" title="<?php echo $ic_menu_load ?>" value="+" />
   </form>
 <?php
   }
@@ -68,8 +71,7 @@ $users = _check_datauserid($user['id']);
     if($users['id'] > 0 && $users['acces'] < 2){
 ?>
     <form name="form2" action="" enctype="multipart/form-data" method="post">
-    <input type="submit" name="delimage" title="Удалить" value="<?php echo $files[$i]; ?>" />
-    Удалить<br>
+    <input type="submit" name="delimage" title="<?php echo $ic_menu_delete ?>" value="<?php echo $files[$i]; ?>" /><?php echo $ic_menu_delete ?><br>
     </form>
 <?php
     }

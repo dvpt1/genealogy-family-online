@@ -132,6 +132,9 @@ function Persone($user)
   global $person;
   global $gedcom;
 
+  GLOBAL $ic_menu_delete;
+  GLOBAL $ic_menu_load;
+
 //  $father_key = "";
 //  $mother_key = "";
 //  $spouse_key = "";
@@ -725,9 +728,9 @@ if(isset($_POST['deleteperson'])) {
  </table>
 
  <form name="form1" action="" enctype="multipart/form-data" method="post">
- <input type="file" name="path" title="Фотография" />
- <input type="submit" name="addimage" title="Загрузить" value="+" />
- <input type="submit" name="delimage" title="Удалить" value="-" />
+ <input type="file" name="path" title="<?php echo $field_foto ?>" />
+ <input type="submit" name="addimage" title="<?php echo $ic_menu_load ?>" value="+" />
+ <input type="submit" name="delimage" title="<?php echo $ic_menu_delete ?>" value="-" />
  </form>
 
 <?php
