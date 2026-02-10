@@ -1,34 +1,35 @@
+var langname = Array()
+langname[0] = 'Русский      ';
+langname[1] = 'Английский   ';
+langname[2] = 'Немецкий     ';
+langname[3] = 'Французкий   ';
+langname[4] = 'Итальянский  ';
+langname[5] = 'Испанский    ';
+langname[6] = 'Румынский    ';
+langname[7] = 'Португальский';
+langname[8] = 'Украинский   ';
+
 function buildLang( langsele ) { 
- document.write( '<a href=http://dnadata.online/ru/><IMG src="http://dnadata.online/icons/flag/ru.gif" border=0></a>' );
- document.write( '<a href=http://dnadata.online/en/><IMG src="http://dnadata.online/icons/flag/en.gif" border=0></a>' );
- document.write( '<a href=http://dnadata.online/de/><IMG src="http://dnadata.online/icons/flag/de.gif" border=0></a>' );
- document.write( '<a href=http://dnadata.online/fr/><IMG src="http://dnadata.online/icons/flag/fr.gif" border=0></a>' );
- document.write( '<a href=http://dnadata.online/es/><IMG src="http://dnadata.online/icons/flag/es.gif" border=0></a>' );
+ document.write( '<form name=lang>' );
+ document.write( '<select name="fieldname" onChange="openDir( this.form )" style="background-color: rgb(255,238,255); font-weight: bold">' );
+ document.write( '' );
+ for (i=0; i< langname.length; i++) {
+  if (i==langsele) {
+   document.write( '<OPTION value='+langhref[i]+' SELECTED>'+langname[i]+'</OPTION>' );
+  } else {
+   document.write( '<OPTION value='+langhref[i]+'>'+langname[i]+'</OPTION>' );
+  }
+ }
+ document.write( '</select>' );
+ document.write( '</form>' );
 } 
 
-/*<SCRIPT>d3("Hello!", 50,15,'red',40,800,'times')</SCRIPT>*/
-function d3(text, x, y, tcolor, fsize, fweight, ffamily, zind) {
- if (!text) return null;
- if (!ffamily) ffamily='arial';
- if (!fweight) fweight=800;
- if (!fsize) fsize=36;
- if (!tcolor) tcolor='00aaff';
- if (!y) y=0;
- if (!x) x=0;
- var sd=4, hd=2;
- var xzind="";
- if (zind) xzind=";z-Index:"+zind;
- var xstyle='font-family:'+ffamily+';font-size:'+fsize+';font-weight:'+fweight+';'
- var xstr='<DIV STYLE="position:absolute; top:'+(y+sd)+'; left:'+(x+sd)+xzind+'">'
- xstr+='<P style="'+xstyle+'color:darkred">'+text+'</P></DIV>'
- xstr+='<DIV STYLE="position:absolute; top:'+y+'; left:'+x+xzind+'">'
- xstr+='<P style="'+xstyle+'color:silver">'+text+'</P></DIV>'
- xstr+='<DIV STYLE="position:absolute; top:'+(y+hd)+'; left:'+(x+hd)+xzind+'">'
- xstr+='<P style="'+xstyle+'color:'+tcolor+'">'+text+'</P></DIV>'
- document.write(xstr)
+
+function Copyright() { 
+ document.write( "<cite><center><font color=black>")
+ document.write( "Авторское право &copy; 2005-2023 Дмитрия Конюхова. Все права защищены.")
+ document.write( "E-Mail: <a href=mailto:dvpt@narod.ru>dvpt@narod.ru</a><br>")
+ document.write( '<script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script><div class="yashare-auto-init" data-yashareType="link" data-yashareQuickServices="yaru,vkontakte,facebook,twitter,odnoklassniki,moimir,friendfeed,lj"')
+ document.write( "</font></center></cite>")
+ document.write( "<hr width=70%>")
 }
-
-function buildLogo() { 
- document.write( "<SCRIPT>d3('GENEALOGICAL TREE APPS SOFTWARE', 250, 0,'green',35,900,'sans-serif')</SCRIPT>")
-} 
-
