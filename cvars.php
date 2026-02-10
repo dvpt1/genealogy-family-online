@@ -21,11 +21,9 @@
   $fldSPS  =  8; // Муж/жена
   $fldPLB  =  9; // Место рождения
   $fldPLD  = 10; // Место смерти
-  //$fldPLL  = 11; // Место жизни
   $fldPLT  = 11; // Место захоронения
   $fldMAPB = 12;
   $fldMAPD = 13;
-  //$fldMAPL = 14;
   $fldMAPT = 14;
   $fldOCCU = 15;// род занятий
   $fldNATI = 16;// религия

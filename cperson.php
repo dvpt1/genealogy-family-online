@@ -119,9 +119,6 @@ function Person()
   $htm .= "<center><b><i>$avtora</i></b></center>";
   //??$htm .= "<a href=\"cfotos.php?id=$id_person&name=$persona\"><img src=\"icons/mn_menu_foto.png\" width=48 height=48 align=right></a>";
 
-  //$path = $getdir.$person[$fldPER].".jpg"; // Получаем путь к картинке
-  //$htm .= "<p><img src='$path' alt='$person[$fldPER]' title='$person[$fldPER]' width='64' heigth='64' align=left></p>"; // Вывод превью картинки
-
   if(!empty($person[$fldICON])){
     $htm .= "<img src='data:image/jpeg;base64,".$person[$fldICON]."' width='64' heigth='64' align=left>";
   }else{
@@ -132,7 +129,6 @@ function Person()
     $htm .= "<img src='$path' alt='$name' title='$name' width='64' heigth='64' align=left>";
   }
 
-  //$htm .= "inx=".$inx_person."<br>";
   $htm .= "<h1>".$person[$fldPER]."</h1><br>";
 
   if (!empty($person[$fldBEG]))

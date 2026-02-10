@@ -1,7 +1,6 @@
 <?php
 
 $https = 'https://site.online';
-$pepper = '';
 
 $CONFIG                  = array();
 $CONFIG['HOST_NAME']     = 'localhost';

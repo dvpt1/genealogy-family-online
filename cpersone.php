@@ -141,7 +141,6 @@ function Persone($user)
   $id_person = $_GET['id'];
   $inx_person = IdToInx($id_person);
   $person = $persons[$inx_person];
-  //$id_person = intval($person[$fldID]);
 
   $avtora = "";
   $datetimea = "";
@@ -186,8 +185,6 @@ function Persone($user)
   }else{
     $aresiden = $_SESSION['aresiden'];
   }
-//echo "<pre>";print_r($residences); echo "<br>";echo "</pre>";
-//echo "<pre>";print_r($aresiden); echo "<br>";echo "</pre>";
 
   $datela = "";
   $placela = "";
@@ -198,7 +195,6 @@ function Persone($user)
   $person_inx = $_SESSION["personinx"];
   if($inx_person != $person_inx){
     $_SESSION['icona'] = "";
-    //unset($_SESSION['icona']);
     $_SESSION['fathera'] = "";
     $_SESSION['mothera'] = "";
     $_SESSION['spousea'] = "";
@@ -247,7 +243,6 @@ if(isset($_POST['saveperson'])) {
   $fat1 = array(); // fathers from form
   if(isset($_SESSION["fathera"])) $father_key = $_SESSION["fathera"];
   if(strlen("$father_key") == 0) $father_key = $_POST['fathera'];
-//echo 'father_key='.$father_key.'<br>';
   if($father_key != ""){
     $faths = explode(",", $father_key);
     for ($i = 0; $i < count($faths); $i++) {
@@ -259,7 +254,6 @@ if(isset($_POST['saveperson'])) {
     if ($fathers[$i][0] == $inx_person) {
        $ii = $fathers[$i][1];
        $fat2[] = $ii;
-//echo 'father_key2='.$ii.'<br>';
     }
   }
   for ($i = 0; $i < count($fat1); $i++) { // father add
@@ -271,7 +265,6 @@ if(isset($_POST['saveperson'])) {
        }
      }
      if(!$b){
-//echo '<b>fatherAdd='.$inx_person.';'.$fat1[$i].'</b><br>';
        $fathers[] = array($inx_person, $fat1[$i]);
      }
   }
@@ -286,7 +279,6 @@ if(isset($_POST['saveperson'])) {
      if($b){
        for ($j = 0; $j < count($fathers); $j++) {
          if($fathers[$j][0] == $inx_person && $fathers[$j][1] == $fat2[$i]) {
-//echo '<b>fatherDel='.$fathers[$j][0].';'.$inx_person.';;'.$fathers[$j][1].';'.$fat2[$i].'</b><br>';
            unset($fathers[$j]);
            break;
          }
@@ -298,7 +290,6 @@ if(isset($_POST['saveperson'])) {
   $mot1 = array(); // mothers from form
   if(isset($_SESSION["mothera"])) $mother_key = $_SESSION["mothera"];
   if(strlen("$mother_key") == 0) $mother_key = $_POST['mothera'];
-//echo 'mother_key='.$mother_key.'<br>';
   if($mother_key != ""){
     $moths = explode(",", $mother_key);
     for ($i = 0; $i < count($moths); $i++) {
@@ -321,7 +312,6 @@ if(isset($_POST['saveperson'])) {
        }
      }
      if(!$b){
-//echo '<b>motherAdd='.$inx_person.';'.$mot1[$i].'</b><br>';
        $mothers[] = array($inx_person, $mot1[$i]);
      }
   }
@@ -336,7 +326,6 @@ if(isset($_POST['saveperson'])) {
      if($b){
        for ($j = 0; $j < count($mothers); $j++) {
          if($mothers[$j][0] == $inx_person && $mothers[$j][1] == $mot2[$i]) {
-//echo '<b>motherDel='.$mothers[$j][0].';'.$inx_person.';;'.$mothers[$j][1].';'.$mot2[$i].'</b><br>';
            unset($mothers[$j]);
            break;
          }
@@ -348,7 +337,6 @@ if(isset($_POST['saveperson'])) {
   if(!empty($_POST["spouse"])){
     $inxs = $_POST["spouse"];
     $sps = explode(":", $inxs);
-//echo "sps =";print_r($sps);echo "<br>";
     $spouse_ind = $sps[0];
     $spouse_inx = $sps[1];
   }else{
@@ -359,14 +347,12 @@ if(isset($_POST['saveperson'])) {
   $sps1 = array();
   if(isset($_SESSION["spousea"])) $spouse_key = $_SESSION["spousea"];
   if(strlen("$spouse_key") == 0) $spouse_key = $_POST['spousea'];
-//echo 'spouse_key='.$spouse_key.'<br>';
   if($spouse_key != ""){
     $spths = explode(",", $spouse_key);
     for ($i = 0; $i < count($spths); $i++) {
       $spts = explode(":", $spths[$i]);
       $sps0[] = $spts[0];
       $sps1[] = $spts[1];
-//echo 'spouse_key1='.$spts[1].'<br>';
     }
   }
   $sps2 = array();//все супруги в списке $spouses
@@ -374,12 +360,10 @@ if(isset($_POST['saveperson'])) {
     if ($spouses[$i][$fldSPOUS1] == $inx_person) {
        $ii = $spouses[$i][$fldSPOUS2];
        $sps2[] = $ii;
-//echo 'spouse_key21='.$ii.'<br>';
     }else
     if ($spouses[$i][$fldSPOUS2] == $inx_person) {
        $ii = $spouses[$i][$fldSPOUS1];
        $sps2[] = $ii;
-//echo 'spouse_key22='.$ii.'<br>';
     }
   }
 
@@ -391,14 +375,11 @@ if(isset($_POST['saveperson'])) {
          break;
        }
      }
-//echo '<b>spouseUpd='.$spouse_inx.':'.$sps1[$i].'</b><br>';
      if(!$b){ // add
-//echo '<b>spouseAdd='.$inx_person.';'.$sps1[$i].':'.$_POST['wedding'].':'.$_POST['placew'].'</b><br>';
        $spouses[] = array($id_person, $sps1[$i],$_POST['wedding'],$_POST['placew'],"");
        $sps0[$i] = count($spouses) - 1;
      } else { // edit
        if($spouse_inx == $sps1[$i]){
-//echo '<i>spouseEdit='.$inx_person.';'.$sps1[$i].':'.$_POST['wedding'].':'.$_POST['placew'].'</i><br>';
          $spouses[$sps0[$i]][$fldWEDDIN] = $_POST['wedding'];
          $spouses[$sps0[$i]][$fldPLACEW] = $_POST['placew'];
          $spouses[$sps0[$i]][$fldMAPSW] = "";//$_POST['mapsw'];
@@ -415,23 +396,18 @@ if(isset($_POST['saveperson'])) {
        }
      }
      if($b){
-//echo '<b>spouseDel0='.$inx_person.';'.$sps2[$i].'</b><br>';
        for ($j = count($spouses)-1; $j >= 0; $j--) {//сделать обратный отсчет
          if($spouses[$j][$fldSPOUS1] == $id_person && $spouses[$j][$fldSPOUS2] == $sps2[$i]) {
-//echo '<b>spouseDel1='.$spouses[$j][$fldSPOUS1].';'.$inx_person.';;'.$spouses[$j][$fldSPOUS2].';'.$sps2[$i].'</b><br>';
            unset($spouses[$j]);
            break;
          }else
          if($spouses[$j][$fldSPOUS2] == $id_person && $spouses[$j][$fldSPOUS1] == $sps2[$i]) {
-//echo '<b>spouseDel2='.$spouses[$j][$fldSPOUS1].';'.$inx_person.';;'.$spouses[$j][$fldSPOUS2].';'.$sps2[$i].'</b><br>';
            unset($spouses[$j]);
            break;
          }
        }
      }
   }
-
-//echo "<br>spouses2 =".count($spouses)."=";print_r($spouses);echo "<br>";
 
   ///////////////////////////////////////////////////////////////////// save
   //$gedcom = Gedcom_Export();
@@ -447,17 +423,14 @@ if(isset($_POST['saveperson'])) {
 
 /**/
   if(count($aresiden) > 0) {
-//echo "Save: <br>"; print_r($aresiden); echo "<br>";
     $inxreside = $_POST['reside_sel'];
 
     $aresiden[$inxreside][1] = $_POST['datel'];
-    //$aresiden[$inxreside][3] = "";//$_POST['mapsw'];
 
     $resis = array();
     for ($i = 0; $i < count($aresiden); $i++){
       $resis[] = array("date" => $aresiden[$i][1], "place" => $aresiden[$i][2], "maps" => $aresiden[$i][3]);//add residence
     }
-//echo "Resis: $inxreside<br>"; print_r($resis); echo "<br>";
     $jsonPerson->residay = $resis;
   }
 /**/
@@ -466,7 +439,6 @@ if(isset($_POST['saveperson'])) {
   $jsonPerson->burialday->place = $_POST['placet'];
   $jsonPerson->burialday->maps = "";
   
-// echo "<br>father =$fat1=";
   if(!empty($fat1)) {
     $idf = -1;
     $fats = array();
@@ -475,10 +447,8 @@ if(isset($_POST['saveperson'])) {
       $fats[$i] = array("id" => $idf);
     }
     if(count($fats) > 0) $jsonPerson->fathers = $fats;
-//print_r($fat1); echo count($idf).":".empty($fat1)."<br>";
   }
 
-//  echo "<br>mother =$mot1=";
   if(!empty($mot1)) {
     $idm = -1;
     $mots = array();
@@ -487,25 +457,21 @@ if(isset($_POST['saveperson'])) {
       $mots[$i] = array("id" => $idm);
     }
     if(count($mots) > 0) $jsonPerson->mothers = $mots;
-//print_r($fat1); echo count($idf).":".empty($fat1)."<br>";
   }
 
   if(!empty($sps1)) {
     $ids = -1;
     $spss = array();
     for ($i = 0; $i < count($sps1); $i++) {
-//echo "sps0[$i] = : $sps0[$i] : sps1[$i] = : $sps1[$i] :<br>";
         $ids = intval($persons[$sps1[$i]][$fldID]);
         $weddinga = $spouses[$sps0[$i]][$fldWEDDIN];
         $placewa = $spouses[$sps0[$i]][$fldPLACEW];
         $mapswa = $spouses[$sps0[$i]][$fldMAPSW];
 
         $spss[$i] = array("id" => $ids, "wedding" => "$weddinga", "place" => "$placewa", "maps" => "$mapswa");//add wedding palase map
-//echo "spssi = : $i : $ids : $weddinga : $placewa : $mapswa :<br>";
     }
     if(count($ids) > -1) $jsonPerson->spouses = $spss;
 
-//echo "<br>spss = ".count($spss)." = ";print_r($spss);echo "<br>";
   }
 
   $jsonPerson->occupation = $_POST['occu'];
@@ -527,20 +493,15 @@ if(isset($_POST['saveperson'])) {
   // Generate json file
   $number = str_pad($id_person, 6, '0', STR_PAD_LEFT); // "000001"
 
-  //echo $number.":".$jsonPersonvar;
   $file = __DIR__ ."/cards/$number.card";
   file_put_contents($file, $jsonPersonvar);
-//echo $number.":".$file;
 
 ////////////////////////////////////////////////////////////
   file_put_contents("timestamp", $timestamp);
 ////////////////////////////////////////////////////////////
 
-//sleep(10);
 //$log= true;
   echo '<script type="text/javascript">window.location = "'.$https.'"</script>';
-
-//echo "<b>===saveperson-end===</b><br>";
 
 }else
 if(isset($_POST['deleteperson'])) {
@@ -550,7 +511,6 @@ if(isset($_POST['deleteperson'])) {
   ///////////////////////////////////////////////////// delete
   $number = str_pad($id_person, 6, '0', STR_PAD_LEFT); // "000001"
   $file = __DIR__ ."/cards/$number.card";
-//echo $number.":".$file;
   unlink($file);
 
 ////////////////////////////////////////////////////////////
@@ -563,12 +523,8 @@ if(isset($_POST['deleteperson'])) {
 }
 
 ////////////////////////////////////////////////////////////////////////////
-if($log) exit;
+//if($log) exit;
 ////////////////////////////////////////////////////////////////////////////
-
-//echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
-//echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
-//echo "<b>===editperson-begin===</b><br>";
 
   $inx_add = 0;
   if(isset($_POST['addFather'])) $inx_add = 1;
@@ -742,7 +698,6 @@ if($log) exit;
 
      if($n == 0) $spouse_key = '-1:'.$inxspouse; else $spouse_key .= '-1:'.$inxspouse;
   }
-  //??$_SESSION["spousea"] = $spouse_key;
 
   $htm = "<div class='shadow' style='POSITION: absolute; LEFT: 10px; TOP: 60px; WIDTH: 1075px; HEIGHT: 765px'>";
   if ($gendera == "1")
@@ -872,7 +827,6 @@ if($log) exit;
   echo '<tr><td>'.$field_father.'</td>';
   echo '<td>';
   $spths = explode(",", $father_key);
-//  echo "=$inxfather=".count($spths)."=[".$father_key."]===";
   echo '<select id="father" class="father" name="father">';
   $n = 0;
   if(strlen("$father_key") > 0){
@@ -907,7 +861,6 @@ if($log) exit;
        if($n == 0) $father_key = "".$inxfather; else $father_key .= ",".$inxfather;
   }
   echo '</select>';
-  //echo "=$inxfather==[".$father_key."]===";
 
   $_SESSION["fathera"] = $father_key;
   echo '<input type="hidden" id="fathera" name="fathera" value="'.$father_key.'">';
@@ -926,14 +879,12 @@ if($log) exit;
      echo "</select>";
      echo "<input type=submit name='' value='<'>";
   } 
-//print_r($fathers);
   echo '</td></tr>';
 
   // mothers
   echo '<tr><td>'.$field_mother.'</td>';
   echo '<td>';
   $spths = explode(",", $mother_key);
-//  echo "=$inxmother=".count($spths)."=[".$mother_key."]===";
   echo '<select id="mother" class="mother" name="mother">';
   $n = 0;
   if(strlen("$mother_key") > 0){
@@ -968,7 +919,6 @@ if($log) exit;
        if($n == 0) $mother_key = "".$inxmother; else $mother_key .= ",".$inxmother;
   }
   echo '</select>';
-//  echo "=$inxmother==[".$mother_key."]===";
 
   $_SESSION["mothera"] = $mother_key;
   echo '<input type="hidden" id="mothera" name="mothera" value="'.$mother_key.'">';
@@ -1012,7 +962,6 @@ if($log) exit;
     }
   }
   echo '</select>';
-//echo "==spouse_key=[".$spouse_key."]===";
 
   $_SESSION["spousea"] = $spouse_key;
   echo '<input type="hidden" id="spouse_key" name="spousea" value="'.$spouse_key.'">';
@@ -1034,18 +983,14 @@ if($log) exit;
   }
   echo '</td></tr>';
 
-//print_r($aspouse);echo "<br>";
-//print_r($apersone);echo "<br>";
   $awedding = array();
   for($i = 0; $i < count($aspouse); $i++) {
      $awedding[] = $spouses[$aspouse[$i]][$fldWEDDIN];
   }
-//print_r($awedding);echo "<br>";
   $aplacew = array();
   for($i = 0; $i < count($aspouse); $i++) {
      $aplacew[] = $spouses[$aspouse[$i]][$fldPLACEW];
   }
-//  $amapsw = array();
 
 ?>
 
@@ -1079,20 +1024,16 @@ if($log) exit;
   echo '<tr bgcolor="#ffff00"><td>'.$field_placel.'</td>';
   echo '<td>';
 
-  //if ($inx_add == 4){
-     $inx_add = 0;
-     if(isset($_GET['placel'])){
-        $placel = $_GET['placel'];
+  $inx_add = 0;
+  if(isset($_GET['placel'])){
+     $placel = $_GET['placel'];
 
-        $acnt = count($aresiden);
-        $resis = array("$inx_person", "", "$placel", "");//add residence
-        $aresiden[$acnt] = $resis;
-        $_SESSION['aresiden'] = $aresiden;
-//print_r($aresiden);
-     }
-  //}
+     $acnt = count($aresiden);
+     $resis = array("$inx_person", "", "$placel", "");//add residence
+     $aresiden[$acnt] = $resis;
+     $_SESSION['aresiden'] = $aresiden;
+  }
 
-//print_r($aresiden);
   echo '<select id="reside_sel" class="residen" name="reside_sel" size="1" onchange="OnSelectionChangeR (this)">';
   $n = 0;
   $residen_key = "";
@@ -1108,9 +1049,6 @@ if($log) exit;
       $n++;
   }
   echo '</select>';
-
-//print_r($aresiden); echo "<br>";
-//echo "Place:".$_GET[placel]."<br>";
 
   echo "<input type=submit src='icons/ic_menu_add.png' witdh=24 height=24 onclick=\"onClickPlaceL(this)\" value='+'>";
   echo "<input type=submit src='icons/ic_menu_delete.png' witdh=24 height=24 name='delReside' value='-'>";
@@ -1201,10 +1139,6 @@ if($log) exit;
 
  <?  
 
-//if (!empty($_REQUEST)) {
-//  print_r($_REQUEST);
-//}
-
   echo "<br><br><br><br><br>";
   echo "<br><br><br><br><br>";
   echo "<br><br><br><br><br>";
@@ -1216,11 +1150,9 @@ if($log) exit;
   echo "<br><br><br><br><br>";
 
   echo "</div></div>";
-  //echo "$reload<p><br></p>";
 }
 
 function resize_image($file, $w, $h, $crop=FALSE) {
-//echo $file;
     list($width, $height) = getimagesize($file);
     $r = $width / $height;
     if ($crop) {
@@ -1243,7 +1175,6 @@ function resize_image($file, $w, $h, $crop=FALSE) {
     $src = imagecreatefromjpeg($file);
     $dst = imagecreatetruecolor($newwidth, $newheight);
     imagecopyresampled($dst, $src, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-//echo $dst;
     return $dst;
 }
 
@@ -1259,115 +1190,5 @@ function resizeBase64Image($base64_image, $new_width, $new_height) {
     $resized_base64 = base64_encode(ob_get_clean());
     return $resized_base64;
 }
-// Usage
-//$base64_image = '...'; // Replace with your Base64 image
-//$new_width = 300;
-//$new_height = 200;
-//resizeBase64Image($base64_image, $new_width, $new_height);
-
-//  echo deleteGET("http://mysite.ru/?view=category&amp;page=5&amp;id=5", "page");
-/*function deleteGET($url, $name, $amp = true) {
-  $url = str_replace("&amp;", "&", $url); // Заменяем сущности на амперсанд, если требуется
-  list($url_part, $qs_part) = array_pad(explode("?", $url), 2, ""); // Разбиваем URL на 2 части: до знака ? и после
-  parse_str($qs_part, $qs_vars); // Разбиваем строку с запросом на массив с параметрами и их значениями
-  unset($qs_vars[$name]); // Удаляем необходимый параметр
-  if (count($qs_vars) > 0) { // Если есть параметры
-    $url = $url_part."?".http_build_query($qs_vars); // Собираем URL обратно
-    if ($amp) $url = str_replace("&", "&amp;", $url); // Заменяем амперсанды обратно на сущности, если требуется
-  }
-  else $url = $url_part; // Если параметров не осталось, то просто берём всё, что идёт до знака ?
-  return $url; // Возвращаем итоговый URL
-}
-
-function Redirect($url, $permanent = false)
-{
-    if (headers_sent() === false)
-    {
-        header('Location: ' . $url, true, ($permanent === true) ? 301 : 302);
-    }
-
-    exit();
-}*/
-
-
-/*==========================*/
-//echo "==father_key=[".$_SESSION["fathera"]."]===<br>";
-//echo "==mother_key=[".$_SESSION["mothera"]."]===<br>";
-//echo "==spouse_key=[".$_SESSION["spousea"]."]===<br>";
-//echo "==reside_key=[".$_SESSION["residea"]."]===<br>";
-//echo "==father_key=[".$_POST["fathera"]."]===<br>";
-//echo "==mother_key=[".$_POST["mothera"]."]===<br>";
-//echo "==spouse_key=[".$_POST["spousea"]."]===<br>";
-//echo "==reside_key=[".$_POST["residea"]."]===<br>";
-//echo "<br>".$inx_person.":".$id_person.":".$user['name'].";inx=".$persons[$inx_person][$fldINX].":".$_POST['persona'].":".$_POST['genders'].":".$_POST['fathera'].":".$_POST['mothera']."<br>";
-
-//for ($i = 0; $i < count($aresiden); $i++) echo "RESIDENCE: ".$aresiden[$i][0]." | ".$aresiden[$i][1]." | ".$aresiden[$i][2]." | ".$aresiden[$i][3]." | ".$aresiden[$i][4]." | "."<br>";
-//echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
-
-//echo "inx=$inx_person ; id=$id_person ; father_key=$father_key ; mother_key=$mother_key ; spouse_key=$spouse_key<br>";
-//echo "keys= ".$spouse_key." = ".$inxspouse." = ".$addspouse."<br>";
-//echo $person[$fldPER].':'.$person[$fldFAT].':'.$person[$fldMOT]."<br>";
-//echo 'SESSION='. $persona .'='. $gendera."<br>";
-//echo "inx_person=".$inx_person." = ".$person_inx."<br>";
-//echo "keys= ".$father_key." = ".$mother_key."<br>";
-//for ($i = 0; $i < count($peoples); $i++) echo "PEOPLES: ".$peoples[$i][0]." | ".$peoples[$i][1]." | ".$peoples[$i][2]." | ".peoples[$i][3]." | ".peoples[4]." | "."<br>";
-//echo "inx_person=".$inx_person." = ".$userName."<br>";
-
-// get details of the uploaded file 
-//$fileTmpPath = $_FILES['uploadedFile']['tmp_name'];
-//$fileName = $_FILES['uploadedFile']['name'];
-//$fileSize = $_FILES['uploadedFile']['size'];
-//$fileType = $_FILES['uploadedFile']['type'];
-//$fileNameCmps = explode(".", $fileName);
-//$fileExtension = strtolower(end($fileNameCmps));
-
-//for ($i = 0; $i < count($aresiden); $i++) echo "RESIDENCE: ".$aresiden[$i][0]." | ".$aresiden[$i][1]." | ".$aresiden[$i][2]." | ".$aresiden[$i][3]." | ".$aresiden[$i][4]." | "."<br>";
-//for ($i = 0; $i < count($aresibeg); $i++) echo "RESIDENCE BEG: ".$aresibeg[$i]." | "."<br>";
-//echo "=".count($aspouse)."==".count($spths)."=[".$spouse_key."]=$delspouse=$apersone[0]=";//debug point
-//echo "==spouse_ind=[".$spouse_ind.":".$spouse_inx."]===";//debug point
-
-//if($_POST['father_key']) echo 'father_key='.$_POST['father_key'].'<br>';
-//if($_POST['mother_key']) echo 'mother_key='.$_POST['mother_key'].'<br>';
-//if($_POST['spouse_key']) echo 'spouse_key='.$_POST['spouse_key'].'<br>';
-//print_r($_COOKIE);echo "<br>";
-
-//echo 'sps0 =';print_r($sps0);echo '<br>';
-//echo 'sps1 =';print_r($sps1);echo '<br>';
-//echo 'sps2 =';print_r($sps2);echo '<br>';
-
-//echo "<br><br><br><br>";
-//print_r($_COOKIE);
-//echo "_COOKIE<br>";
-//print_r($fathers);
-//echo "_fathers<br>";
-//print_r($mothers);
-//echo "_mothers<br>";
-//echo "<br><br><br><br><br><br><br>".count($aresiden);
-//for ($i = 0; $i < count($aresiden); $i++) echo "RESIDENCE: ".$aresiden[$i][0]." | ".$aresiden[$i][1]." | ".$aresiden[$i][2]." | ".$aresiden[$i][3]." | ".$aresiden[$i][4]." | "."<br>";
-//echo "<br><br><br><br><br><br><br>";
-
-//echo "aspouse =".count($aspouse)."=";print_r($aspouse);echo "<br>";
-//echo "apersone =".count($apersone)."=";print_r($apersone);echo "<br>";
-//echo "_POST[spouse]===[".$_POST["spouse"]."]<br>";
-//echo "_POST[wedding]===[".$_POST['wedding']."]<br>";
-//echo "_POST[placew]===[".$_POST['placew']."]<br>";
-//echo "spouses1 =".count($spouses)."=";print_r($spouses);echo "<br>";
-//for ($i = 0; $i < count($spouses); $i++) echo "SPOUSE $i: ".$spouses[$i][$fldSPOUS1]." | ".$spouses[$i][$fldSPOUS2]." | ".$spouses[$i][$fldWEDDIN]." | ".$spouses[$i][$fldPLACEW]." | ".$spouses[$i][$fldMAPSW]." |<br>";
-
-//echo "<br><br>";
-//for ($i = 0; $i < count($spouses); $i++) echo "SPOUSE $i: ".$spouses[$i][$fldSPOUS1]." | ".$spouses[$i][$fldSPOUS2]." | ".$spouses[$i][$fldWEDDIN]." | ".$spouses[$i][$fldPLACEW]." | ".$spouses[$i][$fldMAPSW]." |<br>";
-//echo "spouse_key = $spouse_key<br>";
-//echo "=== sps0 =".count($sps0)."=";print_r($sps0);echo "<br>";
-//echo "=== sps1 =".count($sps1)."=";print_r($sps1);echo "<br>";
-//echo "=== sps2 =".count($sps2)."=";print_r($sps2);echo "<br>";
-
-//echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
-//for ($i = 0; $i < count($spouses); $i++) echo "SPOUSE $i: ".$spouses[$i][$fldSPOUS1]." | ".$spouses[$i][$fldSPOUS2]." | ".$spouses[$i][$fldWEDDIN]." | ".$spouses[$i][$fldPLACEW]." | ".$spouses[$i][$fldMAPSW]." |<br>";
-//echo "=== spouse_key = $spouse_key =<br>";
-//echo "<hr><br><br>";
-
-//echo "<br>aspouse =".count($aspouse)."=";print_r($aspouse);echo "<br>";
-//echo "<br>apersone =".count($apersone)."=";print_r($apersone);echo "<br>";
-//echo "<br><br><br><br><br>";
 
 ?>
