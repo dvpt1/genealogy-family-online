@@ -106,10 +106,11 @@ if($user_data == 0) {
   $jsonPerson->notes = $_POST['notes'];
   $icon = str_replace(" ", "+", $_POST['icon']);
   $jsonPerson->icon = $icon;
+  $avtor = $_POST['avtor'];
   
   $timestamp = date('YmdHisu');
   $jsonPerson->stamp->timestamp = $timestamp;
-  $jsonPerson->stamp->avtor = $avtora;
+  $jsonPerson->stamp->avtor = $avtor;
   $jsonPerson->stamp->datetime = $datetimea;
   $jsonPerson->stamp->avtorup = $avtorupa;
   $jsonPerson->stamp->datetimeup = $datetimeupa;
