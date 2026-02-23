@@ -419,10 +419,14 @@ if(isset($_POST['saveperson'])) {
   $jsonPerson->id = intval($id_person);
   $jsonPerson->gender = $_POST['genders'];
   $jsonPerson->person = $_POST['persona'];
+
   $jsonPerson->birthday->date = $_POST['birth'];
   $jsonPerson->birthday->place = $_POST['placeb'];
+  $jsonPerson->birthday->maps = "";
+
   $jsonPerson->deathday->date = $_POST['death'];
   $jsonPerson->deathday->place = $_POST['placed'];
+  $jsonPerson->deathday->maps = "";
 
 /**/
   if(count($aresiden) > 0) {
