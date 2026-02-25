@@ -231,10 +231,9 @@ if(isset($_POST['saveperson'])) {
   $persons[$inx_person][$fldPLB ] = $_POST['placeb'];
   $persons[$inx_person][$fldPLD ] = $_POST['placed'];
   $persons[$inx_person][$fldPLT ] = $_POST['placet'];
-//  $persons[$inx_person][$fldMAPB] = $_POST['mapsb'];
-//  $persons[$inx_person][$fldMAPD] = $_POST['mapsd'];
-//  $persons[$inx_person][$fldMAPL] = $_POST['mapsl'];
-//  $persons[$inx_person][$fldMAPT] = $_POST['mapst'];
+  $persons[$inx_person][$fldMAPB] = $_POST['mapsb'];
+  $persons[$inx_person][$fldMAPD] = $_POST['mapsd'];
+  $persons[$inx_person][$fldMAPT] = $_POST['mapst'];
   $persons[$inx_person][$fldOCCU] = $_POST['occu'];
   $persons[$inx_person][$fldNATI] = $_POST['nati'];
   $persons[$inx_person][$fldEDUC] = $_POST['educ'];
@@ -379,13 +378,13 @@ if(isset($_POST['saveperson'])) {
        }
      }
      if(!$b){ // add
-       $spouses[] = array($id_person, $sps1[$i],$_POST['wedding'],$_POST['placew'],"");
+       $spouses[] = array($id_person, $sps1[$i],$_POST['wedding'],$_POST['placew'],$_POST['mapsw']);
        $sps0[$i] = count($spouses) - 1;
      } else { // edit
        if($spouse_inx == $sps1[$i]){
          $spouses[$sps0[$i]][$fldWEDDIN] = $_POST['wedding'];
          $spouses[$sps0[$i]][$fldPLACEW] = $_POST['placew'];
-         $spouses[$sps0[$i]][$fldMAPSW] = "";//$_POST['mapsw'];
+         $spouses[$sps0[$i]][$fldMAPSW] = $_POST['mapsw'];
          //??$sps0[$i] = $sps1[$i];
        }
      }
@@ -422,11 +421,11 @@ if(isset($_POST['saveperson'])) {
 
   $jsonPerson->birthday->date = $_POST['birth'];
   $jsonPerson->birthday->place = $_POST['placeb'];
-  $jsonPerson->birthday->maps = "";
+  $jsonPerson->birthday->maps = $_POST['mapsb'];
 
   $jsonPerson->deathday->date = $_POST['death'];
   $jsonPerson->deathday->place = $_POST['placed'];
-  $jsonPerson->deathday->maps = "";
+  $jsonPerson->deathday->maps = $_POST['mapsd'];
 
 /**/
   if(count($aresiden) > 0) {
@@ -444,7 +443,7 @@ if(isset($_POST['saveperson'])) {
 
   $jsonPerson->burialday->date = "";
   $jsonPerson->burialday->place = $_POST['placet'];
-  $jsonPerson->burialday->maps = "";
+  $jsonPerson->burialday->maps = $_POST['mapst'];
   
   if(!empty($fat1)) {
     $idf = -1;
@@ -546,6 +545,9 @@ if(isset($_POST['deleteperson'])) {
   $_SESSION["placeb"] = $_POST["placeb"];
   $_SESSION["placed"] = $_POST["placed"];
   $_SESSION["placet"] = $_POST["placet"];
+  $_SESSION["mapsb"] = $_POST["mapsb"];
+  $_SESSION["mapsd"] = $_POST["mapsd"];
+  $_SESSION["mapst"] = $_POST["mapst"];
   $_SESSION["occua"] = $_POST["occu"];
   $_SESSION["natia"] = $_POST["nati"];
   $_SESSION["educa"] = $_POST["educ"];
@@ -668,6 +670,9 @@ if(isset($_POST['deleteperson'])) {
   if(empty($_SESSION["placeba"])) $placeba = $person[$fldPLB]; else $placeba = $_SESSION["placeba"];
   if(empty($_SESSION["placeda"])) $placeda = $person[$fldPLD]; else $placeda = $_SESSION["placeda"];
   if(empty($_SESSION["placeta"])) $placeta = $person[$fldPLT]; else $placeta = $_SESSION["placeta"];
+  if(empty($_SESSION["mapsba"])) $mapsba = $person[$fldMAPB]; else $mapsba = $_SESSION["mapsba"];
+  if(empty($_SESSION["mapsda"])) $mapsda = $person[$fldMAPD]; else $mapsda = $_SESSION["mapsda"];
+  if(empty($_SESSION["mapsta"])) $mapsta = $person[$fldMAPT]; else $mapsta = $_SESSION["mapsta"];
   if(empty($_SESSION["occua"])) $occua = $person[$fldOCCU]; else $occua = $_SESSION["occua"];
   if(empty($_SESSION["natia"])) $natia = $person[$fldNATI]; else $natia = $_SESSION["natia"];
   if(empty($_SESSION["educa"])) $educa = $person[$fldEDUC]; else $educa = $_SESSION["educa"];
@@ -814,7 +819,8 @@ if(isset($_POST['deleteperson'])) {
  </tr>
 
  <tr><td><?php echo $field_placeb; ?></td>
-  <td><input type="text" name="placeb" size="60" value="<?php echo $placeba; ?>"></td>
+  <td><input type="text" name="placeb" size="60" value="<?php echo $placeba; ?>">
+  <input type="text" name="mapsb" size="20" value="<?php echo $mapsba; ?>" readonly style="background-color: lightgrey; font-size: 10px;"></td>
  </tr>
 
  <tr><td><?php echo $field_death; ?></td>
@@ -822,11 +828,13 @@ if(isset($_POST['deleteperson'])) {
  </tr>
 
  <tr><td><?php echo $field_placed; ?></td>
-  <td><input type="text" name="placed" size="60" value="<?php echo $placeda; ?>"></td>
+  <td><input type="text" name="placed" size="60" value="<?php echo $placeda; ?>">
+  <input type="text" name="mapsd" size="20" value="<?php echo $mapsda; ?>" readonly style="background-color: lightgrey; font-size: 10px;"><td>
  </tr>
 
  <tr><td><?php echo $field_placet; ?></td>
-  <td><input type="text" name="placet" size="60" value="<?php echo $placeta; ?>"></td>
+  <td><input type="text" name="placet" size="60" value="<?php echo $placeta; ?>">
+  <input type="text" name="mapst" size="20" value="<?php echo $mapsta; ?>" readonly style="background-color: lightgrey; font-size: 10px;"></td>
  </tr>
 
 <?
