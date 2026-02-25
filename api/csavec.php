@@ -96,7 +96,7 @@ if($user_data == 0) {
     for ($i = 0; $i < count($rpsb); $i++) {
       $rpss[$i] = array("date" => $rpsb[$i], "place" => $rpsp[$i], "maps" => $rpsm[$i]);//add date palase map
     }
-    if(count($rpss) > 0) $jsonPerson->residences = $rpss;
+    if(count($rpss) > 0) $jsonPerson->residay = $rpss;
   }
 /***/
   $jsonPerson->occupation = $_POST['occu'];
