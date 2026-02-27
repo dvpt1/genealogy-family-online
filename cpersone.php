@@ -186,7 +186,7 @@ function Persone($user)
       $_SESSION['aresiden'] = $aresiden;
     }
   }else{
-    $aresiden = $_SESSION['aresiden'];
+//    $aresiden = $_SESSION['aresiden'];
   }
 
   $datela = "";
