@@ -129,6 +129,6 @@ if($user_data == 0) {
 ////////////////////////////////////////////////////////////
   file_put_contents("../timestamp", $timestamp);
 ////////////////////////////////////////////////////////////
-//  file_put_contents($_POST['persona'], $_POST['username'].":".$_POST['password'].":".$_POST['persona']);
+
 //echo " PERSONA=".$_POST['persona'].$_POST['fathers'].$_POST['mothers'].$_POST['spouses'];
 ?>
