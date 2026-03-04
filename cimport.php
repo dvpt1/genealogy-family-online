@@ -13,6 +13,7 @@ function Gedcom_Import()
   GLOBAL $fldSEX;
   GLOBAL $fldBEG;
   GLOBAL $fldEND;
+  GLOBAL $fldBUR;
   GLOBAL $fldFAT;
   GLOBAL $fldMOT;
   GLOBAL $fldSPS;
@@ -66,6 +67,7 @@ function Gedcom_Import()
   global $listPerson;
   global $listBirth;
   global $listDeath;
+  global $listBurial;
   global $listGender;
   global $listFather;
   global $listMother;
@@ -264,6 +266,7 @@ function Gedcom_Import()
 	    $gender,                
 	    $birthday,
 	    $deathday,
+	    $burialday,
 	    $ft,
 	    $mt,
 	    $st,

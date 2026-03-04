@@ -14,6 +14,7 @@ $field_father="Бацька:";
 $field_mother="маці:";
 $field_birth="Дата нараджэння:";
 $field_death="Дата смерці:";
+$field_burial="Дата пахавання:";
 $field_placeb="месца нараджэння:";
 $field_placed="месца смерці:";
 $field_placet="месца пахавання:";

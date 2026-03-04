@@ -14,6 +14,7 @@ $field_father="Padre:";
 $field_mother="Madre:";
 $field_birth="Fecha de nacimiento:";
 $field_death="Fecha de muerte:";
+$field_burial="Fecha del entierro:";
 $field_placeb="Lugar de nacimiento:";
 $field_placed="Lugar de muerte:";
 $field_placet="Lugar de entierro:";

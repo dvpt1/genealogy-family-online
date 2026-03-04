@@ -14,6 +14,7 @@ $field_father="Tată:";
 $field_mother="Mamă:";
 $field_birth="Data nașterii:";
 $field_death="Data decesului:";
+$field_burial="Data înmormântării:";
 $field_placeb="Locul nașterii:";
 $field_placed="Locul decesului:";
 $field_placet="Locul înmormântării:";

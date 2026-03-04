@@ -75,6 +75,7 @@ function Gedcom_Import($user)
   global $listPerson;
   global $listBirth;
   global $listDeath;
+  global $listBurial;
   global $listGender;
   global $listFather;
   global $listMother;
@@ -238,6 +239,7 @@ echo "=== GEDCOM File==".$getfile."<br>";
                     $listPerson[] = "";
                     $listBirth[] = "";
                     $listDeath[] = "";
+                    $listBurial[] = "";
                     $listGender[] = 0;
                     $listFather[] = "";
                     $listMother[] = "";
@@ -738,7 +740,50 @@ echo "=== GEDCOM File==".$getfile."<br>";
                     }
                     else if ($buri)
                     {
-                        if (strpos($s,"PLAC"))
+                        if (strpos($s,"DATE"))
+                        {
+                            $i = strpos($s,"DATE");
+                            $ss = substr($s, $i + 4);
+                            if (!empty($ss))
+                            {
+                                $ss = str_replace("EST", "", $ss);//удаляю EST
+                                $ss = str_replace("CIR", "", $ss);//удаляю CIR
+                                $ss = str_replace("ABT", "", $ss);//удаляю ABT
+                                if (strpos($ss,"BEF"))
+                                {
+                                    $i = strpos($ss,"BEF");
+                                    $sss = substr($ss, $i + 3);
+                                    $listBurial[$cur] = $code_gedcom_before + " " + DateFromStr($sss);
+                                }
+                                else if (strpos($ss,"AFT"))
+                                {
+                                    $i = strpos($ss,"AFT");
+                                    $sss = substr($ss, $i + 3);
+                                    $listBurial[$cur] = $code_gedcom_after + " " + DateFromStr($sss);
+                                }
+                                else if (strpos($ss,"BET"))
+                                {
+                                    $i = strpos($ss,"BET");
+                                    $sss = substr($ss, $i + 3);
+                                    if (strpos($sss,"AND"))
+                                    {
+                                        $i = strpos($sss,"AND");
+                                        $ss1 = substr($sss, 1, $i);
+                                        $ss2 = substr($ss, $i + 3);
+                                        $listBurial[$cur] = $code_gedcom_between + " " + DateFromStr($ss1) + " " + $code_gedcom_and + " " + DateFromStr($ss2);
+                                    }
+                                    else
+                                    {
+                                        $listBurial[$cur] = $code_gedcom_between + " " + DateFromStr($sss);
+                                    }
+                                }
+                                else
+                                {
+                                    $listBurial[$cur] = $ss;
+                                }
+                            }
+                        }
+                        else if (strpos($s,"PLAC"))
                         {
                             $i = strpos($s,"PLAC");
                             if (strlen($line) > $i + 5)
@@ -1170,6 +1215,7 @@ echo "=== GEDCOM File==".$getfile."<br>";
 		$gender,
 		$listBirth[$i],
 		$listDeath[$i],
+		$listBurial[$i],
 		$listFather[$i],
 		$listMother[$i],
 		$listSpouse[$i],
@@ -1212,9 +1258,9 @@ echo "=== GEDCOM File==".$getfile."<br>";
 	  }
 	}
 
-	$jsonPerson->burialday->date = "";
+	$jsonPerson->burialday->date = $sDatet;
 	$jsonPerson->burialday->place = $sPlacet;
-	$jsonPerson->burialday->maps = "";
+	$jsonPerson->burialday->maps = $sMapst;
 
 	if($listFather[$i] != ""){
 	    $idf = -1;
