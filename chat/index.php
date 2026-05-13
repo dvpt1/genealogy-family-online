@@ -90,10 +90,13 @@ function loadChat(){
     });
 }
 function clearMessages() {
+    let userResponse = confirm("Are you sure?");
+    if (userResponse) {
 	var xhr = new XMLHttpRequest();
 	xhr.open('POST', 'chat/clr.php', true);
 	xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	xhr.send();
+    }
 }
 
 setInterval (loadChat, 2500);
