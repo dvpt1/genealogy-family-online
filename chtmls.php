@@ -22,7 +22,7 @@ if (!empty($_GET['lang'])) {
   $lang = $_COOKIE['myfamilytree_lang'];
  }else{   //echo 'Куки НЕ установлены!<br>';
   $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
-  $acceptLang = ['en', 'fr', 'it', 'de', 'es', 'pt', 'ro', 'ru', 'ua', 'be']; 
+  $acceptLang = ['en', 'fr', 'it', 'de', 'es', 'pt', 'ro', 'ru', 'ua', 'be', 'cn', 'zh']; 
   $lang = in_array($lang, $acceptLang) ? $lang : 'en';
   setcookie('myfamilytree_lang', $lang);
   $_COOKIE['myfamilytree_lang'] = $lang;
@@ -53,7 +53,9 @@ case 'ro': include_once("languages/ro.php"); break;
 case 'pt': include_once("languages/pt.php"); break;
 case 'ua': include_once("languages/ua.php"); break;
 case 'be': include_once("languages/be.php"); break;
-default:   include_once("languages/en.php"); break;
+case 'cn': include_once("languages/be.php"); break;
+case 'zh': include_once("languages/cn.php"); break;
+default:   include_once("languages/zh.php"); break;
 }
 $langi = array_search($lang, $langs);
 
@@ -76,7 +78,8 @@ function _begin_html($user)
  global $mn_menu_contact;
  global $mn_menu_about; 
  global $mn_menu_gedcom; 
- global $mn_menu_help; 
+ global $mn_menu_help;
+ global $mn_menu_chat;
  global $ic_menu_file;
  global $ic_menu_load;
  global $ic_menu_delete;
@@ -96,7 +99,7 @@ function _begin_html($user)
 // $key_word = str_replace(".","",$descript);
 // echo '<br><br><br><br><br>'.$title.'<br>'.$descript.'<br>'.$keyword;
 // echo "<br><br><br><br>LANG=".$langi."<br>";
- ?>
+?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html>
@@ -212,6 +215,8 @@ langname[6] = 'Русский    ';
 langname[7] = 'Português  ';
 langname[8] = 'Український';
 langname[9] = 'Беларускі  ';
+langname[10]= '中国人     ';
+langname[11]= '臺灣話     ';
 
 var langhref = Array()
 langhref[0] = '?lang=en';
@@ -224,6 +229,8 @@ langhref[6] = '?lang=ru';
 langhref[7] = '?lang=pt';
 langhref[8] = '?lang=ua';
 langhref[9] = '?lang=be';
+langhref[10]= '?lang=cn';
+langhref[11]= '?lang=zh';
 
 function buildLang( langsele ) { 
  document.write('<form name=lang>');
@@ -339,6 +346,7 @@ checkCookie();
  echo '<li><a href=?do=cgenr'.$id_person.'&title='.$mn_menu_generation.'><img src="icons/mn_menu_genr.png" height=36 width=36>'.$mn_menu_generation.'</a></li>';
  echo '<li><a href=?do=ccaln'.$id_person.'&title='.$mn_menu_calendar.'><img src="icons/mn_menu_calendar.png" height=36 width=36>'.$mn_menu_calendar.'</a></li>';
  echo '<li><a href=?do=cglob'.$id_person.'&title='.$mn_menu_glob.'><img src="icons/mn_menu_glob.png" height=36 width=36>'.$mn_menu_glob.'</a></li>';
+ echo '<li><a href=?do=cchat'.$id_person.'&title='.$mn_menu_chat.'><img src="icons/chat.png" height=24 width=24></a></li>';
  echo '</ul>';
  echo '</td></tr></table>';
  echo '</td><td>';
@@ -468,6 +476,8 @@ if (!empty($_GET['page'])){
 		include_once("ccalendar.php");
 	} else if ($do == 'cglob') {
 		include_once("cglob.php");
+	} else if ($do == 'cchat') {
+		include_once("chat/index.php");
 	} else if ($do == 'cgedcomv') {
 		include_once("cgedcomv.php");
 	} else if ($do == 'csearch') {
