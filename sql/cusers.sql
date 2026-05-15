@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `cusers` (
-  `id` int NOT NULL,
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
   `name` varchar(255) NOT NULL DEFAULT '',
   `pass` varchar(255) NOT NULL DEFAULT '',
   `fio` varchar(255) NOT NULL DEFAULT '',
@@ -47,7 +47,7 @@ CREATE TABLE `cusers` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `cusers` (
-  `id` int NOT NULL,
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
   `name` varchar(255) NOT NULL DEFAULT '',
   `pass` varchar(255) NOT NULL DEFAULT '',
   `fio` varchar(255) NOT NULL DEFAULT '',
