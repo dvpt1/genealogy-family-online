@@ -757,7 +757,7 @@ if(isset($_POST['deleteperson'])) {
       $type = pathinfo($file, PATHINFO_EXTENSION);
       $data = file_get_contents($file);
       $base64 = base64_encode($data); // Replace with your Base64 image
-      $src_icon = resizeBase64Image($base64, 64, 64);
+      $src_icon = resizeBase64Image($base64, 128, 128);
       $src_image = "data:image/".$type.";base64,".$src_icon;
   
       $_SESSION["icona"] = $src_icon;

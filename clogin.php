@@ -33,6 +33,9 @@ if(isset($_POST['login'])) {
   } else {
     $msg = $login8.$_POST['user'];
 
+    // Uncomment if you don't need two-factor authentication.
+    //_set_cookie($user_data,fm($_POST['rem']),session_id(),fm($_POST['user']));
+
 	$Q = mysql_query("SELECT id,status FROM cusers WHERE name='".fm($_POST['user'])."'");
 	if($Q){
 		$vars = mysql_fetch_array($Q);
@@ -100,6 +103,8 @@ if(isset($_POST['login'])) {
   <input type="checkbox" onclick="showPassword()">Show
   </td>
  </tr>
+
+<!-- Comment if you don't need two-factor authentication. -->
  <tr><td><?php echo $cod3; ?></td>
   <td><input type="text" name="code" size="10" value="<?php echo $prm3; ?>"></td>
  </tr>
@@ -107,6 +112,8 @@ if(isset($_POST['login'])) {
   <?php echo $foglgn1; ?><input type="checkbox" name="rem" value="1" checked>
   </td>
  </tr>   
+<!-- Comment if you don't need two-factor authentication. -->
+
  <tr><td colspan="2" align="center">
   <input type="submit" name="login" value="<?php echo $enter1; ?>">
   </td>
