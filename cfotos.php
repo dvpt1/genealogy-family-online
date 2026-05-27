@@ -1,31 +1,39 @@
 <?php
 
 include_once("ccfg.php");
-include_once("csub.php");
 include_once("chtmls.php");
+include_once("cvars.php");
+include_once("cdatabases.php");
 
 $user = _check_auth($_COOKIE);
-$users = _check_datauserid($user['id']);
-//echo $users['id'].":".$users['acces'];
 
-GLOBAL $field_foto;
-GLOBAL $ic_menu_delete;
-GLOBAL $ic_menu_load;
+Fotos($user);
 
-  $inx_person = -1;
-  $id_person = 0;
-  $nm_person = "";
-  if (isset($_GET['id'])){
-    $id_person = $_GET['id'];
-    $nm_person = $_GET['name'];
-    $number = str_pad($id_person, 6, '0', STR_PAD_LEFT); // "000001"
+//рисует иконку, рамку, имя и дату
+function Fotos($user)
+{
+  GLOBAL $field_foto;
+  GLOBAL $ic_menu_delete;
+  GLOBAL $ic_menu_load;
 
-    $dir = __DIR__."/fotos/$number/"; // Путь к директории, в которой лежат изображения
-  }else{
-    $dir = __DIR__."/fotos/"; // Путь к директории, в которой лежат изображения
-  }
+  $users = _check_datauserid($user['id']);
 
+  $avtora = $_COOKIE['card_avtor_email'];
+
+  $userId = $user['id'];
+  $userName = $user['name'];
+  $access = $users['acces'];
+
+//echo $userId.":".$userName.":".$avtora.":".$access."<br>";
+
+  $id_person = $_GET['id'];
+  $nm_person = $_GET['name'];
   $number = str_pad($id_person, 6, '0', STR_PAD_LEFT); // "000001"
+
+//echo $id_person.":".$nm_person.":".$number."<br>";
+
+
+  $dir = __DIR__."/fotos/$number/"; // Путь к директории, в которой лежат изображения
   $path = "fotos/".$number;
   if (!file_exists($path)) {
     mkdir($path, 0777, true);
@@ -68,7 +76,7 @@ GLOBAL $ic_menu_load;
     echo "<td>";
     if(!empty($id_person)) if(substr($path, -1) != '/') $path .= "/";
     echo "<a href='".$path.$files[$i]."'><img src='".$path.$files[$i]."' width=256 height=256 alt=".$files[$i]." /></a>";
-    if($users['id'] > 0 && $users['acces'] < 2){
+    if($userName == $avtora || $users['acces'] == 0){
 ?>
     <form name="form2" action="" enctype="multipart/form-data" method="post">
     <input type="submit" name="delimage" title="<?php echo $ic_menu_delete ?>" value="<?php echo $files[$i]; ?>" /><?php echo $ic_menu_delete ?><br>
@@ -79,6 +87,7 @@ GLOBAL $ic_menu_load;
     if (($i + 1) % 4 == 0) echo "</tr><tr>";
   } 
   echo "</tr></table";
+}
 
   /* Функция для удаления лишних файлов: сюда, помимо удаления текущей и родительской директории, так же можно добавить файлы, не являющиеся картинкой (проверяя расширение) */
   function excess($files) {

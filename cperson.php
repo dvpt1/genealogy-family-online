@@ -254,12 +254,44 @@ function Person()
       $htm .= "<p><i>".$field_note."</i> <b>".$person[$fldNOTE]."</b></p>";
   }
 
+/* View fotos */
+  $number = str_pad($id_person, 6, '0', STR_PAD_LEFT); // "000001"
+  $dir = __DIR__."/fotos/$number/"; // Путь к директории, в которой лежат изображения
+  $path = "fotos/".$number;
+  //$htm .="dir=$dir <br>";
 
-  $htm .= "</div></div>";
+  if (file_exists($path)) {
+    //$htm .="Директория уже существует.";
+    $files = scandir($dir); // Получаем список файлов из этой директории
+    $files = excess($files); // Удаляем лишние файлы
+
+    //$htm .= "<table width=100%><tr>";
+    for ($i = 0; $i < count($files); $i++) { 
+      $htm .= "<td>";
+      if(substr($path, -1) != '/') $path .= "/";
+      $htm .= "<a href='".$path.$files[$i]."'><img src='".$path.$files[$i]."' width=256 height=256 alt=".$files[$i]." /></a>";
+      $htm .= "</td>";
+      if (($i + 1) % 3 == 0) break;
+    } 
+    //$htm .= "</tr></table";
+  }
+
+  $htm .="</div></div>";
 
   echo $htm;
 
   return $htm;
 }
+
+  /* Функция для удаления лишних файлов: сюда, помимо удаления текущей и родительской директории, так же можно добавить файлы, не являющиеся картинкой (проверяя расширение) */
+  function excess($files) {
+    $result = array();
+    for ($i = 0; $i < count($files); $i++) {
+      $ext = strtolower(pathinfo($files[$i], PATHINFO_EXTENSION));
+      if ($ext == "jpg" || $ext == "jpeg" || $ext == "png" || $ext == "gif") $result[] = $files[$i];
+      //if ($files[$i] != "." && $files[$i] != "..") $result[] = $files[$i];
+    }
+    return $result;
+  }
 
 ?>

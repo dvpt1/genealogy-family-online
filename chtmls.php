@@ -413,44 +413,42 @@ if (!empty($_GET['page'])){
 
 // test reload
 	$tmstmp = file_get_contents("timestamp");
+//	echo "<br><br><br>===TimeStamp=0=".$tmstmp."<br>";
 	if(isset($_COOKIE["timestamp"])) {
 		$timestamp = $_COOKIE['timestamp'];
-//echo "===TimeStamp=1=".$timestamp."<br>";
+//		echo "===TimeStamp=1=".$timestamp."<br>";
 		if($timestamp != $tmstmp){
 			$timestamp = $tmstmp;
-//echo "===TimeStamp==".$timestamp."<br>";
-
-//   setcookie('timestamp', $timestamp);
+//			echo "===TimeStamp=2=".$timestamp."<br>";
 ?>
-<script language="javascript">
-   var name = 'timestamp';
-   var value = '<? echo $tmstmp; ?>';
-   var days = 7;
-   var date = new Date();
-   date.setTime(date.getTime() + (days*24*60*60*1000));
-   expires = "; expires=" + date.toUTCString();
-   document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-   //alert(document.cookie);
-</script>
+			<script language="javascript">
+			   var name = 'timestamp';
+			   var value = '<? echo $tmstmp; ?>';
+			   var days = 7;
+			   var date = new Date();
+			   date.setTime(date.getTime() + (days*24*60*60*1000));
+			   expires = "; expires=" + date.toUTCString();
+			   document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+			   //alert(document.cookie);
+			</script>
 <?
 		}
 		include_once("cimport.php");
 	} else {
-//   setcookie('timestamp', $tmstmp);
 ?>
-<script language="javascript">
-   var name = 'timestamp';
-   var value = '<? echo $tmstmp; ?>';
-   var days = 7;
-   var date = new Date();
-   date.setTime(date.getTime() + (days*24*60*60*1000));
-   expires = "; expires=" + date.toUTCString();
-   document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-   //alert(document.cookie);
-</script>
+		<script language="javascript">
+		   var name = 'timestamp';
+		   var value = '<? echo $tmstmp; ?>';
+		   var days = 7;
+		   var date = new Date();
+		   date.setTime(date.getTime() + (days*24*60*60*1000));
+		   expires = "; expires=" + date.toUTCString();
+		   document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+		   //alert(document.cookie);
+		</script>
 <?
 		$timestamp = $_COOKIE['timestamp'];
-//echo "===TimeStamp=2=".$timestamp."<br>";
+//		echo "===TimeStamp=3=".$timestamp."<br>";
 		if(count((array)$persons) == 0){
 			include_once("cimport.php");
 		}
@@ -532,7 +530,7 @@ if (!empty($_GET['page'])){
     window.location = window.location.href;
   }
 
-  setInterval('autoRefresh()', 15000);
+  setInterval('autoRefresh()', 10000);
 </script>
 <?
 	}

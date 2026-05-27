@@ -731,8 +731,14 @@ if(isset($_POST['deleteperson'])) {
   }
   echo $htm;
 
+  setcookie('card_avtor_email', $avtora);
+  $_COOKIE['card_avtor_email'] = $avtora;
 
  ?>
+ <script type="text/javascript">
+  document.cookie = "card_avtor_email=" + encodeURIComponent("<?php echo $avtora ?>") + "; path=/";
+ </script>
+
  <table width="100%">
  <tr><td align=center>
  <b><i><?php echo $avtora; ?></i></b>
