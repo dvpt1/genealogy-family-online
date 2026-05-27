@@ -68,6 +68,7 @@ $mn_menu_useful='Useful';
 $mn_menu_gedcom='GEDCOM'; 
 $mn_menu_help='Help'; 
 $mn_menu_mission='Mission';
+$mn_menu_chat='Chat';
 
 $ic_menu_add='Create';
 $ic_menu_file='File';
@@ -197,6 +198,9 @@ $login5='There is no user with this email and password in the database!';
 $login6='Your account is not activated. A re-activation link has been sent to your email.';
 $login7='More than 10 minutes have passed. Update the code from your email';
 $login8='Enter the code sent to email: ';
+$login9="Your account has been activated";
+$login10="Your account has already been activated. There is no need to activate it again.";
+$login11="Invalid activation code.";
 
 // regs
 $regs1='You have registered. You can come in!';

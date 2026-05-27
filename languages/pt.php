@@ -68,6 +68,7 @@ $mn_menu_useful='Útil';
 $mn_menu_gedcom='GEDCOM'; 
 $mn_menu_help='Ajuda';
 $mn_menu_mission='Missão';
+$mn_menu_chat='Chat';
 
 $ic_menu_add='Create';
 $ic_menu_file='Arquivo';
@@ -197,6 +198,9 @@ $login5='Não existe nenhum usuário com este email e senha no banco de dados!';
 $login6='A sua conta não está ativada. Foi enviado um link de reativação para o seu e-mail.';
 $login7='Decorreram mais de 10 minutos. Atualizar código do e-mail';
 $login8='Introduza o código enviado para o e-mail: ';
+$login9="A sua conta foi ativada";
+$login10="A sua conta já foi ativada. Não é necessário voltar a ativá-la.";
+$login11="Código de ativação inválido.";
 
 //registros
 $regs1='Você se registrou. Você pode entrar!';

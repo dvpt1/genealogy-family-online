@@ -8,6 +8,10 @@ include_once("csub.php");
 include_once("chtmls.php");
 //??_already_logged($_COOKIE);
 
+global $login9; 
+global $login10;
+global $login11;
+
 $msg='';
 if(!empty($_GET['code']) && isset($_GET['code'])){
 
@@ -17,12 +21,12 @@ if(!empty($_GET['code']) && isset($_GET['code'])){
 		$count = mysql_query("SELECT id FROM cusers WHERE activation='$code' and status='0'");
 		if(mysql_num_rows($count) == 1){
 			mysql_query("UPDATE cusers SET status='1' WHERE activation='$code'");
-			$msg="Ваш аккаунт активирован"; 
+			$msg=$login9; 
 		}else{
-			$msg ="Ваш аккаунт уже активирован, нет необходимости активировать его снова.";
+			$msg=$login10;
 		}
 	}else{
-		$msg ="Неверный код активации. $code";
+		$msg ="$login11 $code";
 	}
 
 }

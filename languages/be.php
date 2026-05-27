@@ -52,22 +52,23 @@ $DateFormat="dd.MM.yyyy";
 $DateSeparate=".";
 
 $mn_menu_main='Галоўная';
-$mn_menu_forest='дрэвы';
-$mn_menu_tree='дрэва';
+$mn_menu_forest='Дрэвы';
+$mn_menu_tree='Дрэва';
 $mn_menu_branch='Галіна';
 $mn_menu_rings='Круг';
-$mn_menu_generation='пакаленне';
-$mn_menu_calendar='каляндар';
+$mn_menu_generation='Пакаленне';
+$mn_menu_calendar='Каляндар';
 $mn_menu_glob='Карта';
 $mn_menu_donate='Данат';
-$mn_menu_apps='дадаткі';
-$mn_menu_contact='кантакт';
-$mn_menu_about='аб праграме'; 
+$mn_menu_apps='Дадаткі';
+$mn_menu_contact='Кантакт';
+$mn_menu_about='Аб праграме'; 
 $mn_menu_privacy='Канфедэрацыя'; 
-$mn_menu_useful='карыснае'; 
+$mn_menu_useful='Карыснае'; 
 $mn_menu_gedcom='GEDCOM'; 
-$mn_menu_help='дапамога'; 
-$mn_menu_mission='місія'; 
+$mn_menu_help='Дапамога'; 
+$mn_menu_mission='Місія'; 
+$mn_menu_chat='Чат';
 
 $ic_menu_add='стварыць';
 $ic_menu_file='Файл';
@@ -197,6 +198,9 @@ $login5='карыстальніка з такім E-Mail і паролем Ня�
 $login6='ваш рахунак не актываваны. Паўторная спасылка для актывацыі адпраўлена на ваш емайл.'; 
 $login7='прайшло больш за 10 хвілін. Абновіце код з пошты';
 $login8='увядзіце код адпраўлены на емайл:';
+$login9="Ваш акаўнт актываваны";
+$login10="Ваш рахунак ужо актываваны, няма неабходнасці актываваць яго зноў.";
+$login11="Няслушны код актывацыі. ";
 
 // regs
 $regs1='вы зарэгістраваліся. Можаце ўвайсці!';

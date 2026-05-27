@@ -68,6 +68,7 @@ $mn_menu_useful='Nützlich';
 $mn_menu_gedcom='GEDCOM'; 
 $mn_menu_help='Hilfe';
 $mn_menu_mission='Mission';
+$mn_menu_chat='Chat';
 
 $ic_menu_add='Create';
 $ic_menu_file='Datei';
@@ -197,6 +198,9 @@ $login5='Es gibt keinen Benutzer mit dieser E-Mail-Adresse und diesem Passwort i
 $login6='Ihr Konto ist nicht aktiviert. Ein Link zur erneuten Aktivierung wurde an Ihre E-Mail-Adresse gesendet.';
 $login7='Es sind mehr als 10 Minuten vergangen. Aktualisieren Sie den Code aus Ihrer E-Mail.';
 $login8='Geben Sie den an die E-Mail-Adresse gesendeten Code ein: ';
+$login9="Ihr Konto wurde aktiviert.";
+$login10="Ihr Konto ist bereits aktiviert. Eine erneute Aktivierung ist nicht erforderlich.";
+$login11="Ungültiger Aktivierungscode.";
 
 // regs
 $regs1='Sie haben sich registriert. Du kannst rein kommen!';

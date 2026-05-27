@@ -68,6 +68,7 @@ $mn_menu_useful='Utile';
 $mn_menu_gedcom='GEDCOM'; 
 $mn_menu_help='Aide';
 $mn_menu_mission='Misión';
+$mn_menu_chat='Chat';
 
 $ic_menu_add='Create';
 $ic_menu_file='Fichier';
@@ -197,6 +198,9 @@ $login5='Il n`y a aucun utilisateur avec cet email et ce mot de passe dans la ba
 $login6='Votre compte n`est pas activé. Un lien de réactivation a été envoyé à votre adresse e-mail.';
 $login7='Plus de 10 minutes se sont écoulées. Mettre à jour le code à partir du courrier.';
 $login8='Entrez le code envoyé à l`e-mail : ';
+$login9="Votre compte a été activé";
+$login10="Votre compte est déjà activé. Il est inutile de le réactiver.";
+$login11="Code d'activation invalide.";
 
 // règlements
 $regs1='Vous êtes inscrit. Vous pouvez entrer!';

@@ -52,22 +52,23 @@ $DateFormat="dd.MM.yyyy";
 $DateSeparate=".";
 
 $mn_menu_main='Головна';
-$mn_menu_forest='дерева';
+$mn_menu_forest='Дерева';
 $mn_menu_tree= 'Дерево';
-$mn_menu_branch= 'гілка';
-$mn_menu_rings='коло';
-$mn_menu_generation='покоління';
-$mn_menu_calendar='календар';
+$mn_menu_branch= 'Гілка';
+$mn_menu_rings='Коло';
+$mn_menu_generation='Покоління';
+$mn_menu_calendar='Календар';
 $mn_menu_glob='Карта';
 $mn_menu_donate= 'Донат';
 $mn_menu_apps= 'Додатки';
 $mn_menu_contact= 'Контакт';
-$mn_menu_about='про програму'; 
-$mn_menu_privacy= 'конфеденційність'; 
-$mn_menu_useful= 'корисне'; 
+$mn_menu_about='Про програму'; 
+$mn_menu_privacy= 'Конфеденційність'; 
+$mn_menu_useful= 'Корисне'; 
 $mn_menu_gedcom='GEDCOM'; 
-$mn_menu_help= 'допомога'; 
-$mn_menu_mission= 'місія'; 
+$mn_menu_help= 'Допомога'; 
+$mn_menu_mission= 'Місія'; 
+$mn_menu_chat='Чат';
 
 $ic_menu_add= 'створити';
 $ic_menu_file='Файл';
@@ -197,6 +198,9 @@ $login5='Користувача з таким E-Mail і паролем нема�
 $login6='ваш обліковий запис не активовано. Повторне посилання для активації відправлена на Ваш емайл.'; 
 $login7='пройшло більше 10 хвилин. Оновіть код з Пошти';
 $login8='введіть код відправлений на емайл:';
+$login9="Ваш обліковий запис активований";
+$login10="Ваш обліковий запис вже активований, немає необхідності активувати його знову.";
+$login11="Неправильний код активації.";
 
 // regs
 $regs1='ви зареєструвалися. Можете увійти!';
