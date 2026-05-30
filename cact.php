@@ -6,6 +6,7 @@ echo '<meta http-equiv="content-type" content="text/html; charset=UTF-8">';
 include_once("ccfg.php");
 include_once("csub.php");
 include_once("chtmls.php");
+include_once("cvars.php");
 //??_already_logged($_COOKIE);
 
 global $login9; 
