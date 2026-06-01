@@ -172,6 +172,9 @@ function Persone($user)
 
   global $aresiden;
   $aresiden = array();
+  if($_GET['edit'] == 0){
+    unset($_SESSION["aresiden"]);
+  }
   if(isset($_GET['go'])){
     unset($_SESSION["aresiden"]);
 
@@ -186,8 +189,11 @@ function Persone($user)
   }else{
     $aresiden = $_SESSION['aresiden'];
   }
-//echo "<pre>";print_r($residences); echo "<br>";echo "</pre>";
-//echo "<pre>";print_r($aresiden); echo "<br>";echo "</pre>";
+
+//echo "<pre>";print_r($residences); echo "1<br>";echo "</pre>";
+//echo "<pre>";print_r($aresiden); echo "2<br>";echo "</pre>";
+//exit;
+
 
   $datela = "";
   $placela = "";
@@ -198,7 +204,6 @@ function Persone($user)
   $person_inx = $_SESSION["personinx"];
   if($inx_person != $person_inx){
     $_SESSION['icona'] = "";
-    //unset($_SESSION['icona']);
     $_SESSION['fathera'] = "";
     $_SESSION['mothera'] = "";
     $_SESSION['spousea'] = "";
