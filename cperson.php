@@ -167,7 +167,8 @@ function Person()
       for ($i = 0; $i < count($fathers); $i++) {
         if ($fathers[$i][0] == $inx_person) {
           $ii = $fathers[$i][1];
-          $htm .= "<p><i>".$field_father."</i> <b>"."<a href=?lang=".$lang."&do=person&inx=".$ii.">".$persons[$ii][$fldPER]."</a>"."</b></p>";
+         $_id = $persons[$ii][$fldID];
+          $htm .= "<p><i>".$field_father."</i> <b>"."<a href=?lang=".$lang."&do=cperson&id=".$_id.">".$persons[$ii][$fldPER]."</a>"."</b></p>";
         }
       }
   }
@@ -177,7 +178,8 @@ function Person()
       for ($i = 0; $i < count($mothers); $i++) {
         if ($mothers[$i][0] == $inx_person) {
           $ii = $mothers[$i][1];
-          $htm .= "<p><i>".$field_mother."</i> <b>"."<a href=?lang=".$lang."&do=person&inx=".$ii.">".$persons[$ii][$fldPER]."</a>"."</b></p>";
+         $_id = $persons[$ii][$fldID];
+          $htm .= "<p><i>".$field_mother."</i> <b>"."<a href=?lang=".$lang."&do=cperson&id=".$_id.">".$persons[$ii][$fldPER]."</a>"."</b></p>";
         }
       }
   }
@@ -186,17 +188,19 @@ function Person()
   for ($i = 0; $i < count($spouses); $i++) {
     if ($spouses[$i][$fldSPOUS1] == $inx_person) {
        $ii = $spouses[$i][$fldSPOUS2];
-       $htm .= "<p><i>".$field_spouse."</i> <b>"."<a href=?lang=".$lang."&do=person&inx=".$ii.">".$persons[$ii][$fldPER]."</a>"."</b></p>";
-       $htm .= "<p><i>".$field_wedding."</i> <b>"."<a href=?lang=".$lang."&do=person&inx=".$ii.">".$spouses[$i][$fldWEDDIN]."</a>"."</b></p>";
-       $htm .= "<p><i>".$field_placew."</i> <b>"."<a href=?lang=".$lang."&do=person&inx=".$ii.">".$spouses[$i][$fldPLACEW]."</a>"."</b></p>";
+       $_id = $persons[$ii][$fldID];
+       $htm .= "<p><i>".$field_spouse."</i> <b>"."<a href=?lang=".$lang."&do=cperson&id=".$_id.">".$persons[$ii][$fldPER]."</a>"."</b></p>";
+       $htm .= "<p><i>".$field_wedding."</i> <b>"."<a href=?lang=".$lang."&do=cperson&id=".$_id.">".$spouses[$i][$fldWEDDIN]."</a>"."</b></p>";
+       $htm .= "<p><i>".$field_placew."</i> <b>"."<a href=?lang=".$lang."&do=cperson&id=".$_id.">".$spouses[$i][$fldPLACEW]."</a>"."</b></p>";
     }
   }
   for ($i = 0; $i < count($spouses); $i++) {
     if ($spouses[$i][$fldSPOUS2] == $inx_person) {
        $ii = $spouses[$i][$fldSPOUS1];
-       $htm .= "<p><i>".$field_spouse."</i> <b>"."<a href=?lang=".$lang."&do=person&inx=".$ii.">".$persons[$ii][$fldPER]."</a>"."</b></p>";
-       $htm .= "<p><i>".$field_wedding."</i> <b>"."<a href=?lang=".$lang."&do=person&inx=".$ii.">".$spouses[$i][$fldWEDDIN]."</a>"."</b></p>";
-       $htm .= "<p><i>".$field_placew."</i> <b>"."<a href=?lang=".$lang."&do=person&inx=".$ii.">".$spouses[$i][$fldPLACEW]."</a>"."</b></p>";
+       $_id = $persons[$ii][$fldID];
+       $htm .= "<p><i>".$field_spouse."</i> <b>"."<a href=?lang=".$lang."&do=cperson&id=".$_id.">".$persons[$ii][$fldPER]."</a>"."</b></p>";
+       $htm .= "<p><i>".$field_wedding."</i> <b>"."<a href=?lang=".$lang."&do=cperson&id=".$_id.">".$spouses[$i][$fldWEDDIN]."</a>"."</b></p>";
+       $htm .= "<p><i>".$field_placew."</i> <b>"."<a href=?lang=".$lang."&do=cperson&id=".$_id.">".$spouses[$i][$fldPLACEW]."</a>"."</b></p>";
     }
   }
 
@@ -206,7 +210,8 @@ function Person()
     for ($i = 0; $i < count($fathers); $i++) {
       if ($fathers[$i][1] == $inx_person) {
          $ii = $fathers[$i][0];
-         $htm .= "<p><i>".$field_child."</i> <b>"."<a href=?lang=".$lang."&do=person&inx=".$ii.">".$persons[$ii][$fldPER]."</a>"."</b></p>";
+         $_id = $persons[$ii][$fldID];
+         $htm .= "<p><i>".$field_child."</i> <b>"."<a href=?lang=".$lang."&do=cperson&id=".$_id.">".$persons[$ii][$fldPER]."</a>"."</b></p>";
       }
     }
   }else if($person[$fldSEX] == "2")
@@ -214,20 +219,23 @@ function Person()
     for ($i = 0; $i < count($mothers); $i++) {
       if ($mothers[$i][1] == $inx_person) {
          $ii = $mothers[$i][0];
-         $htm .= "<p><i>".$field_child."</i> <b>"."<a href=?lang=".$lang."&do=person&inx=".$ii.">".$persons[$ii][$fldPER]."</a>"."</b></p>";
+         $_id = $persons[$ii][$fldID];
+         $htm .= "<p><i>".$field_child."</i> <b>"."<a href=?lang=".$lang."&do=cperson&id=".$_id.">".$persons[$ii][$fldPER]."</a>"."</b></p>";
       }
     }
   }else{
     for ($i = 0; $i < count($fathers); $i++) {
       if ($fathers[$i][1] == $inx_person) {
          $ii = $fathers[$i][0];
-         $htm .= "<p><i>".$field_child."</i> <b>"."<a href=?lang=".$lang."&do=person&inx=".$ii.">".$persons[$ii][$fldPER]."</a>"."</b></p>";
+         $_id = $persons[$ii][$fldID];
+         $htm .= "<p><i>".$field_child."</i> <b>"."<a href=?lang=".$lang."&do=cperson&id=".$_id.">".$persons[$ii][$fldPER]."</a>"."</b></p>";
       }
     }
     for ($i = 0; $i < count($mothers); $i++) {
       if ($mothers[$i][1] == $inx_person) {
          $ii = $mothers[$i][0];
-         $htm .= "<p><i>".$field_child."</i> <b>"."<a href=?lang=".$lang."&do=person&inx=".$ii.">".$persons[$ii][$fldPER]."</a>"."</b></p>";
+         $_id = $persons[$ii][$fldID];
+         $htm .= "<p><i>".$field_child."</i> <b>"."<a href=?lang=".$lang."&do=cperson&id=".$_id.">".$persons[$ii][$fldPER]."</a>"."</b></p>";
       }
     }
   }
@@ -264,16 +272,37 @@ function Person()
     //$htm .="Директория уже существует.";
     $files = scandir($dir); // Получаем список файлов из этой директории
     $files = excess($files); // Удаляем лишние файлы
+    if(count($files) > 0){
+      if(isset($_GET['pos'])){
+        $pos = $_GET['pos'];
+      }else{
+        $pos = 0;
+      }
+      if(isset($_GET['align'])){
+        if($_GET['align'] == "left"){
+          if(($pos - 1) > -1) $pos = $pos - 1;
+        }
+        if($_GET['align'] == "right"){
+          if(($pos + 3) < count($files)) $pos = $pos + 1;
+        }
+      }
+      $cnt = $pos + 3;
 
-    //$htm .= "<table width=100%><tr>";
-    for ($i = 0; $i < count($files); $i++) { 
+      //$htm .= "<table width=100%><tr>";
       $htm .= "<td>";
-      if(substr($path, -1) != '/') $path .= "/";
-      $htm .= "<a href='".$path.$files[$i]."'><img src='".$path.$files[$i]."' width=256 height=256 alt=".$files[$i]." /></a>";
+      $htm .= "<a href='?do=cperson&id=$id_person&pos=$pos&align=left'><img src='icons/left.png' width=56 height=256 /></a>";
       $htm .= "</td>";
-      if (($i + 1) % 3 == 0) break;
-    } 
-    //$htm .= "</tr></table";
+      for ($i = $pos; $i < $cnt; $i++) { 
+        $htm .= "<td>";
+        if(substr($path, -1) != '/') $path .= "/";
+        $htm .= "<a href='".$path.$files[$i]."'><img src='".$path.$files[$i]."' width=256 height=256 alt=".$files[$i]." /></a>";
+        $htm .= "</td>";
+      } 
+      $htm .= "<td>";
+      $htm .= "<a href='?do=cperson&id=$id_person&pos=$pos&align=right'><img src='icons/right.png' width=56 height=256 /></a>";
+      $htm .= "</td>";
+      //$htm .= "</tr></table";
+    }
   }
 
   $htm .="</div></div>";
