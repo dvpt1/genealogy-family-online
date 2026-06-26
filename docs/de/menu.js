@@ -1,6 +1,7 @@
 function MenuLeft() {
 document.write("<div id='menu'>")
 document.write("<h2>Plattform</h2>")
+document.write("<div><a href='about.html'>Über mich</a></div>")
 document.write("<div><a href='index.html#START1'>Über die Plattform</a></div>")
 document.write("<div><a href='mission.html#START1'>Mission</a></div>")
 document.write("<div><a href='descript.html#START2'>Plattformbeschreibung</a></div>")
