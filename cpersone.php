@@ -50,6 +50,7 @@ function Persone($user)
 
   global $fldBEG;
   global $fldEND;
+  global $fldBUR;
   global $fldPER;
   global $fldFAT;
   global $fldMOT;
@@ -91,6 +92,7 @@ function Persone($user)
   global $field_mother;
   global $field_birth;
   global $field_death;
+  global $field_burial;
   global $field_placeb;
   global $field_placed;
   global $field_placet;
@@ -230,6 +232,7 @@ if(isset($_POST['saveperson'])) {
 
   $persons[$inx_person][$fldBEG ] = $_POST['birth'];
   $persons[$inx_person][$fldEND ] = $_POST['death'];
+  $persons[$inx_person][$fldBUR ] = $_POST['burial'];
   $persons[$inx_person][$fldPER ] = $_POST['persona'];
   $persons[$inx_person][$fldFAT ] = $_POST['father'];
   $persons[$inx_person][$fldMOT ] = $_POST['mother'];
@@ -467,7 +470,7 @@ if(isset($_POST['saveperson'])) {
   }
 /**/
 
-  $jsonPerson->burialday->date = "";
+  $jsonPerson->burialday->date = $_POST['burial'];
   $jsonPerson->burialday->place = $_POST['placet'];
   $jsonPerson->burialday->maps = "";
   
@@ -583,6 +586,7 @@ if($log) exit;
 
   $_SESSION["birtha"]  = $_POST["birth"];
   $_SESSION["deatha"]  = $_POST["death"];
+  $_SESSION["buriala"] = $_POST["burial"];
   $_SESSION["persona"] = $_POST["persona"];
   $_SESSION["gendera"] = $_POST["genders"];
   $_SESSION["placeb"] = $_POST["placeb"];
@@ -705,6 +709,7 @@ if($log) exit;
 
   if(empty($_SESSION["birtha"])) $birtha = $person[$fldBEG]; else $birtha = $_SESSION["birtha"];
   if(empty($_SESSION["deatha"])) $deatha = $person[$fldEND]; else $deatha = $_SESSION["deatha"];
+  if(empty($_SESSION["buriala"])) $buriala = $person[$fldBUR]; else $buriala = $_SESSION["buriala"];
   if(empty($_SESSION["persona"])) $persona = $person[$fldPER]; else $persona = $_SESSION["persona"];
   if(empty($_SESSION["gendera"])) $gendera = $person[$fldSEX]; else $gendera = $_SESSION["gendera"];
   if(empty($_SESSION["placeba"])) $placeba = $person[$fldPLB]; else $placeba = $_SESSION["placeba"];
@@ -819,7 +824,7 @@ if($log) exit;
 
 <?php
   if(!empty($src_image)){
-    echo "<img src=$src_image width=64 height=64 align=left>"; 
+    echo "<img src=$src_image width='64' height='64' align=left>"; 
   }else{
     $path = '';
     if($gendera=='1') {$path = "icons/Avatar64_Man.png";}
@@ -866,6 +871,10 @@ if($log) exit;
 
  <tr><td><?php echo $field_placed; ?></td>
   <td><input type="text" name="placed" size="60" value="<?php echo $placeda; ?>"></td>
+ </tr>
+
+ <tr><td><?php echo $field_burial; ?></td>
+  <td><input type="text" name="burial" size="25" value="<?php echo $buriala; ?>"></td>
  </tr>
 
  <tr><td><?php echo $field_placet; ?></td>
@@ -1127,7 +1136,6 @@ if($log) exit;
   }
 
 ?>
-
  <script>
      function OnSelectionChangeR (select) {
          const index = select.selectedIndex;

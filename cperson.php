@@ -14,6 +14,7 @@ function Person()
 
   global $fldBEG;
   global $fldEND;
+  global $fldBUR;
   global $fldPER;
   global $fldFAT;
   global $fldMOT;
@@ -55,6 +56,7 @@ function Person()
   global $field_mother;
   global $field_birth;
   global $field_death;
+  global $field_burial;
   global $field_placeb;
   global $field_placed;
   global $field_placet;
@@ -117,7 +119,6 @@ function Person()
     $avtora = $people[$fldAVTOR];
   }
   $htm .= "<center><b><i>$avtora</i></b></center>";
-  //??$htm .= "<a href=\"cfotos.php?id=$id_person&name=$persona\"><img src=\"icons/mn_menu_foto.png\" width=48 height=48 align=right></a>";
 
   if(!empty($person[$fldICON])){
     $htm .= "<img src='data:image/jpeg;base64,".$person[$fldICON]."' width='64' heigth='64' align=left>";
@@ -154,6 +155,11 @@ function Person()
   if (!empty($person[$fldPLL]))
   {
       $htm .= "<p><i>".$field_placel."</i> <b>".$person[$fldPLL]."</b></p>";
+  }
+
+  if (!empty($person[$fldBUR]))
+  {
+      $htm .= "<p><i>".$field_burial."</i> <b>".$person[$fldBUR]."</b></p>";
   }
 
   if (!empty($person[$fldPLT]))
