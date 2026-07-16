@@ -172,14 +172,22 @@ $users = _check_datauserid($user['id']);
 
       echo "<a href=?do=cperson&id=".$id."&go=1>";
       if(!empty($persons[$i][$fldICON])){
-	$src = "<img src='data:image/jpeg;base64,".$persons[$i][$fldICON]."' width='$cellw' heith='$cellh'>";
+        if(!empty($persons[$i][$fldEND])){
+	  $src = "<img src='data:image/jpeg;base64,".$persons[$i][$fldICON]."' width='$cellw' heith='$cellh' style=\"border: 5px solid black;\">";
+	}else{
+	  $src = "<img src='data:image/jpeg;base64,".$persons[$i][$fldICON]."' width='$cellw' heith='$cellh'>";
+	}
 	echo $src;
       }else{
         $path = '';
         if($gender=='1') {$path = "icons/Avatar64_Man.png";}
         else if($gender=='2') {$path = "icons/Avatar64_Woman.png";}
         else {$path = "icons/Avatar64.png";}
-	echo "<img src='$path' alt='$name' title='$name' width='$cellw' heith='$cellh'>";
+        if(!empty($persons[$i][$fldEND])){
+	  echo "<img src='$path' alt='$name' title='$name' width='$cellw' heith='$cellh' style=\"border: 5px solid black;\">";
+	}else{
+	  echo "<img src='$path' alt='$name' title='$name' width='$cellw' heith='$cellh'>";
+	}
       }
 
       echo "</a>"; // Закрываем ссылку

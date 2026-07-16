@@ -59,9 +59,9 @@ $mn_menu_rings='Cerc';
 $mn_menu_generation='Generație';
 $mn_menu_calendar='Calendar';
 $mn_menu_glob='Hartă';
+$mn_menu_foto='Fotografie';
 $mn_menu_donate='Donează';
 $mn_menu_apps='Aplicații';
-
 $mn_menu_contact='Contact';
 $mn_menu_about='Despre';
 $mn_menu_privacy='Confidențialitate';

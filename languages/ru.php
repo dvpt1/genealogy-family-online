@@ -59,6 +59,7 @@ $mn_menu_rings='Круг';
 $mn_menu_generation='Поколение';
 $mn_menu_calendar='Календарь';
 $mn_menu_glob='Карта';
+$mn_menu_foto='Фото';
 $mn_menu_donate='Донат';
 $mn_menu_apps='Приложения';
 $mn_menu_contact='Контакт';

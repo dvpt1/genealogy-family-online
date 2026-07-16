@@ -73,6 +73,7 @@ function _begin_html($user)
  global $mn_menu_generation;
  global $mn_menu_calendar;
  global $mn_menu_glob;
+ global $mn_menu_foto;
  global $mn_menu_donate;
  global $mn_menu_apps;
  global $mn_menu_contact;
@@ -331,21 +332,26 @@ checkCookie();
  if (!empty($_POST['do'])) $do = $_POST['do'];
  if ($do == 'cpersone') {
    $id_person = '&id='.$_GET['id'];
+ }else
+ if ($do == 'cfoto') {
+   $id_person = '&id='.$_GET['id'];
  }
+
  echo '<div class="menuskived defaultskived">';
  echo '<table><tr><td aling=center valign=center>';
  echo '<a href="'.$https.'"><img src="icons/icon301.png" height=48 width=48></a>';
  echo '</td><td>';
  echo '<table><tr><td>';
  echo '<ul>';
- echo '<li><a href=?do=cmain'.$id_person.'&title='.$mn_menu_main.'><img src="icons/mn_menu_book.png" height=36 width=36>'.$mn_menu_main.'</a></li>';
- echo '<li><a href=?do=cforest'.$id_person.'&title='.$mn_menu_forest.'><img src="icons/mn_menu_forests.png" height=36 width=36>'.$mn_menu_forest.'</a></li>';
- echo '<li><a href=?do=ctree'.$id_person.'&title='.$mn_menu_tree.'><img src="icons/mn_menu_tree.png" height=36 width=36>'.$mn_menu_tree.'</a></li>';
- echo '<li><a href=?do=cbranch'.$id_person.'&title='.$mn_menu_branch.'><img src="icons/mn_menu_branch.png" height=36 width=36>'.$mn_menu_branch.'</a></li>';
- echo '<li><a href=?do=crings'.$id_person.'&title='.$mn_menu_rings.'><img src="icons/mn_menu_ring.png" height=36 width=36>'.$mn_menu_rings.'</a></li>';
- echo '<li><a href=?do=cgenr'.$id_person.'&title='.$mn_menu_generation.'><img src="icons/mn_menu_genr.png" height=36 width=36>'.$mn_menu_generation.'</a></li>';
- echo '<li><a href=?do=ccaln'.$id_person.'&title='.$mn_menu_calendar.'><img src="icons/mn_menu_calendar.png" height=36 width=36>'.$mn_menu_calendar.'</a></li>';
- echo '<li><a href=?do=cglob'.$id_person.'&title='.$mn_menu_glob.'><img src="icons/mn_menu_glob.png" height=36 width=36>'.$mn_menu_glob.'</a></li>';
+ echo '<li><a href=?do=cmain'.$id_person.'&title='.$mn_menu_main.'><img src="icons/mn_menu_book.png" height=36 width=36><font size=-1>'.$mn_menu_main.'</font></a></li>';
+ echo '<li><a href=?do=cforest'.$id_person.'&title='.$mn_menu_forest.'><img src="icons/mn_menu_forests.png" height=36 width=36><font size=-1>'.$mn_menu_forest.'</font></a></li>';
+ echo '<li><a href=?do=ctree'.$id_person.'&title='.$mn_menu_tree.'><img src="icons/mn_menu_tree.png" height=36 width=36><font size=-1>'.$mn_menu_tree.'</font></a></li>';
+ echo '<li><a href=?do=cbranch'.$id_person.'&title='.$mn_menu_branch.'><img src="icons/mn_menu_branch.png" height=36 width=36><font size=-1>'.$mn_menu_branch.'</font></a></li>';
+ echo '<li><a href=?do=crings'.$id_person.'&title='.$mn_menu_rings.'><img src="icons/mn_menu_ring.png" height=36 width=36><font size=-1>'.$mn_menu_rings.'</font></a></li>';
+ echo '<li><a href=?do=cgenr'.$id_person.'&title='.$mn_menu_generation.'><img src="icons/mn_menu_genr.png" height=36 width=36><font size=-1>'.$mn_menu_generation.'</font></a></li>';
+ echo '<li><a href=?do=ccaln'.$id_person.'&title='.$mn_menu_calendar.'><img src="icons/mn_menu_calendar.png" height=36 width=36><font size=-1>'.$mn_menu_calendar.'</font></a></li>';
+ echo '<li><a href=?do=cglob'.$id_person.'&title='.$mn_menu_glob.'><img src="icons/mn_menu_glob.png" height=36 width=36><font size=-1>'.$mn_menu_glob.'</font></a></li>';
+ echo '<li><a href=?do=cfoto'.$id_person.'&title='.$mn_menu_foto.'><img src="icons/mn_menu_foto.png" height=36 width=36><font size=-1>'.$mn_menu_foto.'</font></a></li>';
  echo '<li><a href=?do=cchat'.$id_person.'&title='.$mn_menu_chat.'><img src="icons/chat.png" height=24 width=24></a></li>';
  echo '</ul>';
  echo '</td></tr></table>';
@@ -474,6 +480,8 @@ if (!empty($_GET['page'])){
 		include_once("ccalendar.php");
 	} else if ($do == 'cglob') {
 		include_once("cglob.php");
+	} else if ($do == 'cfoto') {
+		include_once("cfotos.php");
 	} else if ($do == 'cchat') {
 		include_once("chat/index.php");
 	} else if ($do == 'cgedcomv') {
@@ -522,6 +530,7 @@ if (!empty($_GET['page'])){
 	$do != 'cgenr' &&
 	$do != 'ccaln' &&
 	$do != 'cglob' &&
+	$do != 'cfoto' &&
 	$do != 'user')
 	{
 ?>
@@ -575,43 +584,48 @@ function _end_html($user)
  global $exit1;
  global $room1;
 
- echo '<div class="navbar" id="myNavbar">';
- echo '<table><tr><td align=center valign=center>';
- echo '<a href="?do=cpersone&id=0&title='.$ic_menu_add.'"><img src="icons/ic_menu_add.png" width=24 height=24>'.$ic_menu_add.'</a>';
- echo '</td><td align=center valign=center>';
+ $do = 'cmain';
+ if (!empty($_GET['do'])) $do = $_GET['do'];
+ if (!empty($_POST['do'])) $do = $_POST['do'];
+ if ($do != 'cfoto') {
+   echo '<div class="navbar" id="myNavbar">';
+   echo '<table><tr><td align=center valign=center>';
+   echo '<a href="?do=cpersone&id=0&title='.$ic_menu_add.'"><img src="icons/ic_menu_add.png" width=24 height=24>'.$ic_menu_add.'</a>';
+   echo '</td><td align=center valign=center>';
 ?>
-<form method="POST" action="index.php?filter=<?php echo $filter; ?>">
+   <form method="POST" action="index.php?filter=<?php echo $filter; ?>">
     <input type="text" name="filter" value="<?php echo $filter; ?>">
     <input type="submit" value="&#128269;">
-</form>
+   </form>
 <?php
- echo '</td><td align=center valign=center>';
- if (!empty($user)) {
-   echo "&nbsp;<a href=mailto:".$user['name'].">".$user['name']."</a>&nbsp;"; 
-   echo "&nbsp;<a href=?do=user>".$room1."</a>&nbsp;";
-   echo "&nbsp;<a href=?do=logout>".$exit1."</a>&nbsp;";
- } else {
-   echo "&nbsp;<a href=?do=login>".$enter1."</a>&nbsp;";
- }
- echo '</td><td align=center valign=center>';
- if($user['id'] == 1) {
-   echo '<form action="cupload.php?lang='.$lang.'&do=cupload" method="post" enctype="multipart/form-data">';
-   if(!isset($_COOKIE['myfamilytree_gedcom']))
-   {
-     echo '<input type="file" id="mygedcom" name="file">';
-     echo '<input type="submit" name="load" value="'.$ic_menu_load.'">';
-   }else{
-     echo ' '.$getfile;
-     echo '<input type="submit" name="delete" value="'.$ic_menu_delete.'">';
+   echo '</td><td align=center valign=center>';
+   if (!empty($user)) {
+     echo "&nbsp;<a href=mailto:".$user['name'].">".$user['name']."</a>&nbsp;"; 
+     echo "&nbsp;<a href=?do=user>".$room1."</a>&nbsp;";
+     echo "&nbsp;<a href=?do=logout>".$exit1."</a>&nbsp;";
+   } else {
+     echo "&nbsp;<a href=?do=login>".$enter1."</a>&nbsp;";
    }
-   echo '</form>';
+   echo '</td><td align=center valign=center>';
+   if($user['id'] == 1) {
+     echo '<form action="cupload.php?lang='.$lang.'&do=cupload" method="post" enctype="multipart/form-data">';
+     if(!isset($_COOKIE['myfamilytree_gedcom']))
+     {
+       echo '<input type="file" id="mygedcom" name="file">';
+       echo '<input type="submit" name="load" value="'.$ic_menu_load.'">';
+     }else{
+       echo ' '.$getfile;
+       echo '<input type="submit" name="delete" value="'.$ic_menu_delete.'">';
+     }
+     echo '</form>';
+   }
+   echo '</td><td align=right valign=center>';
+   echo '<a href="?lang='.$lang.'&do=cdonate&title='.$mn_menu_donate.'">'.$mn_menu_donate.'</a>';
+   echo '<a href="?lang='.$lang.'&do=cprivacy&title='.$mn_menu_privacy.'">'.$mn_menu_privacy.'</a>';
+   echo '<a href="?lang='.$lang.'&do=cmission&title='.$mn_menu_mission.'">'.$mn_menu_mission.'</a>';
+   echo '</td></tr></table>';
+   echo '</div>';
  }
- echo '</td><td align=right valign=center>';
- echo '<a href="?lang='.$lang.'&do=cdonate&title='.$mn_menu_donate.'">'.$mn_menu_donate.'</a>';
- echo '<a href="?lang='.$lang.'&do=cprivacy&title='.$mn_menu_privacy.'">'.$mn_menu_privacy.'</a>';
- echo '<a href="?lang='.$lang.'&do=cmission&title='.$mn_menu_mission.'">'.$mn_menu_mission.'</a>';
- echo '</td></tr></table>';
- echo '</div>';
  ?>
 
  </body>

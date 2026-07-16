@@ -108,6 +108,8 @@ $mn_menu_calendar="日曆";
 
 $mn_menu_glob="地圖";
 
+$mn_menu_foto='照片';
+
 $mn_menu_donate="捐贈";
 
 $mn_menu_apps="應用";

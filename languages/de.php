@@ -59,6 +59,7 @@ $mn_menu_rings='Kreis';
 $mn_menu_generation='Generation';
 $mn_menu_calendar='Kalender';
 $mn_menu_glob='Karte';
+$mn_menu_foto='Foto';
 $mn_menu_donate='Spenden';
 $mn_menu_apps='Apps';
 $mn_menu_contact='Kontakt';

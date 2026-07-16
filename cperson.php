@@ -121,13 +121,21 @@ function Person()
   $htm .= "<center><b><i>$avtora</i></b></center>";
 
   if(!empty($person[$fldICON])){
-    $htm .= "<img src='data:image/jpeg;base64,".$person[$fldICON]."' width='64' heigth='64' align=left>";
+    if(!empty($person[$fldEND])){
+      $htm .= "<img src='data:image/jpeg;base64,".$person[$fldICON]."' width='64' heigth='64' align=left style=\"border: 5px solid black;\">";
+    }else{
+      $htm .= "<img src='data:image/jpeg;base64,".$person[$fldICON]."' width='64' heigth='64' align=left>";
+    }
   }else{
     $path = '';
     if($gender=='1') {$path = "icons/Avatar64_Man.png";}
     else if($gender=='2') {$path = "icons/Avatar64_Woman.png";}
     else {$path = "icons/Avatar64.png";}
-    $htm .= "<img src='$path' alt='$name' title='$name' width='64' heigth='64' align=left>";
+    if(!empty($person[$fldEND])){
+      $htm .= "<img src='$path' alt='$name' title='$name' width='64' heigth='64' align=left style=\"border: 5px solid black;\">";
+    }else{
+      $htm .= "<img src='$path' alt='$name' title='$name' width='64' heigth='64' align=left>";
+    }
   }
 
   $htm .= "<h1>".$person[$fldPER]."</h1><br>";

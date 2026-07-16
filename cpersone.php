@@ -754,18 +754,18 @@ if($log) exit;
   }
   //??$_SESSION["spousea"] = $spouse_key;
 
-  $htm = "<div class='shadow' style='POSITION: absolute; LEFT: 10px; TOP: 60px; WIDTH: 1075px; HEIGHT: 765px'>";
+  $htm = "<div class='shadow' style='POSITION: absolute; LEFT: 10px; TOP: 60px; WIDTH: 1075px; HEIGHT: 815px'>";
   if ($gendera == "1")
   {
-      $htm .= "<div class='blockm' style='POSITION: absolute; LEFT: 0px; TOP: 0px; WIDTH: 1060px; HEIGHT: 750px'>";
+      $htm .= "<div class='blockm' style='POSITION: absolute; LEFT: 0px; TOP: 0px; WIDTH: 1060px; HEIGHT: 800px'>";
   }
   else if ($gendera == "2")
   {
-      $htm .= "<div class='blockw' style='POSITION: absolute; LEFT: 0px; TOP: 0px; WIDTH: 1060px; HEIGHT: 750px'>";
+      $htm .= "<div class='blockw' style='POSITION: absolute; LEFT: 0px; TOP: 0px; WIDTH: 1060px; HEIGHT: 800px'>";
   }
   else
   {
-      $htm .= "<div class='blockn' style='POSITION: absolute; LEFT: 0px; TOP: 0px; WIDTH: 1060px; HEIGHT: 750px'>";
+      $htm .= "<div class='blockn' style='POSITION: absolute; LEFT: 0px; TOP: 0px; WIDTH: 1060px; HEIGHT: 800px'>";
   }
   echo $htm;
 
@@ -774,9 +774,7 @@ if($log) exit;
  <table width="100%">
  <tr><td align=center>
  <b><i><?php echo $avtora; ?></i></b>
- </td><td align=right>
- <a href="cfotos.php?id=<?php echo $id_person; ?>&name=<?php echo $persona; ?>"><img src="icons/ic_menu_gallery.png" width=48 height=48 align=right></a>
- <td><tr>
+ </td><tr>
  </table>
 
  <form name="form1" action="" enctype="multipart/form-data" method="post">
@@ -823,16 +821,23 @@ if($log) exit;
  <tr><td width=25%>
 
 <?php
-  if(!empty($src_image)){
-    echo "<img src=$src_image width='64' height='64' align=left>"; 
+  if(!empty($person[$fldICON])){
+    if(!empty($person[$fldEND])){
+      echo "<img src=$src_image width='64' height='64' align=left style=\"border: 5px solid black;\">";
+    }else{
+      echo "<img src=$src_image width='64' height='64' align=left>";
+    }
   }else{
     $path = '';
     if($gendera=='1') {$path = "icons/Avatar64_Man.png";}
     else if($gendera=='2') {$path = "icons/Avatar64_Woman.png";}
     else {$path = "icons/Avatar64.png";}
-    echo "<img src='$path' alt='$name' title='$name' width='64' heigth='64' align=left>";
+    if(!empty($person[$fldEND])){
+      echo "<img src='$path' alt='$name' title='$name' width='64' heigth='64' align=left style=\"border: 5px solid black;\">";
+    }else{
+      echo "<img src='$path' alt='$name' title='$name' width='64' heigth='64' align=left>";
+    }
   }
-  echo '<input type="hidden" id="icon" name="icon" value="'.$src_icon.'">';
 ?>
 
  </td><td width=75%>

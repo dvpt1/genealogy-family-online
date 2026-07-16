@@ -32,9 +32,15 @@ function Fotos($user)
 
 //echo $id_person.":".$nm_person.":".$number."<br>";
 
-
-  $dir = __DIR__."/fotos/$number/"; // Путь к директории, в которой лежат изображения
-  $path = "fotos/".$number;
+  $dir = ""; // Путь к директории, в которой лежат изображения
+  $path = "";
+  if(isset($_GET['id'])){
+    $dir = __DIR__."/fotos/$number/"; // Путь к директории, в которой лежат изображения
+    $path = "fotos/".$number;
+  }else{
+    $dir = __DIR__."/fotos/"; // Путь к директории, в которой лежат изображения
+    $path = "fotos/";
+  }
   if (!file_exists($path)) {
     mkdir($path, 0777, true);
     //echo "Директория создана успешно!";

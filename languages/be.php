@@ -59,6 +59,7 @@ $mn_menu_rings='Круг';
 $mn_menu_generation='Пакаленне';
 $mn_menu_calendar='Каляндар';
 $mn_menu_glob='Карта';
+$mn_menu_foto='Фота';
 $mn_menu_donate='Данат';
 $mn_menu_apps='Дадаткі';
 $mn_menu_contact='Кантакт';

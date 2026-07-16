@@ -59,6 +59,7 @@ $mn_menu_rings='Círculo';
 $mn_menu_generation='Geração';
 $mn_menu_calendar='Calendário';
 $mn_menu_glob='Mapa';
+$mn_menu_foto='Foto';
 $mn_menu_donate='Doar';
 $mn_menu_apps='Aplicativos';
 $mn_menu_contact='Contato';
