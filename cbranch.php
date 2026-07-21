@@ -431,7 +431,11 @@ function DrawMenHTML($Index)
       }
   }
 
-  $htm .= "<table style='POSITION:absolute;LEFT:".($X1)."px;TOP:".($Y1 + 45)."px;BORDER-TOP:2pt solid;WIDTH:".($X2 - $X1)."px; border-color: green;'><tr><td></td></tr></table>";
+  if($S == -1){
+    $htm .= "<table style='POSITION:absolute;LEFT:".($X1)."px;TOP:".($Y1 + 45)."px;BORDER-TOP:2pt solid;WIDTH:".($X2 - $X1)."px; border-color: green;'><tr><td></td></tr></table>";
+  }else{
+    $htm .= "<table style='POSITION:absolute;LEFT:".($X1)."px;TOP:".($Y1 + 45)."px;BORDER-TOP:2pt solid;WIDTH:".($X2 - $X1)."px; border-color: lime;'><tr><td></td></tr></table>";
+  }
 
   $htm .= "<div class='shadow' style='POSITION: absolute; LEFT: ".$X2."px; TOP: ".$Y1."px; WIDTH: 235px; HEIGHT: 80px'>";
   if ($person[$fldSEX] == "1")

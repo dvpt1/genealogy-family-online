@@ -14,6 +14,7 @@ function Tree()
   global $fathers;
   global $mothers;
   global $spouses;
+  global $marrieds;
 
   global $fldBEG;
   global $fldEND;
@@ -51,7 +52,7 @@ function Tree()
   global $cH;
   global $cW;
 
-  //заполняю элементы списка
+  // filling in the list items
   $cnt_person = count($persons);
 
   for ($i = 0; $i < count($persons); $i++) {
@@ -59,6 +60,9 @@ function Tree()
       $aX1[] = -1;
       $aY1[] = -1;
   }
+
+  //  person , marrieds;
+  $marrieds = array();
 
   //progenitors
   $progenitors = array();
@@ -77,10 +81,10 @@ function Tree()
   }
 
   $Bougth = 0;
-  $LeftRight = true;//начинаю с правой ветви
+  $LeftRight = true;// start with the right branch
   for ($i = 0; $i < count($progenitors); $i++)
   {
-      // сканирую
+      // scanning
       $Bougth++;
 
       if ($LeftRight)
@@ -96,10 +100,9 @@ function Tree()
           $LeftRight = true;
       }
   }
-
 //echo $Bougth."|".$cntL."|".$cntR;
 
-  // добавить
+  // add
   $maxX = -($XmaxL) + 85 + $cntL * 5;
   $x1 = 0;
   for ($i = 0; $i < count($persons); $i++)
@@ -119,7 +122,7 @@ function Tree()
   //$maxX = $maxX + 200;
 
 
-  // инверсия
+  // inversion
   if ($YmaxL > $YmaxR) $maxY = $YmaxL + 60; else $maxY = $YmaxR + 60;
   $y1 = 0;
   $y2 = 0;
@@ -138,7 +141,7 @@ function Tree()
   }
 
 
-  //рисую ствол и ветки
+  // draw the trunk and branches
   $curL = $cntL;
   $curR = $cntR;
 
@@ -148,13 +151,13 @@ function Tree()
   {
       if ($aBougth[$i] != 0)
       {
-          // связываю родоначальников с древом
+          // connect the ancestors with the tree
           if (empty($persons[$i][$fldFAT]) && empty($persons[$i][$fldMOT])) {
              echo LinkTree($i);
           }
       }
 
-      // список детей
+      // list of children
       $childers = array();
       for ($ii = 0; $ii < count($fathers); $ii++) {
           if (strcmp($fathers[$ii][0], $i) == 0) {
@@ -167,7 +170,7 @@ function Tree()
           }
       }
 
-      // связываю родителя с ребенком
+      // connect the parent with the child
       for ($f = 0; $f < count($childers); $f++)
       {
           if ($aBougth[$childers[$f]] == $aBougth[$i])
@@ -182,7 +185,14 @@ function Tree()
 
   }
 
-  // Рисую ФИО
+  // draw spouses
+  for ($i = 0; $i < count($marrieds); $i++)
+  {
+      //echo $marrieds[$i][0].":".$marrieds[$i][1]."<br>";
+      echo LinkSpouse($marrieds[$i][0], $marrieds[$i][1]);
+  }
+
+  // drawing the full name
   for ($i = 0; $i < count($persons); $i++)
   {
       if ($aBougth[$i] != 0)
@@ -202,6 +212,7 @@ function ParentsAlls($X, $Y, $index, $LR)
   global $fathers;
   global $mothers;
   global $spouses;
+  global $marrieds;
 
   global $fldBEG;
   global $fldEND;
@@ -209,6 +220,8 @@ function ParentsAlls($X, $Y, $index, $LR)
   global $fldFAT;
   global $fldMOT;
   global $fldSEX;
+  global $fldSPOUS1;
+  global $fldSPOUS2;
 
   global $aBougth;
   global $aX1;
@@ -255,6 +268,34 @@ function ParentsAlls($X, $Y, $index, $LR)
   $dX = $X;
   $dY = $Y;
   $dlt = 0;
+
+  //список супругов
+  for ($i = 0; $i < count($spouses); $i++) {
+    if ($spouses[$i][$fldSPOUS1] == $index){
+      $b = true;
+      for ($n = 0; $n < count($marrieds); $n++) {
+         if($marrieds[$n] == $spouses[$i][$fldSPOUS2]) {
+           $b = false;
+           break;
+         }
+      }
+
+      if($b) $marrieds[] = array($index, $spouses[$i][$fldSPOUS2]);
+      //if($b) echo $spouses[$i][$fldSPOUS2]."<br>";
+    }else
+    if ($spouses[$i][$fldSPOUS2] == $index) {
+      $b = true;
+      for ($n = 0; $n < count($marrieds); $n++) {
+         if($marrieds[$n] == $spouses[$i][$fldSPOUS1]) {
+           $b = false;
+           break;
+         }
+      }
+
+      if($b) $marrieds[] = array($index, $spouses[$i][$fldSPOUS1]);
+      //if($b) echo $spouses[$i][$fldSPOUS1]."<br>";
+    }
+  }
 
   //список детей
   $childrens = array();
@@ -487,7 +528,6 @@ function LinkTree($index)
   return $htm;
 }
 
-
 function LinkFather($father, $childr)
 {
     global $maxX;
@@ -506,23 +546,23 @@ function LinkFather($father, $childr)
 
     if ($aX1[$father] > $maxX)
     {
-        $htm .= "<table bordercolor=#008000 style='POSITION: absolute; LEFT: ";//вертикально
+        $htm .= "<table style='POSITION: absolute; LEFT: ";//вертикально
         $htm .= ($aX1[$childr] + $cW)."px; TOP: ".($aY1[$childr] + $bH)."px; BORDER-TOP: 0pt solid; BORDER-BOTTOM: 0pt solid; BORDER-RIGHT: 0pt solid; BORDER-LEFT: 2pt solid; WIDTH: 0px; HEIGHT: ";
-        $htm .= ($tH - $shadow - 3)."px'><tr><td></td></tr></table>";
+        $htm .= ($tH - $shadow - 3)."px; border-color: green;'><tr><td></td></tr></table>";
 
-        $htm .= "<table bordercolor=#008000 style='POSITION: absolute; LEFT: ";//горизонтально
+        $htm .= "<table style='POSITION: absolute; LEFT: ";//горизонтально
         $htm .= ($aX1[$father] + $bW)."px; TOP: ".($aY1[$father] + $cH)."px; BORDER-TOP: 2pt solid; BORDER-BOTTOM: 0pt solid; BORDER-RIGHT: 0pt solid; BORDER-LEFT: 0pt solid; WIDTH: ";
-        $htm .= ($aX1[$childr] - $aX1[$father] - $cW + 2)."px; HEIGHT: 0px'><tr><td></td></tr></table>";
+        $htm .= ($aX1[$childr] - $aX1[$father] - $cW + 2)."px; HEIGHT: 0px; border-color: green;'><tr><td></td></tr></table>";
     }
     else
     {
-        $htm .= "<table bordercolor=#008000 style='POSITION: absolute; LEFT: ";//вертикально
+        $htm .= "<table style='POSITION: absolute; LEFT: ";//вертикально
         $htm .= ($aX1[$childr] + $cW)."px; TOP: ".($aY1[$childr] + $bH - 3)."px; BORDER-TOP: 0pt solid; BORDER-BOTTOM: 0pt solid; BORDER-RIGHT: 0pt solid; BORDER-LEFT: 2pt solid; WIDTH: 0px; HEIGHT: ";
-        $htm .= ($tH - $shadow)."px'><tr><td></td></tr></table>";
+        $htm .= ($tH - $shadow)."px; border-color: green;'><tr><td></td></tr></table>";
 
-        $htm .= "<table bordercolor=#008000 style='POSITION: absolute; LEFT: ";//горизонтально
+        $htm .= "<table style='POSITION: absolute; LEFT: ";//горизонтально
         $htm .= ($aX1[$childr] + $cW)."px; TOP: ".($aY1[$father] + $cH)."px; BORDER-TOP: 2pt solid; BORDER-BOTTOM: 0pt solid; BORDER-RIGHT: 0pt solid; BORDER-LEFT: 0pt solid; WIDTH: ";
-        $htm .= ($aX1[$father] - $aX1[$childr] - $cW)."px; HEIGHT: 0px'><tr><td></td></tr></table>";
+        $htm .= ($aX1[$father] - $aX1[$childr] - $cW)."px; HEIGHT: 0px; border-color: green;'><tr><td></td></tr></table>";
     }
 
     return $htm;
@@ -548,26 +588,26 @@ function LinkMother($mother, $childr)
     {
         $htm .= "<table style='POSITION:absolute;LEFT:";//горизонтально parent
         $htm .= ($aX1[$mother] + $bW + 2)."px;TOP:".($aY1[$mother] + $cH - 2)."px;BORDER-TOP:2pt solid;BORDER-BOTTOM:0pt solid;BORDER-RIGHT:0pt solid;BORDER-LEFT:0pt solid;WIDTH:";
-        $htm .= "15px;HEIGHT:0px'><tr><td></td></tr></table>";
+        $htm .= "15px;HEIGHT:0px; border-color: green;'><tr><td></td></tr></table>";
     }
     else
     {
         $htm .= "<table style='POSITION:absolute;LEFT:";//горизонтально parent
         $htm .= ($aX1[$mother] - 15)."px;TOP:".($aY1[$mother] + $cH - 2)."px;BORDER-TOP:2pt solid;BORDER-BOTTOM:0pt solid;BORDER-RIGHT:0pt solid;BORDER-LEFT:0pt solid;WIDTH:";
-        $htm .= "15px;HEIGHT:0px'><tr><td></td></tr></table>";
+        $htm .= "15px;HEIGHT:0px; border-color: green;'><tr><td></td></tr></table>";
     }
 
     if ($aX1[$childr] > maxX)
     {
         $htm .= "<table style='POSITION:absolute;LEFT:";//вертикально
         $htm .= ($aX1[$childr] + $cW + 2)."px;TOP:".($aY1[$childr] + $bH)."px;BORDER-TOP:0pt solid;BORDER-BOTTOM:0pt solid;BORDER-RIGHT:0pt solid;BORDER-LEFT:2pt solid;WIDTH:0px;HEIGHT:";
-        $htm .= (10)."px'><tr><td></td></tr></table>";
+        $htm .= (10)."px; border-color: green;'><tr><td></td></tr></table>";
     }
     else
     {
         $htm .= "<table style='POSITION:absolute;LEFT:";//вертикально
         $htm .= ($aX1[$childr] + $cW - 2)."px;TOP:".($aY1[$childr] + $bH)."px;BORDER-TOP:0pt solid;BORDER-BOTTOM:0pt solid;BORDER-RIGHT:0pt solid;BORDER-LEFT:2pt solid;WIDTH:0px;HEIGHT:";
-        $htm .= (10)."px'><tr><td></td></tr></table>";
+        $htm .= (10)."px; border-color: green;'><tr><td></td></tr></table>";
     }
 
     if ($aX1[$mother] >= $maxX && $aX1[$childr] < $maxX)
@@ -577,19 +617,19 @@ function LinkMother($mother, $childr)
         {//родитель выше или равен ребенку
             $htm .= "<table style='POSITION:absolute;LEFT:";//вертикально
             $htm .= ($aX1[$mother] + 245 + 1)."px;TOP:".($aY1[$childr] + 90)."px;BORDER-TOP:0pt solid;BORDER-BOTTOM:0pt solid;BORDER-RIGHT:0pt solid;BORDER-LEFT:2pt solid;WIDTH:0px;HEIGHT:";
-            $htm .= ($aY1[$mother] - $aY1[$childr] - 59 + $shadow)."px'><tr><td></td></tr></table>";
+            $htm .= ($aY1[$mother] - $aY1[$childr] - 59 + $shadow)."px; border-color: green;'><tr><td></td></tr></table>";
             $htm .= "<table style='POSITION:absolute;LEFT:";//горизонтально
             $htm .= ($aX1[$childr] + 115 - 2)."px;TOP:".($aY1[$childr] + 90)."px;BORDER-TOP:2pt solid;BORDER-BOTTOM:0pt solid;BORDER-RIGHT:0pt solid;BORDER-LEFT:0pt solid;WIDTH:";
-            $htm .= ($aX1[$mother] + 135 - $aX1[$childr])."px;HEIGHT:0px'><tr><td></td></tr></table>";
+            $htm .= ($aX1[$mother] + 135 - $aX1[$childr])."px;HEIGHT:0px; border-color: green;'><tr><td></td></tr></table>";
         }
         else
         {
             $htm .= "<table style='POSITION:absolute;LEFT:";//вертикально
             $htm .= ($aX1[$mother] + 245)."px;TOP:".($aY1[$mother] + 33)."px;BORDER-TOP:0pt solid;BORDER-BOTTOM:0pt solid;BORDER-RIGHT:0pt solid;BORDER-LEFT:2pt solid;WIDTH:0px;HEIGHT:";
-            $htm .= ($aY1[$childr] - $aY1[$mother] + 59)."px'><tr><td></td></tr></table>";
+            $htm .= ($aY1[$childr] - $aY1[$mother] + 59)."px; border-color: green;'><tr><td></td></tr></table>";
             $htm .= "<table style='POSITION:absolute;LEFT:";//горизонтально
             $htm .= ($aX1[$childr] + 115)."px;TOP:".($aY1[$childr] + 90)."px;BORDER-TOP:2pt solid;BORDER-BOTTOM:0pt solid;BORDER-RIGHT:0pt solid;BORDER-LEFT:0pt solid;WIDTH:";
-            $htm .= ($aX1[$mother] + 130 - $aX1[$childr])."px;HEIGHT:0px'><tr><td></td></tr></table>";
+            $htm .= ($aX1[$mother] + 130 - $aX1[$childr])."px;HEIGHT:0px; border-color: green;'><tr><td></td></tr></table>";
         }
 
     }
@@ -600,19 +640,19 @@ function LinkMother($mother, $childr)
         {//родитель выше или равен ребенку
             $htm .= "<table style='POSITION:absolute;LEFT:";//вертикально
             $htm .= ($aX1[$mother] - 15)."px;TOP:".($aY1[$childr] + 90)."px;BORDER-TOP:0pt solid;BORDER-BOTTOM:0pt solid;BORDER-RIGHT:0pt solid;BORDER-LEFT:2pt solid;WIDTH:0px;HEIGHT:";
-            $htm .= ($aY1[$mother] - $aY1[$childr] - 60 + $shadow)."px'><tr><td></td></tr></table>";
+            $htm .= ($aY1[$mother] - $aY1[$childr] - 60 + $shadow)."px; border-color: green;'><tr><td></td></tr></table>";
             $htm .= "<table style='POSITION:absolute;LEFT:";//горизонтально
             $htm .= ($aX1[$mother] - 15)."px;TOP:".($aY1[$childr] + 90)."px;BORDER-TOP:2pt solid;BORDER-BOTTOM:0pt solid;BORDER-RIGHT:0pt solid;BORDER-LEFT:0pt solid;WIDTH:";
-            $htm .= ($aX1[$childr] - $aX1[$mother] + 135)."px;HEIGHT:0px'><tr><td></td></tr></table>";
+            $htm .= ($aX1[$childr] - $aX1[$mother] + 135)."px;HEIGHT:0px; border-color: green;'><tr><td></td></tr></table>";
         }
         else
         {
             $htm .= "<table style='POSITION:absolute;LEFT:";//вертикально
             $htm .= ($aX1[$mother] - 15)."px;TOP:".($aY1[$mother] + 35)."px;BORDER-TOP:0pt solid;BORDER-BOTTOM:0pt solid;BORDER-RIGHT:0pt solid;BORDER-LEFT:2pt solid;WIDTH:0px;HEIGHT:";
-            $htm .= ($aY1[$childr] - $aY1[$mother] + 55 + 1)."px'><tr><td></td></tr></table>";
+            $htm .= ($aY1[$childr] - $aY1[$mother] + 55 + 1)."px; border-color: green;'><tr><td></td></tr></table>";
             $htm .= "<table style='POSITION:absolute;LEFT:";//горизонтально
             $htm .= ($aX1[$mother] - 15)."px;TOP:".($aY1[$childr] + 90)."px;BORDER-TOP:2pt solid;BORDER-BOTTOM:0pt solid;BORDER-RIGHT:0pt solid;BORDER-LEFT:0pt solid;WIDTH:";
-            $htm .= ($aX1[$childr] - $aX1[$mother] + 135 - 1)."px;HEIGHT:0px'><tr><td></td></tr></table>";
+            $htm .= ($aX1[$childr] - $aX1[$mother] + 135 - 1)."px;HEIGHT:0px; border-color: green;'><tr><td></td></tr></table>";
         }
 
     }
@@ -626,19 +666,19 @@ function LinkMother($mother, $childr)
             {//родитель выше или равен ребенку
                 $htm .= "<table style='POSITION:absolute;LEFT:";//вертикально
                 $htm .= ($aX1[$mother] + 245)."px;TOP:".($aY1[$childr] + 90 - 1)."px;BORDER-TOP:0pt solid;BORDER-BOTTOM:0pt solid;BORDER-RIGHT:0pt solid;BORDER-LEFT:2pt solid;WIDTH:0px;HEIGHT:";
-                $htm .= ($aY1[$mother] - $aY1[$childr] - 60 - $shadow)."px'><tr><td></td></tr></table>";
+                $htm .= ($aY1[$mother] - $aY1[$childr] - 60 - $shadow)."px; border-color: green;'><tr><td></td></tr></table>";
                 $htm .= "<table style='POSITION:absolute;LEFT:";//горизонтально
                 $htm .= ($aX1[$childr] + $cW)."px;TOP:".($aY1[$childr] + 90 - 1)."px;BORDER-TOP:2pt solid;BORDER-BOTTOM:0pt solid;BORDER-RIGHT:0pt solid;BORDER-LEFT:0pt solid;WIDTH:";
-                $htm .= ($aX1[$mother] + 135 - $aX1[$childr] - 3)."px;HEIGHT:0px'><tr><td></td></tr></table>";
+                $htm .= ($aX1[$mother] + 135 - $aX1[$childr] - 3)."px;HEIGHT:0px; border-color: green;'><tr><td></td></tr></table>";
             }
             else
             {
                 $htm .= "<table style='POSITION:absolute;LEFT:";//вертикально
                 $htm .= ($aX1[$mother] + 245)."px;TOP:".($aY1[$mother] + 35 - 1)."px;BORDER-TOP:0pt solid;BORDER-BOTTOM:0pt solid;BORDER-RIGHT:0pt solid;BORDER-LEFT:2pt solid;WIDTH:0px;HEIGHT:";
-                $htm .= ($aY1[$childr] - $aY1[$mother] + 60 - $shadow)."px'><tr><td></td></tr></table>";
+                $htm .= ($aY1[$childr] - $aY1[$mother] + 60 - $shadow)."px; border-color: green;'><tr><td></td></tr></table>";
                 $htm .= "<table style='POSITION:absolute;LEFT:";//горизонтально
                 $htm .= ($aX1[$childr] + $cW)."px;TOP:".($aY1[$childr] + 90 - 1)."px;BORDER-TOP:2pt solid;BORDER-BOTTOM:0pt solid;BORDER-RIGHT:0pt solid;BORDER-LEFT:0pt solid;WIDTH:";
-                $htm .= ($aX1[$mother] + 135 - $aX1[$childr] - 3)."px;HEIGHT:0px'><tr><td></td></tr></table>";
+                $htm .= ($aX1[$mother] + 135 - $aX1[$childr] - 3)."px;HEIGHT:0px; border-color: green;'><tr><td></td></tr></table>";
             }
 
         }
@@ -649,19 +689,19 @@ function LinkMother($mother, $childr)
             {
                 $htm .= "<table style='POSITION:absolute;LEFT:";//вертикально
                 $htm .= ($aX1[$mother] + 245)."px;TOP:".($aY1[$mother] + 34)."px;BORDER-TOP:0pt solid;BORDER-BOTTOM:0pt solid;BORDER-RIGHT:0pt solid;BORDER-LEFT:2pt solid;WIDTH:0px;HEIGHT:";
-                $htm .= ($aY1[$mother] - $aY1[$childr] + 57 - $shadow)."px'><tr><td></td></tr></table>";
+                $htm .= ($aY1[$mother] - $aY1[$childr] + 57 - $shadow)."px; border-color: green;'><tr><td></td></tr></table>";
                 $htm .= "<table style='POSITION:absolute;LEFT:";//горизонтально
                 $htm .= ($aX1[$mother] + 245)."px;TOP:".($aY1[$childr] + 89)."px;BORDER-TOP:2pt solid;BORDER-BOTTOM:0pt solid;BORDER-RIGHT:0pt solid;BORDER-LEFT:0pt solid;WIDTH:";
-                $htm .= ($aX1[$childr] - 130 - $aX1[$mother] + $shadow + 4)."px;HEIGHT:0px'><tr><td></td></tr></table>";
+                $htm .= ($aX1[$childr] - 130 - $aX1[$mother] + $shadow + 4)."px;HEIGHT:0px; border-color: green;'><tr><td></td></tr></table>";
             }
             else
             {
                 $htm .= "<table style='POSITION:absolute;LEFT:";//вертикально
                 $htm .= ($aX1[$mother] + 245)."px;TOP:".($aY1[$mother] + 33)."px;BORDER-TOP:0pt solid;BORDER-BOTTOM:0pt solid;BORDER-RIGHT:0pt solid;BORDER-LEFT:2pt solid;WIDTH:0px;HEIGHT:";
-                $htm .= ($aY1[$childr] - $aY1[$mother] + 57 - $shadow)."px'><tr><td></td></tr></table>";
+                $htm .= ($aY1[$childr] - $aY1[$mother] + 57 - $shadow)."px; border-color: green;'><tr><td></td></tr></table>";
                 $htm .= "<table style='POSITION:absolute;LEFT:";//горизонтально
                 $htm .= ($aX1[$mother] + 245)."px;TOP:".($aY1[$childr] + 89)."px;BORDER-TOP:2pt solid;BORDER-BOTTOM:0pt solid;BORDER-RIGHT:0pt solid;BORDER-LEFT:0pt solid;WIDTH:";
-                $htm .= ($aX1[$childr] - 130 - $aX1[$mother] + $shadow + 4)."px;HEIGHT:0px'><tr><td></td></tr></table>";
+                $htm .= ($aX1[$childr] - 130 - $aX1[$mother] + $shadow + 4)."px;HEIGHT:0px; border-color: green;'><tr><td></td></tr></table>";
             }
 
         }
@@ -677,19 +717,19 @@ function LinkMother($mother, $childr)
             {//родитель выше или равен ребенку
                 $htm .= "<table style='POSITION:absolute;LEFT:";//вертикально
                 $htm .= ($aX1[$mother] - 15)."px;TOP:".($aY1[$childr] + 90)."px;BORDER-TOP:0pt solid;BORDER-BOTTOM:0pt solid;BORDER-RIGHT:0pt solid;BORDER-LEFT:2pt solid;WIDTH:0px;HEIGHT:";
-                $htm .= ($aY1[$mother] - $aY1[$childr] - 60 + $shadow)."px'><tr><td></td></tr></table>";
+                $htm .= ($aY1[$mother] - $aY1[$childr] - 60 + $shadow)."px; border-color: green;'><tr><td></td></tr></table>";
                 $htm .= "<table style='POSITION:absolute;LEFT:";//горизонтально
                 $htm .= ($aX1[$childr] + 115 - 2)."px;TOP:".($aY1[$childr] + 90)."px;BORDER-TOP:2pt solid;BORDER-BOTTOM:0pt solid;BORDER-RIGHT:0pt solid;BORDER-LEFT:0pt solid;WIDTH:";
-                $htm .= ($aX1[$mother] - $aX1[$childr] - 135 + $shadow + 2)."px;HEIGHT:0px'><tr><td></td></tr></table>";
+                $htm .= ($aX1[$mother] - $aX1[$childr] - 135 + $shadow + 2)."px;HEIGHT:0px; border-color: green;'><tr><td></td></tr></table>";
             }
             else
             {
                 $htm .= "<table style='POSITION:absolute;LEFT:";//вертикально
                 $htm .= ($aX1[$mother] - 15)."px;TOP:".($aY1[$mother] + 35)."px;BORDER-TOP:0pt solid;BORDER-BOTTOM:0pt solid;BORDER-RIGHT:0pt solid;BORDER-LEFT:2pt solid;WIDTH:0px;HEIGHT:";
-                $htm .= ($aY1[$childr] - $aY1[$mother] + 60 - 3)."px'><tr><td></td></tr></table>";
+                $htm .= ($aY1[$childr] - $aY1[$mother] + 60 - 3)."px; border-color: green;'><tr><td></td></tr></table>";
                 $htm .= "<table style='POSITION:absolute;LEFT:";//горизонтально
                 $htm .= ($aX1[$childr] + 115 - 2)."px;TOP:".($aY1[$childr] + 90)."px;BORDER-TOP:2pt solid;BORDER-BOTTOM:0pt solid;BORDER-RIGHT:0pt solid;BORDER-LEFT:0pt solid;WIDTH:";
-                $htm .= ($aX1[$mother] - $aX1[$childr] - 135 + $shadow + 2)."px;HEIGHT:0px'><tr><td></td></tr></table>";
+                $htm .= ($aX1[$mother] - $aX1[$childr] - 135 + $shadow + 2)."px;HEIGHT:0px; border-color: green;'><tr><td></td></tr></table>";
             }
 
         }
@@ -700,23 +740,60 @@ function LinkMother($mother, $childr)
             {
                 $htm .= "<table style='POSITION:absolute;LEFT:";//вертикально
                 $htm .= ($aX1[$childr] - 15)."px;TOP:".($aY1[$childr] + 90)."px;BORDER-TOP:0pt solid;BORDER-BOTTOM:0pt solid;BORDER-RIGHT:0pt solid;BORDER-LEFT:2pt solid;WIDTH:0px;HEIGHT:";
-                $htm .= ($aY1[$mother] - $aY1[$childr] - 39)."px'><tr><td></td></tr></table>";
+                $htm .= ($aY1[$mother] - $aY1[$childr] - 39)."px; border-color: green;'><tr><td></td></tr></table>";
                 $htm .= "<table style='POSITION:absolute;LEFT:";//горизонтально
                 $htm .= ($aX1[$mother] - 15)."px;TOP:".($aY1[$childr] + 90)."px;BORDER-TOP:2pt solid;BORDER-BOTTOM:0pt solid;BORDER-RIGHT:0pt solid;BORDER-LEFT:0pt solid;WIDTH:";
-                $htm .= ($aX1[$childr] - $aX1[$mother] + 135)."px;HEIGHT:0px'><tr><td></td></tr></table>";
+                $htm .= ($aX1[$childr] - $aX1[$mother] + 135)."px;HEIGHT:0px; border-color: green;'><tr><td></td></tr></table>";
             }
             else
             {
                 $htm .= "<table style='POSITION:absolute;LEFT:";//вертикально
                 $htm .= ($aX1[$mother] - 15)."px;TOP:".($aY1[$mother] + 35)."px;BORDER-TOP:0pt solid;BORDER-BOTTOM:0pt solid;BORDER-RIGHT:0pt solid;BORDER-LEFT:2pt solid;WIDTH:0px;HEIGHT:";
-                $htm .= ($aY1[$childr] - $aY1[$mother] + 56)."px'><tr><td></td></tr></table>";
+                $htm .= ($aY1[$childr] - $aY1[$mother] + 56)."px; border-color: green;'><tr><td></td></tr></table>";
                 $htm .= "<table style='POSITION:absolute;LEFT:";//горизонтально
                 $htm .= ($aX1[$mother] - 15)."px;TOP:".($aY1[$childr] + 90)."px;BORDER-TOP:2pt solid;BORDER-BOTTOM:0pt solid;BORDER-RIGHT:0pt solid;BORDER-LEFT:0pt solid;WIDTH:";
-                $htm .= ($aX1[$childr] - $aX1[$mother] + 135 - 3)."px;HEIGHT:0px'><tr><td></td></tr></table>";
+                $htm .= ($aX1[$childr] - $aX1[$mother] + 135 - 3)."px;HEIGHT:0px; border-color: green;'><tr><td></td></tr></table>";
             }
 
         }
 
+    }
+
+    return $htm;
+}
+
+function LinkSpouse($person, $spouse)
+{
+    global $maxX;
+    global $aX1;
+    global $aY1;
+
+    $X1 = $aX1[$person];
+    $Y1 = $aY1[$person];
+    $X2 = $aX1[$spouse];
+    $Y2 = $aY1[$spouse];
+
+    $htm = "";
+
+    if ($X1 > $maxX)
+    {
+        $htm .= "<table style='POSITION: absolute; border-color: lime; LEFT: ";//вертикально
+        $htm .= ($X2)."px; TOP: ".($Y1)."px; BORDER-TOP: 0pt solid; BORDER-BOTTOM: 0pt solid; BORDER-RIGHT: 0pt solid; BORDER-LEFT: 2pt solid; WIDTH: 0px; HEIGHT: ";
+        $htm .= ($Y2 - $Y1)."px; border-color: lime;'><tr><td></td></tr></table>";
+
+        $htm .= "<table style='POSITION: absolute; border-color: lime; LEFT: ";//горизонтально
+        $htm .= ($X1)."px; TOP: ".($Y1)."px; BORDER-TOP: 2pt solid; BORDER-BOTTOM: 0pt solid; BORDER-RIGHT: 0pt solid; BORDER-LEFT: 0pt solid; WIDTH: ";
+        $htm .= ($X2 - $X1)."px; HEIGHT: 0px; border-color: lime;'><tr><td></td></tr></table>";
+    }
+    else
+    {
+        $htm .= "<table style='POSITION: absolute; border-color: lime; LEFT: ";//вертикально
+        $htm .= ($X2)."px; TOP: ".($Y1)."px; BORDER-TOP: 0pt solid; BORDER-BOTTOM: 0pt solid; BORDER-RIGHT: 0pt solid; BORDER-LEFT: 2pt solid; WIDTH: 0px; HEIGHT: ";
+        $htm .= ($Y2 - $Y1)."px; border-color: lime;'><tr><td></td></tr></table>";
+
+        $htm .= "<table style='POSITION: absolute; border-color: lime; LEFT: ";//горизонтально
+        $htm .= ($X1)."px; TOP: ".($Y1)."px; BORDER-TOP: 2pt solid; BORDER-BOTTOM: 0pt solid; BORDER-RIGHT: 0pt solid; BORDER-LEFT: 0pt solid; WIDTH: ";
+        $htm .= ($X2 - $X1)."px; HEIGHT: 0px; border-color: lime;'><tr><td></td></tr></table>";
     }
 
     return $htm;

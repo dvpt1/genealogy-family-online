@@ -77,6 +77,7 @@
   $mothers = array();
   $spouses = array();
   $residences = array();
+  $marrieds = array();
 
   $lang = "";
   $langi = 0;
