@@ -238,10 +238,10 @@ if(isset($_POST['saveperson'])) {
   $persons[$inx_person][$fldPLB ] = $_POST['placeb'];
   $persons[$inx_person][$fldPLD ] = $_POST['placed'];
   $persons[$inx_person][$fldPLT ] = $_POST['placet'];
-//  $persons[$inx_person][$fldMAPB] = $_POST['mapsb'];
-//  $persons[$inx_person][$fldMAPD] = $_POST['mapsd'];
+  $persons[$inx_person][$fldMAPB] = $_POST['mapsb'];
+  $persons[$inx_person][$fldMAPD] = $_POST['mapsd'];
+  $persons[$inx_person][$fldMAPT] = $_POST['mapst'];
 //  $persons[$inx_person][$fldMAPL] = $_POST['mapsl'];
-//  $persons[$inx_person][$fldMAPT] = $_POST['mapst'];
   $persons[$inx_person][$fldOCCU] = $_POST['occu'];
   $persons[$inx_person][$fldNATI] = $_POST['nati'];
   $persons[$inx_person][$fldEDUC] = $_POST['educ'];
@@ -448,8 +448,10 @@ if(isset($_POST['saveperson'])) {
   $jsonPerson->person = $_POST['persona'];
   $jsonPerson->birthday->date = $_POST['birth'];
   $jsonPerson->birthday->place = $_POST['placeb'];
+  $jsonPerson->birthday->maps = $_POST['mapsb'];
   $jsonPerson->deathday->date = $_POST['death'];
   $jsonPerson->deathday->place = $_POST['placed'];
+  $jsonPerson->deathday->maps = $_POST['mapsd'];
 
 /**/
   if(count($aresiden) > 0) {
@@ -470,7 +472,7 @@ if(isset($_POST['saveperson'])) {
 
   $jsonPerson->burialday->date = $_POST['burial'];
   $jsonPerson->burialday->place = $_POST['placet'];
-  $jsonPerson->burialday->maps = "";
+  $jsonPerson->burialday->maps = $_POST['mapst'];
   
 // echo "<br>father =$fat1=";
   if(!empty($fat1)) {
@@ -590,6 +592,9 @@ if($log) exit;
   $_SESSION["placeb"] = $_POST["placeb"];
   $_SESSION["placed"] = $_POST["placed"];
   $_SESSION["placet"] = $_POST["placet"];
+  //$_SESSION["mapsb"] = $_POST["mapsb"];
+  //$_SESSION["mapsd"] = $_POST["mapsd"];
+  //$_SESSION["mapst"] = $_POST["mapst"];
   $_SESSION["occua"] = $_POST["occu"];
   $_SESSION["natia"] = $_POST["nati"];
   $_SESSION["educa"] = $_POST["educ"];
@@ -713,6 +718,12 @@ if($log) exit;
   if(empty($_SESSION["placeba"])) $placeba = $person[$fldPLB]; else $placeba = $_SESSION["placeba"];
   if(empty($_SESSION["placeda"])) $placeda = $person[$fldPLD]; else $placeda = $_SESSION["placeda"];
   if(empty($_SESSION["placeta"])) $placeta = $person[$fldPLT]; else $placeta = $_SESSION["placeta"];
+  //if(empty($_SESSION["mapsba"])) $mapsa = $person[$fldMAPB]; else $mapsba = $_SESSION["mapsba"];
+  //if(empty($_SESSION["mapsda"])) $mapsa = $person[$fldMAPD]; else $mapsda = $_SESSION["mapsda"];
+  //if(empty($_SESSION["mapsta"])) $mapsa = $person[$fldMAPT]; else $mapsta = $_SESSION["mapsta"];
+  $mapsba = $person[$fldMAPB];
+  $mapsda = $person[$fldMAPD];
+  $mapsta = $person[$fldMAPT];
   if(empty($_SESSION["occua"])) $occua = $person[$fldOCCU]; else $occua = $_SESSION["occua"];
   if(empty($_SESSION["natia"])) $natia = $person[$fldNATI]; else $natia = $_SESSION["natia"];
   if(empty($_SESSION["educa"])) $educa = $person[$fldEDUC]; else $educa = $_SESSION["educa"];
@@ -866,7 +877,9 @@ if($log) exit;
  </tr>
 
  <tr><td><?php echo $field_placeb; ?></td>
-  <td><input type="text" name="placeb" size="60" value="<?php echo $placeba; ?>"></td>
+  <td><input type="text" name="placeb" size="60" value="<?php echo $placeba; ?>"> <?php echo $mapsba; ?>
+  <input type="hidden" id="mapsb" name="mapsb" value="<?php echo $mapsba; ?>">
+  </td>
  </tr>
 
  <tr><td><?php echo $field_death; ?></td>
@@ -874,7 +887,9 @@ if($log) exit;
  </tr>
 
  <tr><td><?php echo $field_placed; ?></td>
-  <td><input type="text" name="placed" size="60" value="<?php echo $placeda; ?>"></td>
+  <td><input type="text" name="placed" size="60" value="<?php echo $placeda; ?>"> <?php echo $mapsda; ?>
+  <input type="hidden" id="mapsd" name="mapsd" value="<?php echo $mapsda; ?>">
+  </td>
  </tr>
 
  <tr><td><?php echo $field_burial; ?></td>
@@ -882,7 +897,9 @@ if($log) exit;
  </tr>
 
  <tr><td><?php echo $field_placet; ?></td>
-  <td><input type="text" name="placet" size="60" value="<?php echo $placeta; ?>"></td>
+  <td><input type="text" name="placet" size="60" value="<?php echo $placeta; ?>"> <?php echo $mapsta; ?>
+  <input type="hidden" id="mapst" name="mapst" value="<?php echo $mapsta; ?>">
+  </td>
  </tr>
 
 <?
