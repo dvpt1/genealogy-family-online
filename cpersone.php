@@ -783,7 +783,9 @@ if($log) exit;
  <table width="100%">
  <tr><td align=center>
  <b><i><?php echo $avtora; ?></i></b>
- </td><tr>
+ </td><td align=right>
+ <a href="cfotos.php?id=<?php echo $id_person; ?>&name=<?php echo $persona; ?>"><img src="icons/ic_menu_gallery.png" width=48 height=48 align=right></a>
+ <td><tr>
  </table>
 
  <form name="form1" action="" enctype="multipart/form-data" method="post">
